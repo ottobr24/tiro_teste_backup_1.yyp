@@ -30,6 +30,7 @@
   ],
   "ResourceOrderSettings":[
     {"name":"Font2","order":3,"path":"fonts/Font2/Font2.yy",},
+    {"name":"Font3","order":4,"path":"fonts/Font3/Font3.yy",},
     {"name":"obj_colisores_pai","order":2,"path":"objects/obj_colisores_pai/obj_colisores_pai.yy",},
     {"name":"obj_controlador","order":3,"path":"objects/obj_controlador/obj_controlador.yy",},
     {"name":"obj_cria_particulas","order":4,"path":"objects/obj_cria_particulas/obj_cria_particulas.yy",},
