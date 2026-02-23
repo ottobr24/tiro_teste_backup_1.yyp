@@ -1,0 +1,1 @@
+locais_andar = [0]

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_uzi_recarregando_fim",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.24696144,
+  "exportDir":"",
+  "name":"snd_uzi_recarregando_fim",
+  "parent":{
+    "name":"Uzi",
+    "path":"folders/Sons/Armas/Uzi.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_uzi_recarregando_fim.wav",
+  "volume":1.0,
+}
