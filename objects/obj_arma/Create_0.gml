@@ -101,6 +101,8 @@ mira = function(){
 
 atira = function(){
 	
+	tiro = clamp(tiro,0,municao)
+	
 	var tec = !cliq ? mouse_check_button(mb_left) : mouse_check_button_pressed(mb_left)
 	var tec2 = mouse_check_button_pressed(mb_right) and rajadas_total
 	var atn = (tec or tec2) and !tiro_timer and !recarregando and !rajadas
@@ -135,8 +137,8 @@ atira = function(){
 				t.pai = pai                                 
 				prec+=prec_menos             
 	           
-				pai.cx -= coix           
-				pai.cy -= coiy           
+				pai.cx -= coix *1.5          
+				pai.cy -= coiy *1.5          
 			
 				global.shake+=shak     
             
@@ -173,14 +175,14 @@ preparando = function(){
 	var man = global.armas_prep[i]>0 and prep<=0 and tiro_timer=tiro_tempo div 2
 	var sem = tiro_timer == tiro_tempo and recarregando_timer == recarregando_tempo and global.armas_prep[i]<=0 
 	var dirp = image_xscale=1 ? direction+90 : direction-90
-	var tiiv = global.tiros_velo[i]*.5
+	var tiiv = global.tiros_velo[i]*.75
 	
 	if (man or sem){
 		
 		prep = global.armas_prep[i]
 		recarregando_timer--
 		tiro_timer--
-		if (global.armas_part[i][2]) seta_part("cria_tiro",x,y,[global.armas_part[i][2],global.armas_part[i][2]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
+		seta_part("cria_tiro",x,y,[global.armas_part[i][2],global.armas_part[i][2]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
 		
 	}
 }
@@ -272,6 +274,7 @@ colocando_os_acessorios = function(){
 				shak				+=global.armas_mode[i][m][mod_i][7]
 				rajadas_total		+=global.armas_mode[i][m][mod_i][8]
 				rajadas_tempo		+=global.armas_mode[i][m][mod_i][9]
+				tiro_tempo			+=global.armas_mode[i][m][mod_i][10]
 			
 			}
 		}

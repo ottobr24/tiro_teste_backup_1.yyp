@@ -16,7 +16,7 @@ if (fogo_tempo>0){
 	var tmdy = global.tiros_velo[i]/10*image_yscale
 	
 	draw_set_colour(c_navy)
-	draw_line(x,y,_x,_y)
+	//draw_line(x,y,_x,_y)
 	draw_set_colour(-1)
 	
 	if (i>=array_length(global.armas_mods) or (array_length(global.armas_mods[i])>2 and global.armas_mods[i][2]=0)) draw_sprite_ext(spr_fogo,fogo_ii,_x,_y,tmdx,tmdy,image_angle,image_blend,image_alpha)

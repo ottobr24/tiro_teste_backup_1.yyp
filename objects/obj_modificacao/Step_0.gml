@@ -26,6 +26,10 @@ if (keyboard_check_pressed(vk_escape)){
 
 if (lista){
 
+	global.armas_mods[i][lista-1]		= listai
+	modx[lista-1][0]	= global.armas_modx[i][lista-1][0]
+	modx[lista-1][1]	= global.armas_modx[i][lista-1][1]
+		
 	if (keyboard_check_pressed(vk_enter)){
 		
 		global.armas_mods[i][lista-1]		= listai

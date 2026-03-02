@@ -17,6 +17,10 @@ draw_set_colour(c_navy)
 draw_rectangle(0,0,gw,gh,0)
 draw_set_colour(-1)
 
+draw_set_font(fnt_modificacao)
+draw_set_halign(1)
+draw_set_valign(1)
+
 sprite_set_offset(spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
 draw_sprite_ext(spr,0,sprx,spry,sprxs,sprys,0,c_white,alp)
 
@@ -38,9 +42,9 @@ if (i<array_length(global.armas_mods)){
 	
 			sprite_set_offset(mod_spr,mod_xo,mod_yo)
 			
-			draw_text(100,40+20*m,sprite_get_name(mod_spr))
-			draw_text(300,40+20*m,mod_xo)
-			draw_text(500,40+20*m,mod_yo)
+			//draw_text(100,40+20*m,sprite_get_name(mod_spr))
+			//draw_text(300,40+20*m,mod_xo)
+			//draw_text(500,40+20*m,mod_yo)
 			
 		}
 	}
@@ -62,16 +66,25 @@ if (i<array_length(global.armas_mods)){
 	
 			draw_set_colour(-1)
 	
-			if (col and mouse_check_button_pressed(mb_left) and !lista){
+			if (col and mouse_check_button_pressed(mb_left)){
 		
-				lista = p+1
+				if (lista != p+1){
+					
+					lista = p+1
+					listai = global.armas_mods[i][lista-1]
+					
+				}else{
+					
+					lista = -1
+					
+				}
 				//modss = array_create(array_length(global.armas_modp[i]),0)
 				//modxs = array_create(array_length(global.armas_modp[i]),[])
 		
 			}
 		}
 	}
-	draw_text(100,20,global.armas_mods[i])
+	//draw_text(100,20,global.armas_mods[i])
 }
 
 sprite_set_offset(spr,sprxo,spryo)
@@ -86,8 +99,8 @@ if (lista){
 		var cor2 = col2 ? c_yellow : c_white
 		
 		draw_set_colour(cor2)
-
-		draw_text(sprx,20+20*l,sprite_get_name(global.armas_modp[i][lista-1][l]))
+		
+		draw_text(sprx,20+20*l,global.armas_modn[i][lista-1][l])
 		
 		draw_set_colour(-1)
 
@@ -95,3 +108,6 @@ if (lista){
 }
 
 draw_set_alpha(1)
+draw_set_font(-1)
+draw_set_halign(-1)
+draw_set_valign(-1)

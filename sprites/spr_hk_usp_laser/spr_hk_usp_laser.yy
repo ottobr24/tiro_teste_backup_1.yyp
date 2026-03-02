@@ -3,8 +3,8 @@
   "%Name":"spr_hk_usp_laser",
   "bboxMode":0,
   "bbox_bottom":5,
-  "bbox_left":9,
-  "bbox_right":12,
+  "bbox_left":10,
+  "bbox_right":13,
   "bbox_top":4,
   "collisionKind":5,
   "collisionTolerance":0,
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":13,
+  "width":14,
 }
