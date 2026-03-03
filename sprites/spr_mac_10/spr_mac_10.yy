@@ -3,7 +3,7 @@
   "%Name":"spr_mac_10",
   "bboxMode":0,
   "bbox_bottom":13,
-  "bbox_left":0,
+  "bbox_left":1,
   "bbox_right":15,
   "bbox_top":0,
   "collisionKind":5,

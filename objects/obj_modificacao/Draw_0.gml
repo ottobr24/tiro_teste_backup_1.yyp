@@ -28,7 +28,7 @@ if (i<array_length(global.armas_mods)){
 
 	for (var m=array_length(global.armas_mods[i])-1;m>=0;m--){
 	
-		if (global.armas_mods[i][m]!=0){
+		if (array_length(global.armas_modp[i][m])>0 and global.armas_modp[i][m][global.armas_mods[i][m]]!=0){
 	
 			var mod_spr =  global.armas_modp[i][m][global.armas_mods[i][m]]
 			var mod_xo = sprite_get_xoffset(mod_spr)
