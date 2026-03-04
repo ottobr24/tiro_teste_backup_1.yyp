@@ -12,7 +12,7 @@ repeat(qtd){
     var _x = image_angle = 0 ? x + (margx * i) : x
     var _y = image_angle = 0 ? y : y - (margx * i)
     
-    var bloc = instance_create_layer(_x,_y,layer,obj_miniparede)
+    var bloc = instance_create_layer(_x,_y,"Level",obj_miniparede)
     
     bloc.image_angle = image_angle
     

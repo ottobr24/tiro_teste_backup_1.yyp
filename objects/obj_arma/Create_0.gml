@@ -28,6 +28,7 @@ rajadas_total = 0
 shak = 0
 bala = 0
 rext=0
+laser = 1
 
 //audio_falloff_set_model(audio_falloff_exponent_distance)
 emitter = audio_emitter_create()
@@ -118,7 +119,7 @@ atira = function(){
 				
 				var sprh = sprite_width*image_xscale
 				var dirp = image_xscale=1 ? direction+90 : direction-90
-				var margy = lengthdir_y(-2,direction)
+				var margy = lengthdir_y(-3,direction)
 				
 				var tiiv = global.tiros_velo[i]*1
 				var tx = x + lengthdir_x(5,direction)

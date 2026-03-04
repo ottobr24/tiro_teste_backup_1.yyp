@@ -14,11 +14,7 @@ if (global.debug){
 	
 	if (obj_player.direction = clamp(obj_player.direction,min(ang_min,ang_max),max(ang_min,ang_max))){
 		
-		draw_text(x,y,"empurra")
+		//draw_text(x,y,"empurra")
 		
 	}
-	
-	draw_text(x,y-20,ang_min)
-	draw_text(x,y+20,ang_max)
-		
 }
