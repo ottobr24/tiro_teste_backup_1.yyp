@@ -78,6 +78,7 @@ controla_arma = function(){
 				shak = global.armas_shak[i]
 				bala = global.armas_bala[i]
 				rext = global.armas_rext[i]
+				sons = array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
 				
 			}
 		

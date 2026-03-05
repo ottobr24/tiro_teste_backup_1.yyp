@@ -1,4 +1,4 @@
-function toca_som(_som,_volume,_loop=0,p = 1,pt = .1,alet = 0){
+function toca_som(_som,_volume,_loop=0,pt = .1,alet = 0){
 	
 	var em = id.emitter
 	
@@ -18,10 +18,9 @@ function toca_som(_som,_volume,_loop=0,p = 1,pt = .1,alet = 0){
 		
 		if (alet) ind = irandom_range(0,array_length(som)-1)
 		
-		if (p) pit = random_range(1-pt,1+pt)
+		pit = random_range(1-pt,1+pt)
 		
-		audio_play_sound_on(em,som[ind],_loop,10,_volume*8,,pit)
-		//audio_play_sound(_som,10,_loop,_volume*8,,pit)
+		return audio_play_sound_on(em,som[ind],_loop,10,_volume*8,,pit)
 		
 	}
 }

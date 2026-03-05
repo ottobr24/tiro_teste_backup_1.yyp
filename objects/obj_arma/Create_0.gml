@@ -29,6 +29,7 @@ shak = 0
 bala = 0
 rext=0
 laser = 1
+cock = 0
 
 //audio_falloff_set_model(audio_falloff_exponent_distance)
 emitter = audio_emitter_create()
@@ -106,8 +107,8 @@ atira = function(){
 	
 	var tec = !cliq ? mouse_check_button(mb_left) : mouse_check_button_pressed(mb_left)
 	var tec2 = mouse_check_button_pressed(mb_right) and rajadas_total
-	var atn = (tec or tec2) and !tiro_timer and !recarregando and !rajadas
-	var raj = rajadas and !rajando_timer and !recarregando
+	var atn = (tec or tec2) and !tiro_timer and !recarregando and !rajadas and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
+	var raj = rajadas and !rajando_timer and !recarregando and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	
 	if (atn or raj){
 		
@@ -149,6 +150,8 @@ atira = function(){
 				fogo_ii = irandom_range(0,sprite_get_number(spr_fogo))
 				fogo_dir = dir
 				
+				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound) sons[0] = toca_som(global.armas_sons[i][0],1,0,.25,0)
+		
 			}                                            
 	        
 			prep--
@@ -173,17 +176,31 @@ atira = function(){
 
 preparando = function(){
 	
+	var coc = keyboard_check_pressed(ord("H")) and tiro>0 and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
+	
+	if (coc) cock = 2
+	
 	var man = global.armas_prep[i]>0 and prep<=0 and tiro_timer=tiro_tempo div 2
-	var sem = tiro_timer == tiro_tempo and recarregando_timer == recarregando_tempo and global.armas_prep[i]<=0 
+	var sem = cock and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	var dirp = image_xscale=1 ? direction+90 : direction-90
 	var tiiv = global.tiros_velo[i]*.75
 	
 	if (man or sem){
 		
 		prep = global.armas_prep[i]
-		recarregando_timer--
-		tiro_timer--
+		
 		seta_part("cria_tiro",x,y,[global.armas_part[i][2],global.armas_part[i][2]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
+		
+		if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>1 and asset_get_type(global.armas_sons[i][1]) == asset_sound) sons[1] = toca_som(global.armas_sons[i][1],1,0,.05,0)
+		
+		if (cock=2){ 
+			
+			var qtd = global.armas_part[i][2]+global.armas_part[i][0]
+			tiro-=qtd
+			seta_part("cria_tiro",x,y,[qtd,qtd],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
+		
+		}
+		cock = 0
 		
 	}
 }
@@ -197,7 +214,9 @@ recarrega = function(){
 	var munc = rext == 1 ? 0 : 1
 	var tiiv = 3.5
 	
-	if (rec and tiro<municao){
+	if (rec and tiro<municao and !cock){
+		
+		if (keyboard_check_pressed(ord("R")) and !recarregando and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and asset_get_type(global.armas_sons[i][2]) == asset_sound) sons[2] = toca_som(global.armas_sons[i][2],1,0,.1,0)
 		
 		recarregando=1
 		
@@ -216,8 +235,16 @@ recarrega = function(){
 			
 			var munt = rext == 1 ? tiro >= municao : tiro >= municao-1
 			
-			if (munt) recarregando=0
-			if (global.armas_part[i][1] = "mun" or (!is_string(global.armas_part[i][1]) and global.armas_part[i][1]>0)) seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
+			if (munt){ 
+				
+				cock = 1
+				recarregando=0
+				
+			}
+				
+			seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
+			
+			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>3 and asset_get_type(global.armas_sons[i][3]) == asset_sound) sons[3] = toca_som(global.armas_sons[i][3],1,0,.1,0)
 			
 		}
 	}
@@ -225,7 +252,7 @@ recarrega = function(){
 	if (atr and recarregando){
 		
 		recarregando=0
-		recarregando_timer = recarregando_tempo
+		recarregando_timer = recarregando_tempo-1
 		tiro_timer = tiro_tempo
 		rajando_timer = rajadas_tempo
 		
@@ -234,7 +261,7 @@ recarrega = function(){
 
 reseta_coisas = function(){
 	
-	if (!rajadas) tiro_timer--
+	if (!rajadas and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and (array_length(sons)<=1 or !audio_is_playing(sons[1]))) tiro_timer--
 	rajando_timer--
 	prec = lerp(prec,global.armas_precin[i],.1)
 	
@@ -284,8 +311,8 @@ colocando_os_acessorios = function(){
 
 estado_parado = function(){
 	
-	preparando()
 	recarrega()
+	preparando()
 	atira()
 	
 	estado = estado_parado
@@ -298,8 +325,8 @@ estado_parado = function(){
 
 estado_atirando = function(){
 	
-	preparando()
 	recarrega()
+	preparando()
 	atira()
 	
 	estado = estado_atirando
@@ -312,8 +339,8 @@ estado_atirando = function(){
 
 estado_recarregando = function(){
 	
-	preparando()
 	recarrega()
+	preparando()
 	
 	estado = estado_recarregando
 	estado_txt = "estado_recarregando"
