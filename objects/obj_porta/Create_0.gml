@@ -1,19 +1,38 @@
 ima_org = image_angle
 frc = 0
 
-step = function(){
+abrindo_e_sendo_empurrada = function(){
 	
-	var alvo = obj_player
-	var ang = point_direction(0,0,alvo.hspd,alvo.vspd)
-	var ang2= angle_difference(ang,image_angle)
-	var dis = ((point_distance(x,y,alvo.x,alvo.y)/sprite_width))
-	var vel = ((lengthdir_y(-2,ang2)+lengthdir_x(2,ang2)) / dis)
-	var col = instance_place(x,y,alvo)
+	var alvos = [obj_player]
 	
-	if (col and (alvo.hspd!=0 or alvo.vspd!=0)){
+	for (var a =0;a<array_length(alvos);a++){
 		
-		image_angle+=vel
+		var h = alvos[a].hspd
+		var v = alvos[a].vspd
+			
+		var qtd = 0
+			
+		while (place_meeting(x+h,y,alvos[a])){
+			
+			image_angle-=sign(h)
+			qtd++
+			
+			if (qtd>20) break;
+			if (image_angle >= ima_org+90 or image_angle <= ima_org-90) break;
+			
+		}
 		
+		qtd = 0
+		
+		while (place_meeting(x,y+v,alvos[a])){
+			
+			image_angle-=sign(v)
+			qtd++
+			
+			if (qtd>20) break;
+			if (image_angle > ima_org+90 or image_angle < ima_org-90) break;
+			
+		}
 	}
 	
 	image_angle+=frc
@@ -30,3 +49,4 @@ step = function(){
 	image_angle = clamp(image_angle,ima_org-90,ima_org+90)
 	
 }
+	

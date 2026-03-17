@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_m1897_cock",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.3780272,
+  "exportDir":"",
+  "name":"snd_m1897_cock",
+  "parent":{
+    "name":"M1897",
+    "path":"folders/Sons/Armas/Armas de fogo/Shotguns/M1897.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_m1897_cock.wav",
+  "volume":1.0,
+}

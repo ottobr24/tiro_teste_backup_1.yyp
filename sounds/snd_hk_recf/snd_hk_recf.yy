@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_hk_recf",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.39446712,
+  "exportDir":"",
+  "name":"snd_hk_recf",
+  "parent":{
+    "name":"HK-416",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/HK-416.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_hk_recf.wav",
+  "volume":1.0,
+}

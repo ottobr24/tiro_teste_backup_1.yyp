@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_colt_reff",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":3.336009,
+  "exportDir":"",
+  "name":"snd_colt_reff",
+  "parent":{
+    "name":"Colt Python",
+    "path":"folders/Sons/Armas/Armas de fogo/Revolvers/Colt Python.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_colt_reff.wav",
+  "volume":1.0,
+}

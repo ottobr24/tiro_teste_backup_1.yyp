@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_m1014_recc",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.2924716,
+  "exportDir":"",
+  "name":"snd_m1014_recc",
+  "parent":{
+    "name":"M1014",
+    "path":"folders/Sons/Armas/Armas de fogo/Shotguns/M1014.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_m1014_recc.wav",
+  "volume":1.0,
+}

@@ -13,3 +13,5 @@ for (var i2=0;i2<array_length(global.armas_modp);i2++){
 	
 	}
 }
+
+window_set_cursor(cr_none)

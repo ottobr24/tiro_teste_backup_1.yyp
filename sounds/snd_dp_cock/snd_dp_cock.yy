@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_dp_cock",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.4303855,
+  "exportDir":"",
+  "name":"snd_dp_cock",
+  "parent":{
+    "name":"DP-12",
+    "path":"folders/Sons/Armas/Armas de fogo/Shotguns/DP-12.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_dp_cock.wav",
+  "volume":1.0,
+}

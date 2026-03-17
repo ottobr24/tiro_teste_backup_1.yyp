@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_ia_recf",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.86768705,
+  "exportDir":"",
+  "name":"snd_ia_recf",
+  "parent":{
+    "name":"Imbel IA2",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/Imbel IA2.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_ia_recf.wav",
+  "volume":1.0,
+}

@@ -22,6 +22,8 @@ if (keyboard_check_pressed(vk_escape)){
 	
 	alp=!alp
 	
+	window_set_cursor(cr_none)
+	
 }
 
 if (lista){

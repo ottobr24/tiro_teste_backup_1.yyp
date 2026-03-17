@@ -1,48 +1,66 @@
-prec = 0
 pai = id
+
 i=0
+
 recarregando = 0
 recarregando_timer = 0
+recarregando_tempo = 0
+rext=0
+
+prec = 0
+prec_menos = 0
+
 municao = 0
 tiro = 0 
+dano = 0
+
 tiro_timer = 0
 tiro_tempo = 0
-inimigo = 0
+
 rajando_timer = 0
 rajadas = 0
-mostrar  =0
+rajadas_tempo = 0
+rajadas_total = 0
+
 sons = []
+
 estado = 0
 estado_txt = ""
+
 fogo_tempo = 0
 fogo_ii = 0
 fogo_dir = 0
-prec_menos = 0
+fogo_ix = 0
+
 coix = 0
 coiy = 0
-dano = 0
-recarregando_tempo = 0
-cliq = 0
-rajadas_tempo = 0
-rajadas_total = 0
-shak = 0
-bala = 0
-rext=0
-laser = 1
+
 cock = 0
 
-//audio_falloff_set_model(audio_falloff_exponent_distance)
-emitter = audio_emitter_create()
-audio_emitter_falloff(emitter,100,400,1)
+cliq = 0
+shak = 0
+bala = 0
 
-muda_estados = function(pa=1,at=1,re=1){
+laser = 1
+
+reff = 0
+refff = 0
+
+mira_alp = 0
+		
+emitter = audio_emitter_create()
+audio_falloff_set_model(audio_falloff_exponent_distance)
+audio_emitter_falloff(emitter,100,600,1)
+
+muda_estados = function(pa=1,at=1,re=1,mi=1){
 	
 	var est = estado
 	var atr = tiro_timer>=0
 	var rec = recarregando
+	var mir = mouse_check_button_pressed(mb_right)
 	
-	var ests = [!atr and pa		,atr and at		,rec and re			]
-	var estz = [estado_parado	,estado_atirando,estado_recarregando]
+	var ests = [!atr and pa		,mir and mi		,atr and at		,rec and re			]
+	var estz = [estado_parado	,estado_mirando	,estado_atirando,estado_recarregando]
 	
 	for (var e=0;e<array_length(estz);e++){
 		
@@ -58,6 +76,47 @@ muda_estados = function(pa=1,at=1,re=1){
 			
 		}
 	}
+}
+
+mirando = function(){
+	
+	mira = mouse_check_button(mb_right)
+	
+	if (mira){
+		
+		obj_player.vel = 1.5
+		mira_alp = lerp(mira_alp,1,.1)
+		
+		obj_camera.roo = 2
+		obj_camera.pose[0] = lerp(obj_camera.pose[0],lengthdir_x(100,direction),.1)
+		obj_camera.pose[1] = lerp(obj_camera.pose[1],lengthdir_y(100,direction),.1)
+		
+	}else{
+		
+		obj_player.vel = 2
+		mira_alp = lerp(mira_alp,0,.1)
+		obj_camera.pose[0] = lerp(obj_camera.pose[0],lengthdir_x(0,direction),.1)
+		obj_camera.pose[1] = lerp(obj_camera.pose[1],lengthdir_y(0,direction),.1)
+		
+	}
+	
+	var _x = device_mouse_x_to_gui(0)
+	var _y = device_mouse_y_to_gui(0)
+
+	var _p = prec*2
+
+	draw_set_color(c_red)
+	draw_set_alpha(mira_alp)
+	
+	draw_rectangle(_x-1, _y+10+_p ,_x+2   ,_y+1+_p,0)
+	draw_rectangle(_x-1, _y-10-_p ,_x+2   ,_y-1-_p,0)
+	draw_rectangle(_x-10-_p, _y-1  ,_x-1-_p,_y+2   ,0)
+	draw_rectangle(_x+10+_p, _y-1  ,_x+1+_p,_y+2   ,0)
+
+	draw_set_alpha(1)
+	draw_set_color(-1)
+	draw_set_font(-1)
+	
 }
 
 desenha_sprite = function(){
@@ -106,7 +165,7 @@ atira = function(){
 	tiro = clamp(tiro,0,municao)
 	
 	var tec = !cliq ? mouse_check_button(mb_left) : mouse_check_button_pressed(mb_left)
-	var tec2 = mouse_check_button_pressed(mb_right) and rajadas_total
+	var tec2 = 0
 	var atn = (tec or tec2) and !tiro_timer and !recarregando and !rajadas and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	var raj = rajadas and !rajando_timer and !recarregando and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	
@@ -117,10 +176,14 @@ atira = function(){
 			if (!rajadas and tec) rajadas = rajadas_total
 		
 			repeat(bala){
+			
+				var sil = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>2 and array_length(global.armas_modn[i][2])>0 and global.armas_modn[i][2][global.armas_mods[i][2]]="Silenciador"
+				var fre = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>2 and array_length(global.armas_modn[i][2])>0 and global.armas_modn[i][2][global.armas_mods[i][2]]="Freio de boca"
 				
 				var sprh = sprite_width*image_xscale
 				var dirp = image_xscale=1 ? direction+90 : direction-90
-				var margy = lengthdir_y(-3,direction)
+				var dirp2 = image_xscale!=1 ? direction+90 : direction-90
+				var margy = lengthdir_y(2,dirp2)
 				
 				var tiiv = global.tiros_velo[i]*1
 				var tx = x + lengthdir_x(5,direction)
@@ -129,7 +192,8 @@ atira = function(){
 				var _x = x + lengthdir_x(sprite_width*image_xscale,direction)
 				var _y = y + margy + lengthdir_y(sprh,direction)
 			
-				randomize()                                 
+				randomize()      
+				
 				var dir = direction - random_range(prec,-prec)
 				var t = instance_create_layer(_x,_y,"Level",obj_tiro)
 				t.i = i                                     
@@ -149,8 +213,16 @@ atira = function(){
 				fogo_tempo = 10
 				fogo_ii = irandom_range(0,sprite_get_number(spr_fogo))
 				fogo_dir = dir
+				fogo_ix = global.tiros_velo[i]/10*image_xscale
 				
-				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound) sons[0] = toca_som(global.armas_sons[i][0],1,0,.25,0)
+				if (sil) fogo_ix = 0
+				if (fre) fogo_ix /=2
+				
+				var vol = sil ? 0.05 : 1
+				
+				show_debug_message(vol)
+				
+				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound) sons[0] = toca_som(global.armas_sons[i][0],vol,0,.20,0)
 		
 			}                                            
 	        
@@ -166,6 +238,13 @@ atira = function(){
 				
 			}
 		
+			if (!tiro and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>6 and asset_get_type(global.armas_sons[i][6]) == asset_sound){ 
+	
+				sons[6] = toca_som(global.armas_sons[i][6],1,0,.1,0)
+				refff = 0
+	
+			}
+			
 		}else{
 			
 			rajadas = 0
@@ -176,32 +255,60 @@ atira = function(){
 
 preparando = function(){
 	
-	var coc = keyboard_check_pressed(ord("H")) and tiro>0 and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
+	var coc = keyboard_check_pressed(ord("H")) and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	
 	if (coc) cock = 2
 	
+	if (cock and reff and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>4 and asset_get_type(global.armas_sons[i][4]) == asset_sound){ 
+		
+		sons[4] = toca_som(global.armas_sons[i][4],1,0,.1,0)
+		reff = 0
+		
+	}
+	
 	var man = global.armas_prep[i]>0 and prep<=0 and tiro_timer=tiro_tempo div 2
-	var sem = cock and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
+	var sem = cock and (array_length(sons)<=5 or !audio_is_playing(sons[5])) and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and (array_length(sons)<=4 or !audio_is_playing(sons[4])) and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	var dirp = image_xscale=1 ? direction+90 : direction-90
 	var tiiv = global.tiros_velo[i]*.75
+	
+	var tmd = 1
+	var pos = 1
+	var poc = 1
 	
 	if (man or sem){
 		
 		prep = global.armas_prep[i]
 		
-		seta_part("cria_tiro",x,y,[global.armas_part[i][2],global.armas_part[i][2]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
+		if (poc) seta_part("cria_tiro",x,y,[global.armas_part[i][2],global.armas_part[i][2]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
 		
-		if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>1 and asset_get_type(global.armas_sons[i][1]) == asset_sound) sons[1] = toca_som(global.armas_sons[i][1],1,0,.05,0)
+		if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>1 and asset_get_type(global.armas_sons[i][1]) == asset_sound){
+			
+			sons[1] = toca_som(global.armas_sons[i][1],1,0,.05,0)
+			if (sem) refff = 1
+			
+		}
 		
 		if (cock=2){ 
 			
 			var qtd = global.armas_part[i][2]+global.armas_part[i][0]
-			tiro-=qtd
-			seta_part("cria_tiro",x,y,[qtd,qtd],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
-		
+			
+			if (tiro>0){
+			
+				if (poc) tiro-=qtd
+				if (poc) seta_part("cria_tiro",x,y,[qtd,qtd],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
+			
+			}
 		}
+		
 		cock = 0
 		
+	}
+	
+	if (refff == 1 and (array_length(sons)<=1 or !audio_is_playing(sons[1])) and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>5 and asset_get_type(global.armas_sons[i][5]) == asset_sound){ 
+	
+		sons[5] = toca_som(global.armas_sons[i][5],1,0,.1,0)
+		refff = 0
+	
 	}
 }
 
@@ -238,6 +345,7 @@ recarrega = function(){
 			if (munt){ 
 				
 				cock = 1
+				reff = cock
 				recarregando=0
 				
 			}
@@ -282,6 +390,8 @@ reseta_coisas = function(){
 }
 
 colocando_os_acessorios = function(){
+	
+	audio_emitter_position(emitter,x,y,1)
 	
 	if (i<array_length(global.armas_mods)){
 	
@@ -344,6 +454,20 @@ estado_recarregando = function(){
 	
 	estado = estado_recarregando
 	estado_txt = "estado_recarregando"
+	image_index=0
+	
+	muda_estados()
+	
+}
+
+estado_mirando = function(){
+	
+	recarrega()
+	preparando()
+	atira()
+	
+	estado = estado_mirando
+	estado_txt = "estado_mirando"
 	image_index=0
 	
 	muda_estados()

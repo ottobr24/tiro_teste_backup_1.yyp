@@ -52,26 +52,26 @@ global.armas_tipo = [0			,0				,0			,1			,1				,1			,1					,2			,2			,2			,2			,
 global.armas_nome = ["RT 85"	,"Colt Python"	,"Rhino"	,"M1911"	,"Glock 18"	,"Berreta M9"	,"HK USP"	,"Desert Eagle"		,"MP9"		,"Uzi"		,"Mac-10"	,"Vector"	,"PP-19"	,"M1897"	,"Benelli M1014"	,"A-681"    ,"DP-12"	,"Saiga 12"		,"Ak-47"	,"FN Fal"	,"AEK-971"	,"AR-15"	,"M4A1"		,"HK416"	,"Scar-H"	,"Sig Sauer MCX"	,"Imbel IA2"	,"BAR M1918"	,"M1 GARAND"	,"Winchester 1894"	,"Lee Enfield"	,"KAR 98K"	,"M249"		]
 global.armas_cliq = [1			,1				,1			,1			,0			,1				,1			,1					,0			,0			,0			,0			,0			,0			,1					,1          ,1			,1				,0			,0			,0			,0			,0			,0			,0			,0					,0				,0				,1				,0					,1				,1			,0			]
 global.armas_aval = [0			,0				,0			,0			,0			,0				,0			,0					,0			,0			,0			,0			,0			,0			,0					,0          ,0			,0				,0			,0			,0			,0			,0			,0			,0			,0					,0				,0				,0				,0					,0				,0			,0			]
-global.armas_munc = [5			,6				,6			,8			,18			,16				,16			,8					,31			,51			,33			,31			,64			,6			,9					,2          ,14			,10				,31			,28			,31			,31			,31			,31			,31			,31					,31				,21				,10				,14					,10				,5			,200		]
+global.armas_munc = [5			,6				,6			,8			,18			,16				,16			,8					,31			,51			,33			,31			,64			,6			,9					,2          ,14			,10				,31			,28			,31			,31			,31			,31			,21			,31					,31				,21				,10				,14					,10				,5			,200		]
 global.armas_dano = [2			,4				,4			,2.5		,1.5		,1.75			,1			,5					,1.5		,1			,1			,1			,1.5		,5			,5					,7          ,4			,4				,5			,5			,3			,3			,3			,4			,6			,5					,3				,6				,5				,4					,5				,6			,5			]
-global.armas_prec = [11			,13				,8			,7			,6.5		,8				,4			,20					,7			,6			,6			,2.5		,9			,7			,6.5				,14         ,7			,10				,10			,8.5		,2			,6			,4			,4			,11			,6					,9				,15				,10				,8					,12				,16			,14			]
+global.armas_prec = [11			,13				,8			,7			,6.5		,8				,4			,20					,7			,6			,6			,2.5		,9			,7			,6.5				,14         ,7			,10				,10			,8.5		,3			,6			,4			,4			,8			,6					,9				,15				,10				,8					,12				,16			,14			]
 global.armas_precin=[1			,1				,1			,1			,1			,1				,1			,1					,1			,1			,1			,1			,1			,5			,6					,5          ,6			,7				,3			,2			,1			,2			,1			,1			,3			,3					,3				,1				,1				,2					,5				,1			,7			]
-global.armas_reca = [45			,30				,45			,60			,60			,60				,60			,90					,60			,80			,60			,75			,120		,30			,45					,60         ,45			,60				,75			,75			,90			,60			,75			,90			,120		,120				,45				,140			,120			,45					,75				,75			,300		]
-global.armas_rext = [1			,1				,1			,7			,17			,15				,15			,7					,30			,50			,32			,30			,63			,1			,1					,1          ,1			,9				,30			,27			,30			,30			,30			,30			,30			,30					,30				,20				,10				,1					,5				,5			,200		]
-global.armas_cade = [30			,30				,30			,5			,5			,5				,4			,6					,3			,3			,2			,2			,4			,21			,7					,2          ,30			,6				,5			,15			,4			,4			,3			,4			,4			,4					,3				,6				,5				,25					,40				,45			,4			]
-global.armas_bala = [1			,1				,1			,1			,1			,1				,1			,1					,1			,1			,1			,1			,1			,4			,4					,4          ,4			,6				,1			,1			,1			,1			,1			,1			,1			,1					,1				,1				,1				,1					,1				,1			,1			]
+global.armas_reca = [30			,30				,30			,60			,60			,60				,60			,90					,60			,80			,60			,75			,120		,30			,45					,30         ,45			,60				,75			,75			,90			,60			,75			,90			,90			,120				,45				,140			,120			,25					,75				,75			,30			]
+global.armas_rext = [1			,1				,1			,7			,17			,15				,15			,7					,30			,50			,32			,30			,63			,1			,1					,1          ,1			,9				,30			,27			,30			,30			,30			,30			,20			,30					,30				,20				,10				,1					,5				,5			,200		]
+global.armas_cade = [10			,10				,10			,5			,5			,5				,4			,6					,3			,3			,2			,2			,4			,21			,7					,2          ,30			,6				,5			,15			,4			,4			,3			,4			,4			,4					,3				,6				,5				,10					,15				,25			,4			]
+global.armas_bala = [1			,1				,1			,1			,1			,1				,1			,1					,1			,1			,1			,1			,1			,4			,4					,4          ,4			,4				,1			,1			,1			,1			,1			,1			,1			,1					,1				,1				,1				,1					,1				,1			,1			]
 global.armas_raja = [0			,3				,0			,0			,0			,0				,0			,0					,0			,0			,0			,0			,0			,0			,0					,0          ,0			,0				,0			,3			,0			,0			,0			,0			,0			,0					,0				,0				,0				,0					,0				,0			,0			]
 global.armas_raca = [0			,5				,0			,0			,0			,0				,0			,0					,0			,0			,0			,0			,0			,0			,0					,0          ,0			,0				,0			,5			,0			,0			,0			,0			,0			,0					,0				,0				,0				,0					,0				,0			,0			]
-global.armas_prep = [1			,1				,1			,-1			,-1			,-1				,-1			,-1					,-1			,-1			,-1			,-1			,-1			,1			,-1					,-1         ,2			,-1				,-1			,-1			,-1			,-1			,-1			,-1			,-1			,-1					,-1				,-1				,-1				,-1					,-1				,-1			,-1			]
+global.armas_prep = [1			,1				,1			,-1			,-1			,-1				,-1			,-1					,-1			,-1			,-1			,-1			,-1			,1			,-1					,1         ,2			,-1				,-1			,-1			,-1			,-1			,-1			,-1			,-1			,-1					,-1				,-1				,-1				,1					,1				,1			,-1			]
 global.armas_coix = [4			,5				,4			,5			,2.5		,3				,2			,14					,3			,3			,3			,2			,4			,5			,5					,7          ,5			,6				,6			,6			,2			,5			,4			,4			,6			,4					,6				,9				,6				,4					,7				,10			,9			]
 global.armas_coiy = [3			,4				,3			,5			,2.5		,3				,2			,12					,3			,3			,3			,2			,4			,4			,4					,7          ,4			,5				,5			,5			,2			,4			,3			,3			,6			,4					,5				,8				,5				,4					,7				,9			,9			]
 global.armas_shak = [4			,5				,3			,6			,3			,4				,1			,16					,4			,4			,4			,1			,5			,5			,5					,12         ,5			,6				,6			,5			,1			,5			,4			,4			,6			,5					,6				,9				,6				,5					,8				,11			,9			]
 //global.armas_spry = [2			,2				,3			,6			,2			,4				,1			,16					,4			,3			,4			,1			,5			,5			,5					,12         ,5			,6				,6			,5			,1			,5			,4			,4			,6			,5					,6				,9				,6				,5					,8				,11			,9			]
 global.armas_sprt = [spr_rt_85	,spr_colt_python,spr_rhino	,spr_m1911	,spr_glock	,spr_berreta_m9	,spr_hk_usp	,spr_desert_eagle	,spr_mp9	,spr_uzi	,spr_mac_10	,spr_vector	,spr_pp_19	,spr_m1897	,spr_benelli_m1014	,spr_a_681  ,spr_dp_12	,spr_saiga_12	,spr_ak_47	,spr_fal	,spr_aek_971,spr_ar_15	,spr_m4a1	,spr_hk416	,spr_scarh	,spr_sig_sauer_mcx	,spr_imbel_ia2	,spr_bar_m1918	,spr_m1_garand	,spr_winchester_1894,spr_lee_enfield,spr_kar_98k,spr_m249	]
-global.armas_part = [[0,1,0]	,[0,1,0]		,[0,1,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]		,[1,0,0]	,[1,0,0]			,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]	,[0,0,1]	,[1,0,0]			,[0,1,0]	,[0,0,2]	,[1,0,0]		,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]			,[1,0,0]		,[1,0,0]		,[1,0,0]		,[1,0,0]			,[1,0,0]		,[1,0,0]	,[1,0,0]	]//atirando, recarregando,preparando
+global.armas_part = [[0,1,0]	,[0,1,0]		,[0,1,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]		,[1,0,0]	,[1,0,0]			,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]	,[0,0,1]	,[1,0,0]			,[0,1,0]	,[0,0,2]	,[1,0,0]		,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]	,[1,0,0]			,[1,0,0]		,[1,0,0]		,[1,0,0]		,[0,0,1]			,[0,1,0]		,[0,1,0]	,[1,0,0]	]//atirando, recarregando,preparando
 global.armas_mods = []//[[0,0,0]																	,[]		,[]		,[]		,[0,0,0,0,0]]
 
-global.armas_modx = [[[],[1,4]							,[],[],[],[],[],[],[],[4,2]		]					,[[],[],[15,1]]								,[[],[],[15,1]								,[7,1]]							,[[],[],[14,1]									,[],[2,10]]							,[[],[],[13,2]										,[3,1]							,[2,6]							,[11,3]														,[],[0,2]					]			,[[],[2,7]														,[14,1]																	,[2,1]							,[],[11,3]						,[],[],[],[7,3]]							,[[],[],[12,1]								,[2,1]							,[1,9]							,[9,2]							,[],[],[],[4,3]]													,[[6,3]							,[],[],[],[2,12]							,[],[]	,[],[],[9,2]]													,[[6,4]							,[],[16,2]								,[3,1]							,[],[11,3]								,[5,2]							,[],[0,2]								,[9,2]]														,[[],[],[21,3]								,[13,0]							,[],[16,5]														,[]	,[],[0,4]																		,[10,4]]						,[[],[],[15,2]								,[7,0]							,[6,10]									,[]	,[5,2]								,[],[0,2]										,[6,3]]							,[[],[],[22,3]									,[11,2]							,[]	,[18,3]																	,[]	,[]	,[]	,[8,4]]							,[[],[7,9]						,[23,4]																		,[11,2]							,[]	,[]	,[]	,[]	,[8,3]																					,[]],[[],[],[32,2]]							,[[],[],[],[16,1]							,[],[22,4]																,[],[],[3,3]						,[13,3]]						,[[],[]	,[],[],[],[],[],[],[],[11,2]		]				,[[],[]	,[28,2]														,[18,1]								,[],[],[25,1]						,[26,4]						,[]	,[15,3]						],[[16,4]						,[12,8]												,[35,3]									,[18,1]														,[],[],[27,4]																							,[],[3,4]											,[23,3]						],[[]],[[]],[[]],[[14,5]						,[12,6]												,[33,2]															,[15,1]																				,[],[],[26,4]																								,[28,2]														,[4,4]												,[16,3]						]]
+global.armas_modx = [[[],[1,4]							,[],[],[],[],[],[],[],[4,2]		]					,[[],[],[15,1]]								,[[],[],[15,1]								,[7,1]]							,[[],[],[14,1]									,[],[2,10]]							,[[],[],[13,2]										,[3,1]							,[2,6]							,[11,3]														,[],[0,2]					]			,[[],[2,7]														,[14,1]																	,[2,1]							,[],[11,3]						,[],[],[],[7,3]]							,[[],[],[12,1]								,[2,1]							,[1,9]							,[10,4]							,[],[],[],[4,3]]													,[[6,3]							,[],[],[],[2,12]							,[],[]	,[],[],[9,2]]													,[[6,4]							,[],[16,2]								,[3,1]							,[],[11,3]								,[5,2]							,[],[0,2]								,[9,2]]														,[[],[],[21,3]								,[13,0]							,[],[16,5]														,[]	,[],[0,4]																		,[10,4]]						,[[],[],[15,2]								,[7,0]							,[6,10]									,[]	,[5,2]								,[],[0,2]										,[6,3]]							,[[],[],[22,3]									,[11,2]							,[]	,[18,3]																	,[]	,[]	,[]	,[8,4]]							,[[],[7,9]						,[23,4]																		,[11,2]							,[]	,[]	,[]	,[]	,[8,3]																					,[]],[[],[],[32,2]]							,[[],[],[],[16,1]							,[],[22,4]																,[],[],[3,3]						,[13,3]]						,[[],[]	,[],[],[],[],[],[],[],[11,2]		]				,[[],[]	,[28,2]														,[18,1]								,[],[],[25,1]						,[26,4]						,[]	,[15,3]						],[[16,4]						,[12,8]												,[35,3]									,[18,1]														,[],[],[27,4]																							,[],[3,4]											,[23,3]						],[[]],[[]],[[]],[[14,5]						,[12,6]												,[33,2]															,[15,1]																				,[],[],[26,4]																								,[28,0]														,[4,4]												,[16,3]						]]
 global.armas_modn = [[[],["Padrão","Grip Preto"]		,[],[],[],[],[],[],[],["Padrão","Cor Verde"]]		,[[],[],["6\"","8\""]]						,[[],[],["4\"","6\""]						,["Mira fixa","Mira ajustável"]],[[],[],["Nada","Silenciador"]					,[],["Pente 7x","Pente 15x"]]		,[[],[],["Nada","Silenciador"]						,["Mira fixa","Mira Red Dot"]	,["Pente 17x","Pente 22x"]		,["Nada","Lanterna","Pente extra"]							,[],["Nada","Coronha estendida"]]		,[[],["Grip Normal","Grip Madeira","Grip Árido"]				,["Nada","Freio de boca","Silenciador"]									,["Mira fixa","Mira Red Dot"]	,[],["Nada","Laser"]			,[],[],[],["Cor padrão","Árido"]]			,[[],[],["Nada","Silenciador"]				,["Mira fixa","Mira Red Dot"]	,["Pente 15x","Pente 22x"]		,["Nada","Laser"]				,[],[],[],["Cor padrão","Árido","Verde claro"]]						,[["Semi","Automática"]			,[],[],[],["Pente 7x","Pente 11x"]			,[],[]	,[],[],["Cor padrão","Árido","Preto"]]							,[["Gatinho padrão","Suave"]	,[],["Nada","Silenciador"]				,["Mira fixa","Mira Red Dot"]	,[],["Nada","RK-2"]						,["9mm","6.5x25mm"]				,[],["Nada","Coronha estendida"]		,["Cor padrão","Vermelho","Árido"]]							,[[],[],["Nada","Silenciador"]				,["Mira fixa","Mira Red Dot"]	,[],["Nada","AFG","Laser"]										,[]	,[],["Nada","Coronha tática","Coronha madeira"]									,["Cor padrão","Verde"]]		,[[],[],["Nada","Silenciador"]				,["Mira fixa","Mira Red Dot"]	,["Pente 32x","Pente 40x"]				,[]	,["9mm",".45 ACP"]					,[],["Nada","Coronha estendida"]				,["Cor padrão","Lima"]]			,[[],[],["Nada","Silenciador"]					,["Mira fixa","Mira Red Dot"]	,[]	,["Nada","RK-2","AFG"]													,[]	,[]	,[]	,["Cor padrão","Neve"]]			,[[],["Cor padrão","Madeira"]	,["9\"","Silenciador","13.5\""]												,["Mira fixa","Mira Red Dot"]	,[]	,[]	,[]	,[]	,["Coronha estendida","Coronha retraida","Coronha tática"]								,[]],[[],[],["20\"","30\""]]				,[[],[],[],["Mira ajustável","Mira Red Dot"],[],["Nada","RK-2","AFG"]												,[],[],["Nada","Munição extra"]		,["Cor padrão","Clássico"]]		,[[],[]	,[],[],[],[],[],[],[],["Padrão","Preto"]]			,[[],[]	,[".710",".700",".720"]										,["Mira ajustável","Mira Red Dot"]	,[],[],["Nada","Lanterna"]			,["Nada","Laser"]			,[]	,["Cor padrão","Árido"]		],[["Semi","Automático"]		,["Preto","Madeira"]								,["Nada","Silenciador"]					,["Mira ajustável","Mira Red Dot","Mira Holográfica"]		,[],[],["Nada","AFG","RK-2","Laser"]																	,[],["Preto","Madeira","Retraida"]					,["Cor padrão","Madeira"]	],[[]],[[]],[[]],[["Automático","Rajada"]		,["Árido","Preto"]									,["Nada","Freio de boca","Silenciador"]							,["Mira ajustável","Mira Holográfica","Mira Acog","Alça de pegada"]					,[],[],["Nada","AFG","RK-2","Laser"]																		,["Nada","Magnifier 3x","Laser"]							,["Árido","Preto"]									,["Cor padrão","Preto"]		]]
 //conversao,grip,silenciador ou freio de boca e etc, mira, pente estendido, pente extra ou grip ou lanterna ou qualquer coisa pra colocar no guarda mao,mudanca de calibre,a cima do cano,coronha, skin																																																																																																																											  																																									  															,[]																																						,[]																																																																																																																																																																																																																																																																																																																																		,[]																																																																																																				 																			 																																																																									  ]
 global.armas_modp = [[[],[0,spr_rt_85_grip2	]			,[],[],[],[],[],[],[],[0,spr_rt_85_verde]]			,[[],[],[0,spr_colt_cano]	]				,[[],[],[0,spr_rhino_cano]					,[0,spr_rhino_mira]]			,[[],[],[0,spr_m1911_silenciador	]			,[],[0,spr_m1911_pente]	]			,[[],[],[0,spr_glock_silenciador]					,[0,spr_glock_mira]				,[0,spr_glock_pente]			,[0,spr_glock_lanterna		,spr_glock_pente_extra]			,[],[0,spr_glock_coronha]	]			,[[],[0,spr_berreta_m9_grip,spr_berreta_m9_grip_2]				,[0,spr_berreta_m9_freio			,spr_berreta_m9_silenciador]		,[0,spr_berreta_m9_mira]		,[],[0,spr_berreta_m9_laser]	,[],[],[],[0,spr_berreta_m9_cor]]			,[[],[],[0,spr_hk_usp_silenciador]			,[0,spr_hk_usp_mira]			,[0,spr_hk_usp_pente]			,[0,spr_hk_usp_laser]			,[],[],[],[0,spr_hk_usp_cor,spr_hk_usp_cor_2]]						,[[0,spr_desert_eagle_auto]		,[],[],[],[0,spr_desert_eagle_pente]		,[],[]	,[],[],[0,spr_desert_eagle_cor,spr_desert_eagle_cor_2]]			,[[0,spr_mp9_gati]				,[],[0,spr_mp9_silenciador]				,[0,spr_mp9_mira1]				,[],[0,spr_mp9_foregrip]				,[0,spr_mp9_bala]				,[],[0,spr_mp9_coronha]					,[0,spr_mp9_cor,spr_mp9_cor2]]								,[[],[],[0,spr_uzi_silenciador]				,[0,spr_uzi_mira]				,[],[0,spr_uzi_foregrip,spr_uzi_laser]							,[]	,[],[0,spr_uzi_coronha,spr_uzi_coronha_1]										,[0,spr_uzi_cor]]				,[[],[],[0,spr_mac_10_silenciador]			,[0,spr_mac_10_mira]			,[0,spr_mac_10_pente]					,[]	,[0,spr_mac_10_bala]				,[],[spr_mac_10_coronha_1,spr_mac_10_coronha]	,[0,spr_mac_10_cor]]			,[[],[],[0,spr_vector_silenciador]				,[0,spr_vector_mira]			,[]	,[0,spr_vector_foregrip,spr_vector_foregrip_1]							,[]	,[]	,[]	,[0,spr_vector_cor]]			,[[],[0,spr_pp_19_grip]			,[0,spr_pp_19_silenciador,spr_pp_19_cano]									,[0,spr_pp_19_mira]				,[]	,[]	,[]	,[]	,[spr_pp_19_coronha,spr_pp_19_coronha_2,spr_pp_19_coronha_1]							,[]],[[],[],[0,spr_m1897_cano]	]			,[[],[],[],[0,spr_benelli_m1014_mira]		,[],[0,spr_benelli_m1014_foregrip,spr_benelli_m1014_foregrip_1]			,[],[],[0,spr_benelli_m1014_coronha],[0,spr_benelli_m1014_cor]]		,[[],[]	,[],[],[],[],[],[],[],[0,spr_a_681_cor]]			,[[],[]	,[0,spr_dp_12_choke				,spr_dp_12_choke_1]			,[0,spr_dp_12_mira			]		,[],[],[0,spr_dp_12_lanterna	]	,[0,spr_dp_12_laser]		,[]	,[0,spr_dp_12_cor]			],[[0,spr_saiga_12_auto]		,[spr_saiga_12_grip_1,spr_saiga_12_grip]			,[0,spr_saiga_12_silenciador]			,[0,spr_saiga_12_mira			,spr_saiga_12_mira_1]		,[],[],[0,spr_saiga_12_foregrip				,spr_saiga_12_foregrip_1		,spr_saiga_12_laser]		,[],[spr_saiga_12_coronha,spr_saiga_12_coronha_1,0]	,[0,spr_saiga_12_cor]		],[[]],[[]],[[]],[[0,spr_ar_15_raja]			,[spr_ar_15_grip_1,spr_ar_15_grip]					,[0,spr_ar_15_freio				,spr_ar_15_silenciador]			,[0,spr_ar_15_mira			,spr_ar_15_mira_2			,spr_ar_15_mira_4]			,[],[],[0,spr_ar_15_foregrip				,spr_ar_15_foregrip_2				,spr_ar_15_laser]			,[0,spr_ar_15_mira_3			,spr_ar_15_laser_2]			,[spr_ar_15_coronha_1,spr_ar_15_coronha]			,[0,spr_ar_15_cor]			]]
@@ -80,8 +80,8 @@ global.armas_mode = [[[],[0,[0,0,0,0,0,0,0,-1,0,0,0]]	,[],[],[],[],[],[],[],[0,[
 global.tiros_velo = [7.5		,10			,10				,11			,8			,8				,8			,12					,9			,8.5		,9			,9			,9			,13			,13					,12			,12			,12				,12			,11			,11			,11			,11			,11.5		,12			,12					,11				,13				,12.5			,11					,12.5			,14			,14			]    																																																																																																																																																																																																																																													
 global.tiros_sprt = [spr_tiro	,spr_tiro	,spr_tiro		,spr_tiro	,spr_tiro	,spr_tiro		,spr_tiro	,spr_tiro			,spr_tiro	,spr_tiro	,spr_tiro	,spr_tiro	,spr_tiro	,spr_chumbo	,spr_chumbo			,spr_chumbo	,spr_chumbo	,spr_chumbo		,spr_tiro	,spr_tiro	,spr_tiro	,spr_tiro	,spr_tiro	,spr_tiro	,spr_tiro	,spr_tiro			,spr_tiro		,spr_tiro		,spr_tiro		,spr_tiro			,spr_tiro		,spr_tiro	,spr_tiro	]																																																																																																																																																																																																																																														
 global.tiros_part = [spr_capsula,spr_capsula,spr_capsula	,spr_capsula,spr_capsula,spr_capsula	,spr_capsula,spr_capsula		,spr_capsula,spr_capsula,spr_capsula,spr_capsula,spr_capsula,spr_gauge	,spr_gauge			,spr_gauge	,spr_gauge	,spr_gauge		,spr_capsula,spr_capsula,spr_capsula,spr_capsula,spr_capsula,spr_capsula,spr_capsula,spr_capsula		,spr_capsula	,spr_capsula	,spr_capsula	,spr_capsula		,spr_capsula	,spr_capsula,spr_capsula]
-//tiro cock recc recf
-global.armas_sons = [[],[],[],[0,snd_m1911_cock],[],[0,snd_berreta_cock],[0,snd_hk_usp_cock,0,snd_hk_usp_recf],[snd_desert_eagle_tiro,snd_desert_eagle_cock,snd_desert_eagle_recc,snd_desert_eagle_recf],[],[],[],[],[],[0,0,0,snd_shotgun_recf],[0,0,0,snd_shotgun_recf],[],[0,0,0,snd_shotgun_recf],[],[snd_ak_tiro,snd_ak_cock,snd_ak_recc,snd_ak_recf],[snd_fal_tiro,snd_fal_cock,snd_fal_recc,snd_fal_recf],[],[],[0,snd_m4a1_cock,snd_m4a1_recc,snd_m4a1_recf],[],[],[],[],[],[],[snd_winchester_tiro],[snd_lee_tiro],[snd_kar_tiro],[]]
+//tiro cock recc recf reff refff tirf
+global.armas_sons = [[snd_rt_tiro,snd_rt_cock,snd_rt_recc,snd_rt_recf,snd_revolvers_reff,snd_rt_refff],[snd_colt_tiro,snd_colt_cock,snd_rt_recc,snd_colt_recf,snd_revolvers_reff,snd_colt_reff],[snd_rhino_tiro,snd_rhino_cock,snd_rt_recc,snd_rhino_recf,snd_revolvers_reff],[snd_m1911_tiro,snd_m1911_cock,snd_m1911_recc,snd_m1911_recf],[snd_glock_tiro,snd_glock_cock,snd_glock_recc,snd_glock_recf],[snd_m9_tiro,snd_m9_cock,snd_m9_recc,snd_m9_recf],[snd_usp_tiro,snd_usp_cock,snd_usp_recc,snd_usp_recf],[snd_desert_eagle_tiro,snd_desert_eagle_cock,snd_desert_eagle_recc,snd_desert_eagle_recf],[snd_mp9_tiro,snd_mp9_cock,snd_mp9_recc,snd_mp9_recf],[snd_uzi_tiro,snd_uzi_cock,snd_uzi_recc,snd_uzi_recf],[snd_mac_tiro,snd_mac_cock,snd_mac_recc,snd_mac_recf],[snd_vector_tiro,snd_vector_cock,snd_vector_recc,snd_vector_recf],[snd_pp_tiro,snd_pp_cock,snd_pp_recc,snd_pp_recf],[snd_m1897_tiro,snd_m1897_cock,snd_m1897_recc,snd_shotgun_recf],[snd_m1014_tiro,snd_m1014_cock,snd_m1014_recc,snd_shotgun_recf],[snd_a681_tiro,snd_a681_cock,snd_aek_recc,snd_a681_recf],[snd_dp_tiro,snd_dp_cock,snd_dp_recc,snd_shotgun_recf],[snd_saiga_tiro,snd_saiga_cock,snd_saiga_recc,snd_saiga_recf],[snd_ak_tiro,snd_ak_cock,snd_ak_recc,snd_ak_recf],[snd_fal_tiro,snd_fal_cock,snd_fal_recc,snd_fal_recf],[snd_aek_tiro,snd_aek_cock,snd_aek_recc,snd_aek_recf],[snd_ar_tiro,snd_ar_cock,snd_ar_recc,snd_ar_recf],[snd_m4a1_tiro,snd_m4a1_cock,snd_m4a1_recc,snd_m4a1_recf],[snd_hk_tiro,snd_hk_cock,snd_hk_recc,snd_hk_recf],[snd_scar_tiro,snd_scar_cock,snd_scar_recc,snd_scar_recf],[snd_mcx_tiro,snd_mcx_cock,snd_mcx_recc,snd_mcx_recf],[snd_ia_tiro,snd_ia_cock,snd_ia_recc,snd_ia_recf],[snd_bar_tiro,snd_bar_cock,snd_bar_recc,snd_bar_recf],[snd_m1_tiro,snd_m1_cock,snd_m1_recc,snd_m1_recf,0,0,snd_m1_tirf],[snd_win_tiro,snd_win_cock,0,snd_win_recf],[snd_lee_tiro,snd_lee_cock,snd_lee_recc,snd_lee_recf],[snd_kar_tiro,snd_kar_cock,snd_fuzil_recc],[snd_249_tiro,snd_249_cock,snd_249_recc,snd_249_recf]]
 
 #endregion
 
@@ -129,19 +129,24 @@ function seta_part(vrv,_x,_y,mns,spr,co,di,vel,ixns,dist,velm){
     }
 }
 
-function visao(tmd,vrv = "aaaaaaaaaaaa",_x = x,_y = y,dir2 = direction,alv = obj_player,cols = [obj_player,obj_miniparede,obj_porta],dir1 = 45,bol=1,segue=1){
+function visao(tmd,vrv = "aaaaaaaaaaaa",_x = x,_y = y,dir2 = direction,alv = obj_player,cols = [obj_player,obj_miniparede,obj_porta],dir1 = 45,bol=1,segue=1,desenha=0){
 
 	existe_variavel(vrv,0) 
 		
-	if (point_distance(x,y,alv.x,alv.y)<tmd*1.2){
-	
+	if (!is_undefined(alv) and point_distance(x,y,alv.x,alv.y)<tmd*1.2){
+		
+		//show_message("aa")
 		var col = ds_list_create()
 		var dis = tmd
-
+		var viu = 0
+		
+		if (dir1>0 and dir1<5) dir1 = clamp(dir1,2.5,infinity)
+		
 		for (var i=0;i<dir1*2;i+=1){
         
 			if (i%5 = 0){
 		
+				//show_message(cols)		
 		        dis = tmd
         
 				collision_line_list(_x,_y,_x+lengthdir_x(tmd,dir2+(-dir1+i)),_y+lengthdir_y(tmd,dir2+(-dir1+i)),cols,0,0,col,1)
@@ -149,17 +154,24 @@ function visao(tmd,vrv = "aaaaaaaaaaaa",_x = x,_y = y,dir2 = direction,alv = obj
 				var obj = ds_list_find_value(col,0)
 	
 				if (ds_list_size(col)>0){
-		
+					
+					//show_message(obj.object_index)
+					
 					dis = point_distance(_x,_y,obj.x,obj.y)
 		
-					if (obj.object_index = alv){
+					if (obj.object_index = alv or obj = alv){
 						
+						//show_message("cc")
+					
 						var vrvval = bol ? bol : obj
 						
 						existe_variavel(vrv,vrvval)
 						
 						if (segue) direction = point_direction(x,y,obj.x,obj.y)
+						viu = 1
 						
+						return viu
+	
 					}
 				}
 	
@@ -173,10 +185,20 @@ function visao(tmd,vrv = "aaaaaaaaaaaa",_x = x,_y = y,dir2 = direction,alv = obj
 					draw_set_color(-1)
 	
 				}
+				
+				if (desenha){
+		
+					draw_set_color(desenha)
+					draw_line(_x,_y,_x+lengthdir_x(dis,dir2+(-dir1+i)),_y+lengthdir_y(dis,dir2+(-dir1+i)))
+					draw_set_color(-1)
+					
+				}
 			}
 		}
 
 		ds_list_destroy(col)
+	
+		return viu
 	
 	}
 }

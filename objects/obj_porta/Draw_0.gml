@@ -2,19 +2,17 @@ if (!place_meeting(x,y,obj_camera)) exit;
 
 draw_self()
 
+	var x11 = x
+	var x12 = x + lengthdir_x (sprite_width/1,image_angle)
+	var y11 = y
+	var y12 = y + lengthdir_y(sprite_height/1,image_angle)
+	
+	//draw_rectangle(x11,y11,x12,y12,0)
+	
 if (global.debug){
 	
 	var ang = 180
 	
-	draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle+ang,image_blend,0.4)
-	draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,0.4)
+	//draw_text(x,y,image_alpha)
 	
-	var ang_min = image_angle-ang+360
-	var ang_max = image_angle//+ang
-	
-	if (obj_player.direction = clamp(obj_player.direction,min(ang_min,ang_max),max(ang_min,ang_max))){
-		
-		//draw_text(x,y,"empurra")
-		
-	}
 }

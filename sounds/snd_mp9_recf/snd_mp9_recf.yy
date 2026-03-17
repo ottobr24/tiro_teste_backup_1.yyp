@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_mp9_recf",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.3154195,
+  "exportDir":"",
+  "name":"snd_mp9_recf",
+  "parent":{
+    "name":"MP9",
+    "path":"folders/Sons/Armas/Armas de fogo/Submetralhadoras/MP9.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_mp9_recf.wav",
+  "volume":1.0,
+}

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_249_recc",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.8965533,
+  "exportDir":"",
+  "name":"snd_249_recc",
+  "parent":{
+    "name":"M249",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils/M249.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_249_recc.wav",
+  "volume":1.0,
+}

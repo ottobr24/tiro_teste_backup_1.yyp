@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_usp_recc",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.33462584,
+  "exportDir":"",
+  "name":"snd_usp_recc",
+  "parent":{
+    "name":"HK_USP",
+    "path":"folders/Sons/Armas/Armas de fogo/Pistolas/HK_USP.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_usp_recc.wav",
+  "volume":1.0,
+}

@@ -5,9 +5,10 @@ seg = 0
 ind = 0
 // >0 = parada -1 = segue
 var es = 1//application_surface_is_enabled()+1
-cpos = [[[-1,-1],[0,0]]]
+cpos = [[[-1,-1],[0,0],[-1,-1]]]
 		  
-cesc = [[.5,1]]
+cesc = [[.5,1,.45]]
+pose = [0,0]
 roo = 0
 cmw = 1280
 cmh = 720
@@ -92,20 +93,20 @@ segue_player = function(){
 		
 		camera_set_view_pos(view_camera[0],cx,cy)
 		
-		x = clamp(cx,0,room_width )
-		y = clamp(cy,0,room_height)
+		x = clamp(cx,0+pose[0],room_width +pose[0])
+		y = clamp(cy,0+pose[1],room_height+pose[1])
 		
 		if (!global.debug or !keyboard_check(vk_shift)){
 		
 			if (cpos[cap][roo][0]>-1){
 		
-				x = lerp(x,cpos[cap][roo][0],0.05)
-				y =	lerp(y,cpos[cap][roo][1],0.05)
+				x = lerp(x,cpos[cap][roo][0]+pose[0],0.05)
+				y =	lerp(y,cpos[cap][roo][1]+pose[1],0.05)
 		
 			}else{
 		
-				x = lerp(x,alvo.x-cw/2,0.05)
-				y =	lerp(y,alvo.y-ch/2,0.05)
+				x = lerp(x,alvo.x-cw/2+pose[0],0.05)
+				y =	lerp(y,alvo.y-ch/2+pose[1],0.05)
 		
 			}
 		}else{

@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.7910204,
+  "duration":0.6417687,
   "exportDir":"",
   "name":"snd_ak_cock",
   "parent":{

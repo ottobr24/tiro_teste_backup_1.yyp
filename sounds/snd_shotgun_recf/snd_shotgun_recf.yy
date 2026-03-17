@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.2947619,
+  "duration":0.6240136,
   "exportDir":"",
   "name":"snd_shotgun_recf",
   "parent":{

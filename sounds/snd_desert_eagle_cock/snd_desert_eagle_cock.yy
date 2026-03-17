@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.87639457,
+  "duration":0.51922905,
   "exportDir":"",
   "name":"snd_desert_eagle_cock",
   "parent":{

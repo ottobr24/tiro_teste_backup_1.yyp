@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_lee_recf",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.82750565,
+  "exportDir":"",
+  "name":"snd_lee_recf",
+  "parent":{
+    "name":"Lee Enfield",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils/Lee Enfield.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_lee_recf.wav",
+  "volume":1.0,
+}

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_a681_tiro",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.20430839,
+  "exportDir":"",
+  "name":"snd_a681_tiro",
+  "parent":{
+    "name":"A-681",
+    "path":"folders/Sons/Armas/Armas de fogo/Shotguns/A-681.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_a681_tiro.wav",
+  "volume":1.0,
+}

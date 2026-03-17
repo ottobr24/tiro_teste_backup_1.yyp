@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_m1_recf",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.9188662,
+  "exportDir":"",
+  "name":"snd_m1_recf",
+  "parent":{
+    "name":"M1 Garabd",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils/M1 Garabd.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_m1_recf.wav",
+  "volume":1.0,
+}

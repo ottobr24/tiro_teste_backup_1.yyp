@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_bar_tiro",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.7635148,
+  "exportDir":"",
+  "name":"snd_bar_tiro",
+  "parent":{
+    "name":"Bar",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils/Bar.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_bar_tiro.wav",
+  "volume":1.0,
+}

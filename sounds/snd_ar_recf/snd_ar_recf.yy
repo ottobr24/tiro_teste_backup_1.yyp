@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_ar_recf",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.955805,
+  "exportDir":"",
+  "name":"snd_ar_recf",
+  "parent":{
+    "name":"AR-15",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/AR-15.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_ar_recf.wav",
+  "volume":1.0,
+}

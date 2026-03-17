@@ -5,7 +5,8 @@ fogo_tempo--
 if (fogo_tempo>0){
 	
 	var sprh = sprite_width*image_xscale
-	var margy = lengthdir_y(-2,direction)
+	var dirp2 = image_xscale!=1 ? direction+90 : direction-90
+	var margy = lengthdir_y(2,dirp2)
 	
 	var _x = x + lengthdir_x(sprite_width*image_xscale,direction)
 	var _y = y + margy + lengthdir_y(sprh,direction)
@@ -13,11 +14,7 @@ if (fogo_tempo>0){
 	var tmdx = global.tiros_velo[i]/10*image_xscale
 	var tmdy = global.tiros_velo[i]/10*image_yscale
 	
-	draw_set_colour(c_navy)
-	//draw_line(x,y,_x,_y)
-	draw_set_colour(-1)
-	
-	if (i>=array_length(global.armas_mods) or (array_length(global.armas_mods[i])>2 and global.armas_mods[i][2]=0)) draw_sprite_ext(spr_fogo,fogo_ii,_x,_y,tmdx,tmdy,image_angle,image_blend,image_alpha)
+	draw_sprite_ext(spr_fogo,fogo_ii,_x,_y,fogo_ix,fogo_ix,image_angle,image_blend,image_alpha)
 	
 }
 
@@ -30,42 +27,53 @@ if (i<array_length(global.armas_mods)){
 		if (array_length(global.armas_modp[i][m])>0 and global.armas_modp[i][m][global.armas_mods[i][m]]!=0){
 	
 			if (laser and global.armas_modn[i][m][global.armas_mods[i][m]] = "Laser"){
-			
-				var sprh = sprite_width*image_xscale
-				var margy = lengthdir_y(-2,direction)
 				
-				var _x = x + lengthdir_x(sprite_width*image_xscale,direction)
-				var _y = y+3 + margy + lengthdir_y(sprh,direction)
-				
-				var col = ds_list_create()
-				var dis = room_width //point_distance(x,y,mouse_x,mouse_y)
+				var sprh = global.armas_modx[i][m][0] * image_xscale 
+                var margy = global.armas_modx[i][m][1] * image_xscale 
+                
+                var ang = image_angle
 
-				collision_line_list(_x,_y,_x+lengthdir_x(room_width,direction),_y+lengthdir_y(room_height,direction),[obj_miniparede,obj_vidro,obj_porta,obj_inimigo],1,1,col,1)
-
-				var obj = ds_list_find_value(col,0)
-	
-				if (ds_list_size(col)>0){
+                if image_xscale = -1{
 					
-					var dirs = [_x>obj.x,_y>obj.y,_x<obj.x,_y<obj.y]
-					var efec = [[bbox_left,obj.y],[obj.x,obj.bbox_top],[bbox_right,obj.y],[obj.x,obj.bbox_bottom]]
+                    ang += 180
+					//sprh+=10
 					
-					for (var d = 0;d<array_length(dirs);d++){
-						
-						if (dirs[d]){ dis = point_distance(_x,_y,obj.x,obj.y) break }
-						
-					}
-				}
-				
-				depth = 400
-				
-				draw_set_color(c_red)
-				draw_line(_x,_y,_x+lengthdir_x(dis,direction),_y+lengthdir_y(dis,direction))
-				//if (obj) draw_text(_x,_y,obj.object_index)
-				draw_set_color(-1)
-	
-				depth = 100
-				
-				ds_list_destroy(col)
+                }
+                
+                var _x = x + lengthdir_x(sprh,image_angle) + lengthdir_x(margy, ang - 90)
+                var _y = y + lengthdir_y(sprh,image_angle) + lengthdir_y(margy, ang - 90);
+                
+                visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,obj_porta),1,0,0,c_red)
+				//
+				//var col = ds_list_create()
+				//var dis = room_width //point_distance(x,y,mouse_x,mouse_y)
+				//
+				//collision_line_list(_x,_y,_x+lengthdir_x(room_width,direction),_y+lengthdir_y(room_height,direction),[obj_miniparede,obj_vidro,obj_porta,obj_inimigo],1,1,col,1)
+				//
+				//var obj = ds_list_find_value(col,0)
+				//
+				//if (ds_list_size(col)>0){
+				//	
+				//	var dirs = [_x>obj.x,_y>obj.y,_x<obj.x,_y<obj.y]
+				//	var efec = [[bbox_left,obj.y],[obj.x,obj.bbox_top],[bbox_right,obj.y],[obj.x,obj.bbox_bottom]]
+				//	
+				//	for (var d = 0;d<array_length(dirs);d++){
+				//		
+				//		if (dirs[d]){ dis = point_distance(_x,_y,obj.x,obj.y) break }
+				//		
+				//	}
+				//}
+				//
+				//depth = 400
+				//
+				//draw_set_color(c_red)
+				//draw_line(_x,_y,_x+lengthdir_x(dis,direction),_y+lengthdir_y(dis,direction))
+				////if (obj) draw_text(_x,_y,obj.object_index)
+				//draw_set_color(-1)
+				//
+				//depth = 100
+				//
+				//ds_list_destroy(col)
 	
 			}
 			

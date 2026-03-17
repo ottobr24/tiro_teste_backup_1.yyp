@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_fuzil_recc",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.33768708,
+  "exportDir":"",
+  "name":"snd_fuzil_recc",
+  "parent":{
+    "name":"Geral",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils/Geral.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_fuzil_recc.wav",
+  "volume":1.0,
+}

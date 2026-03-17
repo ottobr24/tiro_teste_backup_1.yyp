@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_vector_tiro",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.14356,
+  "exportDir":"",
+  "name":"snd_vector_tiro",
+  "parent":{
+    "name":"Kriss Vector",
+    "path":"folders/Sons/Armas/Armas de fogo/Submetralhadoras/Kriss Vector.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_vector_tiro.wav",
+  "volume":1.0,
+}

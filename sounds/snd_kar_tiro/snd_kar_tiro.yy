@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.3642176,
+  "duration":0.67918366,
   "exportDir":"",
   "name":"snd_kar_tiro",
   "parent":{

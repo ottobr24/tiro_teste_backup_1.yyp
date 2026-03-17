@@ -1,3 +1,3 @@
 if (!place_meeting(x,y,obj_camera)) exit;
 
-step()
+abrindo_e_sendo_empurrada()

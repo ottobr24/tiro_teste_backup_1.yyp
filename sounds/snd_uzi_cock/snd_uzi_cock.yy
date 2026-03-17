@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_uzi_cock",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.8578005,
+  "exportDir":"",
+  "name":"snd_uzi_cock",
+  "parent":{
+    "name":"Uzi",
+    "path":"folders/Sons/Armas/Armas de fogo/Submetralhadoras/Uzi.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_uzi_cock.wav",
+  "volume":1.0,
+}

@@ -20,7 +20,7 @@ function toca_som(_som,_volume,_loop=0,pt = .1,alet = 0){
 		
 		pit = random_range(1-pt,1+pt)
 		
-		return audio_play_sound_on(em,som[ind],_loop,10,_volume*8,,pit)
+		return audio_play_sound(som[ind],10,_loop,_volume/4,,pit)//_on(em,som[ind],_loop,10,_volume/4,,pit)
 		
 	}
 }

@@ -10,7 +10,7 @@ cx = 0
 cy = 0
 cx3 = 0
 cy3 = 0
-colisao = global.colisao_normal
+colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
 equipado = 1
 
 //sprite_prefetch()
@@ -32,6 +32,9 @@ movendo = function(andar=1,equip=1){
 	
     direction = point_direction(0,0,(d-a)*vel,(s-w)*vel)
     
+	hspd=0
+	vspd=0
+
     if ((d or a or w or s) and andar){
         
         hspd = lengthdir_x(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause 
@@ -160,9 +163,8 @@ muda_estado = function(an = 1,p = 1){
 
 colidindo = function(){
 	
-	audio_listener_orientation(0,0,1000,0,1,0)
 	audio_listener_position(x,y,0)
-
+	
 	#region Variaveis
 	
 	var sw = sprite_width/2
