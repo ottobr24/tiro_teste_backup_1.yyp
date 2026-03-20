@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Fuzils de assalto",
-    "path":"folders/Sprites/Armas/Modificacoes/Fuzils de assalto.yy",
+    "name":"AR-15",
+    "path":"folders/Sprites/Armas/Modificacoes/Fuzils de assalto/AR-15.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

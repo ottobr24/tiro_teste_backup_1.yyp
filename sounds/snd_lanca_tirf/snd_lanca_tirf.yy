@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_lanca_tirf",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":3.5333786,
+  "exportDir":"",
+  "name":"snd_lanca_tirf",
+  "parent":{
+    "name":"Lança Granadas",
+    "path":"folders/Sons/Armas/Lança Granadas.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_lanca_tirf.wav",
+  "volume":1.0,
+}

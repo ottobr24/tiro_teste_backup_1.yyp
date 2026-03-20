@@ -3,7 +3,7 @@
   "%Name":"spr_m4a1",
   "bboxMode":0,
   "bbox_bottom":10,
-  "bbox_left":0,
+  "bbox_left":9,
   "bbox_right":30,
   "bbox_top":0,
   "collisionKind":5,

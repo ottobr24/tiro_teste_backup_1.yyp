@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.8578005,
+  "duration":0.9186168,
   "exportDir":"",
   "name":"snd_uzi_cock",
   "parent":{

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_lanca_tiro",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.42444444,
+  "exportDir":"",
+  "name":"snd_lanca_tiro",
+  "parent":{
+    "name":"Lança Granadas",
+    "path":"folders/Sons/Armas/Lança Granadas.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_lanca_tiro.wav",
+  "volume":1.0,
+}

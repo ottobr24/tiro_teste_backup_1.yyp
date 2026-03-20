@@ -237,6 +237,7 @@ estado_parado = function(){
 	
 	estado = estado_parado
 	estado_txt = "estado_parado"
+	vel = 2
 	
 	muda_estado(,0)
 	
@@ -249,6 +250,7 @@ estado_andando = function(){
 	
 	estado = estado_andando
 	estado_txt = "estado_andando"
+	vel = 2
 	
 	muda_estado(0)
 	

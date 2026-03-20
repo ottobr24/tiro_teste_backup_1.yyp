@@ -27,7 +27,7 @@ draw_sprite_ext(spr,0,sprx,spry,sprxs,sprys,0,c_white,alp)
 if ( alp) window_set_cursor(cr_default)
 if (!alp) window_set_cursor(cr_none)
 	
-if (i<array_length(global.armas_mods)){
+if (i<array_length(global.armas_mods) and alp){
 
 	for (var m=array_length(global.armas_mods[i])-1;m>=0;m--){
 
@@ -61,8 +61,12 @@ if (i<array_length(global.armas_mods)){
 			var mod_x = sprx+mod_x1*sprxs-((sprw*sprxs)/2)
 			var mod_y = spry+mod_y1*sprys-((sprh*sprys)/2)
 			var col = point_in_circle(mouse_x,mouse_y,mod_x,mod_y,abs(mod_esc))
-			var cor = col ? c_yellow : c_white
-
+			
+			var cor = c_white
+			
+			if (lista = p+1) cor = make_colour_rgb(200,200,0)
+			if (col) cor = c_yellow
+			
 			draw_set_colour(cor)
 
 			draw_circle(mod_x,mod_y,mod_esc,0)

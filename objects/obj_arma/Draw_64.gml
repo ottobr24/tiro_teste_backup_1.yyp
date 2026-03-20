@@ -1,8 +1,10 @@
 draw_text(20,20,global.armas_nome[i])
-draw_text(20,60,global.armas_sons[i])
-draw_text(20,80,array_length(global.armas_sons[i]))
-draw_text(20,100,sons)
-draw_text(20,120,global.armas_part[i])
+draw_text(20,60,dano)
+draw_text(20,80,prec_menos)
+draw_text(20,100,tiro_tempo)
+draw_text(20,120,recarregando_tempo)
+draw_text(20,140,peso)
+
 //if (array_length(sons)>1){
 //	
 //	//audio_sound_length(sons[4])
