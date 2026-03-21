@@ -1,0 +1,1 @@
+draw_text_transformed(20,180,pext,.8,.8,0)

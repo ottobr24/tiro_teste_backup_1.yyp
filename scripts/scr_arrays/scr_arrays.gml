@@ -69,36 +69,24 @@ function copiando_array(a1,ind,qtd){
 		
 		if (array_length(a3[ind])>0){
 			
-			//a5 = array_create(10)
 			a5 = [[]]
 			
 			if (!is_array(a3[ind][0]) or voltar){
 			
 				array_copy(a3,0,a6,0,array_length(a6))
 				
-				//show_message(string(a3)+" -1")
 				var ind2 = 0
 					
 				repeat(qtds){
 				
-					//show_message(string(a3)+" -0.75")
-					//show_message("qtds: " + string(qtds))
-					
 					if (ind2=0){ 
 						
-						//show_message(string(a6))
-					
 					}
 					
 					if (qtds) a3 = a3[ind]
-					//show_message(string(a3)+" -0.25")
 					
 				}
 				
-				//show_message(string(a3)+" 0")
-				//show_message(string(a3[ind])+" 0.25")
-				//show_message(string(a3[ind][0])+" 0.5")
-					
 				qtds--
 				
 				for (var i=0;i<array_length(a3[ind]);i++){
@@ -106,17 +94,12 @@ function copiando_array(a1,ind,qtd){
 					a5[i] = []
 					if (is_array(a3[ind][i])) array_copy(a5[i],0,a3[ind][i],0,array_length(a1))
 					voltar = 1
-					//show_message(string(a5[i])+" 1")
 				
 				}
 				
 			}
-			
-			//show_message(string(a5)+" 2")
-			
-		}else{
 		
-			//show_message("acabou")
+		}else{
 		
 		}
 		if (!voltar){ 
@@ -128,7 +111,5 @@ function copiando_array(a1,ind,qtd){
 		}
 	}
 	
-	//show_message("acabou")
-	//show_message(a5)
 	return a5
 }

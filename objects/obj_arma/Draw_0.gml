@@ -52,8 +52,23 @@ if (i<array_length(global.armas_mods)){
 			var mod_xo = 0//sprite_get_xoffset(mod_spr)
 			var mod_yo = 0//sprite_get_yoffset(mod_spr)
 			var mod_ii = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>6 and array_length(global.armas_modn[i][6])>0 and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][0] = 11 ? !tirg : 0
-			var mod_x = x + mod_xo 
-			var mod_y = y + mod_yo
+			var mod_mx = 0 
+			var mod_my = 0
+			
+			for (var md=0;md<array_length(pext);md++){
+				
+				if (array_length(pext[md])>3)	mod_mx += global.armas_modx[i][m][0]>pext[md][2] ? pext[md][0] : 0
+				if (array_length(pext[md])>3)	mod_my += global.armas_modx[i][m][1]>pext[md][3] ? pext[md][1] : 0
+				
+			}
+			
+			//var mod_dx = 
+			
+			var mod_mx2 = lengthdir_x(max(mod_mx,mod_my)*image_xscale,image_angle)
+			var mod_my2	= lengthdir_y(max(mod_mx,mod_my)*image_xscale,image_angle)
+			
+			var mod_x = x + mod_xo + mod_mx2 
+			var mod_y = y + mod_yo + mod_my2
 		
 			draw_sprite_ext(mod_spr,mod_ii,mod_x,mod_y,image_xscale,image_yscale,image_angle,c_white,image_alpha)
 	

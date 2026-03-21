@@ -36,9 +36,21 @@ if (i<array_length(global.armas_mods) and alp){
 			var mod_spr =  global.armas_modp[i][m][global.armas_mods[i][m]]
 			var mod_xo = sprite_get_xoffset(mod_spr)
 			var mod_yo = sprite_get_yoffset(mod_spr)
-			var mod_x = sprx - mod_xo * 20 * rot//od_x1*sprxs-((sprw*sprxs)/2)
-			var mod_y = spry - mod_yo * 20//od_y1*sprys-((sprh*sprys)/2)
+			var mod_mx = 0 
+			var mod_my = 0
+			
+			for (var md=0;md<array_length(pext);md++){
+				
+				if (array_length(pext[md])>3)mod_mx += global.armas_modx[i][m][0]>pext[md][2] ? pext[md][0] : 0
+				if (array_length(pext[md])>3)mod_my += global.armas_modx[i][m][1]>pext[md][3] ? pext[md][1] : 0
+				
+			}
+			
+			var mod_x = sprx + (mod_mx - mod_xo) * 20 * rot//od_x1*sprxs-((sprw*sprxs)/2)
+			var mod_y = spry + (mod_my - mod_yo) * 20//od_y1*sprys-((sprh*sprys)/2)
 	
+			show_debug_message(mod_x)
+			
 			sprite_set_offset(mod_spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
 
 			draw_sprite_ext(mod_spr,0,mod_x,mod_y,sprxs,sprys,0,c_white,alp)
@@ -56,8 +68,20 @@ if (i<array_length(global.armas_mods) and alp){
 	
 		if (array_length(global.armas_modx[i][p])>0){
 	
-			var mod_x1 = global.armas_modx[i][p][0]+.5
-			var mod_y1 = global.armas_modx[i][p][1]+.5
+			var mod_mx = 0 
+			var mod_my = 0
+			
+			for (var md=0;md<array_length(pext);md++){
+				
+				if (array_length(pext[md])>3)	mod_mx += global.armas_modx[i][p][0]>pext[md][2] ? pext[md][0] : 0
+				if (array_length(pext[md])>3)	mod_my += global.armas_modx[i][p][1]>pext[md][3] ? pext[md][1] : 0
+				
+			}
+			
+			var mod_spr =  global.armas_modp[i][p][global.armas_mods[i][p]]
+			var mod_x1 = global.armas_modx[i][p][0]+.5 + mod_mx
+			var mod_y1 = global.armas_modx[i][p][1]+.5 + mod_my
+			
 			var mod_x = sprx+mod_x1*sprxs-((sprw*sprxs)/2)
 			var mod_y = spry+mod_y1*sprys-((sprh*sprys)/2)
 			var col = point_in_circle(mouse_x,mouse_y,mod_x,mod_y,abs(mod_esc))
@@ -65,7 +89,25 @@ if (i<array_length(global.armas_mods) and alp){
 			var cor = c_white
 			
 			if (lista = p+1) cor = make_colour_rgb(200,200,0)
-			if (col) cor = c_yellow
+			
+			if (col){ 
+				
+				//var mod_xo = sprite_get_xoffset(mod_spr)
+				//var mod_yo = sprite_get_yoffset(mod_spr)
+				//var mod_x2 = sprx + (mod_mx - mod_xo) * 20 * rot//od_x1*sprxs-((sprw*sprxs)/2)
+				//var mod_y2 = spry + (mod_my - mod_yo) * 20//od_y1*sprys-((sprh*sprys)/2)
+				//
+				//sprite_set_offset(mod_spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
+				//
+				//inicia_shader()
+				//inicia_mola(sprxs,sprys)
+				//efeito_shader(mod_spr,100)
+				//
+				//sprite_set_offset(mod_spr,mod_x2,mod_y2)
+		
+				cor = c_yellow
+			
+			}
 			
 			draw_set_colour(cor)
 
@@ -84,8 +126,13 @@ if (i<array_length(global.armas_mods) and alp){
 						lista = p+1
 						listai = global.armas_mods[i][lista-1]
 				
+						var mod_i = lista-1
+					
+						show_debug_message(global.armas_mode[i][mod_i])
+										
 					}else{
-				
+						
+						pext = []
 						lista = -1
 				
 					}

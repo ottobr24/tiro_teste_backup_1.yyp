@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Cano",
-    "path":"folders/Sprites/Armas/Modificacoes/Fuzils de assalto/HK 416/Cano.yy",
+    "name":"Boca do cano",
+    "path":"folders/Sprites/Armas/Modificacoes/Fuzils de assalto/HK 416/Boca do cano.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

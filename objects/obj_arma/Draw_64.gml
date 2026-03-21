@@ -4,6 +4,7 @@ draw_text(20,80,prec_menos)
 draw_text(20,100,tiro_tempo)
 draw_text(20,120,recarregando_tempo)
 draw_text(20,140,peso)
+draw_text(20,160,pext)
 
 //if (array_length(sons)>1){
 //	

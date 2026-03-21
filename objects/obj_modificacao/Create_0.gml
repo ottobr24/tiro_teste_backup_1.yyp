@@ -4,6 +4,7 @@ rotd = 1
 alp=0
 lista =0
 listai =0
+pext = []
 
 for (var i2=0;i2<array_length(global.armas_modp);i2++){
 	

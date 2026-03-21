@@ -10,6 +10,5 @@ for (var o=0;o<array_length(global.colisao_normal);o++){
 if (mouse_check_button_pressed(mb_left)){
 	
 	//var pat = path_add()
-	//show_message(mp_grid_path(mapa,pat,x,x,mouse_x,mouse_y,0))
 	
 }

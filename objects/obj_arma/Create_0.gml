@@ -59,6 +59,8 @@ modo = 0
 mung = 1
 tirg = mung
 
+pext = []
+
 audio_falloff_set_model(audio_falloff_exponent_distance)
 audio_emitter_falloff(emitter,100,600,1)
 
@@ -151,12 +153,6 @@ desenha_sprite = function(){
 atira = function(){
 	
 	var grd = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>6 and array_length(global.armas_modn[i][6])>0 and is_array(global.armas_mode[i][6][global.armas_mods[i][6]]) and global.armas_mode[i][6][global.armas_mods[i][6]][0]=11
-	
-	//show_debug_message(string(i<array_length(global.armas_mods)) + " a")
-	//show_debug_message(string(array_length(global.armas_mods[i])>6) + "b")
-	//show_debug_message(string(array_length(global.armas_modn[i][6])>0) + "c")
-	//show_debug_message(string(is_array(global.armas_mode[i][6][global.armas_mods[i][6]])) + "d")
-	//show_debug_message(global.armas_mode[i][6][global.armas_mods[i][6]][0]=11 + "e")
 	
 	if (keyboard_check_pressed(ord("G")) and grd and !cock and !recarregando){
 		
@@ -459,6 +455,7 @@ reseta_coisas = function(){
 	bala = global.armas_bala[i]
 	rext = global.armas_rext[i]
 	peso = global.armas_peso[i]
+	pext = []
 	mira_vel = .1
 	volu = 1
 	
@@ -473,9 +470,15 @@ colocando_os_acessorios = function(){
 		for (var m=0;m<array_length(global.armas_mode[i]);m++){
 		
 			var mod_i = global.armas_mods[i][m]
-		
+			var ptmd = array_length(pext)
+			
 			if (array_length(global.armas_mode[i][m])>0 and is_array(global.armas_mode[i][m][mod_i])){
 				
+				var ptm1 = array_length(global.armas_mode[i][m][mod_i])>15 ? global.armas_mode[i][m][mod_i][15] : 0
+				var ptm2 = array_length(global.armas_mode[i][m][mod_i])>16 ? global.armas_mode[i][m][mod_i][16] : 0
+				var ptm3 = global.armas_modx[i][m][0]
+				var ptm4 = global.armas_modx[i][m][1]
+			
 				cliq				+=global.armas_mode[i][m][mod_i][1]
 				municao				+=global.armas_mode[i][m][mod_i][2]
 				rext				+=global.armas_mode[i][m][mod_i][2]
@@ -491,6 +494,7 @@ colocando_os_acessorios = function(){
 				mira_vel			-=global.armas_mode[i][m][mod_i][12]
 				peso				+=global.armas_mode[i][m][mod_i][13]
 				volu				+=global.armas_mode[i][m][mod_i][14]
+				pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4]
 				
 			}	
 		}
