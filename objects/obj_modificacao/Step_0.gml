@@ -10,29 +10,25 @@ if (alp and (keyboard_check_pressed(ord("Q")) or keyboard_check_pressed(ord("E")
 	
     if (instance_exists(obj_player.arma))obj_player.arma.i = global.arma
 	pext = []
+	listan=0
 	
 }
 
 if (keyboard_check(vk_right)){ 
 	
-	rotd = 1
-	//if (rot>=1) rotd=!rotd
-	
-	rot+=.005*rotd 
+	listan=1
 	
 }
 
 if (keyboard_check(vk_left)){ 
 	
-	rotd = 1
-	//if (rot<=-1) rotd=!rotd
-	
-	rot-=.005*rotd 
+	listan=0
 	
 }
 
 if (keyboard_check_pressed(vk_escape)){ 
 	
+	listan=0
 	alp=!alp
 	lista = -1
 	
@@ -40,10 +36,10 @@ if (keyboard_check_pressed(vk_escape)){
 		
 		var mod_i = global.armas_mods[i][m]
 		var ptmd = m
-		var ptm1 = array_length(global.armas_mode[i][m])>0 and array_length(global.armas_mode[i][m][mod_i])>15 ? global.armas_mode[i][m][mod_i][15] : 0
-		var ptm2 = array_length(global.armas_mode[i][m])>0 and array_length(global.armas_mode[i][m][mod_i])>16 ? global.armas_mode[i][m][mod_i][16] : 0
-		var ptm3 = array_length(global.armas_modx[i][m])>0 ? global.armas_modx[i][m][0]: 0
-		var ptm4 = array_length(global.armas_modx[i][m])>0 ? global.armas_modx[i][m][1]: 0
+		var ptm1 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>18 ? global.armas_mode[i][m][mod_i][18] : 0
+		var ptm2 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>19 ? global.armas_mode[i][m][mod_i][19] : 0
+		var ptm3 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0]: 0
+		var ptm4 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1]: 0
 		
 		pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4]
 		
@@ -66,23 +62,26 @@ if (lista){
 		modx[lista-1][1]	= global.armas_modx[i][lista-1][1]
 		lista = 0
 		listai = 0
+		listan = 0
 		
 	}
 	
 	if (keyboard_check_pressed(vk_up)){
 	
 		if (array_length(pext)>lista-1) pext[lista-1] = 0
-		listai--
+		if (!listan)listai--
+		if ( listan)global.armas_modi[i][lista-1] --
 		
-		if (lista) listai = clamp(listai,0,array_length(global.armas_modp[i][lista-1])-1)
+		listai = clamp(listai	,0,array_length(global.armas_modp[i][lista-1])-1)
+		global.armas_modi[i][lista-1] = clamp(global.armas_modi[i][lista-1]	,0,sprite_get_number(global.armas_modp[i][lista-1][listai])-1)
 		
 		var mod_i = lista-1
 				
 		var m = listai
 		
 		var ptmd = lista-1
-		var ptm1 = array_length(global.armas_mode[i][mod_i][m])>15 ? global.armas_mode[i][mod_i][m][15] : 0
-		var ptm2 = array_length(global.armas_mode[i][mod_i][m])>16 ? global.armas_mode[i][mod_i][m][16] : 0
+		var ptm1 = array_length(global.armas_mode[i][mod_i])>1 and array_length(global.armas_mode[i][mod_i][m])>18 ? global.armas_mode[i][mod_i][m][18] : 0
+		var ptm2 = array_length(global.armas_mode[i][mod_i])>1 and array_length(global.armas_mode[i][mod_i][m])>19 ? global.armas_mode[i][mod_i][m][19] : 0
 		var ptm3 = array_length(global.armas_modx[i][mod_i])>1 ? global.armas_modx[i][mod_i][0]: 0
 		var ptm4 = array_length(global.armas_modx[i][mod_i])>1 ? global.armas_modx[i][mod_i][1]: 0
 		pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4]
@@ -92,17 +91,19 @@ if (lista){
 	if (keyboard_check_pressed(vk_down)){
 		
 		if (array_length(pext)>lista-1) pext[lista-1] = 0
-		listai++
+		if (!listan)listai++
+		if ( listan)global.armas_modi[i][lista-1]++
 		
-		if (lista)listai = clamp(listai,0,array_length(global.armas_modp[i][lista-1])-1)
+		listai = clamp(listai	,0,array_length(global.armas_modp[i][lista-1])-1)
+		global.armas_modi[i][lista-1] = clamp(global.armas_modi[i][lista-1]	,0,sprite_get_number(global.armas_modp[i][lista-1][listai])-1)
 		
 		var mod_i = lista-1
 					
 		var m = listai
 		
 		var ptmd = lista-1
-		var ptm1 = array_length(global.armas_mode[i][mod_i][m])>15 ? global.armas_mode[i][mod_i][m][15] : 0
-		var ptm2 = array_length(global.armas_mode[i][mod_i][m])>16 ? global.armas_mode[i][mod_i][m][16] : 0
+		var ptm1 = array_length(global.armas_mode[i][mod_i])>1 and array_length(global.armas_mode[i][mod_i][m])>18 ? global.armas_mode[i][mod_i][m][18] : 0
+		var ptm2 = array_length(global.armas_mode[i][mod_i])>1 and array_length(global.armas_mode[i][mod_i][m])>19 ? global.armas_mode[i][mod_i][m][19] : 0
 		var ptm3 = array_length(global.armas_modx[i][mod_i])>1  ? global.armas_modx[i][mod_i][0]: 0
 		var ptm4 = array_length(global.armas_modx[i][mod_i])>1  ? global.armas_modx[i][mod_i][1]: 0
 		pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4]

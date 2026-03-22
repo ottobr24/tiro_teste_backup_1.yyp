@@ -24,9 +24,6 @@ draw_set_valign(1)
 sprite_set_offset(spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
 draw_sprite_ext(spr,0,sprx,spry,sprxs,sprys,0,c_white,alp)
 
-if ( alp) window_set_cursor(cr_default)
-if (!alp) window_set_cursor(cr_none)
-	
 if (i<array_length(global.armas_mods) and alp){
 
 	for (var m=array_length(global.armas_mods[i])-1;m>=0;m--){
@@ -38,6 +35,8 @@ if (i<array_length(global.armas_mods) and alp){
 			var mod_yo = sprite_get_yoffset(mod_spr)
 			var mod_mx = 0 
 			var mod_my = 0
+			var mod_x1 = global.armas_mode[i][m][global.armas_mods[i][m]][0]
+			var mod_y1 = global.armas_mode[i][m][global.armas_mods[i][m]][1]
 			
 			for (var md=0;md<array_length(pext);md++){
 				
@@ -46,14 +45,15 @@ if (i<array_length(global.armas_mods) and alp){
 				
 			}
 			
-			var mod_x = sprx + (mod_mx - mod_xo) * 20 * rot//od_x1*sprxs-((sprw*sprxs)/2)
-			var mod_y = spry + (mod_my - mod_yo) * 20//od_y1*sprys-((sprh*sprys)/2)
-	
-			show_debug_message(mod_x)
+			var mod_x = sprx + (mod_mx - mod_xo+mod_x1) * 20 * rot//od_x1*sprxs-((sprw*sprxs)/2)
+			var mod_y = spry + (mod_my - mod_yo+mod_y1) * 20//od_y1*sprys-((sprh*sprys)/2)
+			
+			var mod_l = clamp(m,0,1000)
+			var mod_i = global.armas_modi[i][mod_l]
 			
 			sprite_set_offset(mod_spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
 
-			draw_sprite_ext(mod_spr,0,mod_x,mod_y,sprxs,sprys,0,c_white,alp)
+			draw_sprite_ext(mod_spr,mod_i,mod_x,mod_y,sprxs,sprys,0,c_white,alp)
 
 			sprite_set_offset(mod_spr,mod_xo,mod_yo)
 		
@@ -92,6 +92,7 @@ if (i<array_length(global.armas_mods) and alp){
 			
 			if (col){ 
 				
+				colidindo = 1
 				//var mod_xo = sprite_get_xoffset(mod_spr)
 				//var mod_yo = sprite_get_yoffset(mod_spr)
 				//var mod_x2 = sprx + (mod_mx - mod_xo) * 20 * rot//od_x1*sprxs-((sprw*sprxs)/2)
@@ -125,17 +126,18 @@ if (i<array_length(global.armas_mods) and alp){
 				
 						lista = p+1
 						listai = global.armas_mods[i][lista-1]
-				
+						
 						var mod_i = lista-1
 					
-						show_debug_message(global.armas_mode[i][mod_i])
-										
 					}else{
 						
 						pext = []
 						lista = -1
 				
 					}
+					
+					listan = 0
+					
 					//modss = array_create(array_length(global.armas_modp[i]),0)
 					//modxs = array_create(array_length(global.armas_modp[i]),[])
 				}
@@ -150,20 +152,40 @@ sprite_set_offset(spr,sprxo,spryo)
 //draw_text(60,20,global.armas_mods[i])
 
 if (lista){
-
-	for (var l=0;l<array_length(global.armas_modp[i][lista-1]);l++){
 	
-		var col2 = l = listai
+	var stmd = sprite_get_number(global.armas_modp[i][lista-1][listai])
+	
+	for (var l=0;l<array_length(global.armas_modp[i][lista-1]);l++){
+		
+		var col2 = l = listai and listan=0
 		var cor2 = col2 ? c_yellow : c_white
 	
 		draw_set_colour(cor2)
 	
-		draw_text(sprx,20+20*l,global.armas_modn[i][lista-1][l])
+		draw_text(sprx-200,20+20*l,global.armas_modn[i][lista-1][l])
+	
+		draw_set_colour(-1)
+
+	}
+	
+	for (var c=0;c<stmd;c++){
+		
+		if (is_array(global.armas_mode[i][lista-1][listai]) and global.armas_mode[i][lista-1][listai][3] = 11) stmd=0
+		
+		var col2 = c = global.armas_modi[i][lista-1] and listan=1
+		var cor2 = col2 ? c_yellow : c_white
+		var tex = array_length(global.armas_mode[i][lista-1][listai])=0 or !is_array(global.armas_mode[i][lista-1][listai][2]) ? ["Padrão"] : global.armas_mode[i][lista-1][listai][2]
+		
+		draw_set_colour(cor2)
+	
+		draw_text(sprx+200,20+20*c,tex[c])
 	
 		draw_set_colour(-1)
 
 	}
 }
+
+if ( alp and !colidindo) window_set_cursor(cr_arrow)
 
 draw_set_alpha(1)
 draw_set_font(-1)

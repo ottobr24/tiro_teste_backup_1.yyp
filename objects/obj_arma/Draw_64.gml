@@ -1,10 +1,12 @@
+if !equip exit;
+
 draw_text(20,20,global.armas_nome[i])
 draw_text(20,60,dano)
 draw_text(20,80,prec_menos)
 draw_text(20,100,tiro_tempo)
 draw_text(20,120,recarregando_tempo)
 draw_text(20,140,peso)
-draw_text(20,160,pext)
+//if (array_length(global.armas_mode[i][2])>0 and array_length(global.armas_mode[i][2][global.armas_mods[i][2]])>0) draw_text(20,160,global.armas_mode[i][2][global.armas_mods[i][2]][0])
 
 //if (array_length(sons)>1){
 //	

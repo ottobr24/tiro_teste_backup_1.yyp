@@ -8,8 +8,8 @@ vida_max = 100
 vida = vida_max
 cx = 0
 cy = 0
-cx3 = 0
-cy3 = 0
+cx3 = x
+cy3 = y
 colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
 equipado = 1
 
@@ -46,15 +46,21 @@ movendo = function(andar=1,equip=1){
 	
 	if (equip){
 		
-		if (e) equipado=!equipado
-		
+		if (e){ 
+			
+			equipado=!equipado
+			
+			if (equipado) window_set_cursor(cr_none)
+			if (!equipado) window_set_cursor(cr_arrow)
+			
+		}
 	}
 }
 
 controla_arma = function(){
 	
 	if (equipado){
-	
+		
 		if (!instance_exists(arma)){
 		
 			arma = instance_create_layer(x,y,"Arma",obj_arma)
@@ -136,12 +142,12 @@ controla_arma = function(){
 		}
 	}else{
 		
-		if (instance_exists(arma)){
-			
-			instance_destroy(arma)
-			arma = -4
-			
-		}
+		//if (instance_exists(arma)){
+		//	
+		//	instance_destroy(arma)
+		//	arma = -4
+		//	
+		//}
 	}
 }
 

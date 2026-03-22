@@ -1,3 +1,5 @@
+if (!equip) exit;
+
 desenha_sprite()
 
 fogo_tempo--
@@ -25,9 +27,9 @@ if (i<array_length(global.armas_mods)){
 
 	for (var m=array_length(global.armas_mods[i])-1;m>=0;m--){
 		
-		if (array_length(global.armas_modp[i][m])>0 and global.armas_modp[i][m][global.armas_mods[i][m]]!=0){
+		if (array_length(global.armas_modp[i][m])>0 and asset_get_type(global.armas_modp[i][m][global.armas_mods[i][m]]) = asset_sprite){
 			
-			if (laser and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][0] = 9){
+			if (laser and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][3] = 9){
 				
 				var sprh = global.armas_modx[i][m][0] * image_xscale 
                 var margy = global.armas_modx[i][m][1] * image_xscale 
@@ -37,7 +39,6 @@ if (i<array_length(global.armas_mods)){
                 if image_xscale = -1{
 					
                     ang += 180
-					//sprh+=10
 					
                 }
                 
@@ -49,9 +50,26 @@ if (i<array_length(global.armas_mods)){
 			}
 			
 			var mod_spr = global.armas_modp[i][m][global.armas_mods[i][m]]
-			var mod_xo = 0//sprite_get_xoffset(mod_spr)
-			var mod_yo = 0//sprite_get_yoffset(mod_spr)
-			var mod_ii = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>6 and array_length(global.armas_modn[i][6])>0 and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][0] = 11 ? !tirg : 0
+			
+			var mod_xx = global.armas_mode[i][m][global.armas_mods[i][m]][0]
+			var mod_xy = global.armas_mode[i][m][global.armas_mods[i][m]][1]
+			
+			var ang = image_angle
+			
+            if image_xscale = -1{
+				
+                ang += 180
+				//sprh+=10
+				
+            }
+                
+			var mod_an = mod_xy>0 ? ang-90 : ang-90
+			var mod_xm = lengthdir_x(mod_xy*image_xscale,mod_an		)
+			var mod_ym = lengthdir_y(mod_xy*image_xscale,mod_an		)
+			var mod_xo = lengthdir_x(mod_xx*image_xscale,image_angle) + mod_xm
+			var mod_yo = lengthdir_y(mod_xx*image_xscale,image_angle) + mod_ym
+			
+			var mod_ii = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>6 and array_length(global.armas_modn[i][6])>0 and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][3] = 11 ? !tirg : global.armas_modi[i][m]
 			var mod_mx = 0 
 			var mod_my = 0
 			

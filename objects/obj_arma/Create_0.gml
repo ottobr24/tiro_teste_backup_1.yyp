@@ -60,6 +60,7 @@ mung = 1
 tirg = mung
 
 pext = []
+equip = 1
 
 audio_falloff_set_model(audio_falloff_exponent_distance)
 audio_emitter_falloff(emitter,100,600,1)
@@ -152,7 +153,7 @@ desenha_sprite = function(){
 
 atira = function(){
 	
-	var grd = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>6 and array_length(global.armas_modn[i][6])>0 and is_array(global.armas_mode[i][6][global.armas_mods[i][6]]) and global.armas_mode[i][6][global.armas_mods[i][6]][0]=11
+	var grd = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>6 and array_length(global.armas_modn[i][6])>0 and is_array(global.armas_mode[i][6][global.armas_mods[i][6]]) and global.armas_mode[i][6][global.armas_mods[i][6]][3]=11
 	
 	if (keyboard_check_pressed(ord("G")) and grd and !cock and !recarregando){
 		
@@ -180,8 +181,8 @@ atira = function(){
 		
 				repeat(bala){
 			
-					var sil = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][global.armas_mods[i][2]]) and global.armas_mode[i][2][global.armas_mods[i][2]][0]=4
-					var fre = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][global.armas_mods[i][2]]) and global.armas_mode[i][2][global.armas_mods[i][2]][0]=3
+					var sil = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][global.armas_mods[i][2]]) and global.armas_mode[i][2][global.armas_mods[i][2]][3]=4
+					var fre = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][global.armas_mods[i][2]]) and global.armas_mode[i][2][global.armas_mods[i][2]][3]=3
 				
 					var sprh = sprite_width*image_xscale
 					var dirp = image_xscale=1 ? direction+90 : direction-90
@@ -238,8 +239,11 @@ atira = function(){
 				rajando_timer = rajadas_total
 			
 				if ((rajadas<=0 and global.armas_prep[i]<0) or (prep<=0 and global.armas_prep[i]>0)){ 
-				
-					tiro_timer = tiro_tempo    
+					
+					randomise()
+					var alet = random_range(.8,1.2)
+					
+					tiro_timer = tiro_tempo//    *alet
 				
 				}
 		
@@ -463,6 +467,8 @@ reseta_coisas = function(){
 
 colocando_os_acessorios = function(){
 	
+	equip = pai.equipado
+	if (!equip) exit;
 	audio_emitter_position(emitter,x,y,1)
 	
 	if (i<array_length(global.armas_mods)){
@@ -471,29 +477,32 @@ colocando_os_acessorios = function(){
 		
 			var mod_i = global.armas_mods[i][m]
 			var ptmd = array_length(pext)
+			//show_message(is_array(global.armas_mode[i][m]))
+			//show_message(is_array(global.armas_mode[i][m][mod_i]))
+			//show_message(array_length(global.armas_mode[i][m][mod_i])>3)
 			
-			if (array_length(global.armas_mode[i][m])>0 and is_array(global.armas_mode[i][m][mod_i])){
+			if (array_length(global.armas_mode[i][m])>0 and is_array(global.armas_mode[i][m][mod_i]) and array_length(global.armas_mode[i][m][mod_i])>8){
 				
-				var ptm1 = array_length(global.armas_mode[i][m][mod_i])>15 ? global.armas_mode[i][m][mod_i][15] : 0
-				var ptm2 = array_length(global.armas_mode[i][m][mod_i])>16 ? global.armas_mode[i][m][mod_i][16] : 0
+				var ptm1 = array_length(global.armas_mode[i][m][mod_i])>18 ? global.armas_mode[i][m][mod_i][18] : 0
+				var ptm2 = array_length(global.armas_mode[i][m][mod_i])>19 ? global.armas_mode[i][m][mod_i][19] : 0
 				var ptm3 = global.armas_modx[i][m][0]
 				var ptm4 = global.armas_modx[i][m][1]
 			
-				cliq				+=global.armas_mode[i][m][mod_i][1]
-				municao				+=global.armas_mode[i][m][mod_i][2]
-				rext				+=global.armas_mode[i][m][mod_i][2]
-				dano				+=global.armas_mode[i][m][mod_i][3]
-				prec_menos			+=global.armas_mode[i][m][mod_i][4]
-				recarregando_tempo	+=global.armas_mode[i][m][mod_i][5]
-				coix				+=global.armas_mode[i][m][mod_i][6]
-				coiy				+=global.armas_mode[i][m][mod_i][7]
-				shak				+=global.armas_mode[i][m][mod_i][8]
-				rajadas_total		+=global.armas_mode[i][m][mod_i][9]
-				rajadas_tempo		+=global.armas_mode[i][m][mod_i][10]
-				tiro_tempo			+=global.armas_mode[i][m][mod_i][11]
-				mira_vel			-=global.armas_mode[i][m][mod_i][12]
-				peso				+=global.armas_mode[i][m][mod_i][13]
-				volu				+=global.armas_mode[i][m][mod_i][14]
+				cliq				+=global.armas_mode[i][m][mod_i][4]
+				municao				+=global.armas_mode[i][m][mod_i][5]
+				rext				+=global.armas_mode[i][m][mod_i][5]
+				dano				+=global.armas_mode[i][m][mod_i][6]
+				prec_menos			+=global.armas_mode[i][m][mod_i][7]
+				recarregando_tempo	+=global.armas_mode[i][m][mod_i][8]
+				coix				+=global.armas_mode[i][m][mod_i][9]
+				coiy				+=global.armas_mode[i][m][mod_i][10]
+				shak				+=global.armas_mode[i][m][mod_i][11]
+				rajadas_total		+=global.armas_mode[i][m][mod_i][12]
+				rajadas_tempo		+=global.armas_mode[i][m][mod_i][13]
+				tiro_tempo			+=global.armas_mode[i][m][mod_i][14]
+				mira_vel			-=global.armas_mode[i][m][mod_i][15]
+				peso				+=global.armas_mode[i][m][mod_i][16]
+				volu				+=global.armas_mode[i][m][mod_i][17]
 				pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4]
 				
 			}	
