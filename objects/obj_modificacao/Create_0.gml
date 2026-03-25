@@ -8,6 +8,9 @@ listan =0
 listaii =array_create(100,0)
 pext = []
 colidindo = 0
+pontos_perto = [0,0]
+pontos = [] 
+bloqueados = []
 
 for (var i2=0;i2<array_length(global.armas_modn);i2++){
 	

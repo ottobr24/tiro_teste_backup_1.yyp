@@ -3,7 +3,7 @@
   "%Name":"spr_imbel_ia2",
   "bboxMode":0,
   "bbox_bottom":10,
-  "bbox_left":0,
+  "bbox_left":7,
   "bbox_right":31,
   "bbox_top":0,
   "collisionKind":5,

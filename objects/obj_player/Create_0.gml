@@ -142,6 +142,8 @@ controla_arma = function(){
 		}
 	}else{
 		
+		cx3 = x
+		cy3 = y
 		//if (instance_exists(arma)){
 		//	
 		//	instance_destroy(arma)

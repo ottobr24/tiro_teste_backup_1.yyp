@@ -32,19 +32,43 @@ if (i<array_length(global.armas_mods)){
 			if (laser and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][3] = 9){
 				
 				var sprh = global.armas_modx[i][m][0] * image_xscale 
-                var margy = global.armas_modx[i][m][1] * image_xscale 
+                var margy = global.armas_modx[i][m][1]>2 ? global.armas_modx[i][m][1] * image_xscale  : -global.armas_modx[i][m][1] * image_xscale
                 
                 var ang = image_angle
 
+				var mod_xx = global.armas_mode[i][m][global.armas_mods[i][m]][0]
+				var mod_xy = global.armas_mode[i][m][global.armas_mods[i][m]][1]
+			
                 if image_xscale = -1{
 					
                     ang += 180
+					mod_xx+=3
 					
                 }
                 
-                var _x = x + lengthdir_x(sprh,image_angle) + lengthdir_x(margy, ang - 90)
-                var _y = y + lengthdir_y(sprh,image_angle) + lengthdir_y(margy, ang - 90);
-                
+				var mod_an = mod_xy>0 ? ang-90 : ang-90
+				var mod_xm = lengthdir_x(mod_xy*image_xscale,mod_an		)
+				var mod_ym = lengthdir_y(mod_xy*image_xscale+.5,mod_an		)
+				var mod_xo = lengthdir_x(mod_xx*image_xscale,image_angle) + mod_xm
+				var mod_yo = lengthdir_y(mod_xx*image_xscale,image_angle) + mod_ym
+				
+				var mod_ii = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>6 and array_length(global.armas_modn[i][6])>0 and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][3] = 11 ? !tirg : global.armas_modi[i][m]
+				var mod_mx = 0 
+				var mod_my = 0
+				
+				for (var md=0;md<array_length(pext);md++){
+					
+					if (array_length(pext[md])>3)	mod_mx += global.armas_modx[i][m][0]>pext[md][2] ? pext[md][0] : 0
+					if (array_length(pext[md])>3)	mod_my += global.armas_modx[i][m][1]>pext[md][3] ? pext[md][1] : 0
+					
+				}
+				
+				var mod_mx2 = lengthdir_x(max(mod_mx,mod_my)*image_xscale,image_angle)
+				var mod_my2	= lengthdir_y(max(mod_mx,mod_my)*image_xscale,image_angle)
+				
+				var _x = x + mod_xo + mod_mx2 
+				var _y = y + mod_yo + mod_my2
+		
                 visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,obj_porta),1,0,0,c_red)
 				
 			}
