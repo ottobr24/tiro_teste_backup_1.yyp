@@ -4,23 +4,20 @@ desenha_sprite()
 
 fogo_tempo--
 
-if (fogo_tempo>0){
-	
-	var sprv  = !modo ? (sprite_width + 4)*image_xscale : global.armas_modx[i][6][0]
-	var sprh  = !modo ? (sprite_width + 4)*image_xscale : global.armas_modx[i][6][0]
-	var dirp2 = image_xscale!=1 ? direction+90 : direction-90
-	var margy = !modo ? lengthdir_y(3,dirp2) : lengthdir_y(3+global.armas_modx[i][6][1],dirp2)
-	
-	var _x = x + lengthdir_x(sprh,direction)  
-	var _y = y + margy + lengthdir_y(sprv,direction)
+var grd = 0
 			
-	var tmdx = global.tiros_velo[i]/10*image_xscale
-	var tmdy = global.tiros_velo[i]/10*image_yscale
-	
-	draw_sprite_ext(spr_fogo,fogo_ii,_x,_y,fogo_ix,fogo_ix,image_angle,image_blend,image_alpha)
-	
-}
+if (i<array_length(global.armas_mods)){
 
+	for (var m1=0;m1<array_length(global.armas_mods[i]);m1++){
+	
+		if (array_length(global.armas_modn[i][m1])>0 and is_array(global.armas_mode[i][m1][global.armas_mods[i][m1]]) and global.armas_mode[i][m1][global.armas_mods[i][m1]][3]=11){
+	
+			grd = m1+1
+	
+		}
+	}
+}
+	
 if (keyboard_check_pressed(ord("Z"))) laser=!laser
 
 if (i<array_length(global.armas_mods)){
@@ -52,7 +49,7 @@ if (i<array_length(global.armas_mods)){
 				var mod_xo = lengthdir_x(mod_xx*image_xscale,image_angle) + mod_xm
 				var mod_yo = lengthdir_y(mod_xx*image_xscale,image_angle) + mod_ym
 				
-				var mod_ii = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>6 and array_length(global.armas_modn[i][6])>0 and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][3] = 11 ? !tirg : global.armas_modi[i][m]
+				var mod_ii = grd ? !tirg : global.armas_modi[i][m]
 				var mod_mx = 0 
 				var mod_my = 0
 				
@@ -93,7 +90,7 @@ if (i<array_length(global.armas_mods)){
 			var mod_xo = lengthdir_x(mod_xx*image_xscale,image_angle) + mod_xm
 			var mod_yo = lengthdir_y(mod_xx*image_xscale,image_angle) + mod_ym
 			
-			var mod_ii = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>6 and array_length(global.armas_modn[i][6])>0 and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][3] = 11 ? !tirg : global.armas_modi[i][m]
+			var mod_ii = grd ? !tirg : global.armas_modi[i][m]
 			var mod_mx = 0 
 			var mod_my = 0
 			
@@ -116,4 +113,21 @@ if (i<array_length(global.armas_mods)){
 	
 		}
 	}
+}
+		
+if (fogo_tempo>0){
+	
+	var sprv  = !modo ? (sprite_width + 4)*image_xscale : global.armas_modx[i][grd-1][0]
+	var sprh  = !modo ? (sprite_width + 4)*image_xscale : global.armas_modx[i][grd-1][0]
+	var dirp2 = image_xscale!=1 ? direction+90 : direction-90
+	var margy = !modo ? lengthdir_y(3,dirp2) : lengthdir_y(3+global.armas_modx[i][grd-1][1],dirp2)
+	
+	var _x = x + lengthdir_x(sprh,direction)  
+	var _y = y + margy + lengthdir_y(sprv,direction)
+			
+	var tmdx = global.tiros_velo[i]/10*image_xscale
+	var tmdy = global.tiros_velo[i]/10*image_yscale
+	
+	draw_sprite_ext(spr_fogo,fogo_ii,_x,_y,fogo_ix,fogo_ix,image_angle,image_blend,image_alpha)
+	
 }

@@ -153,7 +153,21 @@ desenha_sprite = function(){
 
 atira = function(){
 	
-	var grd = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>6 and array_length(global.armas_modn[i][6])>0 and is_array(global.armas_mode[i][6][global.armas_mods[i][6]]) and global.armas_mode[i][6][global.armas_mods[i][6]][3]=11
+	var grd = 0
+	
+	if (i<array_length(global.armas_mods)){
+	
+		for (var m=0;m<array_length(global.armas_mods[i]);m++){
+		
+			if (array_length(global.armas_modn[i][m])>0 and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][3]=11){
+				
+				grd = m+1
+				
+			}
+		}
+	}
+	
+	//var grd = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>6 and array_length(global.armas_modn[i][6])>0 and is_array(global.armas_mode[i][6][global.armas_mods[i][6]]) and global.armas_mode[i][6][global.armas_mods[i][6]][3]=11
 	
 	if (keyboard_check_pressed(ord("G")) and grd and !cock and !recarregando){
 		
@@ -272,10 +286,12 @@ atira = function(){
 		
 		if (mouse_check_button_pressed(mb_left) and tirg){
 			
-			var sprh = global.armas_modx[i][6][0]*image_xscale
+			var _i = grd-1
+			
+			var sprh = global.armas_modx[i][_i][0]*image_xscale
 			var dirp = image_xscale=1 ? direction+90 : direction-90
 			var dirp2 = image_xscale!=1 ? direction+90 : direction-90
-			var margy = lengthdir_y(2+ global.armas_modx[i][6][1],dirp2)
+			var margy = lengthdir_y(2+ global.armas_modx[i][_i][1],dirp2)
 			
 			var tiiv = global.tiros_velo[i]*1
 			var tx = x + lengthdir_x(5,direction)

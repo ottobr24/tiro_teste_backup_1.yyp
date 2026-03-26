@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Fuzils",
-    "path":"folders/Sprites/Armas/Armas normais/Fuzils.yy",
+    "name":"Fuzis",
+    "path":"folders/Sprites/Armas/Armas normais/Fuzis.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
