@@ -159,7 +159,7 @@ global.acessorios = {
 	pistola_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq
-		var variaveis = [4,0,0,-.25,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,5]
+		var variaveis = [4,0,0,-.25,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,-1]
 		
 		for (var i=0;i<array_length(val2);i++){
 			

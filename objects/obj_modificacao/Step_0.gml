@@ -1,4 +1,240 @@
 i = global.arma
+enter = 0
+
+var cn = gamepad_is_connected(0)
+var esc_tec = !cn ? keyboard_check_pressed(vk_escape)	: gamepad_button_check_pressed(0,gp_start)
+
+var mas_tec = !cn ? keyboard_check_pressed(vk_right)	: gamepad_button_check_pressed(0,gp_padr)
+var mes_tec = !cn ? keyboard_check_pressed(vk_left)		: gamepad_button_check_pressed(0,gp_padl)
+var cim_tec = !cn ? keyboard_check_pressed(vk_up)		: gamepad_button_check_pressed(0,gp_padu)
+var bai_tec = !cn ? keyboard_check_pressed(vk_down)		: gamepad_button_check_pressed(0,gp_padd)
+var mod_tec = !cn ? keyboard_check_pressed(vk_enter)	: gamepad_button_check_pressed(0,gp_face1)
+	
+if (!lista and alp){
+	
+	#region Indo da esquerda pra direita
+	
+	if (mas_tec){
+		
+		var px1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][0] : -8
+		var py1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][1] : -8
+		
+		index+=1
+		var qtd = index
+		var foi = 0
+		var pos = []
+		var posi = -100
+		var posdif = -100
+		
+		for (var p=0;p<array_length(global.armas_modx[i]);p++){
+			
+			var px2 = array_length(global.armas_modx[i][p])>1 ? global.armas_modx[i][p][0] : -9
+			var py2 = array_length(global.armas_modx[i][p])>1 ? global.armas_modx[i][p][1] : -9
+			
+			if (p = 0){
+			
+				for (var m=0;m<array_length(global.armas_modx[i]);m++){
+				
+					pos[m][0] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0] : -9 
+					pos[m][1] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1] : -9
+				
+					if (pos[m][0]>-6 and px1<pos[m][0] and ((px1-pos[m][0]>posdif)) and px1-pos[m][0]!=0){ 
+					
+						//show_message(px1-pos[m][0])
+						//show_message(posdif)
+						posdif = px1-pos[m][0]
+						posi = m
+						//show_message(string(posi) + "aaa")
+				
+					}
+				}
+			}
+			
+			if (posi = p){
+				
+				//show_message(p)
+				index = p
+				foi = 1
+				break;
+				
+			}
+		}
+		
+		if (!foi){
+			
+			index-=1
+			
+		}
+	}
+	
+	#endregion Indo Da esqureda pra direita
+	
+	#region Indo da direita pra esquerda
+	
+	if (mes_tec){
+		
+		var px1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][0] : -8
+		var py1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][1] : -8
+		
+		index-=1
+		var qtd = index
+		var foi = 0
+		var pos = []
+		var posi = 100
+		var posdif = 100
+		
+		for (var p=0;p<array_length(global.armas_modx[i]);p++){
+			
+			var px2 = array_length(global.armas_modx[i][p])>1 ? global.armas_modx[i][p][0] : -9
+			var py2 = array_length(global.armas_modx[i][p])>1 ? global.armas_modx[i][p][1] : -9
+			
+			if (p = 0){
+			
+				for (var m=0;m<array_length(global.armas_modx[i]);m++){
+				
+					pos[m][0] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0] : -9 
+					pos[m][1] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1] : -9
+					
+					if ((pos[m][0]>-6 and px1>pos[m][0] and ((px1-pos[m][0]<posdif)) and px1-pos[m][0]!=0) or (index=-1 and array_length(global.armas_modx[i][0])<1)){ 
+						
+						posdif = px1-pos[m][0]
+						posi = m
+				
+					}
+				}
+			}
+			
+			if (posi = p){
+				
+				//show_message(p)
+				index = p
+				foi = 1
+				break;
+				
+			}
+		}
+		
+		if (!foi){
+			
+			index+=1
+			
+		}
+	}
+	
+	#endregion Indo pra direita pra esquerda
+	
+	#region Indo pra baixo
+	
+	if (bai_tec){
+		
+		var px1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][0] : -8
+		var py1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][1] : -8
+		
+		index+=1
+		var qtd = index
+		var foi = 0
+		var pos = []
+		var posi = -100
+		var posdif = -100
+		
+		for (var p=0;p<array_length(global.armas_modx[i]);p++){
+			
+			var px2 = array_length(global.armas_modx[i][p])>1 ? global.armas_modx[i][p][0] : -9
+			var py2 = array_length(global.armas_modx[i][p])>1 ? global.armas_modx[i][p][1] : -9
+			
+			if (p = 0){
+			
+				for (var m=0;m<array_length(global.armas_modx[i]);m++){
+				
+					pos[m][0] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0] : -9 
+					pos[m][1] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1] : -9
+				
+					if (px1 = pos[m][0] and pos[m][1] > py1){ 
+					
+						//show_message(px1-pos[m][0])
+						//show_message(posdif)
+						posdif = px1-pos[m][0]
+						posi = m
+						//show_message(string(posi) + "aaa")
+				
+					}
+				}
+			}
+			
+			if (posi = p){
+				
+				//show_message(p)
+				index = p
+				foi = 1
+				break;
+				
+			}
+		}
+		
+		if (!foi){
+			
+			index-=1
+			
+		}
+	}
+	
+	#endregion
+	
+	#region Indo pra cima
+	
+	if (cim_tec){
+		
+		var px1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][0] : -8
+		var py1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][1] : -8
+		
+		index-=1
+		var qtd = index
+		var foi = 0
+		var pos = []
+		var posi = 100
+		var posdif = 100
+		
+		for (var p=0;p<array_length(global.armas_modx[i]);p++){
+			
+			var px2 = array_length(global.armas_modx[i][p])>1 ? global.armas_modx[i][p][0] : -9
+			var py2 = array_length(global.armas_modx[i][p])>1 ? global.armas_modx[i][p][1] : -9
+			
+			if (p = 0){
+			
+				for (var m=0;m<array_length(global.armas_modx[i]);m++){
+				
+					pos[m][0] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0] : -9 
+					pos[m][1] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1] : -9
+				
+					if (px1 = pos[m][0] and pos[m][1] < py1){ 
+					
+						posdif = px1-pos[m][0]
+						posi = m
+				
+					}
+				}
+			}
+			
+			if (posi = p){
+				
+				//show_message(p)
+				index = p
+				foi = 1
+				break;
+				
+			}
+		}
+		
+		if (!foi){
+			
+			index+=1
+			
+		}
+	}
+	#endregion
+}
+
+#region Troca armas
 
 if (alp and (keyboard_check_pressed(ord("Q")) or keyboard_check_pressed(ord("E")))){
     
@@ -14,19 +250,11 @@ if (alp and (keyboard_check_pressed(ord("Q")) or keyboard_check_pressed(ord("E")
 	
 }
 
-if (keyboard_check(vk_right)){ 
-	
-	listan=1
-	
-}
+#endregion
 
-if (keyboard_check(vk_left)){ 
-	
-	listan=0
-	
-}
+#region Sai e entra do menu
 
-if (keyboard_check_pressed(vk_escape)){ 
+if (esc_tec){ 
 	
 	listan=0
 	alp=!alp
@@ -52,13 +280,33 @@ if (keyboard_check_pressed(vk_escape)){
 	
 }
 
+#endregion
+
+#region Variações e modificações
+
+if (mas_tec){ 
+	
+	listan=1
+	
+}
+
+if (mes_tec){ 
+	
+	listan=0
+	
+}
+
+#endregion
+
+#region Mudando de modificaçãp
+
 if (lista){
 
 	global.armas_mods[i][lista-1]		= listai
 	modx[lista-1][0]	= global.armas_modx[i][lista-1][0]
 	modx[lista-1][1]	= global.armas_modx[i][lista-1][1]
 		
-	if (keyboard_check_pressed(vk_enter)){
+	if (mod_tec){
 		
 		#region Pontos ids
 			
@@ -117,10 +365,11 @@ if (lista){
 			global.armas_mods[i][lista-1]		= listai
 			modx[lista-1][0]	= global.armas_modx[i][lista-1][0]
 			modx[lista-1][1]	= global.armas_modx[i][lista-1][1]
-			lista = 0
+			lista = -1
 			listai = 0
 			listan = 0
-		
+			enter = 1
+			
 		}else{
 			
 			show_message("erro")
@@ -128,7 +377,7 @@ if (lista){
 		}
 	}
 	
-	if (keyboard_check_pressed(vk_up)){
+	if (cim_tec and lista){
 	
 		if (array_length(pext)>lista-1) pext[lista-1] = 0
 		if (!listan)listai--
@@ -150,7 +399,7 @@ if (lista){
 		
 	}
 	
-	if (keyboard_check_pressed(vk_down)){
+	if (bai_tec and lista){
 		
 		if (array_length(pext)>lista-1) pext[lista-1] = 0
 		if (!listan)listai++
@@ -173,6 +422,12 @@ if (lista){
 	}
 }
 
+#endregion
+
+#region Extras
+
 rot = clamp(rot,-1,1)
 global.pause  = alp
 obj_camera.roo= alp
+
+#endregion

@@ -4,7 +4,10 @@ desenha_sprite()
 
 fogo_tempo--
 
+var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
+var cn = ct and gamepad_is_connected(0)
 var grd = 0
+var las_tec = !cn ? keyboard_check_pressed(ord("Z")) : gamepad_button_check_pressed(0,gp_stickr)
 			
 if (i<array_length(global.armas_mods)){
 
@@ -18,7 +21,7 @@ if (i<array_length(global.armas_mods)){
 	}
 }
 	
-if (keyboard_check_pressed(ord("Z"))) laser=!laser
+if (las_tec) laser=!laser
 
 if (i<array_length(global.armas_mods)){
 

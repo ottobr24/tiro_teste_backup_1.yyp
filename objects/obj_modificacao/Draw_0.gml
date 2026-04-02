@@ -1,5 +1,6 @@
 var gw = room_width 
 var gh = room_height
+var cn = gamepad_is_connected(0)
 
 var spr = global.armas_sprt[i]
 var sprw = sprite_get_width (spr)
@@ -11,6 +12,7 @@ var spry = gh/2
 var sprxo = sprite_get_xoffset(spr)
 var spryo = sprite_get_yoffset(spr)
 var mod_esc = sprxs / 4
+var mod_tec = !cn ? mouse_check_button_pressed(mb_left) or keyboard_check_pressed(vk_enter) : gamepad_button_check_pressed(0,gp_face1)
 
 draw_set_alpha(alp)
 draw_set_colour(c_navy)
@@ -20,6 +22,8 @@ draw_set_colour(-1)
 draw_set_font(fnt_modificacao)
 draw_set_halign(1)
 draw_set_valign(1)
+
+draw_text(60,60,index)
 
 sprite_set_offset(spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
 draw_sprite_ext(spr,0,sprx,spry,sprxs,sprys,0,c_white,alp)
@@ -47,8 +51,8 @@ if (i<array_length(global.armas_mods) and alp){
 				
 			}
 			
-			var mod_x = sprx + (mod_mx - mod_xo+mod_x1) * 20 * rot
-			var mod_y = spry + (mod_my - mod_yo+mod_y1) * 20
+			var mod_x = round(sprx + (mod_mx - mod_xo+mod_x1) * 20 * rot)
+			var mod_y = round(spry + (mod_my - mod_yo+mod_y1) * 20	   )
 			
 			var mod_l = clamp(m,0,1000)
 			var mod_i = global.armas_modi[i][mod_l]
@@ -56,7 +60,8 @@ if (i<array_length(global.armas_mods) and alp){
 			sprite_set_offset(mod_spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
 
 			draw_sprite_ext(mod_spr,mod_i,mod_x,mod_y,sprxs,sprys,0,c_white,alp)
-
+			draw_text(mod_x,mod_y,mod_mx)
+			
 			sprite_set_offset(mod_spr,mod_xo,mod_yo)
 		
 		}
@@ -75,14 +80,6 @@ if (i<array_length(global.armas_mods) and alp){
 			
 			for (var md=0;md<array_length(pext);md++){
 				
-				//bloqueados[md][0] = 0
-				//
-				//for (var b=0;b<array_length(global.armas_modx[i][md]);b++){
-				//	
-				//	bloqueados[md][b] = 0
-				//
-				//}
-			
 				if (array_length(pext[md])>3)	mod_mx += global.armas_modx[i][p][0]>pext[md][2] ? pext[md][0] : 0
 				if (array_length(pext[md])>3)	mod_my += global.armas_modx[i][p][1]>pext[md][3] ? pext[md][1] : 0
 				
@@ -94,7 +91,7 @@ if (i<array_length(global.armas_mods) and alp){
 			
 			var mod_x = sprx+mod_x1*sprxs-((sprw*sprxs)/2)
 			var mod_y = spry+mod_y1*sprys-((sprh*sprys)/2)
-			var col = point_in_circle(mouse_x,mouse_y,mod_x,mod_y,abs(mod_esc))
+			var col = point_in_circle(mouse_x,mouse_y,mod_x,mod_y,abs(mod_esc)) or index = p
 			
 			var cor = c_white
 			pontos = []
@@ -212,11 +209,6 @@ if (i<array_length(global.armas_mods) and alp){
 			
 			acha = bqtd - (bmes) > 0
 			draw_set_halign(0)
-			//draw_text(100,20,bqtd)
-			//draw_text(200,20,p)
-			if (p=2)draw_text(50,200,bloq)
-			if (p=2)draw_text(50,240,ids)
-			//draw_text(50,60+20*p,global.armas_mods[i][p])
 			draw_set_halign(-1)
 			
 			if (lista = p+1) cor = make_colour_rgb(200,200,0)
@@ -225,7 +217,8 @@ if (i<array_length(global.armas_mods) and alp){
 			
 			if (col){ //toca no ponto
 				
-				colidindo = 1
+				index = p
+				if (point_in_circle(mouse_x,mouse_y,mod_x,mod_y,abs(mod_esc))) colidindo = 1
 				cor = c_yellow
 			
 			}
@@ -244,9 +237,9 @@ if (i<array_length(global.armas_mods) and alp){
 	
 					window_set_cursor(cr_drag)
 				
-					if (mouse_check_button_pressed(mb_left)){
+					if (mod_tec){
 				
-						if (lista != p+1){
+						if (lista != p+1 and !enter){
 				
 							lista = p+1
 							listai = global.armas_mods[i][lista-1]

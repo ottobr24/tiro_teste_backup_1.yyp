@@ -62,8 +62,10 @@ tirg = mung
 pext = []
 equip = 1
 
+mx = device_mouse_x_to_gui(0)
+my = device_mouse_y_to_gui(0)
+
 audio_falloff_set_model(audio_falloff_exponent_distance)
-audio_emitter_falloff(emitter,100,600,1)
 
 muda_estados = function(pa=1,at=1,re=1,mi=1){
 	
@@ -93,12 +95,17 @@ muda_estados = function(pa=1,at=1,re=1,mi=1){
 
 mirando = function(){
 	
-	mira = mouse_check_button(mb_right)
+	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
+	var cn = ct and gamepad_is_connected(0)
+	var rh = cn ? gamepad_axis_value(0,gp_axisrh)  : 0
+	var rv = cn ? gamepad_axis_value(0,gp_axisrv)  : 0
+	
+	mira = !cn ? mouse_check_button(mb_right) : gamepad_button_check(0,gp_shoulderlb)
 	mira_vel = clamp(mira_vel,0.01,1)
 	
 	if (mira){
 		
-		obj_player.vel -=.5
+		pai.vel -=.5
 		mira_alp = lerp(mira_alp,1,mira_vel)
 		
 		obj_camera.roo = 2
@@ -113,9 +120,32 @@ mirando = function(){
 		
 	}
 	
-	var _x = device_mouse_x_to_gui(0)
-	var _y = device_mouse_y_to_gui(0)
-
+	if (!cn){
+		
+		mx = device_mouse_x_to_gui(0)
+		my = device_mouse_y_to_gui(0)
+		
+	}
+	
+	if ( cn){
+		
+		mx = x + lengthdir_x(200,pai.direction)
+		my = y + lengthdir_y(200,pai.direction)
+		
+		//if (rh!=0 or rv!=0){
+		//
+		//	mx = x + lengthdir_x(600,pai.direction)
+		//	my = y + lengthdir_y(600,pai.direction)
+		//
+		//}
+	}
+	
+	mx = clamp(mx,50,display_get_gui_width ()-50)
+	my = clamp(my,50,display_get_gui_height()-50)
+	
+	var _x = mx
+	var _y = my
+	
 	var _p = prec*2
 
 	draw_set_color(c_red)
@@ -153,7 +183,9 @@ desenha_sprite = function(){
 
 atira = function(){
 	
+	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
 	var grd = 0
+	var cn = ct and gamepad_is_connected(0)
 	
 	if (i<array_length(global.armas_mods)){
 	
@@ -167,9 +199,15 @@ atira = function(){
 		}
 	}
 	
-	//var grd = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>6 and array_length(global.armas_modn[i][6])>0 and is_array(global.armas_mode[i][6][global.armas_mods[i][6]]) and global.armas_mode[i][6][global.armas_mods[i][6]][3]=11
+	var grd_tec = (keyboard_check_pressed(ord("G")) and !ct) or (cn and gamepad_button_check_pressed(0,gp_padl))
 	
-	if (keyboard_check_pressed(ord("G")) and grd and !cock and !recarregando){
+	var atr_tec = 0
+	var prs_tec = cn ? gamepad_button_check_pressed(0,gp_shoulderrb) : mouse_check_button_pressed(mb_left)
+	
+	if (!ct) atr_tec = !cliq ? mouse_check_button(mb_left) : mouse_check_button_pressed(mb_left)
+	if ( ct) atr_tec = !cliq ? gamepad_button_check(0,gp_shoulderrb) : gamepad_button_check_pressed(0,gp_shoulderrb)
+	
+	if (grd_tec and grd and !cock and !recarregando){
 		
 		modo=!modo
 	
@@ -178,7 +216,7 @@ atira = function(){
 	tiro = clamp(tiro,0,municao)
 	tirg = clamp(tirg,0,mung)
 	
-	var tec = !cliq ? mouse_check_button(mb_left) : mouse_check_button_pressed(mb_left)
+	var tec = atr_tec
 	var tec2 = 0
 	var atn = (tec or tec2) and !tiro_timer and !recarregando and !rajadas and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	var raj = rajadas and !rajando_timer and !recarregando and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
@@ -242,7 +280,7 @@ atira = function(){
 				
 					}
 				
-					vol = sil ? 0.95 : 0
+					vol = sil ? 0.05 : 1
 				
 				}                                            
 	        
@@ -263,18 +301,19 @@ atira = function(){
 		
 				if (!tiro and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>6 and asset_get_type(global.armas_sons[i][6]) == asset_sound){ 
 	
-					sons[6] = toca_som(global.armas_sons[i][6],1,0,.1,0)
+					sons[6] = toca_som(global.armas_sons[i][6],1,10,50,,0,.1,0)
 					refff = 0
 	
 				}
-			
-				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound) sons[0] = toca_som(global.armas_sons[i][0],volu-vol,0,.20,0)
+				
+				//audio_play_sound(snd_249_cock,10,0)
+				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound) sons[0] = toca_som(global.armas_sons[i][0],volu*vol,50,75,,0,.20,0)
 		
 			}else{
 			
-				if (mouse_check_button_pressed(mb_left)){
+				if (prs_tec){
 				
-					toca_som(snd_falha,1,0,.1,0)
+					toca_som(snd_falha,1,10,50,,0,.1,0)
 				
 				}
 			
@@ -284,7 +323,7 @@ atira = function(){
 		}
 	}else{ //lança granadas
 		
-		if (mouse_check_button_pressed(mb_left) and tirg){
+		if (prs_tec and tirg){
 			
 			var _i = grd-1
 			
@@ -320,7 +359,7 @@ atira = function(){
 			fogo_dir = dir
 			fogo_ix = 0
 			
-			toca_som(snd_lanca_tiro,1,0,.10,0)
+			toca_som(snd_lanca_tiro,1,10,50,,0,.10,0)
 		
 			tirg--
 			
@@ -330,13 +369,17 @@ atira = function(){
 
 preparando = function(){
 	
-	var coc = keyboard_check_pressed(ord("H")) and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
+	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
+	var cn = ct and gamepad_is_connected(0)
+	
+	var coc_tec = !cn ? keyboard_check_pressed(ord("H")) : gamepad_button_check_pressed(0,gp_padr)
+	var coc = coc_tec and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	
 	if (coc) cock = 2
 	
 	if (cock and reff and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>4 and asset_get_type(global.armas_sons[i][4]) == asset_sound){ 
 		
-		sons[4] = toca_som(global.armas_sons[i][4],1,0,.1,0)
+		sons[4] = toca_som(global.armas_sons[i][4],1,10,50,,0,.1,0)
 		reff = 0
 		
 	}
@@ -358,7 +401,7 @@ preparando = function(){
 		
 		if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>1 and asset_get_type(global.armas_sons[i][1]) == asset_sound){
 			
-			sons[1] = toca_som(global.armas_sons[i][1],1,0,.05,0)
+			sons[1] = toca_som(global.armas_sons[i][1],1,10,50,,0,.05,0)
 			if (sem) refff = 1
 			
 		}
@@ -381,7 +424,7 @@ preparando = function(){
 	
 	if (refff == 1 and (array_length(sons)<=1 or !audio_is_playing(sons[1])) and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>5 and asset_get_type(global.armas_sons[i][5]) == asset_sound){ 
 	
-		sons[5] = toca_som(global.armas_sons[i][5],1,0,.1,0)
+		sons[5] = toca_som(global.armas_sons[i][5],1,10,50,,0,.1,0)
 		refff = 0
 	
 	}
@@ -389,8 +432,13 @@ preparando = function(){
 
 recarrega = function(){
 	
-	var rec = keyboard_check(ord("R")) and !cock
-	var atr = mouse_check_button_pressed(mb_left)
+	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
+	var cn = ct and gamepad_is_connected(0)
+	var rec_tec = !cn ? keyboard_check(ord("R")) : gamepad_button_check(0,gp_face3)
+	var prs_tec = cn ? gamepad_button_check_pressed(0,gp_shoulderrb) : mouse_check_button_pressed(mb_left)
+	
+	var rec = rec_tec and !cock
+	var atr = prs_tec
 	var dirp = image_xscale=1 ? direction+180 : direction-180
 	var munp = global.armas_part[i][1] = "mun" ? abs(tiro-municao) : global.armas_part[i][1]
 	var munc = rext == 1 ? 0 : 1
@@ -398,10 +446,10 @@ recarrega = function(){
 	
 	if (rec){
 		
-		if (keyboard_check_pressed(ord("R")) and !recarregando and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and asset_get_type(global.armas_sons[i][2]) == asset_sound){ 
+		if (rec_tec and !recarregando and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and asset_get_type(global.armas_sons[i][2]) == asset_sound){ 
 			
-			if (!modo)sons[2] = toca_som(global.armas_sons[i][2],1,0,.1,0)
-			if ( modo)sons[2] = toca_som(snd_lanca_recc,1,0,.1,0)
+			if (!modo)sons[2] = toca_som(global.armas_sons[i][2],1,10,50,,0,.1,0)
+			if ( modo)sons[2] = toca_som(snd_lanca_recc,1,10,50,,0,.1,0)
 			
 		}
 		
@@ -437,8 +485,8 @@ recarrega = function(){
 			
 			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>3 and asset_get_type(global.armas_sons[i][3]) == asset_sound){ 
 				
-				if (!modo) sons[3] = toca_som(global.armas_sons[i][3],1,0,.1,0)
-				if ( modo){sons[3] = toca_som(snd_lanca_recf,1,0,.1,0) cock = 0}
+				if (!modo) sons[3] = toca_som(global.armas_sons[i][3],1,10,50,,0,.1,0)
+				if ( modo){sons[3] = toca_som(snd_lanca_recf,1,10,50,,0,.1,0) cock = 0}
 			
 			}
 		}
@@ -524,7 +572,7 @@ colocando_os_acessorios = function(){
 			}	
 		}
 	}
-	obj_player.vel-=peso
+	pai.vel-=peso
 }
 
 estado_parado = function(){

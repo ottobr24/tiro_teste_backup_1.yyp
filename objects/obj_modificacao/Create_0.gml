@@ -1,4 +1,5 @@
 i = global.arma
+index = 0
 rot = 1
 rotd = 1
 alp=0
@@ -11,6 +12,7 @@ colidindo = 0
 pontos_perto = [0,0]
 pontos = [] 
 bloqueados = []
+enter = 0
 
 for (var i2=0;i2<array_length(global.armas_modn);i2++){
 	

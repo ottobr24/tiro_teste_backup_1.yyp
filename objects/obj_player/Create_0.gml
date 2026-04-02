@@ -12,6 +12,7 @@ cx3 = x
 cy3 = y
 colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
 equipado = 1
+controle = 0
 
 //sprite_prefetch()
 
@@ -23,23 +24,42 @@ instance_create_layer(x,y,"Colisao",obj_modificacao)
 
 movendo = function(andar=1,equip=1){
 	
+	var cn = gamepad_is_connected(0) and controle
 	var d = keyboard_check(ord("D"))
 	var a = keyboard_check(ord("A"))
 	var w = keyboard_check(ord("W"))
 	var s = keyboard_check(ord("S"))
-	var e = keyboard_check_pressed(ord("E"))
-	var dir = point_direction(x,y,mouse_x,mouse_y)
+	var e = keyboard_check_pressed(ord("E")) or (cn and gamepad_button_check_pressed(0,gp_face4))
 	
-    direction = point_direction(0,0,(d-a)*vel,(s-w)*vel)
+	if (cn) gamepad_set_axis_deadzone(0,.1)
+	
+	var rh = cn ? gamepad_axis_value(0,gp_axisrh)  : 0
+	var rv = cn ? gamepad_axis_value(0,gp_axisrv)  : 0
+	var lh = cn ? gamepad_axis_value(0,gp_axislh)  : 0
+	var lv = cn ? gamepad_axis_value(0,gp_axislv)  : 0
+	var cv = cn ? point_distance(0,0,lh,lv)*vel : 0
+	var cd = cn ? point_direction(0,0,rh		,rv			) : 0
+	var dir = !cn ? point_direction(x,y,mouse_x,mouse_y) : cd
+	
+    if (!controle) direction = point_direction(0,0,(d-a)*vel,(s-w)*vel	)
+    if ( controle and rh!=0 or rv!=0) direction = point_direction(0,0,rh		,rv			)
     
 	hspd=0
 	vspd=0
 
-    if ((d or a or w or s) and andar){
+    if (((d or a or w or s) or cn) and andar){
         
-        hspd = lengthdir_x(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause 
-        vspd = lengthdir_y(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause
+		if (!controle){
+		
+	        hspd = lengthdir_x(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause 
+	        vspd = lengthdir_y(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause
         
+		}else{
+		
+	        hspd = lengthdir_x(cv,point_direction(0,0,lh		,lv			))*!global.pause 
+	        vspd = lengthdir_y(cv,point_direction(0,0,lh		,lv			))*!global.pause
+        
+		}
     }
     
 	direction = dir
@@ -155,12 +175,20 @@ controla_arma = function(){
 
 muda_estado = function(an = 1,p = 1){
 	
-	var d = 0
-	var a = 0
-	var w = 0
-	var s = 0
-	var conds = [an and ((d xor a) or (w xor s)) ,p and !a and !d and !w and !s]
-	var estds = [estado_andando					,estado_parado				   ]
+	var d = keyboard_check(ord("D"))
+	var a = keyboard_check(ord("A"))
+	var w = keyboard_check(ord("W"))
+	var s = keyboard_check(ord("S"))
+	
+	var cn = gamepad_is_connected(0) and controle
+	var lh = cn ? gamepad_axis_value(0,gp_axislh)  : 0
+	var lv = cn ? gamepad_axis_value(0,gp_axislv)  : 0
+	var cv = cn ? point_distance(0,0,lh,lv) : 0
+	
+	var ana = (d xor a) or (w xor s)
+	var par = !a and !d and !w and !s or cv>.1 
+	var conds = [an and ana		,p and par		]
+	var estds = [estado_andando	,estado_parado	]
 	
 	for (var e =0 ; e<array_length(conds);e++){
 		
@@ -171,6 +199,7 @@ muda_estado = function(an = 1,p = 1){
 
 colidindo = function(){
 	
+	audio_listener_orientation(0,0,1,0,-1,0)
 	audio_listener_position(x,y,0)
 	
 	#region Variaveis

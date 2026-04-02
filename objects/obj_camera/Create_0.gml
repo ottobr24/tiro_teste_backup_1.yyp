@@ -5,13 +5,13 @@ seg = 0
 ind = 0
 // >0 = parada -1 = segue
 var es = 1//application_surface_is_enabled()+1
-cpos = [[[-1,-1],[0,0],[-1,-1]]]
+cpos = [[[-1,-1],[0,0],[-1,-1],[0,0]]]
 		  
-cesc = [[.5,1,.45]]
+cesc = [[.48,1,.43,-1]]
 pose = [0,0]
 roo = 0
-cmw = 1280
-cmh = 720
+cmw = room_width
+cmh = room_height
 cap = 0//global.capitulo
 escala = cesc[cap][roo]
 
@@ -66,7 +66,28 @@ segue_player = function(){
 		//	roo= 0
 		//	
 		//}
-
+		
+		if (roo = 3){ 
+			
+			var ids = []
+			
+			with(obj_player){
+				
+				var itmd = array_length(ids)
+				ids[itmd] = id
+			
+			}
+			
+			escala = 1
+			
+			//escala = clamp(escala,0,1)
+			
+		}else{
+			
+			if (!global.debug) escala =	lerp(escala,cesc[cap][roo],0.1)
+		
+		}
+		
 		ind = clamp(ind,0,array_length(alvos[seg])-1)
 		
 		estado_txt = "Segue Player"
@@ -120,8 +141,6 @@ segue_player = function(){
 			y+= (s-w)*10
 			
 		}
-		
-		if (!global.debug) escala =	lerp(escala,cesc[cap][roo],0.1)
 		
 		randomise()
 		var shak = random_range(-global.shake,global.shake)
