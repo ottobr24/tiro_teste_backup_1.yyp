@@ -25,7 +25,7 @@
   ],
   "name":"spr_fogo",
   "nineSlice":null,
-  "origin":3,
+  "origin":4,
   "parent":{
     "name":"Armas",
     "path":"folders/Sprites/Armas.yy",
@@ -83,7 +83,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":0,
+    "xorigin":7,
     "yorigin":5,
   },
   "swatchColours":null,
