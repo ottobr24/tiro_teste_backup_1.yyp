@@ -10,6 +10,8 @@ cx = 0
 cy = 0
 cx3 = x
 cy3 = y
+cd  = 0
+cdm = 0
 colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
 equipado = 1
 controle = 0
@@ -121,7 +123,7 @@ controla_arma = function(){
 			var x1 = x + lengthdir_x(cx2,direction) 
 	        var y1 = y + lengthdir_y(cy2,direction)
 	        var dir = direction
-        
+			
 	        with(arma){
             
 	            if (place_meeting(x,y1,colisao2)){
@@ -150,15 +152,25 @@ controla_arma = function(){
         
 			cx3 = lerp(cx3,x + lengthdir_x(cx,direction),.25)
 			cy3 = lerp(cy3,y + lengthdir_y(cy,direction),.25)
+			
 	        var ix = dir = clamp(dir,90,270) ? -1 : 1
 			var ang = ix > 0 ? dir : dir+180
-        
+			
+			//cmd = ang
+			
+			if (ang-cdm >  140){ cd = ang-5 if (ang-cdm >  260) cd = ang-6 }
+			if (ang-cdm < -140){ cd = ang+5 if (ang-cdm < -260) cd = ang+6 }
+			
+			cd = lerp(cd,ang,0.15)
+			
 			arma.x = cx3
 			arma.y = cy3
 			arma.direction = direction
-			arma.image_angle = ang
+			arma.image_angle = cd
 			arma.image_xscale = ix
 		
+			cdm = ang
+			
 		}
 	}else{
 		

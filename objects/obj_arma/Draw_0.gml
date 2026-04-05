@@ -1,8 +1,8 @@
 if (!equip) exit;
 
 draw_set_colour(c_black)
-draw_text(x,y-20,image_angle)
-draw_text(x,y-40,direction)
+//draw_text(x,y-20,image_angle)
+//draw_text(x,y-40,direction)
 draw_set_colour(-1)
 
 desenha_sprite()
@@ -125,25 +125,13 @@ if (i<array_length(global.armas_mods)){
 		
 if (fogo_tempo>0){
 	
-					var sprh = (sprite_get_width(global.armas_sprt[i]) +12)
-					var dirp = image_xscale=1 ? direction+90 : direction-90
-					var dirp2 = image_xscale!=1 ? direction+90 : direction-90
-					var margy = lengthdir_y(3,dirp2)
-				
-					var _x = x + lengthdir_x(sprh,direction)
-					var _y = y + margy + lengthdir_y(sprh,direction)
-			
-			show_debug_message(_x)
-			show_debug_message(_y)
-			show_debug_message(direction)
-			
-	//var sprv  = !modo ? (sprite_width + 4) : global.armas_modx[i][grd-1][0]
-	//var sprh  = !modo ? (sprite_width + 4) : global.armas_modx[i][grd-1][0]
-	//var dirp2 = image_xscale!=1 ? image_angle+90 : image_angle-90
-	//var margy = !modo ? lengthdir_y(3,dirp2) : lengthdir_y(3+global.armas_modx[i][grd-1][1],dirp2)
-	//
-	//var _x = x + lengthdir_x(sprh,image_angle)  
-	//var _y = y + margy + lengthdir_y(sprv,image_angle)
+	var sprh = sprite_get_width(global.armas_sprt[i]) +12
+	var dirp = image_xscale=1 ? direction+90 : direction-90
+	var dirp2 = image_xscale!=1 ? direction+90 : direction-90
+	var margy = lengthdir_y(3,dirp2)
+	
+	var _x = x + lengthdir_x(sprh,direction)
+	var _y = y + margy + lengthdir_y(sprh,direction)
 			
 	var tmdx = global.tiros_velo[i]/10
 	var tmdy = global.tiros_velo[i]/10

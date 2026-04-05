@@ -1,5 +1,10 @@
 image_blend = !controle ? c_white : c_purple
 draw_self()
+//draw_set_colour(c_red)
+//draw_text(x,y-20,cd)
+//draw_text(x,y-40,cdm)
+//draw_text(x,y-60,cdm-cd)
+//draw_set_colour(-1)
 desenha_barra(vida,vida_max,100,25,c_black,c_green,x,y-50)
 
 if (global.debug){
