@@ -8,6 +8,7 @@ global.colisao_normal = [obj_miniparede,obj_vidro]
 
 #region Extras
 
+global.portas_abrir = -4
 global.musica_inicia = 0
 global.destino = rm_jogo
 global.cont_dialogos=0

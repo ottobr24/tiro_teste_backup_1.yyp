@@ -23,8 +23,6 @@ draw_set_font(fnt_modificacao)
 draw_set_halign(1)
 draw_set_valign(1)
 
-draw_text(60,60,index)
-
 sprite_set_offset(spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
 draw_sprite_ext(spr,0,sprx,spry,sprxs,sprys,0,c_white,alp)
 
@@ -60,7 +58,6 @@ if (i<array_length(global.armas_mods) and alp){
 			sprite_set_offset(mod_spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
 
 			draw_sprite_ext(mod_spr,mod_i,mod_x,mod_y,sprxs,sprys,0,c_white,alp)
-			draw_text(mod_x,mod_y,mod_mx)
 			
 			sprite_set_offset(mod_spr,mod_xo,mod_yo)
 		
@@ -235,7 +232,7 @@ if (i<array_length(global.armas_mods) and alp){
 
 				if (col){
 	
-					window_set_cursor(cr_drag)
+					if ( point_in_circle(mouse_x,mouse_y,mod_x,mod_y,abs(mod_esc))) window_set_cursor(cr_drag)
 				
 					if (mod_tec){
 				
@@ -248,7 +245,7 @@ if (i<array_length(global.armas_mods) and alp){
 					
 						}else{
 						
-							pext = []
+							//pext = []
 							lista = -1
 				
 						}
@@ -363,7 +360,7 @@ if (lista){
 	
 }
 
-if ( alp and !colidindo) window_set_cursor(cr_arrow)
+if ( alp and !colidindo and !enter) window_set_cursor(cr_arrow)
 //draw_text(600,200,pontos_perto)
 //draw_text(600,220,pontos)
 

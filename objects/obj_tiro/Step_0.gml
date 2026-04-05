@@ -20,25 +20,32 @@ if (!point_in_rectangle(x,y,0,0,room_width,room_height)){
 vel =global.tiros_velo[i]
 var _x =lengthdir_x(vel,image_angle)
 var _y =lengthdir_y(vel,image_angle)
-var colisao = [[obj_miniparede],[obj_porta],[obj_player,obj_inimigo],[obj_vidro]]
+var colisao = [[obj_miniparede],[obj_miniporta],[obj_player,obj_inimigo],[obj_vidro]]
 	  
 sprite_index = global.tiros_sprt[i]
 
-if (!place_meeting(x,y,obj_camera)) instance_activate_region(x-_x,y-_y,x+_x,y+_x,1)
-
 for (var b=0;b<array_length(colisao);b++){
 	
+	#region Morrendo
+	
+	if (dano<=0) instance_destroy()
+	
+	#endregion
+			
 	for (var m = 0;m<array_length(colisao[b]);m++){
 		
 		var obj = instance_place(x,y,colisao[b][m])
 		var col = place_meeting(x,y,colisao[b][m])
 
-		if (col and obj!=pai){
+		if (col and obj!=pai and ds_list_find_index(atacados,obj)=-1){
 			
+			ds_list_add(atacados,obj)
 			#region Criando particulas
 			
 			var dano_max = clamp(dano*1.5,1,10)
-			
+			var dan = dano
+			var angt = image_angle
+				
 			var cores = [make_color_rgb(80,80,80)	,make_color_rgb(160,65,13)	,make_color_rgb(255,10,10)	,make_color_rgb(163,205,200)]
 			var distc = [180						,180						,90							,180						]
 			var vels  = [vel/2						,vel/2						,global.tiros_velo[i]		,vel/2						]
@@ -49,9 +56,7 @@ for (var b=0;b<array_length(colisao);b++){
 			
 			#region Mexendo portas e entre outros
 			
-			if (variable_instance_exists(obj,"vida") and obj.vida>=0){
-				
-				var dan = dano
+			if (variable_instance_exists(obj,"vida") and obj.vida>=0 and dan>0){
 				
 				dano-=obj.vida
 				obj.vida-=dan
@@ -62,17 +67,20 @@ for (var b=0;b<array_length(colisao);b++){
 				
 				#region Porta
 				
-				case obj_porta:
+				case obj_miniporta:
 					
 					with(obj){
 						
-						var ang = 180
-						var ang_min = image_angle-ang+360
-						var ang_max = image_angle//+ang
-
-						var fo = other.image_angle = clamp(other.image_angle,min(ang_min,ang_max),max(ang_min,ang_max)) ? other.dano*2 : -other.dano*2
-						frc += fo
+						with(pai){
 						
+							var ang = 180
+							var ang_min = image_angle-ang+360
+							var ang_max = image_angle//+ang
+
+							var fo = angt = clamp(angt,min(ang_min,ang_max),max(ang_min,ang_max)) ? dan*2 : -dan*2
+							frc += fo
+						
+						}
 					}
 					
 				break;
@@ -88,12 +96,6 @@ for (var b=0;b<array_length(colisao);b++){
 				dano=-10
 				
 			}
-			
-			#region Morrendo
-			
-			if (dano<=0) instance_destroy()
-			
-			#endregion
 			
 		}
 	}

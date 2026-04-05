@@ -158,8 +158,8 @@ controla_arma = function(){
 			
 			//cmd = ang
 			
-			if (ang-cdm >  140){ cd = ang-5 if (ang-cdm >  260) cd = ang-6 }
-			if (ang-cdm < -140){ cd = ang+5 if (ang-cdm < -260) cd = ang+6 }
+			if (ang-cdm >  140){ cd = ang-5 if (ang-cdm >  260) cd = ang }
+			if (ang-cdm < -140){ cd = ang+5 if (ang-cdm < -260) cd = ang }
 			
 			cd = lerp(cd,ang,0.15)
 			

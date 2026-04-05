@@ -7,11 +7,11 @@ ind = 0
 var es = 1//application_surface_is_enabled()+1
 cpos = [[[-1,-1],[0,0],[-1,-1],[0,0]]]
 		  
-cesc = [[.48,1,.43,-1]]
+cesc = [[.5,1,.43,-1]]
 pose = [0,0]
 roo = 0
-cmw = room_width
-cmh = room_height
+cmw = 1280
+cmh = 720
 cap = 0//global.capitulo
 escala = cesc[cap][roo]
 
@@ -20,7 +20,7 @@ y = cpos[cap][roo][1]
 
 zoom = function(){
 	
-	window_set_size(1280,720)
+	set_resolution(1280)
 	camera_set_view_size(view_camera[0],cmw*escala,cmh*escala)
 	
 	if (mouse_wheel_down()){
@@ -112,7 +112,7 @@ segue_player = function(){
 		cx = clamp(cx,0,room_width -cw)
 		cy = clamp(cy,0,room_height-ch)
 		
-		camera_set_view_pos(view_camera[0],cx,cy)
+		set_camera(cx,cy,cx+cmw*escala,cy+cmh*escala)
 		
 		x = clamp(cx,0+pose[0],room_width +pose[0])
 		y = clamp(cy,0+pose[1],room_height+pose[1])
@@ -153,7 +153,7 @@ segue_player = function(){
 		instance_deactivate_region(bbox_left,bbox_top,bbox_right,bbox_bottom,0,1)
 		instance_activate_region(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
 		
-		var objs_espcs = [obj_player,obj_modificacao,obj_inimigo,obj_tiro,object_index,obj_arma,obj_controlador,obj_cria_particulas,obj_granadas,obj_granadas_exp]
+		var objs_espcs = [obj_player,obj_modificacao,obj_inimigo,obj_granadas_exp,obj_tiro,object_index,obj_arma,obj_controlador,obj_cria_particulas,obj_granadas]
 		
 		for (var o=0;o<array_length(objs_espcs);o++){
 			

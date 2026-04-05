@@ -149,7 +149,7 @@ if (!lista and alp){
 					pos[m][0] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0] : -9 
 					pos[m][1] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1] : -9
 				
-					if (px1 = pos[m][0] and pos[m][1] > py1){ 
+					if ((pos[m][0]>-6 and py1<pos[m][1] and ((py1-pos[m][1]>posdif)) and py1-pos[m][1]!=0) or (index=-1 and array_length(global.armas_modx[i][0])<1)){ 
 					
 						//show_message(px1-pos[m][0])
 						//show_message(posdif)
@@ -206,7 +206,7 @@ if (!lista and alp){
 					pos[m][0] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0] : -9 
 					pos[m][1] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1] : -9
 				
-					if (px1 = pos[m][0] and pos[m][1] < py1){ 
+					if ((pos[m][0]>-6 and py1>pos[m][1] and ((py1-pos[m][1]<posdif)) and py1-pos[m][1]!=0) or (index=-1 and array_length(global.armas_modx[i][0])<1)){ 
 					
 						posdif = px1-pos[m][0]
 						posi = m
