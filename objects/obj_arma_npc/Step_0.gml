@@ -10,5 +10,5 @@ image_speed=0
 if (global.pause) exit;
 
 colocando_os_acessorios()
-if (!usar) exit;
+if (!equip) exit;
 estado()

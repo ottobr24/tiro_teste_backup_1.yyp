@@ -118,7 +118,7 @@ controla_arma = function(){
 	        var cx2 = 8
 	        var cy2 = 8
         
-	        var colisao2 = [obj_porta,obj_miniparede]
+	        var colisao2 = [obj_miniporta,obj_miniparede]
         
 			var x1 = x + lengthdir_x(cx2,direction) 
 	        var y1 = y + lengthdir_y(cy2,direction)

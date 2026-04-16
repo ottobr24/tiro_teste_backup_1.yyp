@@ -497,7 +497,6 @@ recarrega = function(){
 
 reseta_coisas = function(){
 	
-	if (!rajadas and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and (array_length(sons)<=1 or !audio_is_playing(sons[1]))) tiro_timer--
 	rajando_timer--
 	prec = lerp(prec,global.armas_precin[i],.05)
 	
@@ -519,14 +518,16 @@ reseta_coisas = function(){
 	mira_vel = .1
 	volu = 1
 	
-	usar = pai.arma_usar
-	equip = pai.arma_atira
+	equip = pai.arma_usar
+	usar = pai.arma_atira
+	
+	if (!rajadas and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and (array_length(sons)<=1 or !audio_is_playing(sons[1])) and usar) tiro_timer--
 	
 }
 
 colocando_os_acessorios = function(){
 	
-	if !equip exit;
+	if !usar exit;
 	audio_emitter_position(emitter,x,y,1)
 	
 	if (i<array_length(global.armas_mods)){

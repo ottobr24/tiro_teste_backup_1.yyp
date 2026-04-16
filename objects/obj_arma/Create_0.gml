@@ -461,7 +461,7 @@ recarrega = function(){
 			var mod_i = global.armas_mods[i][4]
 			var spr_i = global.armas_modi[i][4]
 			var cla_i = clamp(mod_i,0,array_length(global.armas_sprm[i]))
-			var espr = asset_get_type(global.armas_sprm[i][cla_i]) == asset_sprite
+			var espr = asset_get_type(global.armas_sprm[i][cla_i]) == asset_sprite and modo = 0
 			
 			if (espr){
 				

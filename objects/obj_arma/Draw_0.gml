@@ -25,7 +25,7 @@ if (i<array_length(global.armas_mods)){
 		}
 	}
 }
-	
+
 if (las_tec) laser=!laser
 
 if (i<array_length(global.armas_mods)){
@@ -33,7 +33,7 @@ if (i<array_length(global.armas_mods)){
 	for (var m=array_length(global.armas_mods[i])-1;m>=0;m--){
 		
 		var cabep = array_length(global.armas_modp[i][m])>0
-		var pente = cabep and (m != 4 or (!recarregando and !cock))
+		var pente = cabep and (m != 4 or (!recarregando and !cock) or modo = 1)
 		var sprreal = pente and cabep and asset_get_type(global.armas_modp[i][m][global.armas_mods[i][m]]) = asset_sprite
 		
 		if (sprreal){
@@ -63,7 +63,7 @@ if (i<array_length(global.armas_mods)){
 				var mod_xo = lengthdir_x(mod_xx*image_xscale,image_angle) + mod_xm
 				var mod_yo = lengthdir_y(mod_xx*image_xscale,image_angle) + mod_ym
 				
-				var mod_ii = grd ? !tirg : global.armas_modi[i][m]
+				var mod_ii = grd-1 = m ? !tirg : global.armas_modi[i][m]
 				var mod_mx = 0 
 				var mod_my = 0
 				
@@ -80,7 +80,7 @@ if (i<array_length(global.armas_mods)){
 				var _x = x + mod_xo + mod_mx2 
 				var _y = y + mod_yo + mod_my2
 		
-                visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,obj_porta),1,0,0,c_red)
+                visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,obj_miniporta),1,0,0,c_red)
 				
 			}
 			
@@ -104,7 +104,7 @@ if (i<array_length(global.armas_mods)){
 			var mod_xo = lengthdir_x(mod_xx*image_xscale,image_angle) + mod_xm
 			var mod_yo = lengthdir_y(mod_xx*image_xscale,image_angle) + mod_ym
 			
-			var mod_ii = grd ? !tirg : global.armas_modi[i][m]
+			var mod_ii = grd-1 = m ? !tirg : global.armas_modi[i][m]
 			var mod_mx = 0 
 			var mod_my = 0
 			

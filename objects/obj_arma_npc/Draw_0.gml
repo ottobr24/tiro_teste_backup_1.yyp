@@ -10,6 +10,8 @@ draw_set_colour(c_black)
 //draw_text(x,y-40,direction)
 draw_set_colour(-1)
 
+if (!equip) exit;
+
 desenha_sprite()
 
 if (!usar) exit;
@@ -70,7 +72,7 @@ if (i<array_length(global.armas_mods)){
 				var mod_xo = lengthdir_x(mod_xx*image_xscale,image_angle) + mod_xm
 				var mod_yo = lengthdir_y(mod_xx*image_xscale,image_angle) + mod_ym
 				
-				var mod_ii = grd ? !tirg : global.armas_modi[i][m]
+				var mod_ii = grd-1 = m ? !tirg : global.armas_modi[i][m]
 				var mod_mx = 0 
 				var mod_my = 0
 				
@@ -87,7 +89,7 @@ if (i<array_length(global.armas_mods)){
 				var _x = x + mod_xo + mod_mx2 
 				var _y = y + mod_yo + mod_my2
 		
-                visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,obj_porta),1,0,0,c_red)
+                visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,obj_miniporta),1,0,0,c_red)
 				
 			}
 			
@@ -111,7 +113,7 @@ if (i<array_length(global.armas_mods)){
 			var mod_xo = lengthdir_x(mod_xx*image_xscale,image_angle) + mod_xm
 			var mod_yo = lengthdir_y(mod_xx*image_xscale,image_angle) + mod_ym
 			
-			var mod_ii = grd ? !tirg : global.armas_modi[i][m]
+			var mod_ii = grd-1 = m ? !tirg : global.armas_modi[i][m]
 			var mod_mx = 0 
 			var mod_my = 0
 			
