@@ -421,20 +421,26 @@ recarrega = function(){
 	
 	if (rec){
 		
-		if (rec_tec and !recarregando and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and asset_get_type(global.armas_sons[i][2]) == asset_sound){ 
+		if (!recarregando){ 
 			
-			if (!modo)sons[2] = toca_som(global.armas_sons[i][2],.35,10,50,,0,.1,0)
-			if ( modo)sons[2] = toca_som(snd_lanca_recc,.35,10,50,,0,.1,0)
+			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and asset_get_type(global.armas_sons[i][2]) == asset_sound){
+			
+				if (!modo)sons[2] = toca_som(global.armas_sons[i][2],1,10,50,,0,.1,0)
+				if ( modo)sons[2] = toca_som(snd_lanca_recc,1,10,50,,0,.1,0)
+			
+			}
 			
 			var cabe = i<array_length(global.armas_mods)
 			var temmod = cabe and array_length(global.armas_modp[i])>4
 			var temspr = temmod and array_length(global.armas_modp[i][4])>0
 			var mod_i = global.armas_mods[i][4]
 			var spr_i = global.armas_modi[i][4]
-		
-			if (temspr){
+			var cla_i = clamp(mod_i,0,array_length(global.armas_sprm[i]))
+			var espr = asset_get_type(global.armas_sprm[i][cla_i]) == asset_sprite
+			
+			if (espr){
 				
-				seta_part("cria_parede",x,y,[1,1],global.armas_modp[i][4][mod_i],c_white,direction,[3,3],[image_xscale,1],180,[1,1],spr_i)
+				seta_part("cria_parede",x,y,[1,1],global.armas_sprm[i][cla_i],c_white,direction,[4,4],[image_xscale,image_xscale],90,[2,2],spr_i,image_angle)
 		
 			}	
 		}

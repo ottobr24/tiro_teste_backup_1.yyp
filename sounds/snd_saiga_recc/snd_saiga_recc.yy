@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.7416099,
+  "duration":0.33834466,
   "exportDir":"",
   "name":"snd_saiga_recc",
   "parent":{

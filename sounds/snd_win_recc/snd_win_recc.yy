@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_hk_recc",
+  "%Name":"snd_win_recc",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.22126985,
+  "duration":0.30893424,
   "exportDir":"",
-  "name":"snd_hk_recc",
+  "name":"snd_win_recc",
   "parent":{
-    "name":"HK-416",
-    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/HK-416.yy",
+    "name":"Winchester",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils/Winchester.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_hk_recc.wav",
+  "soundFile":"snd_win_recc.wav",
   "volume":1.0,
 }

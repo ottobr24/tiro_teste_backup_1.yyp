@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.0034014,
+  "duration":0.5196145,
   "exportDir":"",
   "name":"snd_uzi_recf",
   "parent":{

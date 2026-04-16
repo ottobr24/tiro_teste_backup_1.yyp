@@ -438,7 +438,7 @@ recarrega = function(){
 	var prs_tec = cn ? gamepad_button_check_pressed(0,gp_shoulderrb) : mouse_check_button_pressed(mb_left)
 	
 	var rec = rec_tec and !cock
-	var atr = 0
+	var atr = prs_tec and global.armas_rext[i] = 1
 	var dirp = image_xscale=1 ? direction+180 : direction-180
 	var munp = global.armas_part[i][1] = "mun" ? abs(tiro-municao) : global.armas_part[i][1]
 	var munc = rext == 1 ? 0 : 1
@@ -446,10 +446,14 @@ recarrega = function(){
 	
 	if (rec){
 		
-		if (rec_tec and !recarregando and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and asset_get_type(global.armas_sons[i][2]) == asset_sound){ 
+		if (rec_tec and !recarregando){ 
 			
-			if (!modo)sons[2] = toca_som(global.armas_sons[i][2],1,10,50,,0,.1,0)
-			if ( modo)sons[2] = toca_som(snd_lanca_recc,1,10,50,,0,.1,0)
+			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and asset_get_type(global.armas_sons[i][2]) == asset_sound){
+			
+				if (!modo)sons[2] = toca_som(global.armas_sons[i][2],1,10,50,,0,.1,0)
+				if ( modo)sons[2] = toca_som(snd_lanca_recc,1,10,50,,0,.1,0)
+			
+			}
 			
 			var cabe = i<array_length(global.armas_mods)
 			var temmod = cabe and array_length(global.armas_modp[i])>4
@@ -461,7 +465,7 @@ recarrega = function(){
 			
 			if (espr){
 				
-				seta_part("cria_parede",x,y,[1,1],global.armas_sprm[i][cla_i],c_white,direction,[3,3],[image_xscale,1],180,[1,1],spr_i)
+				seta_part("cria_parede",x,y,[1,1],global.armas_sprm[i][cla_i],c_white,direction,[4,4],[image_xscale,image_xscale],90,[2,2],spr_i,image_angle)
 		
 			}	
 		}

@@ -130,9 +130,19 @@ sofrendo_dano = function(){
 		
 		vida-=dano
 		dano = 0
-		direction = point_direction(x,y,dano_pai.x,dano_pai.y)
-		player_x = dano_pai.x
-		player_y = dano_pai.y
+		
+		if (instance_exists(dano_pai)){
+		
+			direction = point_direction(x,y,dano_pai.x,dano_pai.y)
+			
+			if (visao(vendo_player_dist,"vendo_player",,,,dano_pai,,35,0,1)){
+				
+				player_x = dano_pai.x
+				player_y = dano_pai.y
+				
+			}	
+		}
+		
 		vendo_player_timer-=15
 		player_perigo = 1
 		

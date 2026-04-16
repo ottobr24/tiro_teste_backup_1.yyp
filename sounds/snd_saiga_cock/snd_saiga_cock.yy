@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.0784354,
+  "duration":1.0985488,
   "exportDir":"",
   "name":"snd_saiga_cock",
   "parent":{

@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.39446712,
+  "duration":0.5531519,
   "exportDir":"",
   "name":"snd_hk_recf",
   "parent":{

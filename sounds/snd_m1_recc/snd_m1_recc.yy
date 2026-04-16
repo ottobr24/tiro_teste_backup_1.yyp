@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.65401363,
+  "duration":0.54929703,
   "exportDir":"",
   "name":"snd_m1_recc",
   "parent":{
