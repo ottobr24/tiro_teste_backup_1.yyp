@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_saiga_12",
   "bboxMode":0,
-  "bbox_bottom":11,
+  "bbox_bottom":10,
   "bbox_left":11,
   "bbox_right":35,
   "bbox_top":0,

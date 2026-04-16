@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_vector_cor",
   "bboxMode":0,
-  "bbox_bottom":11,
+  "bbox_bottom":7,
   "bbox_left":0,
   "bbox_right":23,
   "bbox_top":0,

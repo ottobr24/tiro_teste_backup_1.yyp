@@ -32,9 +32,15 @@ if (i<array_length(global.armas_mods)){
 
 	for (var m=array_length(global.armas_mods[i])-1;m>=0;m--){
 		
-		if (array_length(global.armas_modp[i][m])>0 and asset_get_type(global.armas_modp[i][m][global.armas_mods[i][m]]) = asset_sprite){
+		var cabep = array_length(global.armas_modp[i][m])>0
+		var pente = cabep and (m != 4 or (!recarregando and !cock))
+		var sprreal = pente and cabep and asset_get_type(global.armas_modp[i][m][global.armas_mods[i][m]]) = asset_sprite
+		
+		if (sprreal){
 			
-			if (laser and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][3] = 9){
+			var um_laser = is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][3] = 9
+			
+			if (laser and um_laser){
 				
 				var sprh = global.armas_modx[i][m][0] * image_xscale 
                 var margy = global.armas_modx[i][m][1]>2 ? global.armas_modx[i][m][1] * image_xscale  : -global.armas_modx[i][m][1] * image_xscale

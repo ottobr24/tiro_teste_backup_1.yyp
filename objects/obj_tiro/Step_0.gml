@@ -58,9 +58,17 @@ for (var b=0;b<array_length(colisao);b++){
 			
 			if (variable_instance_exists(obj,"vida") and obj.vida>=0 and dan>0){
 				
-				dano-=obj.vida
-				obj.vida-=dan
+				var dane = variable_instance_exists(obj,"dano")
 				
+				dano-=obj.vida
+				
+				if (dane = 0) obj.vida-=dan
+				if (dane = 1){ 
+					
+					obj.dano+=dan 
+					if (variable_instance_exists(obj,"dano_pai")) obj.dano_pai = pai
+					
+				}
 			}
 			
 			switch(obj.object_index){

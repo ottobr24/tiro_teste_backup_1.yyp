@@ -6,16 +6,17 @@ dist = 180
 cria_parede = 0
 cria_tiro   = 0
 t=0
-particulas = [[4,0,0,0,0,0,0,0,0,0]]
+particulas = [[4,0,0,0,0,0,0,0,0,0,0]]
 colisao = [obj_miniparede,obj_porta]
 particulas_infos = []
 ixms = [0,0]
 vels = [0,0]
 velm = [0,0]
+spri = 0
 mxs = [1,1]
 sprites = 0
 
-cria_as_coisas = function(vrv,mn,mx,spr,co = cor,vsmx = 5,hsmx = 5,col=1,ixmn = 1.5,ixmx = 3,vsmn = 5,hsmn = 5){
+cria_as_coisas = function(vrv,mn,mx,spr,co = cor,vsmx = 5,hsmx = 5,col=1,ixmn = 1.5,ixmx = 3,vsmn = 5,hsmn = 5,sprin = 0){
     
     if (variable_instance_get(id,vrv) = 1){
         
@@ -39,7 +40,7 @@ cria_as_coisas = function(vrv,mn,mx,spr,co = cor,vsmx = 5,hsmx = 5,col=1,ixmn = 
     			var ix =random_range(ixms[0],ixms[1])
     			var hs = random_range(velm[1],vels[1])
     			var vs = random_range(velm[0],vels[0])
-    			var itens = [0,d,ix,co,hs,vs,xx,yy,spr,col]
+    			var itens = [0,d,ix,co,hs,vs,xx,yy,spr,col,spri]
     			particulas[odr][m] = itens[m]
                 
     		}

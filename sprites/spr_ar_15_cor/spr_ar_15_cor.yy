@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_ar_15_cor",
   "bboxMode":0,
-  "bbox_bottom":10,
+  "bbox_bottom":9,
   "bbox_left":0,
   "bbox_right":33,
   "bbox_top":0,

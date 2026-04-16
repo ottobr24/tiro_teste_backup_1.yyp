@@ -1,2 +1,2 @@
-//estado()    
+estado()    
 colidindo()

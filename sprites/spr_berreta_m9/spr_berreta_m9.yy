@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_berreta_m9",
   "bboxMode":0,
-  "bbox_bottom":11,
+  "bbox_bottom":10,
   "bbox_left":0,
   "bbox_right":14,
   "bbox_top":0,

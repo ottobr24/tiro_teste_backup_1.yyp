@@ -1,0 +1,2 @@
+mirando()
+reseta_coisas()

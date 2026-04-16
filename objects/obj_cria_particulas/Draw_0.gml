@@ -13,6 +13,7 @@ for (var i=1;i<array_length(particulas);i++){
 	var _y = particulas[i][7]
 	var spr = particulas[i][8]
 	var col = particulas[i][9]
+	var ind = particulas[i][10]
 	var co = particulas[i][3]
 	var alp = 1-(alp2*(tm-60))
     
@@ -55,9 +56,9 @@ for (var i=1;i<array_length(particulas);i++){
 		vs = lerp(vs,0,0.1)
 		vs = clamp(vs,0,10000)
 		
-		draw_sprite_ext(spr,0,_x,_y,ix,ix,0,co,alp)
+		draw_sprite_ext(spr,ind,_x,_y,ix,ix,0,co,alp)
 		
-		particulas[i] = [tm,d,ix,co,hs,vs,_x,_y,spr,col]
+		particulas[i] = [tm,d,ix,co,hs,vs,_x,_y,spr,col,ind]
 		
 	}else if (i>0){
 		

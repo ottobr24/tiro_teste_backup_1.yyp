@@ -21,5 +21,12 @@ if (mas_tec or men_tec){
 	
 }
 
-if (keyboard_check_pressed(vk_backspace)) room_restart()   
+if (keyboard_check_pressed(vk_backspace)){ 
+	
+	randomise()
+	global.arma = irandom_range(0,array_length(global.armas_nome)-1)
+	game_restart()   
+	
+}
+	
 global.portas_abrir = instance_exists(obj_porta) ? instance_nearest(x,y,obj_porta) : -4 

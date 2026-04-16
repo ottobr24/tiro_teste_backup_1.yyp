@@ -8,7 +8,5 @@ if (global.debug){
 	
 	var dira = point_direction(0,0,h,v)
 	var dir = angle_difference(dira,image_angle)
-			
-	draw_text(x,y,mudando)
 	
 }

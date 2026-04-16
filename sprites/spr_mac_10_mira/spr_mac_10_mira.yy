@@ -3,7 +3,7 @@
   "%Name":"spr_mac_10_mira",
   "bboxMode":0,
   "bbox_bottom":1,
-  "bbox_left":6,
+  "bbox_left":7,
   "bbox_right":8,
   "bbox_top":0,
   "collisionKind":5,

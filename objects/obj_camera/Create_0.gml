@@ -153,7 +153,7 @@ segue_player = function(){
 		instance_deactivate_region(bbox_left,bbox_top,bbox_right,bbox_bottom,0,1)
 		instance_activate_region(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
 		
-		var objs_espcs = [obj_player,obj_modificacao,obj_inimigo,obj_granadas_exp,obj_tiro,object_index,obj_arma,obj_controlador,obj_cria_particulas,obj_granadas]
+		var objs_espcs = [obj_player,obj_modificacao,obj_inimigo,obj_granadas_exp,obj_tiro,object_index,obj_arma,obj_controlador,obj_cria_particulas,obj_granadas,obj_regioes]
 		
 		for (var o=0;o<array_length(objs_espcs);o++){
 			

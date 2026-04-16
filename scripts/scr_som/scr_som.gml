@@ -1,8 +1,6 @@
 function toca_som(_som,_volume,dismn,dismx,fall = audio_falloff_none,_loop=0,pt = .1,alet = 0){
 	
-	var em = id.emitter
-	
-	if (asset_get_type(_som) == asset_sound){
+	if (asset_get_type(_som) == asset_sound or is_array(_som)){
 		
 		randomise()
 		

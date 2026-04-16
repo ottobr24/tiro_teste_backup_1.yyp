@@ -14,7 +14,7 @@ cd  = 0
 cdm = 0
 colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
 equipado = 1
-controle = 0
+controle = 1
 
 //sprite_prefetch()
 
@@ -168,7 +168,7 @@ controla_arma = function(){
 			arma.direction = direction
 			arma.image_angle = cd
 			arma.image_xscale = ix
-		
+			
 			cdm = ang
 			
 		}
@@ -185,7 +185,7 @@ controla_arma = function(){
 	}
 }
 
-muda_estado = function(an = 1,p = 1){
+muda_estado = function(an = 1,pa = 1,mo = 1){
 	
 	var d = keyboard_check(ord("D"))
 	var a = keyboard_check(ord("A"))
@@ -199,8 +199,10 @@ muda_estado = function(an = 1,p = 1){
 	
 	var ana = (d xor a) or (w xor s)
 	var par = !a and !d and !w and !s or cv>.1 
-	var conds = [an and ana		,p and par		]
-	var estds = [estado_andando	,estado_parado	]
+	var mor = vida < 0
+	
+	var conds = [an and ana		,pa and par		,mo and mor		]
+	var estds = [estado_andando	,estado_parado	,estado_morrendo]
 	
 	for (var e =0 ; e<array_length(conds);e++){
 		
@@ -305,4 +307,10 @@ estado_andando = function(){
 	
 }
 	
+estado_morrendo = function(){
+	
+	game_restart()
+	
+}
+
 estado = estado_parado

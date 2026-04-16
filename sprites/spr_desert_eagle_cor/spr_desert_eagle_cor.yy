@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_desert_eagle_cor",
   "bboxMode":0,
-  "bbox_bottom":13,
+  "bbox_bottom":12,
   "bbox_left":0,
   "bbox_right":18,
   "bbox_top":0,

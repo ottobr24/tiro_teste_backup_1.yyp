@@ -1,12 +1,19 @@
 #region Variaveis
 
+randomise()
+
 hspd =0 
 vspd =0
-velc = 1.8 
+
+velc = 1.6 
 vela = 1.2 
 vel = 0
+
 vida_max = 20
 vida = vida_max
+
+dano = 0
+dano_pai = 0
 
 estado = 0
 estado_txt = ""
@@ -28,16 +35,22 @@ caminhando_timer = 0//caminhando_tempo
 vendo_player = 0
 vendo_player_timer = 0
 
-vendo_player_dist = 250
-pra_atirar_player_dist = vendo_player_dist/1.2
+vendo_player_dist = 350
+seguir_player_dist = 200
 atirar_player_dist = vendo_player_dist/1.8
 
 arma = -4
+armai = irandom_range(0,array_length(global.armas_nome)-1)
+
 cx = 0
 cy = 0
+cx3 = x
+cy3 = y
+cd  = 0
+cdm = 0
 
 terminou_caminho = 0
-cria_novo_caminho = 0
+cria_caminho = 0
 escolhe_caminho = 0
 
 locais_andar = []
@@ -47,10 +60,23 @@ parado_timer = parado_tempo
 
 perigo = 0
 player_perigo = 0
+player_x = x
+player_y = y
 
 volta_atirar_tempo = 5
 volta_atirar_timer = volta_atirar_tempo
-armai = 3
+
+vigia_tempo = 60*5
+vigia_timer = vigia_tempo
+vigia_dir = 0
+vigia_comeco = 0
+vigia_qtd = 60
+vigia_org = 0
+vigia_ord = 0
+vigia_vel = 1
+
+arma_atira = 0
+arma_usar = 0
 
 #endregion
 
@@ -60,26 +86,33 @@ armai = 3
 
 #region Estados metodos
 
-muda_estados = function (a = 1, p = 1,m = 1,v = 1,at=1,pat=1,se=1){
+muda_estados = function (a = 1, p = 1,mo = 1,v = 1,at=1,pat=1,se=1,ac=1){
     
     var est = estado
-    var mor = vida<=0
-	var alv = obj_player
-	var seg = point_distance(x,y,alv.x,alv.y)<vendo_player_dist and !vendo_player_timer and perigo and player_perigo
-	var pati = point_distance(x,y,alv.x,alv.y)<pra_atirar_player_dist and !vendo_player_timer and perigo and player_perigo
-	var ati = point_distance(x,y ,alv.x,alv.y)<atirar_player_dist and instance_exists(arma) and !vendo_player_timer and perigo and player_perigo
-	var pa = terminou_caminho and parado_timer
-	var vi = array_length(locais_andar)=0 and (!perigo or !player_perigo or vendo_player_timer)	
-    var ests = [a and !parado_timer	,p and pa 		,v and vi		,seg and se		,pat and pati		,at and ati		]
-    var estz = [estado_andando		,estado_parado	,estado_vigiando,estado_seguindo,estado_pra_atirar	,estado_atirando]
+	var vi = array_length(locais_andar) = 0
+    var ve_e_pe = player_perigo and vendo_player
+	var pa = parado_timer
+	var an = !parado_timer
+	var seg = player_perigo and !vendo_player and !point_in_circle(x,y,player_x,player_y,2)
+	var ate = player_perigo and !vendo_player and  point_in_circle(x,y,player_x,player_y,2)
+	var ata = ve_e_pe
+	var mor = vida<=0
+	var ests = [a and an		,p and pa 		,v and vi 		,se and seg 	,ac and ate		,at and ata 	,mo and mor 	]
+    var estz = [estado_andando	,estado_parado	,estado_vigiando,estado_seguindo,estado_atencao	,estado_atirando,estado_morrendo]
 	
 	for (var e =0;e<array_length(ests);e++){
 		
 		if (ests[e]){
 			
-			if (estado != estz[e]){
+			if (ests[e]){
 				
-				estados[array_length(estados)] = estz[e]
+				if (estado != estz[e]){
+				
+					estados[array_length(estados)] = estz[e]
+					estado = estz[e]
+				
+				}
+				
 				estado = estz[e]
 				
 			}
@@ -89,80 +122,126 @@ muda_estados = function (a = 1, p = 1,m = 1,v = 1,at=1,pat=1,se=1){
 
 #endregion
 
+#region Vida
+
+sofrendo_dano = function(){
+	
+	if (dano){
+		
+		vida-=dano
+		dano = 0
+		direction = point_direction(x,y,dano_pai.x,dano_pai.y)
+		player_x = dano_pai.x
+		player_y = dano_pai.y
+		vendo_player_timer-=15
+		player_perigo = 1
+		
+	}
+}
+
+#endregion
+
 #region Armas
 
 puxa_arma = function(){
 	
-	if (!instance_exists(arma) or !arma){
+	if (arma_usar){
 		
-		arma = instance_create_layer(x,y,"Arma",obj_arma)
-		arma.pai = id
+		if (!instance_exists(arma) and arma = -4){
 		
-		with(arma){
+			arma = instance_create_layer(x,y,"Arma",obj_arma_npc)
+			arma.pai = id
+		
+			with(arma){
 			
-			i = other.armai
-			municao				= global.armas_munc[i]*1.3
-			recarregando_timer	= global.armas_reca[i]*1.3
-			tiro_tempo			= global.armas_cade[i]*1.3
-			rajando_timer		= global.armas_raca[i]*1.3
-			tiro_timer = tiro_tempo
-			tiro = municao-1
+				i = other.armai
+				municao				= global.armas_munc[i]
+				recarregando_timer	= global.armas_reca[i] * 1.4
+				tiro				= municao-1
+				tiro_tempo			= global.armas_cadn[i]
+				rajando_timer		= global.armas_raca[i] * 1.4
+				tiro_timer			= tiro_tempo
+				prep				= global.armas_prep[i]				
+				prec_menos			= global.armas_prec[i] * 3
+				coix				= global.armas_coix[i]
+				coiy				= global.armas_coiy[i]
+				dano				= global.armas_dano[i]
+				recarregando_tempo	= global.armas_reca[i] * 1.4
+				cliq				= global.armas_cliq[i]
+				rajadas_tempo		= global.armas_raca[i] * 1
+				rajadas_total		= global.armas_raja[i]
+				shak				= global.armas_shak[i] / 2
+				bala				= global.armas_bala[i] 
+				rext				= global.armas_rext[i]
+				sons				= array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
+				
+			}
+		
+		}else if (instance_exists(arma) and arma!=-4){
+		
+	        var cx2 = 8
+	        var cy2 = 8
+        
+	        var colisao2 = [obj_porta,obj_miniparede]
+        
+			var x1 = x + lengthdir_x(cx2,direction) 
+	        var y1 = y + lengthdir_y(cy2,direction)
+	        var dir = direction
+			
+	        with(arma){
+            
+	            if (place_meeting(x,y1,colisao2)){
+				
+	                while(place_meeting(x,y1,colisao2) and cy2>-32){
+                    
+	                    y1 = y + lengthdir_y(cy2,dir)
+	                    cy2--
+                    
+	                }
+	            }
+            
+	            if (place_meeting(x1,y,colisao2)){
+                
+	                while(place_meeting(x1,y,colisao2) and cx2>-32){
+                    
+	                    x1 = x + lengthdir_x(cx2,dir)
+	                    cx2--
+                    
+	                }
+	            }
+	        }
+        
+			cx = lerp(cx,cx2,0.1)
+			cy = lerp(cy,cy2,0.1)
+        
+			cx3 = lerp(cx3,x + lengthdir_x(cx,direction),.25)
+			cy3 = lerp(cy3,y + lengthdir_y(cy,direction),.25)
+			
+	        var ix = dir = clamp(dir,90,270) ? -1 : 1
+			var ang = ix > 0 ? dir : dir+180
+			
+			//cmd = ang
+			
+			if (ang-cdm >  140){ cd = ang-5 if (ang-cdm >  260) cd = ang }
+			if (ang-cdm < -140){ cd = ang+5 if (ang-cdm < -260) cd = ang }
+			
+			cd = lerp(cd,ang,0.15)
+			
+			arma.x = cx3
+			arma.y = cy3
+			arma.direction = direction
+			arma.image_angle = cd
+			arma.image_xscale = ix
+		
+			cdm = ang
 			
 		}
-		
 	}else{
 		
-		if (vendo_player_timer or !perigo or player_perigo){
-			
-			arma.tiro_timer = arma.tiro_tempo
-			
-		}
-		
-        var cx2 = 8
-        var cy2 = 8
-        
-        var colisao2 = [obj_porta,obj_miniparede]
-        
-		var x1 = x + lengthdir_x(cx2,direction) 
-        var y1 = y + lengthdir_y(cy2,direction)
-        var dir = direction
-        
-        with(arma){
-            
-            if (place_meeting(x,y1,colisao2)){
-                
-                while(place_meeting(x,y1,colisao2) and cy2>-32){
-                    
-                    y1 = y + lengthdir_y(cy2,dir)
-                    cy2--
-                    
-                }
-            }
-            
-            if (place_meeting(x1,y,colisao2)){
-                
-                while(place_meeting(x1,y,colisao2) and cx2>-32){
-                    
-                    x1 = x + lengthdir_x(cx2,dir)
-                    cx2--
-                    
-                }
-            }
-        }
-        
-		cx = lerp(cx,cx2,0.1)
-		cy = lerp(cy,cy2,0.1)
-        
-		var _x = x + lengthdir_x(cx,direction)
-		var _y = y + lengthdir_y(cy,direction)
-        var ix = dir = clamp(dir,90,270) ? -1 : 1
-		var ang = ix > 0 ? dir : dir+180
-        
-		arma.x = _x
-		arma.y = _y
-		arma.direction = direction
-		arma.image_angle = ang
-		arma.image_xscale = ix
+		cx3 = x
+		cy3 = y
+		instance_destroy(arma)
+		arma = -4
 		
 	}
 }
@@ -171,91 +250,66 @@ puxa_arma = function(){
 
 #region Movimentação
 
-movendo = function(){
+movendo = function(_x = -1,_y = -1){
     
-    if ((point_in_circle(x,y,alvox,alvoy,2)) or cria_novo_caminho or (!vendo_player_timer and perigo and player_perigo)){
-        
-        randomise()
-        
-		var alvwmx = x
-		var alvwmn = x
-		var alvhmx = y
-		var alvhmn = y
+	var col = point_in_circle(x,y,alvox,alvoy,2)
+	
+	if (cria_caminho or col or _x > -1){
 		
-		var cam = path_add()
-		
-		#region Escolhendo pra onde ir
-		
-		if (array_length(locais_andar)>0){
+		if (col and !cria_caminho){
 			
-			var ind = irandom_range(0,array_length(locais_andar)-1)
-			var i = locais_andar[ind]
-			var numb = 0
-			var ids = []
-			var _x = x
-			var _y = y
-			var alx = alvox
-			var aly = alvoy
-			var _y = y
+			parado_timer = parado_tempo
+			exit
 			
-			with(obj_regioes){
+		}
+		
+		randomise()
+		
+		var map = obj_controlador.mapa
+		var cam = path_duplicate(caminho)
+		
+		var diag = 0
+		
+		var reg_atu = array_length(locais_andar)>0 ? irandom_range(0,array_length(locais_andar)-1) : -4
+		var reg_ind = reg_atu>-1 ? locais_andar[reg_atu] : -4
+		
+		var reg_w = 0
+		var reg_h = 0
+		
+		var reg_x = 0
+		var reg_y = 0
+		
+		with(obj_regioes){
+			
+			if (reg_ind = reg){
 				
-				numb++
-					
-				if (reg = i){
-					
-					ids[array_length(ids)] = id
-					
-				}
-			}
-			
-			ind = irandom_range(0,array_length(ids)-1)
+				reg_x = bbox_left
+				reg_y = bbox_top
+				reg_w = bbox_right
+				reg_h = bbox_bottom
 				
-			with(ids[ind]){
-			
-				alvwmx = bbox_right
-				alvwmn = bbox_left
-				alvhmx = bbox_bottom
-				alvhmn = bbox_top
-			
 			}
 		}
 		
-		#endregion
+		var dest_x = _x = -1 ? irandom_range(reg_x,reg_w) : _x
+		var dest_y = _x = -1 ? irandom_range(reg_y,reg_h) : _y
 		
-        var alvx = irandom_range(alvwmn,alvwmx)
-        var alvy = irandom_range(alvhmn,alvhmx)
-		
-        if (!vendo_player_timer and perigo and player_perigo){
-            
-            alvx = obj_player.x
-            alvy = obj_player.y
-            
-        }
-		
-        if (mp_grid_path(obj_controlador.mapa,cam,x,y,alvx,alvy,0)){
+		if (reg_atu = -4 and _x = -1){
 			
-			cria_novo_caminho=0
+			dest_x = x
+			dest_y = y
 			
-			if (point_in_circle(x,y,alvox,alvoy,2)){
+		}
 		
-				terminou_caminho=1
-				cria_novo_caminho=1
+		if (mp_grid_path(map,caminho,x,y,dest_x,dest_y,diag) == true and mp_grid_get_cell(map,dest_x,dest_y)=-1){
 			
-			}
+			path_start(caminho,vela,path_action_stop,!diag)
+			cria_caminho = 0
+			alvox = dest_x
+			alvoy = dest_y
 			
-			vel = perigo ? velc : vela
-			//show_message(path_get_number(cam))
-			caminho = path_duplicate(cam)
-            path_start(caminho,vel,path_action_stop,1)
-            alvox = alvx
-            alvoy = alvy
-			
-        }
-		
-		path_delete(cam)
-		
-    }
+		}
+	}
 }
 
 colidindo = function(){
@@ -285,11 +339,60 @@ vendo_o_perigo = function(){
 	var y1 = alv.y + lengthdir_y(vendo_player_dist,alv.direction)
 	var col = collision_line(alv.x,alv.y,x1,y1,id,0,0)
 	
-	if (col and !vendo_player_timer and alv.equipado){
+	if (vendo_player and !vendo_player_timer and alv.equipado){
 		
 		perigo=1
 		player_perigo=1
+		player_x = alv.x
+		player_y = alv.y
 		
+	}
+}
+
+vigiando = function(){
+	
+	if (!vigia_comeco) vigia_timer--
+	
+	if (!vigia_timer){
+		
+		randomise()
+		
+		vigia_comeco = 1
+		vigia_timer = vigia_tempo
+		vigia_dir = choose(-1,1)
+		vigia_org = direction
+		vigia_ord = 0
+		
+	}
+	
+	if (vigia_comeco){
+		
+		if (vigia_ord<2){
+		
+			direction += vigia_vel*vigia_dir
+		
+			if (abs(direction-vigia_org)>vigia_qtd){
+				
+				vigia_dir=-vigia_dir
+				direction += vigia_vel*vigia_dir
+				vigia_ord++
+			
+			}
+		}else{
+			
+			direction += vigia_vel*vigia_dir
+			
+			if (direction = clamp(direction,vigia_org-vigia_vel/2,vigia_org+vigia_vel/2)){
+				
+				vigia_comeco = 0
+				direction = vigia_org
+				player_x = 0
+				player_y = 0
+				parado_timer = parado_tempo
+				cria_caminho = 1
+				
+			}
+		}
 	}
 }
 
@@ -312,9 +415,13 @@ desenhando = function(){
 
 estado_parado = function(){
     
+	sofrendo_dano()
+	
 	perigo = 0
+	cria_caminho = 1
+	
 	vendo_o_perigo()
-	visao(vendo_player_dist,"vendo_player",,,,,,45)
+	visao(vendo_player_dist,"vendo_player",,,,,,35,0,1)
 	
 	if (estado_txt!="estado_parado"){
 		
@@ -324,105 +431,122 @@ estado_parado = function(){
 		parado_timer = parado_tempo*alet
 		
 	}
-	  
+	
 	parado_timer--
 	
     estado = estado_parado
-    estado_txt = "estado_parado"       
+    estado_txt = "estado_parado" 
 	
-	if (!parado_timer or (!vendo_player_timer and perigo and player_perigo)){
-		
-		muda_estados()
-		parado_timer = 1
-		
-	}
+	arma_usar  = 0
+	arma_atira = 0
 	
+	muda_estados()
+		
 	path_end()
 	
 }
 
 estado_andando = function(){
     
-	perigo = 0
-    movendo()
+	sofrendo_dano()
 	vendo_o_perigo()
-	visao(vendo_player_dist,"vendo_player",,,,,,30)
-    
+	visao(vendo_player_dist,"vendo_player",,,,,,35,0,1)
+	
+	movendo()
+	
+	arma_usar  = 0
+	arma_atira = 0
+	
     estado = estado_andando
     estado_txt = "estado_andando"       
-    
-    muda_estados()
-    
+	
+	muda_estados()
+	
 }
 
 estado_vigiando = function(){
     
-	puxa_arma()
+	sofrendo_dano()
+	vigiando()
 	vendo_o_perigo()
-	visao(vendo_player_dist,"vendo_player",,,,,,50)
-    
+	visao(vendo_player_dist,"vendo_player",,,,,,60,0,1)
+	
     estado = estado_vigiando
     estado_txt = "estado_vigiando"       
-    
-    muda_estados()
-    
+	
+	arma_usar  = 0
+	arma_atira = 0
+	
+	muda_estados()
+	
+	path_end()
+	
 }
 
 estado_seguindo = function(){
-    
-    movendo()
+	
+	sofrendo_dano()
 	vendo_o_perigo()
-	visao(vendo_player_dist,"vendo_player",,,,,,45)
-    
+	movendo(player_x,player_y)
+	path_start(caminho,vela,path_action_stop,1)
+	puxa_arma()
+	visao(vendo_player_dist,"vendo_player",,,,,,45,0,1)
+	
+	arma_usar = 1
+	arma_atira = 0
+	
     estado = estado_seguindo
     estado_txt = "estado_seguindo"       
-    
-    muda_estados()
-    
-}
-
-estado_pra_atirar = function(){
-    
-	puxa_arma()
-	vendo_o_perigo()
-    movendo()
-	visao(vendo_player_dist,"vendo_player",,,,,,60)
-    
-    estado = estado_pra_atirar
-    estado_txt = "estado_pra_atirar"       
-    
-    muda_estados(,,,0)
-    
+	
+	muda_estados()
+	
 }
 
 estado_atirando = function(){
-    
-	path_end()
-	puxa_arma()
-	vendo_o_perigo()
-	visao(vendo_player_dist,"vendo_player",,,,,,60)
 	
-	volta_atirar_timer--
+	sofrendo_dano()
+	vendo_o_perigo()
+	puxa_arma()
+	visao(vendo_player_dist,"vendo_player",,,,,,30,0,1)
+	
+	arma_usar = 1
+	arma_atira = 1
 	
     estado = estado_atirando
     estado_txt = "estado_atirando"       
-	arma.tiro_timer = global.armas_cade[arma.i]
-    
-    if (volta_atirar_timer<=0){ 
-		
-		estado = estado_parado
-		volta_atirar_timer = volta_atirar_tempo
-		
-	}
+	
+	muda_estados()
+	
+	path_end()
+	
 }
 
+estado_atencao = function(){
+    
+	sofrendo_dano()
+	vigiando()
+	vendo_o_perigo()
+	visao(vendo_player_dist,"vendo_player",,,,,,60,0,1)
+	
+    estado = estado_atencao
+    estado_txt = "estado_atencao"       
+	
+	arma_usar  = 1
+	arma_atira = 0
+	
+	muda_estados()
+	
+	path_end()
+	
+}
+	
 estado_morrendo = function(){
     
     estado = estado_morrendo
     estado_txt = "estado_morrendo"       
-    
-    instance_destroy()
-    
+	
+	instance_destroy()
+	
 }
 
 #endregion

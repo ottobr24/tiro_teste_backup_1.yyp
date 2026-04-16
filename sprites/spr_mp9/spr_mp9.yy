@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_mp9",
   "bboxMode":0,
-  "bbox_bottom":11,
+  "bbox_bottom":7,
   "bbox_left":0,
   "bbox_right":16,
   "bbox_top":1,

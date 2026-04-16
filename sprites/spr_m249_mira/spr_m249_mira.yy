@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Fuzis",
-    "path":"folders/Sprites/Armas/Armas normais/Fuzis.yy",
+    "name":"M249",
+    "path":"folders/Sprites/Armas/Modificacoes/Fuzis/M249.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

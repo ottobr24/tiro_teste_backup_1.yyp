@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_glock_lanterna",
   "bboxMode":0,
-  "bbox_bottom":5,
+  "bbox_bottom":4,
   "bbox_left":10,
   "bbox_right":13,
   "bbox_top":4,

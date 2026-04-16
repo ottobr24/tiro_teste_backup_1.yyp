@@ -6,10 +6,11 @@ if (global.debug){
 
 	draw_set_colour(c_black)
 
-	draw_text(x,y,estado_txt)
-	draw_text(x,y-20,perigo)
-	draw_text(x,y+20,player_perigo)
-	draw_text(x,y-40,vendo_player_timer)
+	draw_text(x-32,y+40,player_x)
+	draw_text(x-32,y+20,arma_atira)
+	draw_text(x-32,y,estado_txt)
+	//if (arma) draw_text(x-32,y-20,arma.tiro_timer)
+	draw_text(x-32,y-40,arma)
 
 	draw_set_colour(c_white)
 
@@ -19,7 +20,7 @@ if (global.debug){
 
 	draw_set_colour(c_orange)
 
-	draw_circle(x,y,pra_atirar_player_dist,1)
+	draw_circle(x,y,seguir_player_dist,1)
 
 	draw_set_colour(c_red)
 
@@ -34,9 +35,10 @@ if (global.debug){
 	var y1 = alv.y + lengthdir_y(vendo_player_dist,alv.direction)
 	draw_line(alv.x,alv.y,x1,y1)
 
+	draw_set_colour(-1)
+
 }
 
 desenha_barra(vida,vida_max,140,20,c_black,c_green,x,y-40)
 desenha_barra(vendo_player_timer,60,100,20,c_black,c_navy,x,y-70)
 
-draw_set_colour(-1)

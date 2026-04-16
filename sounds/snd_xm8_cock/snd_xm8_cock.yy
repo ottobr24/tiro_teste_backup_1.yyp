@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_xm8_cock",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.42396826,
+  "exportDir":"",
+  "name":"snd_xm8_cock",
+  "parent":{
+    "name":"XM8",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/XM8.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_xm8_cock.wav",
+  "volume":1.0,
+}

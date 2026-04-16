@@ -59,6 +59,12 @@ if (i<array_length(global.armas_mods) and alp){
 
 			draw_sprite_ext(mod_spr,mod_i,mod_x,mod_y,sprxs,sprys,0,c_white,alp)
 			
+			if (index = m){
+				
+				draw_sprite_ext(mod_spr,mod_i,mod_x,mod_y,sprxs,sprys,0,c_yellow,alp)
+			
+			}
+			
 			sprite_set_offset(mod_spr,mod_xo,mod_yo)
 		
 		}
@@ -206,6 +212,9 @@ if (i<array_length(global.armas_mods) and alp){
 			
 			acha = bqtd - (bmes) > 0
 			draw_set_halign(0)
+			
+			//draw_text(10,499,bloq)
+			
 			draw_set_halign(-1)
 			
 			if (lista = p+1) cor = make_colour_rgb(200,200,0)

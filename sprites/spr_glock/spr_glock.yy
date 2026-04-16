@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_glock",
   "bboxMode":0,
-  "bbox_bottom":10,
+  "bbox_bottom":9,
   "bbox_left":0,
   "bbox_right":13,
   "bbox_top":0,

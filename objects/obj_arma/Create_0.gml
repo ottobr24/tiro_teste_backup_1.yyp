@@ -242,8 +242,8 @@ atira = function(){
 					var margy = lengthdir_y(3,dirp2)
 				
 					var tiiv = global.tiros_velo[i]*1
-					var tx = x + lengthdir_x(5,direction)
-					var ty = y + margy + lengthdir_y(5,direction)
+					var tx = x + lengthdir_x(sprh/2,direction)
+					var ty = y + margy + lengthdir_y(sprh/2,direction)
 				
 					var _x = x + lengthdir_x(sprite_width*image_xscale,direction)
 					var _y = y + margy + lengthdir_y(sprh,direction)
@@ -301,7 +301,7 @@ atira = function(){
 		
 				if (!tiro and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>6 and asset_get_type(global.armas_sons[i][6]) == asset_sound){ 
 	
-					sons[6] = toca_som(global.armas_sons[i][6],1,10,50,,0,.1,0)
+					sons[6] = toca_som(global.armas_sons[i][6],1,50,250,,0,.1,0)
 					refff = 0
 	
 				}
@@ -438,11 +438,11 @@ recarrega = function(){
 	var prs_tec = cn ? gamepad_button_check_pressed(0,gp_shoulderrb) : mouse_check_button_pressed(mb_left)
 	
 	var rec = rec_tec and !cock
-	var atr = prs_tec
+	var atr = 0
 	var dirp = image_xscale=1 ? direction+180 : direction-180
 	var munp = global.armas_part[i][1] = "mun" ? abs(tiro-municao) : global.armas_part[i][1]
 	var munc = rext == 1 ? 0 : 1
-	var tiiv = 3.5
+	var tiro_v = 3.5
 	
 	if (rec){
 		
@@ -451,6 +451,19 @@ recarrega = function(){
 			if (!modo)sons[2] = toca_som(global.armas_sons[i][2],1,10,50,,0,.1,0)
 			if ( modo)sons[2] = toca_som(snd_lanca_recc,1,10,50,,0,.1,0)
 			
+			var cabe = i<array_length(global.armas_mods)
+			var temmod = cabe and array_length(global.armas_modp[i])>4
+			var temspr = temmod and array_length(global.armas_modp[i][4])>0
+			var mod_i = global.armas_mods[i][4]
+			var spr_i = global.armas_modi[i][4]
+			var cla_i = clamp(mod_i,0,array_length(global.armas_sprm[i]))
+			var espr = asset_get_type(global.armas_sprm[i][cla_i]) == asset_sprite
+			
+			if (espr){
+				
+				seta_part("cria_parede",x,y,[1,1],global.armas_sprm[i][cla_i],c_white,direction,[3,3],[image_xscale,1],180,[1,1],spr_i)
+		
+			}	
 		}
 		
 		recarregando=1
@@ -481,7 +494,7 @@ recarrega = function(){
 			
 			if (modo) recarregando=0
 			
-			seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
+			seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiro_v,tiro_v],[2,2.5],45,[tiro_v/2,tiro_v/2])
 			
 			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>3 and asset_get_type(global.armas_sons[i][3]) == asset_sound){ 
 				
