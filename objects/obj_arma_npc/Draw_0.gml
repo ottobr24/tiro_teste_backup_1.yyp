@@ -1,6 +1,7 @@
-if (!instance_exists(pai)){
+if (!instance_exists(pai) or (!equip and rajando_timer!=global.armas_raca)){
 	
 	instance_destroy()
+	if (instance_exists(pai)) pai.arma = -4
 	exit;
 	
 }
@@ -13,8 +14,6 @@ draw_set_colour(-1)
 if (!equip) exit;
 
 desenha_sprite()
-
-if (!usar) exit;
 
 fogo_tempo--
 
@@ -137,20 +136,5 @@ if (i<array_length(global.armas_mods)){
 		}
 	}
 }
-		
-if (fogo_tempo>0){
-	
-	var sprh = sprite_get_width(global.armas_sprt[i]) +12
-	var dirp = image_xscale=1 ? direction+90 : direction-90
-	var dirp2 = image_xscale!=1 ? direction+90 : direction-90
-	var margy = lengthdir_y(3,dirp2)
-	
-	var _x = x + lengthdir_x(sprh,direction)
-	var _y = y + margy + lengthdir_y(sprh,direction)
-			
-	var tmdx = global.tiros_velo[i]/10
-	var tmdy = global.tiros_velo[i]/10
-	
-	draw_sprite_ext(spr_fogo,fogo_ii,_x,_y,fogo_ix,fogo_ix,image_angle,image_blend,image_alpha)
-	
-}
+
+desenha_fogo()

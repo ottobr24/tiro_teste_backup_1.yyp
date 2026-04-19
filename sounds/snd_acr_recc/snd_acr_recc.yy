@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_acr_recc",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.2277098,
+  "exportDir":"",
+  "name":"snd_acr_recc",
+  "parent":{
+    "name":"Bushmaster ACR",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/Bushmaster ACR.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_acr_recc.wav",
+  "volume":1.0,
+}

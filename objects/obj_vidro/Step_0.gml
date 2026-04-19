@@ -1,1 +1,1 @@
-if (vida<=0) instance_destroy()
+if (vida<=0){ instance_destroy() obj_controlador.att = 1 }

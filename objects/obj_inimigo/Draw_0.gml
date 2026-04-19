@@ -6,10 +6,10 @@ if (global.debug){
 
 	draw_set_colour(c_black)
 
-	draw_text(x-32,y+40,player_x)
-	draw_text(x-32,y+20,arma_atira)
+	draw_text(x-32,y+40,instance_exists(arma))
+	draw_text(x-32,y+20,arma_usar)
 	draw_text(x-32,y,estado_txt)
-	//if (arma) draw_text(x-32,y-20,arma.tiro_timer)
+	draw_text(x-32,y-20,arma_atira)
 	draw_text(x-32,y-40,arma)
 
 	draw_set_colour(c_white)
@@ -39,6 +39,7 @@ if (global.debug){
 
 }
 
-desenha_barra(vida,vida_max,140,20,c_black,c_green,x,y-40)
-desenha_barra(vendo_player_timer,60,100,20,c_black,c_navy,x,y-70)
+desenha_barra(vida,vida_max,140,20,c_black,c_green,x,y-60)
+desenha_barra(vendo_player_timer,60,100,20,c_black,c_navy,x,y-90)
 
+//speed = 0

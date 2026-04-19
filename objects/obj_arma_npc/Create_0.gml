@@ -1,3 +1,5 @@
+#region Variaveis
+
 pai = id
 
 i=0
@@ -66,7 +68,13 @@ usar = 1
 mx = device_mouse_x_to_gui(0)
 my = device_mouse_y_to_gui(0)
 
+#endregion
+
 audio_falloff_set_model(audio_falloff_exponent_distance)
+
+#region Metodos
+
+#region Funções
 
 muda_estados = function(pa=1,at=1,re=1,mi=1){
 	
@@ -159,6 +167,26 @@ desenha_sprite = function(){
 	}
 }
 
+desenha_fogo = function(){
+	
+	if (fogo_tempo>0){
+	
+		var sprh = sprite_get_width(global.armas_sprt[i]) +12
+		var dirp = image_xscale=1 ? direction+90 : direction-90
+		var dirp2 = image_xscale!=1 ? direction+90 : direction-90
+		var margy = lengthdir_y(3,dirp2)
+	
+		var _x = x + lengthdir_x(sprh,direction)
+		var _y = y + margy + lengthdir_y(sprh,direction)
+			
+		var tmdx = global.tiros_velo[i]/10
+		var tmdy = global.tiros_velo[i]/10
+	
+		draw_sprite_ext(spr_fogo,fogo_ii,_x,_y,fogo_ix*image_xscale,fogo_ix,image_angle,image_blend,image_alpha)
+	
+	}
+}
+
 atira = function(){
 	
 	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
@@ -202,6 +230,9 @@ atira = function(){
 		
 			if (tiro>0){
 				
+				var bar = obj_controlador
+				var tmdb = array_length(bar.barulhos)
+				
 				var vol = 0
 				
 				if (!rajadas and tec) rajadas = rajadas_total
@@ -239,7 +270,7 @@ atira = function(){
 			
 					global.shake += shak / 2    
             
-					if (global.armas_part[i][0]) seta_part("cria_tiro",tx,ty,[global.armas_part[i][0],global.armas_part[i][0]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
+					if (global.armas_part[i][0]) seta_part("cria_tiro",tx,ty,[global.armas_part[i][0],global.armas_part[i][0]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2])
 					//toca_som(global.armas_sons[i][0],1,0,1,.15)
 					fogo_tempo = 10
 					fogo_ii = irandom_range(0,sprite_get_number(spr_fogo))
@@ -284,6 +315,11 @@ atira = function(){
 				//audio_play_sound(snd_249_cock,10,0)
 				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound) sons[0] = toca_som(global.armas_sons[i][0],volu*vol,50,75,,0,.20,0)
 		
+				bar.barulhos[tmdb][0] = x
+				bar.barulhos[tmdb][1] = y
+				bar.barulhos[tmdb][2] = global.armas_baru[i]
+				bar.barulhos[tmdb][3] = pai
+					
 			}else{
 			
 				if (prs_tec){
@@ -372,7 +408,7 @@ preparando = function(){
 		
 		prep = global.armas_prep[i]
 		
-		if (poc) seta_part("cria_tiro",x,y,[global.armas_part[i][2],global.armas_part[i][2]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
+		if (poc) seta_part("cria_tiro",x,y,[global.armas_part[i][2],global.armas_part[i][2]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2])
 		
 		if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>1 and asset_get_type(global.armas_sons[i][1]) == asset_sound){
 			
@@ -388,7 +424,7 @@ preparando = function(){
 			if (tiro>0){
 			
 				if (poc) tiro-=qtd
-				if (poc) seta_part("cria_tiro",x,y,[qtd,qtd],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
+				if (poc) seta_part("cria_tiro",x,y,[qtd,qtd],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2])
 			
 			}
 		}
@@ -440,7 +476,7 @@ recarrega = function(){
 			
 			if (espr){
 				
-				seta_part("cria_parede",x,y,[1,1],global.armas_sprm[i][cla_i],c_white,direction,[4,4],[image_xscale,image_xscale],90,[2,2],spr_i,image_angle)
+				seta_part("cria_pente",x,y,[1,1],global.armas_sprm[i][cla_i],c_white,direction,[4,4],[image_xscale,image_xscale],[1,1],90,[2,2],spr_i,image_angle)
 		
 			}	
 		}
@@ -473,7 +509,7 @@ recarrega = function(){
 			
 			if (modo) recarregando=0
 			
-			seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],45,[tiiv/2,tiiv/2])
+			seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2])
 			
 			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>3 and asset_get_type(global.armas_sons[i][3]) == asset_sound){ 
 				
@@ -527,7 +563,6 @@ reseta_coisas = function(){
 
 colocando_os_acessorios = function(){
 	
-	if !usar exit;
 	audio_emitter_position(emitter,x,y,1)
 	
 	if (i<array_length(global.armas_mods)){
@@ -566,6 +601,8 @@ colocando_os_acessorios = function(){
 	}
 	pai.vel-=peso
 }
+
+#endregion
 
 estado_parado = function(){
 	
@@ -621,5 +658,7 @@ estado_mirando = function(){
 	muda_estados()
 	
 }
+
+#endregion
 
 estado = estado_parado

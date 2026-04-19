@@ -1,6 +1,7 @@
 i = global.arma
 enter = 0
-
+// and global.armas_mode[i][p][22]
+//  and global.armas_mode[i][p][22]
 var cn = gamepad_is_connected(0)
 var esc_tec = !cn ? keyboard_check_pressed(vk_escape)	: gamepad_button_check_pressed(0,gp_start)
 
@@ -16,9 +17,18 @@ if (!lista and alp){
 	
 	if (mas_tec){
 		
+		#region Variaveis
+		
 		var px1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][0] : -8
 		var py1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][1] : -8
 		
+		for (var md=0;md<array_length(pext);md++){
+		
+			if (array_length(pext[md])>4 and array_length(pext[index])>4 and pext[index][4] = 0 and array_length(global.armas_modx[i][index])>1) px1 += global.armas_modx[i][index][0]>pext[md][2] ? pext[md][0] : 0
+			if (array_length(pext[md])>4 and array_length(pext[index])>4 and pext[index][4] = 0 and array_length(global.armas_modx[i][index])>1) py1 += global.armas_modx[i][index][1]>pext[md][3] ? pext[md][1] : 0
+		
+		}
+					
 		index+=1
 		var qtd = index
 		var foi = 0
@@ -26,10 +36,18 @@ if (!lista and alp){
 		var posi = -100
 		var posdif = -100
 		
+		#endregion
+		
 		for (var p=0;p<array_length(global.armas_modx[i]);p++){
 			
 			var px2 = array_length(global.armas_modx[i][p])>1 ? global.armas_modx[i][p][0] : -9
 			var py2 = array_length(global.armas_modx[i][p])>1 ? global.armas_modx[i][p][1] : -9
+			
+			#region NAO TA INDO (ELE É O PROBLEMA)
+			
+			//show_message(pext)
+			
+			#endregion
 			
 			if (p = 0){
 			
@@ -37,14 +55,34 @@ if (!lista and alp){
 				
 					pos[m][0] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0] : -9 
 					pos[m][1] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1] : -9
+					
+					//show_message(pext)
+					
+					for (var md=0;md<array_length(pext);md++){
+						
+						if (m = 2){ 
+							
+							//show_message(md)
+							//show_message(array_length(pext[md])>4)
+							//show_message(array_length(pext[m])>4)
+							//show_message(pext[p][4] = 0)
+							//show_message(global.armas_modx[i][m])
+							//if (array_length(global.armas_modx[i][m])>1) show_message(global.armas_modx[i][m][0]>pext[md][2])
+							
+						}
+							
+						if (array_length(pext[md])>4 and array_length(pext[m])>4 and pext[m][4] = 0 and array_length(global.armas_modx[i][m])>1) pos[m][0] += global.armas_modx[i][m][0]>pext[md][2] ? pext[md][0] : 0
+						if (array_length(pext[md])>4 and array_length(pext[m])>4 and pext[m][4] = 0 and array_length(global.armas_modx[i][m])>1) pos[m][1] += global.armas_modx[i][m][1]>pext[md][3] ? pext[md][1] : 0
 				
+					}
+					
 					if (pos[m][0]>-6 and px1<pos[m][0] and ((px1-pos[m][0]>posdif)) and px1-pos[m][0]!=0){ 
 					
-						//show_message(px1-pos[m][0])
-						//show_message(posdif)
 						posdif = px1-pos[m][0]
 						posi = m
-						//show_message(string(posi) + "aaa")
+						//show_message(string(px1) + "aaa")
+						//show_message(string(pos[m][0]) + "aaa")
+						//show_message(string(posdif) + "aaa")
 				
 					}
 				}
@@ -76,6 +114,13 @@ if (!lista and alp){
 		var px1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][0] : -8
 		var py1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][1] : -8
 		
+		for (var md=0;md<array_length(pext);md++){
+		
+			if (array_length(pext[md])>4 and array_length(pext[index])>4 and pext[index][4] = 0 and array_length(global.armas_modx[i][index])>1) px1 += global.armas_modx[i][index][0]>pext[md][2] ? pext[md][0] : 0
+			if (array_length(pext[md])>4 and array_length(pext[index])>4 and pext[index][4] = 0 and array_length(global.armas_modx[i][index])>1) py1 += global.armas_modx[i][index][1]>pext[md][3] ? pext[md][1] : 0
+		
+		}
+			
 		index-=1
 		var qtd = index
 		var foi = 0
@@ -94,6 +139,24 @@ if (!lista and alp){
 				
 					pos[m][0] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0] : -9 
 					pos[m][1] = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1] : -9
+					
+					for (var md=0;md<array_length(pext);md++){
+						
+						if (m = 2){ 
+							
+							//show_message(md)
+							//show_message(array_length(pext[md])>4)
+							//show_message(array_length(pext[m])>4)
+							//show_message(pext[p][4] = 0)
+							//show_message(global.armas_modx[i][m])
+							//if (array_length(global.armas_modx[i][m])>1) show_message(global.armas_modx[i][m][0]>pext[md][2])
+							
+						}
+							
+						if (array_length(pext[md])>4 and array_length(pext[m])>4 and pext[m][4] = 0 and array_length(global.armas_modx[i][m])>1) pos[m][0] += global.armas_modx[i][m][0]>pext[md][2] ? pext[md][0] : 0
+						if (array_length(pext[md])>4 and array_length(pext[m])>4 and pext[m][4] = 0 and array_length(global.armas_modx[i][m])>1) pos[m][1] += global.armas_modx[i][m][1]>pext[md][3] ? pext[md][1] : 0
+				
+					}
 					
 					if ((pos[m][0]>-6 and px1>pos[m][0] and ((px1-pos[m][0]<posdif)) and px1-pos[m][0]!=0) or (index=-1 and array_length(global.armas_modx[i][0])<1)){ 
 						
@@ -270,9 +333,10 @@ if (esc_tec){
 			var ptm2 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>19 ? global.armas_mode[i][m][mod_i][19] : 0
 			var ptm3 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0]: 0
 			var ptm4 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1]: 0
-		
-			pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4]
-		
+			var ptm5 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>21 ? global.armas_mode[i][m][mod_i][21] : 0
+			
+			pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4,ptm5]
+			
 		}
 	}
 	
@@ -340,10 +404,10 @@ if (lista){
 			var mod_i = m //modificador usado
 			var ar1 = array_length(global.armas_mode[i][lista-1])>0 //verifica se tem algo na array
 			var ar2 = ar1 and is_array(global.armas_mode[i][lista-1][mod_i]) //verifica se tem uma array na array
-			var ar3 = ar2 and array_length(global.armas_mode[i][lista-1][mod_i])>20 //verifica se na segunda array tem o id do modificador
+			var ar3 = ar2 and array_length(global.armas_mode[i][lista-1][mod_i])>21 //verifica se na segunda array tem o id do modificador
 			var btmd = array_length(bloqs)
 			//show_message(global.armas_mode[i])
-			bloqs[btmd] = ar3 ? global.armas_mode[i][lista-1][mod_i][20] : -3
+			bloqs[btmd] = ar3 ? global.armas_mode[i][lista-1][mod_i][21] : -3
 			
 		}
 		
@@ -395,8 +459,10 @@ if (lista){
 		var ptm2 = array_length(global.armas_mode[i][mod_i])>1 and array_length(global.armas_mode[i][mod_i][m])>19 ? global.armas_mode[i][mod_i][m][19] : 0
 		var ptm3 = array_length(global.armas_modx[i][mod_i])>1 ? global.armas_modx[i][mod_i][0]: 0
 		var ptm4 = array_length(global.armas_modx[i][mod_i])>1 ? global.armas_modx[i][mod_i][1]: 0
-		pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4]
+		var ptm5 = array_length(global.armas_mode[i][mod_i])>1 and array_length(global.armas_mode[i][mod_i][m])>21 ? global.armas_mode[i][mod_i][m][21] : 0
 		
+		pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4,ptm5]
+			
 	}
 	
 	if (bai_tec and lista){
@@ -417,7 +483,9 @@ if (lista){
 		var ptm2 = array_length(global.armas_mode[i][mod_i])>1 and array_length(global.armas_mode[i][mod_i][m])>19 ? global.armas_mode[i][mod_i][m][19] : 0
 		var ptm3 = array_length(global.armas_modx[i][mod_i])>1  ? global.armas_modx[i][mod_i][0]: 0
 		var ptm4 = array_length(global.armas_modx[i][mod_i])>1  ? global.armas_modx[i][mod_i][1]: 0
-		pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4]
+		var ptm5 = array_length(global.armas_mode[i][mod_i])>1 and array_length(global.armas_mode[i][mod_i][m])>21 ? global.armas_mode[i][mod_i][m][21] : 0
+		
+		pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4,ptm5]
 		
 	}
 }

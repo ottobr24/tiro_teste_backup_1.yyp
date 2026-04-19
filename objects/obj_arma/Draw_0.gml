@@ -68,15 +68,17 @@ if (i<array_length(global.armas_mods)){
 				var mod_my = 0
 				
 				for (var md=0;md<array_length(pext);md++){
-					
-					if (array_length(pext[md])>3)	mod_mx += global.armas_modx[i][m][0]>pext[md][2] ? pext[md][0] : 0
-					if (array_length(pext[md])>3)	mod_my += global.armas_modx[i][m][1]>pext[md][3] ? pext[md][1] : 0
-					
+				
+					if (array_length(pext[md])>4 and array_length(pext)>m and array_length(pext[m])>4 and pext[m][4] = 0)	mod_mx += global.armas_modx[i][m][0]>pext[md][2] ? pext[md][0] : 0
+					if (array_length(pext[md])>4 and array_length(pext)>m and array_length(pext[m])>4 and pext[m][4] = 0)	mod_my += global.armas_modx[i][m][1]>pext[md][3] ? pext[md][1] : 0
+				
 				}
+			
+				var mod_an2 = mod_my>0 ? ang-90 : ang-90
 				
-				var mod_mx2 = lengthdir_x(max(mod_mx,mod_my)*image_xscale,image_angle)
-				var mod_my2	= lengthdir_y(max(mod_mx,mod_my)*image_xscale,image_angle)
-				
+				var mod_mx2 = lengthdir_x(mod_mx*image_xscale,image_angle) + lengthdir_x(mod_my*image_xscale,mod_an)
+				var mod_my2	= lengthdir_y(mod_mx*image_xscale,image_angle) + lengthdir_y(mod_my*image_xscale,mod_an)
+			
 				var _x = x + mod_xo + mod_mx2 
 				var _y = y + mod_yo + mod_my2
 		
@@ -107,18 +109,21 @@ if (i<array_length(global.armas_mods)){
 			var mod_ii = grd-1 = m ? !tirg : global.armas_modi[i][m]
 			var mod_mx = 0 
 			var mod_my = 0
+			var deb = keyboard_check_pressed(ord("A")) and m = 8
 			
 			for (var md=0;md<array_length(pext);md++){
 				
-				if (array_length(pext[md])>3)	mod_mx += global.armas_modx[i][m][0]>pext[md][2] ? pext[md][0] : 0
-				if (array_length(pext[md])>3)	mod_my += global.armas_modx[i][m][1]>pext[md][3] ? pext[md][1] : 0
+				if (array_length(pext[md])>4 and array_length(pext)>m and array_length(pext[m])>4 and pext[m][4] = 0)	mod_mx += global.armas_modx[i][m][0]>pext[md][2] ? pext[md][0] : 0
+				if (array_length(pext[md])>4 and array_length(pext)>m and array_length(pext[m])>4 and pext[m][4] = 0)	mod_my += global.armas_modx[i][m][1]>pext[md][3] ? pext[md][1] : 0
 				
 			}
 			
 			//var mod_dx = 
 			
-			var mod_mx2 = lengthdir_x(max(mod_mx,mod_my)*image_xscale,image_angle)
-			var mod_my2	= lengthdir_y(max(mod_mx,mod_my)*image_xscale,image_angle)
+			var mod_an2 = mod_my>0 ? ang-90 : ang-90
+			
+			var mod_mx2 = lengthdir_x(mod_mx*image_xscale,image_angle) + lengthdir_x(mod_my*image_xscale,mod_an)
+			var mod_my2	= lengthdir_y(mod_mx*image_xscale,image_angle) + lengthdir_y(mod_my*image_xscale,mod_an)
 			
 			var mod_x = x + mod_xo + mod_mx2 
 			var mod_y = y + mod_yo + mod_my2
@@ -128,20 +133,5 @@ if (i<array_length(global.armas_mods)){
 		}
 	}
 }
-		
-if (fogo_tempo>0){
-	
-	var sprh = sprite_get_width(global.armas_sprt[i]) +12
-	var dirp = image_xscale=1 ? direction+90 : direction-90
-	var dirp2 = image_xscale!=1 ? direction+90 : direction-90
-	var margy = lengthdir_y(3,dirp2)
-	
-	var _x = x + lengthdir_x(sprh,direction)
-	var _y = y + margy + lengthdir_y(sprh,direction)
-			
-	var tmdx = global.tiros_velo[i]/10
-	var tmdy = global.tiros_velo[i]/10
-	
-	draw_sprite_ext(spr_fogo,fogo_ii,_x,_y,fogo_ix,fogo_ix,image_angle,image_blend,image_alpha)
-	
-}
+
+desenha_fogo()

@@ -50,7 +50,7 @@ for (var b=0;b<array_length(colisao);b++){
 			var distc = [180						,180						,90							,180						]
 			var vels  = [vel/2						,vel/2						,global.tiros_velo[i]		,vel/2						]
 			var velm  = [vel/4						,vel/4						,global.tiros_velo[i]/2		,vel/4						]
-            seta_part("cria_parede",x-_x,y-_y,[dano/2,dano_max],spr_particula_parede,cores[b],direction,[vels[b],vels[b]],[2,2.5],distc[b],[velm[b],velm[b]])
+            seta_part("cria_parede",x-_x,y-_y,[dano/2,dano_max],spr_particula_parede,cores[b],direction,[vels[b],vels[b]],[2,2.5],[2,2.5],distc[b],[velm[b],velm[b]])
 			
 			#endregion
 			

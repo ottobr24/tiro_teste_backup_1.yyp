@@ -9,8 +9,4 @@ if (global.debug){
 	mp_grid_draw(obj_controlador.mapa)
 	draw_set_alpha( 1)
 	
-	draw_set_colour(c_black)
-	draw_text(x,y,instance_place(x,y,obj_regioes).reg)
-	draw_set_colour(-1)
-	
 }

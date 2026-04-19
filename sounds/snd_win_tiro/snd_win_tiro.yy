@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.9680046,
+  "duration":5.936712,
   "exportDir":"",
   "name":"snd_win_tiro",
   "parent":{

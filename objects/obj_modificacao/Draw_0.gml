@@ -1,3 +1,5 @@
+#region Variaveis
+
 var gw = room_width 
 var gh = room_height
 var cn = gamepad_is_connected(0)
@@ -14,10 +16,18 @@ var spryo = sprite_get_yoffset(spr)
 var mod_esc = sprxs / 4
 var mod_tec = !cn ? mouse_check_button_pressed(mb_left) or keyboard_check_pressed(vk_enter) : gamepad_button_check_pressed(0,gp_face1)
 
+#endregion
+
+#region Desenha fundo
+
 draw_set_alpha(alp)
 draw_set_colour(c_navy)
 draw_rectangle(0,0,gw,gh,0)
 draw_set_colour(-1)
+
+#endregion
+
+#region Desenha Arma
 
 draw_set_font(fnt_modificacao)
 draw_set_halign(1)
@@ -25,6 +35,8 @@ draw_set_valign(1)
 
 sprite_set_offset(spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
 draw_sprite_ext(spr,0,sprx,spry,sprxs,sprys,0,c_white,alp)
+
+#endregion
 
 if (i<array_length(global.armas_mods) and alp){
 	
@@ -44,8 +56,8 @@ if (i<array_length(global.armas_mods) and alp){
 			
 			for (var md=0;md<array_length(pext);md++){
 				
-				if (array_length(pext[md])>3)mod_mx += global.armas_modx[i][m][0]>pext[md][2] ? pext[md][0] : 0
-				if (array_length(pext[md])>3)mod_my += global.armas_modx[i][m][1]>pext[md][3] ? pext[md][1] : 0
+				if (array_length(pext[md])>4 and pext[m][4] = 0)mod_mx += global.armas_modx[i][m][0]>pext[md][2] ? pext[md][0] : 0
+				if (array_length(pext[md])>4 and pext[m][4] = 0)mod_my += global.armas_modx[i][m][1]>pext[md][3] ? pext[md][1] : 0
 				
 			}
 			
@@ -80,17 +92,26 @@ if (i<array_length(global.armas_mods) and alp){
 	
 			var mod_mx = 0 
 			var mod_my = 0
+			var deb = keyboard_check_pressed(ord("A"))
+			
+			#region Adiantando o ponto
 			
 			for (var md=0;md<array_length(pext);md++){
 				
-				if (array_length(pext[md])>3)	mod_mx += global.armas_modx[i][p][0]>pext[md][2] ? pext[md][0] : 0
-				if (array_length(pext[md])>3)	mod_my += global.armas_modx[i][p][1]>pext[md][3] ? pext[md][1] : 0
+				// (deb and pext[md][4] = 1) show_message(mod_mx)
+				
+				if (array_length(pext[md])>4 and pext[p][4] = 0) mod_mx += global.armas_modx[i][p][0]>pext[md][2] ? pext[md][0] : 0
+				if (array_length(pext[md])>4 and pext[p][4] = 0) mod_my += global.armas_modx[i][p][1]>pext[md][3] ? pext[md][1] : 0
+				
+				//if (deb and pext[md][4] = 1) show_message(mod_mx)
 				
 			}
 			
-			var mod_spr =  global.armas_modp[i][p][global.armas_mods[i][p]]
-			var mod_x1 = global.armas_modx[i][p][0]+.5 + mod_mx
-			var mod_y1 = global.armas_modx[i][p][1]+.5 + mod_my
+			#endregion
+			
+			var mod_spr = global.armas_modp[i][p][global.armas_mods[i][p]]
+			var mod_x1	= global.armas_modx[i][p][0]+.5 + mod_mx
+			var mod_y1	= global.armas_modx[i][p][1]+.5 + mod_my
 			
 			var mod_x = sprx+mod_x1*sprxs-((sprw*sprxs)/2)
 			var mod_y = spry+mod_y1*sprys-((sprh*sprys)/2)
@@ -162,24 +183,45 @@ if (i<array_length(global.armas_mods) and alp){
 			
 			#region Testando se deu algum erro na minha modificação atual
 			
-			var deb = keyboard_check(ord("K"))
-			
 			for (var m=0;m<array_length(ids);m++){
 				
-				for (var h=0;h<array_length(ids[m]);h++){
+				var deb = keyboard_check(ord("K")) and m = 9
+			
+				var mod_i = global.armas_mods[i][m]
+				var ar1 = array_length(global.armas_mode[i][m])>0 //verifica se tem algo na array
+				var ar2 = ar1 and is_array(global.armas_mode[i][m][mod_i]) //verifica se tem uma array na array
+				var ar3 = ar2 and array_length(global.armas_mode[i][m][mod_i])>20 //verifica se na segunda array tem o id do modificador
+				var bid = ar3 ? global.armas_mode[i][m][mod_i][20] : -3
+				var bloqs2 = []
 					
-					var mod_i = global.armas_mods[i][m]
-					var ar1 = array_length(global.armas_mode[i][m])>0 //verifica se tem algo na array
-					var ar2 = ar1 and is_array(global.armas_mode[i][m][mod_i]) //verifica se tem uma array na array
-					var ar3 = ar2 and array_length(global.armas_mode[i][m][mod_i])>20 //verifica se na segunda array tem o id do modificador
-					var bid = ar3 ? global.armas_mode[i][m][mod_i][20] : -3
-					 
-					if (bid = bloq[h][0]){ 
+				for (var blo = 0;blo<array_length(bloq);blo++){
 					
-						global.armas_mods[i][m] = 0
+					var btmd3 = array_length(bloqs2)
+					
+					bloqs2[btmd3] = bloq[blo][0]
+					
+				}
 				
-					}
-				}	
+				if (achando_na_array(bloqs2,bid)>-1){ 
+				
+					global.armas_mods[i][m] = 0
+				
+				}
+					
+				//for (var h=0;h<array_length(ids[m]);h++){
+					
+				//	//show_message(bloq[0])
+					
+					
+				//	//if(deb) show_message(bloqs2)
+				//	//if(deb) show_message(ar1)
+				//	//if(deb) show_message(ar2)
+				//	//if(deb) show_message(ar3)
+				//	//if(deb) show_message(bid)
+				//	//if(deb) show_message(bloq)
+				//	//if(deb) show_message()
+					
+				//}	
 			}
 			
 			#endregion
