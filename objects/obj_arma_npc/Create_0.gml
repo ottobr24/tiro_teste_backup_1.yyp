@@ -7,7 +7,11 @@ i=0
 recarregando = 0
 recarregando_timer = 0
 recarregando_tempo = 0
+
 rext=0
+
+pode_pente = 1
+pode_tirof = 1
 
 prec = 0
 prec_menos = 0
@@ -63,7 +67,11 @@ tirg = mung
 
 pext = []
 equip = 1
-usar = 1
+
+tem_pente = 1
+
+mods = []
+modi = []
 
 mx = device_mouse_x_to_gui(0)
 my = device_mouse_y_to_gui(0)
@@ -197,7 +205,7 @@ atira = function(){
 	
 		for (var m=0;m<array_length(global.armas_mods[i]);m++){
 		
-			if (array_length(global.armas_modn[i][m])>0 and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][3]=11){
+			if (array_length(global.armas_modn[i][m])>0 and is_array(global.armas_mode[i][m][mods[m]]) and global.armas_mode[i][m][mods[m]][3]=11){
 				
 				grd = m+1
 				
@@ -239,13 +247,13 @@ atira = function(){
 		
 				repeat(bala){
 			
-					var sil = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][global.armas_mods[i][2]]) and global.armas_mode[i][2][global.armas_mods[i][2]][3]=4
-					var fre = i<array_length(global.armas_mods) and array_length(global.armas_mods[i])>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][global.armas_mods[i][2]]) and global.armas_mode[i][2][global.armas_mods[i][2]][3]=3
+					var sil = i<array_length(global.armas_mods) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
+					var fre = i<array_length(global.armas_mods) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=3
 				
-					var sprh = sprite_width*image_xscale
-					var dirp = image_xscale=1 ? direction+90 : direction-90
-					var dirp2 = image_xscale!=1 ? direction+90 : direction-90
-					var margy = lengthdir_y(3,dirp2)
+					var sprh	= sprite_width*image_xscale
+					var dirp	= image_xscale=1	? direction+90 : direction-90
+					var dirp2	= image_xscale!=1	? direction+90 : direction-90
+					var margy	= lengthdir_y(3,dirp2)
 				
 					var tiiv = global.tiros_velo[i]*1
 					var tx = x + lengthdir_x(sprh/2,direction)
@@ -258,11 +266,13 @@ atira = function(){
 				
 					var dir = direction - random_range(prec,-prec)
 					var t = instance_create_layer(_x,_y,"Level",obj_tiro)
+					
 					t.i = i                                     
 					t.direction = dir                           
 					t.image_angle = dir                         
 					t.dano = dano                
-					t.pai = pai                                 
+					t.pai = pai                 
+					
 					prec+=prec_menos             
 				
 					pai.cx -= coix *1.5          
@@ -270,18 +280,17 @@ atira = function(){
 			
 					global.shake += shak / 2    
             
-					if (global.armas_part[i][0]) seta_part("cria_tiro",tx,ty,[global.armas_part[i][0],global.armas_part[i][0]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2])
 					//toca_som(global.armas_sons[i][0],1,0,1,.15)
 					fogo_tempo = 10
 					fogo_ii = irandom_range(0,sprite_get_number(spr_fogo))
 					fogo_dir = dir
-					fogo_ix = global.tiros_velo[i]/10*image_xscale
+					fogo_ix = global.tiros_velo[i]/10
 				
 					if (sil) fogo_tempo = 0
 					
 					if (fre){ 
 						
-						fogo_ix = 1.25
+						fogo_ix *= 1.25
 						fogo_tempo /=2
 				
 					}
@@ -289,7 +298,9 @@ atira = function(){
 					vol = sil ? 0.05 : 1
 				
 				}                                            
-	        
+				
+				if (global.armas_part[i][0]) seta_part("cria_tiro",tx,ty,[global.armas_part[i][0],global.armas_part[i][0]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+					
 				prep--
 				tiro--	
 				rajadas--
@@ -305,11 +316,35 @@ atira = function(){
 				
 				}
 		
-				if (!tiro and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>6 and asset_get_type(global.armas_sons[i][6]) == asset_sound){ 
+				if (!tiro){ 
+					
+					var cabe = i<array_length(global.armas_sprf)
+					
+					var mod_i = mods[4]
+					var spr_i = modi[4]
+					
+					var cla_i = clamp(mod_i,0,array_length(global.armas_sprf[i]))
+					
+					var espr = asset_get_type(global.armas_sprf[i][cla_i]) == asset_sprite and pode_tirof and tem_pente
+			
+					if (espr){
+						
+						var _x = x + lengthdir_x(sprite_width/3,direction)
+						var _y = y + lengthdir_y(sprite_width/3,direction)
+						
+						seta_part("cria_tirof",_x,_y,[1,1],global.armas_sprf[i][cla_i],c_white,dirp,[6,6],[image_xscale,image_xscale],[1,1],20,[3,3],spr_i,0)
+						
+						pode_tirof = 0
+						tem_pente = 0
+						
+					}	
+			
+					if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>6 and asset_get_type(global.armas_sons[i][6]) == asset_sound){ 
 	
-					sons[6] = toca_som(global.armas_sons[i][6],1,10,50,,0,.1,0)
-					refff = 0
-	
+						sons[6] = toca_som(global.armas_sons[i][6],1,50,250,,0,.1,0)
+						refff = 0
+					
+					}
 				}
 				
 				//audio_play_sound(snd_249_cock,10,0)
@@ -408,7 +443,7 @@ preparando = function(){
 		
 		prep = global.armas_prep[i]
 		
-		if (poc) seta_part("cria_tiro",x,y,[global.armas_part[i][2],global.armas_part[i][2]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2])
+		if (poc) seta_part("cria_tiro",x,y,[global.armas_part[i][2],global.armas_part[i][2]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
 		
 		if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>1 and asset_get_type(global.armas_sons[i][1]) == asset_sound){
 			
@@ -424,7 +459,7 @@ preparando = function(){
 			if (tiro>0){
 			
 				if (poc) tiro-=qtd
-				if (poc) seta_part("cria_tiro",x,y,[qtd,qtd],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2])
+				if (poc) seta_part("cria_tiro",x,y,[qtd,qtd],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
 			
 			}
 		}
@@ -459,6 +494,8 @@ recarrega = function(){
 		
 		if (!recarregando){ 
 			
+			#region Cria som
+			
 			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and asset_get_type(global.armas_sons[i][2]) == asset_sound){
 			
 				if (!modo)sons[2] = toca_som(global.armas_sons[i][2],1,10,50,,0,.1,0)
@@ -466,19 +503,67 @@ recarrega = function(){
 			
 			}
 			
+			#endregion
+			
+			#region Pente e outro
+			
+			#region Variaveis
+			
 			var cabe = i<array_length(global.armas_mods)
 			var temmod = cabe and array_length(global.armas_modp[i])>4
 			var temspr = temmod and array_length(global.armas_modp[i][4])>0
-			var mod_i = global.armas_mods[i][4]
-			var spr_i = global.armas_modi[i][4]
+			var mod_i = mods[4]
+			var spr_i = modi[4]
 			var cla_i = clamp(mod_i,0,array_length(global.armas_sprm[i]))
-			var espr = asset_get_type(global.armas_sprm[i][cla_i]) == asset_sprite
+			var espr = asset_get_type(global.armas_sprm[i][cla_i]) == asset_sprite and modo = 0 and pode_pente and tem_pente
+			
+			#endregion
+			
+			#region Cria pente e outros
+			
+			#region Pente
 			
 			if (espr){
 				
-				seta_part("cria_pente",x,y,[1,1],global.armas_sprm[i][cla_i],c_white,direction,[4,4],[image_xscale,image_xscale],[1,1],90,[2,2],spr_i,image_angle)
-		
-			}	
+				seta_part("cria_pente",x,y,[1,1],global.armas_sprm[i][cla_i],c_white,dirp,[5,5],[image_xscale,image_xscale],[1,1],15,[3,3],spr_i,image_angle)
+				
+				cabe = i<array_length(global.armas_sprf)
+				
+				mod_i = 0
+				
+				cla_i = clamp(mod_i,0,array_length(global.armas_sprf[i]))
+				
+				espr = asset_get_type(global.armas_sprf[i][cla_i]) == asset_sprite and tem_pente
+				
+				if (espr and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>6 and asset_get_type(global.armas_sons[i][6]) == asset_sound){ 
+	
+					sons[6] = toca_som(global.armas_sons[i][6],1,50,250,,0,.1,0)
+					refff = 0
+				
+				}
+				
+				pode_pente = 0
+				tem_pente = 0
+				
+			}
+			
+			#endregion
+			
+			#region Tira uma bala
+			
+			if (tiro = municao and global.armas_rext[i]=1){
+				
+				tiro--
+				seta_part("cria_tiro",x,y,[1,1],global.tiros_part[i],c_white,dirt,[tiro_v,tiro_v],[2,2.5],[2,2.5],45,[tiro_v/2,tiro_v/2],0,0)
+				
+			}
+			
+			#endregion
+			
+			#endregion
+			
+			#endregion
+			
 		}
 		
 		recarregando=1
@@ -505,11 +590,15 @@ recarrega = function(){
 				reff = cock
 				recarregando=0
 				
+				pode_pente = 1
+				pode_tirof = 1
+				tem_pente = 1
+				
 			}
 			
 			if (modo) recarregando=0
 			
-			seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2])
+			seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
 			
 			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>3 and asset_get_type(global.armas_sons[i][3]) == asset_sound){ 
 				
@@ -569,7 +658,7 @@ colocando_os_acessorios = function(){
 	
 		for (var m=0;m<array_length(global.armas_mode[i]);m++){
 		
-			var mod_i = global.armas_mods[i][m]
+			var mod_i = mods[m]
 			var ptmd = array_length(pext)
 			
 			if (array_length(global.armas_mode[i][m])>0 and is_array(global.armas_mode[i][m][mod_i]) and array_length(global.armas_mode[i][m][mod_i])>8){

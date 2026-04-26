@@ -1611,7 +1611,7 @@ global.acessorios = {
 	cab_mirf : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [5,0,0,0,0,0,0,0,0,0,0,0,0.0,0.00,0,0,0,-1,0,0]
+		var variaveis = [5,0,0,0,0,0,0,0,0,0,0,0,0.0,0.00,0,0,0,-200,0,0]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1630,7 +1630,7 @@ global.acessorios = {
 	cab_magf : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [17,0,0,0,-.25,0,0,0,0,0,0,0,0.04,0.05,0,0,0,-1,0,0]
+		var variaveis = [17,0,0,0,-.25,0,0,0,0,0,0,0,0.04,0.05,0,0,0,20,1,0]
 		
 		for (var i=0;i<array_length(val2);i++){
 			

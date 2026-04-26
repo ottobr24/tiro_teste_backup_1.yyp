@@ -1,8 +1,11 @@
+randomise()
+
 hspd=0
 vspd=0
 vel = 2
 estado = 0
 estado_txt = ""
+armai = irandom_range(0,array_length(global.armas_nome)-1)
 arma = -4
 vida_max = 100
 vida = vida_max
@@ -15,14 +18,44 @@ cdm = 0
 colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
 equipado = 1
 controle = 1
+qtd = global.player_ord
+
+global.player_ord++
+
+if (global.player_ord>global.players){ 
+	
+	instance_destroy()
+	exit;
+	
+}
 
 //sprite_prefetch()
 
+while(global.players>1){
+	
+	randomise()
+	x = irandom_range(0,room_width )
+	y = irandom_range(0,room_height)
+	
+	if (!place_meeting(x,y,colisao)){
+		
+		cx3 = x
+		cy3 = y
+		break;
+		
+	}
+}
+
 audio_listener_position(x,y,0)
-instance_create_layer(x,y,layer,obj_camera)
-instance_create_layer(x,y,layer,obj_controlador)
-instance_create_layer(x,y,layer,obj_cria_particulas)
-instance_create_layer(x,y,"Colisao",obj_modificacao)
+
+if (!qtd){
+
+	instance_create_layer(x,y,layer,obj_camera)
+	instance_create_layer(x,y,layer,obj_controlador)
+	instance_create_layer(x,y,layer,obj_cria_particulas)
+	instance_create_layer(x,y,"Colisao",obj_modificacao)
+
+}
 
 movendo = function(andar=1,equip=1){
 	
@@ -31,7 +64,7 @@ movendo = function(andar=1,equip=1){
 	var a = keyboard_check(ord("A"))
 	var w = keyboard_check(ord("W"))
 	var s = keyboard_check(ord("S"))
-	var e = keyboard_check_pressed(ord("E")) or (cn and gamepad_button_check_pressed(0,gp_face4))
+	var e = keyboard_check_pressed(ord("T")) or (cn and gamepad_button_check_pressed(0,gp_face4))
 	
 	if (cn) gamepad_set_axis_deadzone(0,.1)
 	
@@ -44,8 +77,13 @@ movendo = function(andar=1,equip=1){
 	var dir = !cn ? point_direction(x,y,mouse_x,mouse_y) : cd
 	
     if (!controle) direction = point_direction(0,0,(d-a)*vel,(s-w)*vel	)
-    if ( controle and rh!=0 or rv!=0) direction = point_direction(0,0,rh		,rv			)
     
+	if ( controle and (rh!=0 or rv!=0)){ 
+		
+		direction = point_direction(0,0,rh		,rv			)
+		
+	}
+	
 	hspd=0
 	vspd=0
 
@@ -64,8 +102,8 @@ movendo = function(andar=1,equip=1){
 		}
     }
     
-	direction = dir
-	
+    if (!controle) direction = dir
+    
 	if (equip){
 		
 		if (e){ 
@@ -90,26 +128,44 @@ controla_arma = function(){
 		
 			with(arma){
 			
-				i = global.arma
+				i = pai.armai
+				
 				municao = global.armas_munc[i]
+				
 				recarregando_timer = global.armas_reca[i]
+				recarregando_tempo = global.armas_reca[i]
+				rext = global.armas_rext[i]
+				
 				tiro = municao-1
 				tiro_tempo = global.armas_cade[i]
-				rajando_timer = global.armas_raca[i]
 				tiro_timer = tiro_tempo
-				prep = global.armas_prep[i]				
+				
+				rajando_timer = global.armas_raca[i]
+				
+				prep = global.armas_prep[i]		
+				
 				prec_menos = global.armas_prec[i]
+				
 				coix = global.armas_coix[i]
 				coiy = global.armas_coiy[i]
+				
 				dano = global.armas_dano[i]
-				recarregando_tempo = global.armas_reca[i]
+				
 				cliq = global.armas_cliq[i]
+				
 				rajadas_tempo = global.armas_raca[i]
 				rajadas_total = global.armas_raja[i]
+				
 				shak = global.armas_shak[i]
+				
 				bala = global.armas_bala[i]
-				rext = global.armas_rext[i]
+				
 				sons = array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
+				
+				mods = array_create(array_length(global.armas_modn[i]),0)
+				modi = array_create(array_length(global.armas_modn[i]),0)
+				
+				qtd = pai.qtd
 				
 			}
 		
@@ -211,6 +267,46 @@ muda_estado = function(an = 1,pa = 1,mo = 1){
 	}
 }
 
+abre_modificacao = function(){
+	
+	var ct = controle
+	var cn = ct and gamepad_is_connected(0)
+	
+	var esc_tec = !cn ? keyboard_check_pressed(vk_escape)	: gamepad_button_check_pressed(0,gp_start)
+
+	if (esc_tec){
+	
+		with(obj_modificacao){
+	
+			listan=0
+			alp=!alp
+			lista = -1
+			pai = other.id
+			i = pai.armai
+			
+			if (i<array_length(global.armas_mods)){
+	
+				for (var m=0;m<array_length(global.armas_mods[i]);m++){
+		
+					var mod_i = global.armas_mods[i][m]
+					var ptmd = m
+					var ptm1 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>18 ? global.armas_mode[i][m][mod_i][18] : 0
+					var ptm2 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>19 ? global.armas_mode[i][m][mod_i][19] : 0
+					var ptm3 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0]: 0
+					var ptm4 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1]: 0
+					var ptm5 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>21 ? global.armas_mode[i][m][mod_i][21] : 0
+			
+					pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4,ptm5]
+			
+				}
+			}
+	
+			window_set_cursor(cr_none)
+	
+		}
+	}
+}
+
 colidindo = function(){
 	
 	audio_listener_orientation(0,0,1,0,-1,0)
@@ -309,7 +405,14 @@ estado_andando = function(){
 	
 estado_morrendo = function(){
 	
-	game_restart()
+	if (global.players = 1 or instance_number(obj_player)-1 = 0){
+		
+		game_restart()
+		global.player_ord = 0
+		
+	}
+		
+	instance_destroy()
 	
 }
 

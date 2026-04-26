@@ -1,7 +1,6 @@
-if (!instance_exists(pai) or (!equip and rajando_timer!=global.armas_raca)){
+if (!instance_exists(pai)){
 	
 	instance_destroy()
-	if (instance_exists(pai)) pai.arma = -4
 	exit;
 	
 }

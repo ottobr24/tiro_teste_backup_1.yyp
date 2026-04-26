@@ -1,3 +1,9 @@
+if (!instance_exists(pai)){
+	
+	instance_destroy()
+	exit;
+	
+}
 
 image_speed=0
 

@@ -14,7 +14,7 @@ var spry = gh/2
 var sprxo = sprite_get_xoffset(spr)
 var spryo = sprite_get_yoffset(spr)
 var mod_esc = sprxs / 4
-var mod_tec = !cn ? mouse_check_button_pressed(mb_left) or keyboard_check_pressed(vk_enter) : gamepad_button_check_pressed(0,gp_face1)
+var mod_tec = mouse_check_button_pressed(mb_left) or keyboard_check_pressed(vk_enter) or gamepad_button_check_pressed(0,gp_face1)
 
 #endregion
 
@@ -43,16 +43,18 @@ if (i<array_length(global.armas_mods) and alp){
 	#region Desenha Sprite
 	
 	for (var m=array_length(global.armas_mods[i])-1;m>=0;m--){
+		
+		var arm = pai.arma
+		
+		if (array_length(global.armas_modp[i][m])>0 and global.armas_modp[i][m][arm.mods[m]]!=0){ //vendo se tem alguma sprite pra desenhar
 
-		if (array_length(global.armas_modp[i][m])>0 and global.armas_modp[i][m][global.armas_mods[i][m]]!=0){ //vendo se tem alguma sprite pra desenhar
-
-			var mod_spr =  global.armas_modp[i][m][global.armas_mods[i][m]] //sprite
+			var mod_spr =  global.armas_modp[i][m][arm.mods[m]] //sprite
 			var mod_xo = sprite_get_xoffset(mod_spr) //xoff
 			var mod_yo = sprite_get_yoffset(mod_spr) //yoff
 			var mod_mx = 0 
 			var mod_my = 0
-			var mod_x1 = global.armas_mode[i][m][global.armas_mods[i][m]][0]//xspr
-			var mod_y1 = global.armas_mode[i][m][global.armas_mods[i][m]][1]//yspr
+			var mod_x1 = global.armas_mode[i][m][arm.mods[m]][0]//xspr
+			var mod_y1 = global.armas_mode[i][m][arm.mods[m]][1]//yspr
 			
 			for (var md=0;md<array_length(pext);md++){
 				
@@ -65,7 +67,7 @@ if (i<array_length(global.armas_mods) and alp){
 			var mod_y = round(spry + (mod_my - mod_yo+mod_y1) * 20	   )
 			
 			var mod_l = clamp(m,0,1000)
-			var mod_i = global.armas_modi[i][mod_l]
+			var mod_i = arm.modi[mod_l]
 			
 			sprite_set_offset(mod_spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
 
@@ -94,6 +96,8 @@ if (i<array_length(global.armas_mods) and alp){
 			var mod_my = 0
 			var deb = keyboard_check_pressed(ord("A"))
 			
+			var arm = pai.arma
+		
 			#region Adiantando o ponto
 			
 			for (var md=0;md<array_length(pext);md++){
@@ -109,7 +113,7 @@ if (i<array_length(global.armas_mods) and alp){
 			
 			#endregion
 			
-			var mod_spr = global.armas_modp[i][p][global.armas_mods[i][p]]
+			var mod_spr = global.armas_modp[i][p][arm.mods[p]]
 			var mod_x1	= global.armas_modx[i][p][0]+.5 + mod_mx
 			var mod_y1	= global.armas_modx[i][p][1]+.5 + mod_my
 			
@@ -134,7 +138,7 @@ if (i<array_length(global.armas_mods) and alp){
 					//for (var m1=0;m1<array_length(global.armas_mode[i][m]);m1++){
 					
 						var btmd2 = 0
-						var mod_i = global.armas_mods[i][m] //modificador usado
+						var mod_i = arm.mods[m] //modificador usado
 						var ar1 = array_length(global.armas_mode[i][m])>0 //verifica se tem algo na array
 						var ar2 = ar1 and is_array(global.armas_mode[i][m][mod_i]) //verifica se tem uma array na array
 						var ar3 = ar2 and array_length(global.armas_mode[i][m][mod_i])>3 //verifica se na segunda array tem o id do modificador
@@ -187,7 +191,7 @@ if (i<array_length(global.armas_mods) and alp){
 				
 				var deb = keyboard_check(ord("K")) and m = 9
 			
-				var mod_i = global.armas_mods[i][m]
+				var mod_i = arm.mods[m]
 				var ar1 = array_length(global.armas_mode[i][m])>0 //verifica se tem algo na array
 				var ar2 = ar1 and is_array(global.armas_mode[i][m][mod_i]) //verifica se tem uma array na array
 				var ar3 = ar2 and array_length(global.armas_mode[i][m][mod_i])>20 //verifica se na segunda array tem o id do modificador
@@ -204,24 +208,9 @@ if (i<array_length(global.armas_mods) and alp){
 				
 				if (achando_na_array(bloqs2,bid)>-1){ 
 				
-					global.armas_mods[i][m] = 0
+					arm.mods[m] = 0
 				
 				}
-					
-				//for (var h=0;h<array_length(ids[m]);h++){
-					
-				//	//show_message(bloq[0])
-					
-					
-				//	//if(deb) show_message(bloqs2)
-				//	//if(deb) show_message(ar1)
-				//	//if(deb) show_message(ar2)
-				//	//if(deb) show_message(ar3)
-				//	//if(deb) show_message(bid)
-				//	//if(deb) show_message(bloq)
-				//	//if(deb) show_message()
-					
-				//}	
 			}
 			
 			#endregion
@@ -290,7 +279,7 @@ if (i<array_length(global.armas_mods) and alp){
 						if (lista != p+1 and !enter){
 				
 							lista = p+1
-							listai = global.armas_mods[i][lista-1]
+							listai = arm.mods[lista-1]
 						
 							var mod_i = lista-1
 					
@@ -319,7 +308,7 @@ sprite_set_offset(spr,sprxo,spryo)
 
 if (lista){
 	
-	var stmd = sprite_get_number(global.armas_modp[i][lista-1][listai])
+	var arm = pai.arma
 	//var bloqs = []
 	
 	for (var l=0;l<array_length(global.armas_modp[i][lista-1]);l++){
@@ -336,7 +325,7 @@ if (lista){
 			if (array_length(global.armas_mode[i][m])>0){	
 			
 				var btmd2 = 0
-				var mod_i = global.armas_mods[i][m] //modificador usado
+				var mod_i = arm.mods[m] //modificador usado
 				var ar1 = array_length(global.armas_mode[i][m])>0 //verifica se tem algo na array
 				var ar2 = ar1 and is_array(global.armas_mode[i][m][mod_i]) //verifica se tem uma array na array
 				var ar3 = ar2 and array_length(global.armas_mode[i][m][mod_i])>3 //verifica se na segunda array tem o id do modificador
@@ -347,8 +336,22 @@ if (lista){
 		
 		#endregion
 			
+		var margx = 0
+		var margy = 15
+			
+		var tex_w = (string_width (global.armas_modn[i][lista-1][l])-margx)
+		var tex_h = (string_height(global.armas_modn[i][lista-1][l])-margy)/2
+		
+		if (point_in_rectangle(mouse_x,mouse_y,sprx-200-tex_w,20+20*l-tex_h,sprx-200+tex_w,20+(20*l)+tex_h)){
+			
+			listai = l
+			listan=0
+			
+		}
+		
 		var col2 = l = listai and listan=0
 		var cor2 = col2 ? c_yellow : c_white
+		
 		var bloq = []
 		var bloqs = []
 		
@@ -387,17 +390,37 @@ if (lista){
 	
 		draw_set_colour(-1)
 
+		if (global.debug) draw_rectangle(sprx-200,20+(20*l)-tex_h,sprx-200+tex_w,20+(20*l)+tex_h,1)
+		
 	}
 	
 	#region Mostrando variações da modificaçãp
+	
+	var stmd = sprite_get_number(global.armas_modp[i][lista-1][listai])
 	
 	for (var c=0;c<stmd;c++){
 		
 		if (is_array(global.armas_mode[i][lista-1][listai]) and global.armas_mode[i][lista-1][listai][3] = 11) stmd=0  //se a modificação é um lança granadas, vc trava
 		
-		var col2 = c = global.armas_modi[i][lista-1] and listan=1 //se eu to em cima do texto da modificaçãp
-		var cor2 = col2 ? c_yellow : c_white //se o c é o index da modificação, amarelo
 		var tex = array_length(global.armas_mode[i][lista-1][listai])=0 or !is_array(global.armas_mode[i][lista-1][listai][2]) ? ["Padrão"] : global.armas_mode[i][lista-1][listai][2] //verificando se tem mais de uma variação da modificação, se tiver mostra o texto dela, se não so mostra o Padrão
+		
+		var margx = 0
+		var margy = 15
+			
+		var tex_w = (string_width (tex)-margx)
+		var tex_h = (string_height(tex)-margy)/2
+		
+		if (point_in_rectangle(mouse_x,mouse_y,sprx+200,20+(20*c)-tex_h,sprx+200+tex_w,20+(20*c)+tex_h)){
+			
+			arm.modi[lista-1] = c
+			listan = 1
+			
+		}
+		
+		if (is_array(global.armas_mode[i][lista-1][listai]) and global.armas_mode[i][lista-1][listai][3] = 11) stmd=0  //se a modificação é um lança granadas, vc trava
+		
+		var col2 = c = arm.modi[lista-1] and listan=1 //se eu to em cima do texto da modificaçãp
+		var cor2 = col2 ? c_yellow : c_white //se o c é o index da modificação, amarelo
 		
 		draw_set_colour(cor2)
 	
@@ -405,6 +428,8 @@ if (lista){
 	
 		draw_set_colour(-1)
 
+		if (global.debug) draw_rectangle(sprx+200,20+(20*c)-tex_h,sprx+200+tex_w,20+(20*c)+tex_h,1)
+		
 	}
 	
 	#endregion

@@ -1,10 +1,12 @@
+abre_modificacao()
+
 if(global.pause) exit;
 
 var ct = controle
 var cn = ct and gamepad_is_connected(0)
 	
-var men_tec = !cn ? keyboard_check_pressed(vk_down) : gamepad_button_check_pressed(0,gp_padd)
-var mas_tec = !cn ? keyboard_check_pressed(vk_up) : gamepad_button_check_pressed(0,gp_padu)
+var men_tec = !cn ? keyboard_check_pressed(ord("Q")) : gamepad_button_check_pressed(0,gp_padd)
+var mas_tec = !cn ? keyboard_check_pressed(ord("E")) : gamepad_button_check_pressed(0,gp_padu)
 	
 estado()
 colidindo()
@@ -13,18 +15,43 @@ if (mas_tec or men_tec){
     
     instance_destroy(arma)
     
-    if (men_tec) global.arma++
-    if (mas_tec) global.arma--
+    if (men_tec) armai++
+    if (mas_tec) armai--
         
-    global.arma %= array_length(global.armas_nome)
-	if (global.arma<0) global.arma = array_length(global.armas_nome)-1
+    armai %= array_length(global.armas_nome)
+	if (armai<0) armai = array_length(global.armas_nome)-1
 	
 }
 
-if (keyboard_check_pressed(vk_backspace)){ 
+if (qtd = 0){
 	
-	randomise()
-	global.arma = irandom_range(0,array_length(global.armas_nome)-1)
+	if (keyboard_check_pressed(vk_f12)){
+		
+		var foi = 0
+		
+		if (window_get_fullscreen() = 0){ 
+			
+			window_set_fullscreen(1)
+			foi = 1
+			
+		}else{
+			
+			if (!foi) window_set_fullscreen(0)
+			
+		}
+	}
+}
+
+if (keyboard_check_pressed(vk_backspace) or gamepad_button_check_pressed(0,gp_stickl)){ 
+	
+	with(obj_player){
+		
+		randomise()
+		armai = irandom_range(0,array_length(global.armas_nome)-1)
+	
+	}
+	
+	global.player_ord = 0
 	game_restart()   
 	
 }

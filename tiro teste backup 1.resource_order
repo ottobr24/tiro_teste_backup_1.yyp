@@ -372,6 +372,7 @@
     {"name":"spr_lee_enfield","order":3,"path":"sprites/spr_lee_enfield/spr_lee_enfield.yy",},
     {"name":"spr_m1_garand_frei","order":2,"path":"sprites/spr_m1_garand_frei/spr_m1_garand_frei.yy",},
     {"name":"spr_m1_garand_mira","order":1,"path":"sprites/spr_m1_garand_mira/spr_m1_garand_mira.yy",},
+    {"name":"spr_m1_garand_ping","order":3,"path":"sprites/spr_m1_garand_ping/spr_m1_garand_ping.yy",},
     {"name":"spr_m1_garand","order":1,"path":"sprites/spr_m1_garand/spr_m1_garand.yy",},
     {"name":"spr_m1897","order":3,"path":"sprites/spr_m1897/spr_m1897.yy",},
     {"name":"spr_m1911_pente_1","order":2,"path":"sprites/spr_m1911_pente_1/spr_m1911_pente_1.yy",},

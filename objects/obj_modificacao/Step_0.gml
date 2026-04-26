@@ -1,16 +1,17 @@
-i = global.arma
 enter = 0
-// and global.armas_mode[i][p][22]
-//  and global.armas_mode[i][p][22]
-var cn = gamepad_is_connected(0)
-var esc_tec = !cn ? keyboard_check_pressed(vk_escape)	: gamepad_button_check_pressed(0,gp_start)
 
-var mas_tec = !cn ? keyboard_check_pressed(vk_right)	: gamepad_button_check_pressed(0,gp_padr)
-var mes_tec = !cn ? keyboard_check_pressed(vk_left)		: gamepad_button_check_pressed(0,gp_padl)
-var cim_tec = !cn ? keyboard_check_pressed(vk_up)		: gamepad_button_check_pressed(0,gp_padu)
-var bai_tec = !cn ? keyboard_check_pressed(vk_down)		: gamepad_button_check_pressed(0,gp_padd)
-var mod_tec = !cn ? keyboard_check_pressed(vk_enter)	: gamepad_button_check_pressed(0,gp_face1)
+var cn = gamepad_is_connected(0)
+
+var mas_tec = keyboard_check_pressed(vk_right)	or gamepad_button_check_pressed(0,gp_padr)
+var mes_tec = keyboard_check_pressed(vk_left)	or gamepad_button_check_pressed(0,gp_padl)
+												
+var cim_tec = keyboard_check_pressed(vk_up)		or gamepad_button_check_pressed(0,gp_padu)
+var bai_tec = keyboard_check_pressed(vk_down)	or gamepad_button_check_pressed(0,gp_padd)
+												
+var mod_tec = keyboard_check_pressed(vk_enter)	or gamepad_button_check_pressed(0,gp_face1)
 	
+#region Me mexendo nas modificações	
+
 if (!lista and alp){
 	
 	#region Indo da esquerda pra direita
@@ -297,53 +298,6 @@ if (!lista and alp){
 	#endregion
 }
 
-#region Troca armas
-
-if (alp and (keyboard_check_pressed(ord("Q")) or keyboard_check_pressed(ord("E")))){
-    
-    if (keyboard_check_pressed(ord("Q"))) global.arma--
-    if (keyboard_check_pressed(ord("E"))) global.arma++
-        
-    global.arma %= array_length(global.armas_nome)
-	if (global.arma<0) global.arma = array_length(global.armas_nome)-1
-	
-    if (instance_exists(obj_player.arma))obj_player.arma.i = global.arma
-	pext = []
-	listan=0
-	
-}
-
-#endregion
-
-#region Sai e entra do menu
-
-if (esc_tec){ 
-	
-	listan=0
-	alp=!alp
-	lista = -1
-	
-	if (i<array_length(global.armas_mods)){
-	
-		for (var m=0;m<array_length(global.armas_mods[i]);m++){
-		
-			var mod_i = global.armas_mods[i][m]
-			var ptmd = m
-			var ptm1 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>18 ? global.armas_mode[i][m][mod_i][18] : 0
-			var ptm2 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>19 ? global.armas_mode[i][m][mod_i][19] : 0
-			var ptm3 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0]: 0
-			var ptm4 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1]: 0
-			var ptm5 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>21 ? global.armas_mode[i][m][mod_i][21] : 0
-			
-			pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4,ptm5]
-			
-		}
-	}
-	
-	window_set_cursor(cr_none)
-	
-}
-
 #endregion
 
 #region Variações e modificações
@@ -365,8 +319,10 @@ if (mes_tec){
 #region Mudando de modificaçãp
 
 if (lista){
-
-	global.armas_mods[i][lista-1]		= listai
+	
+	var arm = pai.arma
+	
+	arm.mods[lista-1]	= listai
 	modx[lista-1][0]	= global.armas_modx[i][lista-1][0]
 	modx[lista-1][1]	= global.armas_modx[i][lista-1][1]
 		
@@ -375,7 +331,8 @@ if (lista){
 		#region Pontos ids
 			
 		var ids = []
-		
+		var arm = pai.arma
+	
 		for (var m=0;m<array_length(global.armas_mode[i]);m++){
 			
 			var btmd = array_length(ids)
@@ -384,7 +341,7 @@ if (lista){
 			if (array_length(global.armas_mode[i][m])>0){	
 			
 				var btmd2 = 0
-				var mod_i = global.armas_mods[i][m] //modificador usado
+				var mod_i =	arm.mods[m] //modificador usado
 				var ar1 = array_length(global.armas_mode[i][m])>0 //verifica se tem algo na array
 				var ar2 = ar1 and is_array(global.armas_mode[i][m][mod_i]) //verifica se tem uma array na array
 				var ar3 = ar2 and array_length(global.armas_mode[i][m][mod_i])>3 //verifica se na segunda array tem o id do modificador
@@ -425,8 +382,10 @@ if (lista){
 		}
 		
 		if (!acha){
-		
-			global.armas_mods[i][lista-1]		= listai
+			
+			var arm = pai.arma
+			
+			arm.mods[lista-1]		= listai
 			modx[lista-1][0]	= global.armas_modx[i][lista-1][0]
 			modx[lista-1][1]	= global.armas_modx[i][lista-1][1]
 			lista = -1
@@ -443,12 +402,15 @@ if (lista){
 	
 	if (cim_tec and lista){
 	
+		var arm = pai.arma
+			
 		if (array_length(pext)>lista-1) pext[lista-1] = 0
 		if (!listan)listai--
-		if ( listan)global.armas_modi[i][lista-1] --
+		if ( listan)arm.modi[lista-1] --
 		
 		listai = clamp(listai	,0,array_length(global.armas_modp[i][lista-1])-1)
-		global.armas_modi[i][lista-1] = clamp(global.armas_modi[i][lista-1]	,0,sprite_get_number(global.armas_modp[i][lista-1][listai])-1)
+		
+		arm.modi[lista-1] = clamp(arm.modi[lista-1]	,0,sprite_get_number(global.armas_modp[i][lista-1][listai])-1)
 		
 		var mod_i = lista-1
 				
@@ -467,12 +429,14 @@ if (lista){
 	
 	if (bai_tec and lista){
 		
+		var arm = pai.arma
+			
 		if (array_length(pext)>lista-1) pext[lista-1] = 0
 		if (!listan)listai++
-		if ( listan)global.armas_modi[i][lista-1]++
+		if ( listan)arm.modi[lista-1]++
 		
 		listai = clamp(listai	,0,array_length(global.armas_modp[i][lista-1])-1)
-		global.armas_modi[i][lista-1] = clamp(global.armas_modi[i][lista-1]	,0,sprite_get_number(global.armas_modp[i][lista-1][listai])-1)
+		arm.modi[lista-1] = clamp(arm.modi[lista-1]	,0,sprite_get_number(global.armas_modp[i][lista-1][listai])-1)
 		
 		var mod_i = lista-1
 					

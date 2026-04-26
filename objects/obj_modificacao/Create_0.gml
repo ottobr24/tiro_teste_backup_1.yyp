@@ -13,6 +13,7 @@ pontos_perto = [0,0]
 pontos = [] 
 bloqueados = []
 enter = 0
+pai = -4
 
 for (var i2=0;i2<array_length(global.armas_modn);i2++){
 	

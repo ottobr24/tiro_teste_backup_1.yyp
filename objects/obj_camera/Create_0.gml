@@ -5,7 +5,7 @@ seg = 0
 ind = 0
 // >0 = parada -1 = segue
 var es = 1//application_surface_is_enabled()+1
-cpos = [[[-1,-1],[0,0],[-1,-1],[0,0]]]
+cpos = [[[-1,-1],[0,0],[-1,-1],[-2,-2]]]
 		  
 cesc = [[.5,1,.43,-1]]
 pose = [0,0]
@@ -51,42 +51,7 @@ segue_player = function(){
 			
 		}
 		
-		with(obj_player){
-			
-			//obj = instance_place(x,y,obj_colisao_cam)
-			
-		}
-		
-		//if (obj){
-		//	
-		//	roo = obj.i 
-		//	
-		//}else{ 
-		//	
-		//	roo= 0
-		//	
-		//}
-		
-		if (roo = 3){ 
-			
-			var ids = []
-			
-			with(obj_player){
-				
-				var itmd = array_length(ids)
-				ids[itmd] = id
-			
-			}
-			
-			escala = 1
-			
-			//escala = clamp(escala,0,1)
-			
-		}else{
-			
-			if (!global.debug) escala =	lerp(escala,cesc[cap][roo],0.1)
-		
-		}
+		if (!global.debug) escala =	lerp(escala,cesc[cap][roo],0.1)
 		
 		ind = clamp(ind,0,array_length(alvos[seg])-1)
 		
@@ -124,12 +89,45 @@ segue_player = function(){
 				x = lerp(x,cpos[cap][roo][0]+pose[0],0.05)
 				y =	lerp(y,cpos[cap][roo][1]+pose[1],0.05)
 		
-			}else{
+			}
+			
+			if (cpos[cap][roo][0]=-1){
 		
 				x = lerp(x,alvo.x-cw/2+pose[0],0.05)
 				y =	lerp(y,alvo.y-ch/2+pose[1],0.05)
 		
 			}
+			
+			if (cpos[cap][roo][0]=-2){
+				
+				var pid = []
+				
+				with(obj_player){
+					
+					var tmd = array_length(pid)
+					pid[tmd] = id
+					
+				}
+				
+				var marg	= 250
+				var margx	= 75	*escala
+				var margy	= 75	*escala
+				
+				var difx = abs(pid[0].x-pid[1].x)
+				var dify = abs(pid[0].y-pid[1].y)
+				
+				var _x = max(pid[0].x,pid[1].x) - margx - difx
+				var _y = max(pid[0].y,pid[1].y) - margy - dify
+				
+				cesc[cap][roo] = (difx+dify+marg) / cmw
+				
+				escala = clamp(escala,.5,infinity)
+				
+				x = lerp(x,_x,0.05)
+				y =	lerp(y,_y,0.05)
+		
+			}
+			
 		}else{
 			
 			var d = keyboard_check(vk_right)

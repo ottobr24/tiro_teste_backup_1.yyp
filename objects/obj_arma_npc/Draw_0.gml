@@ -1,7 +1,6 @@
-if (!instance_exists(pai) or (!equip and rajando_timer!=global.armas_raca)){
+if (!instance_exists(pai)){
 	
 	instance_destroy()
-	if (instance_exists(pai)) pai.arma = -4
 	exit;
 	
 }
@@ -26,7 +25,7 @@ if (i<array_length(global.armas_mods)){
 
 	for (var m1=0;m1<array_length(global.armas_mods[i]);m1++){
 	
-		if (array_length(global.armas_modn[i][m1])>0 and is_array(global.armas_mode[i][m1][global.armas_mods[i][m1]]) and global.armas_mode[i][m1][global.armas_mods[i][m1]][3]=11){
+		if (array_length(global.armas_modn[i][m1])>0 and is_array(global.armas_mode[i][m1][mods[m1]]) and global.armas_mode[i][m1][mods[m1]][3]=11){
 	
 			grd = m1+1
 	
@@ -42,21 +41,21 @@ if (i<array_length(global.armas_mods)){
 		
 		var cabep = array_length(global.armas_modp[i][m])>0
 		var pente = cabep and (m != 4 or (!recarregando and !cock))
-		var sprreal = pente and cabep and asset_get_type(global.armas_modp[i][m][global.armas_mods[i][m]]) = asset_sprite
+		var sprreal = pente and cabep and asset_get_type(global.armas_modp[i][m][mods[m]]) = asset_sprite
 		
 		if (sprreal){
 			
-			var um_laser = is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][3] = 9
+			var um_laser = is_array(global.armas_mode[i][m][mods[m]]) and global.armas_mode[i][m][mods[m]][3] = 9
 			
-			if (laser and is_array(global.armas_mode[i][m][global.armas_mods[i][m]]) and global.armas_mode[i][m][global.armas_mods[i][m]][3] = 9){
+			if (laser and is_array(global.armas_mode[i][m][mods[m]]) and global.armas_mode[i][m][mods[m]][3] = 9){
 				
 				var sprh = global.armas_modx[i][m][0] * image_xscale 
                 var margy = global.armas_modx[i][m][1]>2 ? global.armas_modx[i][m][1] * image_xscale  : -global.armas_modx[i][m][1] * image_xscale
                 
                 var ang = image_angle
 
-				var mod_xx = global.armas_mode[i][m][global.armas_mods[i][m]][0]
-				var mod_xy = global.armas_mode[i][m][global.armas_mods[i][m]][1]
+				var mod_xx = global.armas_mode[i][m][mods[m]][0]
+				var mod_xy = global.armas_mode[i][m][mods[m]][1]
 			
                 if image_xscale = -1{
 					
@@ -71,7 +70,7 @@ if (i<array_length(global.armas_mods)){
 				var mod_xo = lengthdir_x(mod_xx*image_xscale,image_angle) + mod_xm
 				var mod_yo = lengthdir_y(mod_xx*image_xscale,image_angle) + mod_ym
 				
-				var mod_ii = grd-1 = m ? !tirg : global.armas_modi[i][m]
+				var mod_ii = grd-1 = m ? !tirg : modi[m]
 				var mod_mx = 0 
 				var mod_my = 0
 				
@@ -92,10 +91,10 @@ if (i<array_length(global.armas_mods)){
 				
 			}
 			
-			var mod_spr = global.armas_modp[i][m][global.armas_mods[i][m]]
+			var mod_spr = global.armas_modp[i][m][mods[m]]
 			
-			var mod_xx = global.armas_mode[i][m][global.armas_mods[i][m]][0]
-			var mod_xy = global.armas_mode[i][m][global.armas_mods[i][m]][1]
+			var mod_xx = global.armas_mode[i][m][mods[m]][0]
+			var mod_xy = global.armas_mode[i][m][mods[m]][1]
 			
 			var ang = image_angle
 			
@@ -112,7 +111,7 @@ if (i<array_length(global.armas_mods)){
 			var mod_xo = lengthdir_x(mod_xx*image_xscale,image_angle) + mod_xm
 			var mod_yo = lengthdir_y(mod_xx*image_xscale,image_angle) + mod_ym
 			
-			var mod_ii = grd-1 = m ? !tirg : global.armas_modi[i][m]
+			var mod_ii = grd-1 = m ? !tirg : modi[m]
 			var mod_mx = 0 
 			var mod_my = 0
 			

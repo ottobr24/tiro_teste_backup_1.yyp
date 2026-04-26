@@ -483,6 +483,7 @@
     {"id":{"name":"spr_m1_garand_frei","path":"sprites/spr_m1_garand_frei/spr_m1_garand_frei.yy",},},
     {"id":{"name":"spr_m1_garand_granada","path":"sprites/spr_m1_garand_granada/spr_m1_garand_granada.yy",},},
     {"id":{"name":"spr_m1_garand_mira","path":"sprites/spr_m1_garand_mira/spr_m1_garand_mira.yy",},},
+    {"id":{"name":"spr_m1_garand_ping","path":"sprites/spr_m1_garand_ping/spr_m1_garand_ping.yy",},},
     {"id":{"name":"spr_m1_garand","path":"sprites/spr_m1_garand/spr_m1_garand.yy",},},
     {"id":{"name":"spr_m1897_cano","path":"sprites/spr_m1897_cano/spr_m1897_cano.yy",},},
     {"id":{"name":"spr_m1897","path":"sprites/spr_m1897/spr_m1897.yy",},},

@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.2924716,
+  "duration":0.5986394,
   "exportDir":"",
   "name":"snd_m1014_cock",
   "parent":{

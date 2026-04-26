@@ -33,7 +33,7 @@ for (var b=0;b<array_length(colisao);b++){
 			var distc = [180						,180						,90							,180						]
 			var vels  = [vel*2						,vel*2						,vel*2						,vel						]
 			var velm  = [vel						,vel						,vel						,vel/4						]
-            seta_part("cria_parede",x-_x,y-_y,[18,40],spr_particula_parede,cores[b],direction,[vels[b],vels[b]],[2,2.5],[2,2.5],distc[b],[velm[b],velm[b]])
+            seta_part("cria_parede",x-_x,y-_y,[18,40],spr_particula_parede,cores[b],direction,[vels[b],vels[b]],[2,2.5],[2,2.5],distc[b],[velm[b],velm[b]],0,0)
 			
 			#endregion
 			

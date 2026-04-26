@@ -1,5 +1,12 @@
 #region Variaveis
 
+if (!global.cria_inimigos){
+	
+	instance_destroy()
+	exit;
+	
+}
+
 randomise()
 
 hspd =0 
@@ -36,10 +43,9 @@ vendo_player = 0
 vendo_player_timer = 0
 
 vendo_player_dist = 350
-seguir_player_dist = 200
-atirar_player_dist = vendo_player_dist/1.8
+atirar_player_dist = 300
 
-arma = -4
+arma = noone
 armai = irandom_range(0,array_length(global.armas_nome)-1)
 
 cx = 0
@@ -91,11 +97,11 @@ muda_estados = function (a = 1, p = 1,mo = 1,v = 1,at=1,pat=1,se=1,ac=1){
     
     var est = estado
 	var vi = array_length(locais_andar) = 0 and vigia_volta
-    var ve_e_pe = player_perigo and vendo_player
+    var ve_e_pe = player_perigo and vendo_player and point_distance(x,y,obj_player.x,obj_player.y)<atirar_player_dist
 	var pa = parado_timer
 	var an = !parado_timer
-	var seg = player_perigo and !vendo_player and !point_in_circle(x,y,player_x,player_y,2) and !vigia_volta
-	var ate = player_perigo and !vendo_player and  point_in_circle(x,y,player_x,player_y,2)	and !vigia_volta
+	var seg = player_perigo and !point_in_circle(x,y,player_x,player_y,3) and !vigia_volta
+	var ate = player_perigo and !vendo_player and  point_in_circle(x,y,player_x,player_y,3)	and !vigia_volta
 	var ata = ve_e_pe
 	var mor = vida<=0
 	var ests = [a and an		,p and pa 		,v and vi 		,se and seg 	,ac and ate		,at and ata 	,mo and mor 	]
@@ -158,6 +164,12 @@ puxa_arma = function(){
 	
 	if (arma_usar){
 		
+		if (! instance_exists(arma) and asset_get_type(arma) = asset_object){
+			
+			arma = -4
+			
+		}
+		
 		if (!instance_exists(arma) and arma = -4){
 		
 			arma = instance_create_layer(x,y,"Arma",obj_arma_npc)
@@ -165,7 +177,7 @@ puxa_arma = function(){
 		
 			with(arma){
 			
-				i = other.armai
+				i = pai.armai
 				municao				= global.armas_munc[i]
 				recarregando_timer	= global.armas_reca[i] * 1.4
 				tiro				= municao-1
@@ -186,9 +198,19 @@ puxa_arma = function(){
 				rext				= global.armas_rext[i]
 				sons				= array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
 				
+				mods = array_create(array_length(global.armas_modn[i]),0)
+				modi = array_create(array_length(global.armas_modn[i]),0)
+				
+				for (var m=0;m<array_length(mods);m++){
+					
+					mods[m] = irandom_range(0,array_length(global.armas_modn[i][m])					-1)
+					modi[m] = array_length(global.armas_modp[i][m])>0 ? irandom_range(0,sprite_get_number(global.armas_modp[i][m][mods[m]])) : 0
+					
+				}
 			}
+		}
 		
-		}else if (instance_exists(arma) and arma!=-4){
+		if (instance_exists(arma) and arma!=-4){
 		
 	        var cx2 = 8
 	        var cy2 = 8
@@ -263,7 +285,7 @@ puxa_arma = function(){
 
 movendo = function(_x = -1,_y = -1){
     
-	var col = point_in_circle(x,y,alvox,alvoy,2)
+	var col = point_in_circle(x,y,alvox,alvoy,3)
 	
 	if (cria_caminho or col or _x > -1){
 		
@@ -325,6 +347,40 @@ movendo = function(_x = -1,_y = -1){
 	}
 }
 
+achando_o_caminho = function(){
+	
+	if (x = xult and y = yult){ 
+		
+		for (var p=0;p<path_get_number(caminho);p++){
+			
+			var px1 = path_get_point_x(caminho,p)
+			var py1 = path_get_point_y(caminho,p)
+			var px2 = p<path_get_number(caminho) ? path_get_point_x(caminho,p+1) : -100 
+			var py2 = p<path_get_number(caminho) ? path_get_point_y(caminho,p+1) : -100
+			
+			var xm = x = clamp(x,min(px1,px2),max(px1,px2)) and px2>-100
+			var ym = y = clamp(y,min(py1,py2),max(py1,py2)) and py2>-100
+			var gar = px1>0 and py1>0
+			
+			if (xm and ym and gar){
+				
+				show_debug_message(px2)
+				show_debug_message(py2)
+				
+				var dir = point_direction(x,y,px2,py2)
+				
+				x+=lengthdir_x(vela,dir)
+				y+=lengthdir_y(vela,dir)
+				
+				player_x = px2
+				player_y = py2
+				break;
+				
+			}
+		}
+	}
+}
+
 colidindo = function(){
 	
 	//speed = 0
@@ -348,56 +404,59 @@ colidindo = function(){
 
 ouvindo = function(){
 	
-	var bar = obj_controlador.barulhos
+	if (instance_exists(obj_controlador)){
 	
-	for (var b=0;b<array_length(bar);b++){
+		var bar = obj_controlador.barulhos
+	
+		for (var b=0;b<array_length(bar);b++){
 		
-		if (point_in_circle(x,y,bar[b][0],bar[b][1],bar[b][2]) and instance_exists(bar[b][3])){
+			if (point_in_circle(x,y,bar[b][0],bar[b][1],bar[b][2]) and instance_exists(bar[b][3])){
 			
-			if (bar[b][3].object_index != object_index){
+				if (bar[b][3].object_index != object_index){
 			
-				var dist = 20
+					var dist = 32
 			
-				randomise()
-			
-				player_x = random_range(bar[b][0]-dist,bar[b][0]+dist)
-				player_y = random_range(bar[b][1]-dist,bar[b][1]+dist)
-				
-				while(mp_grid_get_cell(obj_controlador.mapa,player_x,player_y) = 0){
-				
 					randomise()
-				
+			
 					player_x = random_range(bar[b][0]-dist,bar[b][0]+dist)
 					player_y = random_range(bar[b][1]-dist,bar[b][1]+dist)
 				
-				}
+					while(mp_grid_get_cell(obj_controlador.mapa,player_x,player_y) = 0){
 				
-				player_perigo = 1
-				vigia_volta = 0
+						randomise()
+				
+						player_x = random_range(bar[b][0]-dist,bar[b][0]+dist)
+						player_y = random_range(bar[b][1]-dist,bar[b][1]+dist)
+				
+					}
+				
+					player_perigo = 1
+					vigia_volta = 0
 			
-			}else{
+				}else{
 				
-				var px = bar[b][3].player_x
-				var py = bar[b][3].player_y
-				var dist = 10
+					var px = bar[b][3].player_x
+					var py = bar[b][3].player_y
+					var dist = 10
 			
-				randomise()
-			
-				player_x = random_range(px-dist,px+dist)
-				player_y = random_range(py-dist,py+dist)
-				
-				while(mp_grid_get_cell(obj_controlador.mapa,player_x,player_y) = 0){
-				
 					randomise()
-				
+			
 					player_x = random_range(px-dist,px+dist)
 					player_y = random_range(py-dist,py+dist)
 				
-				}
+					while(mp_grid_get_cell(obj_controlador.mapa,player_x,player_y) = 0){
 				
-				player_perigo = 1
-				vigia_volta = 0
+						randomise()
+				
+						player_x = random_range(px-dist,px+dist)
+						player_y = random_range(py-dist,py+dist)
+				
+					}
+				
+					player_perigo = 1
+					vigia_volta = 0
 			
+				}
 			}
 		}
 	}
@@ -488,8 +547,12 @@ desenhando = function(){
 
 estado_parado = function(){
     
+	arma_usar  = player_perigo
+	arma_atira = 0
+	
 	ouvindo()
 	sofrendo_dano()
+	puxa_arma()
 	
 	perigo = 0
 	cria_caminho = 1
@@ -511,9 +574,6 @@ estado_parado = function(){
     estado = estado_parado
     estado_txt = "estado_parado" 
 	
-	arma_usar  = 0
-	arma_atira = 0
-	
 	muda_estados()
 		
 	//path_end()
@@ -522,19 +582,20 @@ estado_parado = function(){
 
 estado_andando = function(){
     
+	arma_usar  = player_perigo
+	arma_atira = 0
+	
 	ouvindo()
 	sofrendo_dano()
 	vendo_o_perigo()
 	visao(vendo_player_dist,"vendo_player",,,,,,35,0,1)
+	puxa_arma()
 	
 	movendo()
 	
 	var tmd = path_get_length(caminho)
 	if (x = xult and y = yult) path_position = vela / tmd
 		
-	arma_usar  = 0
-	arma_atira = 0
-	
     estado = estado_andando
     estado_txt = "estado_andando"       
 	
@@ -544,7 +605,11 @@ estado_andando = function(){
 
 estado_vigiando = function(){
     
+	arma_usar  = player_perigo
+	arma_atira = 0
+	
 	ouvindo()
+	puxa_arma()
 	
 	if(!point_in_circle(x,y,xstart,ystart,2)){ 
 		
@@ -553,9 +618,9 @@ estado_vigiando = function(){
 		
 		if (x = xult and y = yult) path_position = vela / tmd
 		
-		show_debug_message("corrigindo a andada: " + string(vela / tmd))
-		show_debug_message("velo: " + string(vela ))
-		show_debug_message("tmd: " + string(tmd))
+		//show_debug_message("corrigindo a andada: " + string(vela / tmd))
+		//show_debug_message("velo: " + string(vela ))
+		//show_debug_message("tmd: " + string(tmd))
 		
 	}else{
 		
@@ -572,53 +637,27 @@ estado_vigiando = function(){
     estado = estado_vigiando
     estado_txt = "estado_vigiando"       
 	
-	arma_usar  = 0
-	arma_atira = 0
-	
 	muda_estados()
 	
 }
 
 estado_seguindo = function(){
 	
+	arma_usar  = 1
+	arma_atira = 0
+	
 	vigia_volta = 0
 	
 	ouvindo()
 	sofrendo_dano()
 	vendo_o_perigo()
+	puxa_arma()
 	
 	if (player_x!=alvox or player_y!=alvoy) movendo(player_x,player_y)
 	
-	var tmd = path_get_length(caminho)
-	
-	if (x = xult and y = yult){ 
+	achando_o_caminho()
 		
-		for (var p=0;p<path_get_number(caminho);p++){
-			
-			var px1 = path_get_point_x(caminho,p)
-			var py1 = path_get_point_y(caminho,p)
-			var px2 = p<path_get_number(caminho) ? path_get_point_x(caminho,p+1) : px1 
-			var py2 = p<path_get_number(caminho) ? path_get_point_y(caminho,p+1) : py1
-			
-			if (x = clamp(x,px1,px2) and y = clamp(y,py1,py2)){
-				
-				var dir = point_direction(x,y,px2,py2)
-				
-				x+=lengthdir_x(vela,dir)
-				y+=lengthdir_y(vela,dir)
-				
-			}
-		}
-		
-		//path_position = vela / (tmd/10) 
-			
-	}
-		
-	puxa_arma()
 	visao(vendo_player_dist,"vendo_player",,,,,,45,0,1)
-	
-	arma_usar = 1
-	arma_atira = 0
 	
     estado = estado_seguindo
     estado_txt = "estado_seguindo"       
@@ -649,6 +688,9 @@ estado_atirando = function(){
 
 estado_atencao = function(){
     
+	arma_usar  = 1
+	arma_atira = 0
+	
 	vigia_volta = 0
 	
 	ouvindo()
@@ -656,12 +698,10 @@ estado_atencao = function(){
 	vigiando()
 	vendo_o_perigo()
 	visao(vendo_player_dist,"vendo_player",,,,,,60,0,1)
+	puxa_arma()
 	
     estado = estado_atencao
     estado_txt = "estado_atencao"       
-	
-	arma_usar  = 1
-	arma_atira = 0
 	
 	muda_estados()
 	

@@ -1,4 +1,4 @@
-if (instance_number(obj_player)>1){
+if (instance_number(obj_player)>1 and !global.pause){
 	
 	obj_camera.roo = 3
 	
