@@ -13,7 +13,7 @@ hspd =0
 vspd =0
 
 velc = 1.6 
-vela = 1.2 
+vela = random_range(.8,1.2)
 vel = 0
 
 vida_max = 20
@@ -43,7 +43,7 @@ vendo_player = 0
 vendo_player_timer = 0
 
 vendo_player_dist = 350
-atirar_player_dist = 300
+atirar_player_dist = 250
 
 arma = noone
 armai = irandom_range(0,array_length(global.armas_nome)-1)
@@ -83,7 +83,11 @@ vigia_vel = 1
 vigia_volta = 1
 
 arma_atira = 0
-arma_usar = 0
+arma_usar = 1
+
+visao_inicio()
+
+image_alpha = 0
 
 #endregion
 
@@ -164,14 +168,8 @@ puxa_arma = function(){
 	
 	if (arma_usar){
 		
-		if (! instance_exists(arma) and asset_get_type(arma) = asset_object){
-			
-			arma = -4
-			
-		}
-		
 		if (!instance_exists(arma) and arma = -4){
-		
+			
 			arma = instance_create_layer(x,y,"Arma",obj_arma_npc)
 			arma.pai = id
 		
@@ -269,13 +267,6 @@ puxa_arma = function(){
 			cdm = ang
 			
 		}
-	}else{
-		
-		cx3 = x
-		cy3 = y
-		instance_destroy(arma)
-		arma = -4
-		
 	}
 }
 
@@ -539,6 +530,53 @@ desenhando = function(){
 	
 }
 
+me_destacando = function(){
+	
+	if (arma_atira){
+	
+		var obj = instance_place(x,y,obj_regioes)
+	
+		if (instance_exists(obj)){
+		
+			if (obj.vendo = 0){
+		
+				if (image_alpha = 1) image_alpha = 0
+		
+				layer = layer_get_id("Level")
+				if (instance_exists(arma)) arma.layer = layer_get_id("UI")
+				image_alpha = lerp(image_alpha,.25,.1)
+	
+			}else{
+			
+				layer = layer_get_id("Level")
+				if (instance_exists(arma)) arma.layer = layer_get_id("UI")
+				image_alpha = lerp(image_alpha,1,.1)
+	
+			}
+		}
+	}else{
+		
+		ds_list_clear(visao_col)
+
+		var obj = []
+	
+		instance_place_list(x,y,obj_regioes,visao_col,0)
+	
+		for (var o=0;o<ds_list_size(visao_col);o++){
+		
+			obj[array_length(obj)] = ds_list_find_value(visao_col,o).vendo
+		
+		}
+	
+		if (achando_na_array(obj,1)  = -1) image_alpha = lerp(image_alpha,0,.1)
+		if (achando_na_array(obj,1) != -1) image_alpha = lerp(image_alpha,1,.1)
+		
+		layer = layer_get_id("Level")
+		if (instance_exists(arma)) arma.layer = layer_get_id("UI")
+	
+	}
+}
+
 #endregion
 
 #endregion
@@ -547,7 +585,7 @@ desenhando = function(){
 
 estado_parado = function(){
     
-	arma_usar  = player_perigo
+	arma_usar = player_perigo
 	arma_atira = 0
 	
 	ouvindo()
@@ -582,7 +620,7 @@ estado_parado = function(){
 
 estado_andando = function(){
     
-	arma_usar  = player_perigo
+	arma_usar = player_perigo
 	arma_atira = 0
 	
 	ouvindo()
@@ -605,7 +643,7 @@ estado_andando = function(){
 
 estado_vigiando = function(){
     
-	arma_usar  = player_perigo
+	arma_usar = player_perigo
 	arma_atira = 0
 	
 	ouvindo()
@@ -643,7 +681,7 @@ estado_vigiando = function(){
 
 estado_seguindo = function(){
 	
-	arma_usar  = 1
+	arma_usar = 1
 	arma_atira = 0
 	
 	vigia_volta = 0
@@ -688,7 +726,7 @@ estado_atirando = function(){
 
 estado_atencao = function(){
     
-	arma_usar  = 1
+	arma_usar = player_perigo
 	arma_atira = 0
 	
 	vigia_volta = 0

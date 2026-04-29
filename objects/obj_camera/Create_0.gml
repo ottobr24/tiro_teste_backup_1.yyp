@@ -42,13 +42,16 @@ segue_player = function(){
 		var alvos = [obj_player,obj_inimigo]
 		var numb = 0
 		
-		with(alvos[seg].object_index){
+		if (instance_exists(alvos[seg])){
+		
+			with(alvos[seg].object_index){
 			
-			if (!numb)alvos = [[],[]]
+				if (!numb)alvos = [[],[]]
 			
-			alvos[other.seg][numb] = id
-			numb++
+				alvos[other.seg][numb] = id
+				numb++
 			
+			}
 		}
 		
 		if (!global.debug) escala =	lerp(escala,cesc[cap][roo],0.1)
@@ -63,6 +66,8 @@ segue_player = function(){
 			
 			ind = 0
 			seg=!seg
+			
+			if (!instance_exists(alvos[seg])) seg=!seg
 			
 		}
 		
@@ -151,7 +156,7 @@ segue_player = function(){
 		instance_deactivate_region(bbox_left,bbox_top,bbox_right,bbox_bottom,0,1)
 		instance_activate_region(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
 		
-		var objs_espcs = [obj_player,obj_modificacao,obj_inimigo,obj_granadas_exp,obj_tiro,object_index,obj_arma,obj_controlador,obj_cria_particulas,obj_granadas,obj_regioes]
+		var objs_espcs = [obj_player,obj_modificacao,obj_inimigo,obj_granadas_exp,obj_tiro,object_index,obj_arma,obj_controlador,obj_cria_particulas,obj_granadas,obj_regioes,obj_arma_npc]
 		
 		for (var o=0;o<array_length(objs_espcs);o++){
 			

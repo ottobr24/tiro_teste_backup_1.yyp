@@ -7,7 +7,7 @@ if (!instance_exists(pai)){
 
 image_speed=0
 
-if (global.pause or !usar) exit;
+if (global.pause or !usar or !place_meeting(x,y,obj_camera)) exit;
 
 colocando_os_acessorios()
 estado()

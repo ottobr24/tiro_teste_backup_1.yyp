@@ -268,6 +268,8 @@
     {"name":"spr_aek_971_silenciador","order":3,"path":"sprites/spr_aek_971_silenciador/spr_aek_971_silenciador.yy",},
     {"name":"spr_ak_47_pente_1","order":2,"path":"sprites/spr_ak_47_pente_1/spr_ak_47_pente_1.yy",},
     {"name":"spr_ak_47_pente","order":1,"path":"sprites/spr_ak_47_pente/spr_ak_47_pente.yy",},
+    {"name":"spr_ak_47_pica_1","order":4,"path":"sprites/spr_ak_47_pica_1/spr_ak_47_pica_1.yy",},
+    {"name":"spr_ak_47_pica","order":3,"path":"sprites/spr_ak_47_pica/spr_ak_47_pica.yy",},
     {"name":"spr_ak_47","order":2,"path":"sprites/spr_ak_47/spr_ak_47.yy",},
     {"name":"spr_ar_15_calibre_1","order":14,"path":"sprites/spr_ar_15_calibre_1/spr_ar_15_calibre_1.yy",},
     {"name":"spr_ar_15_calibre","order":15,"path":"sprites/spr_ar_15_calibre/spr_ar_15_calibre.yy",},

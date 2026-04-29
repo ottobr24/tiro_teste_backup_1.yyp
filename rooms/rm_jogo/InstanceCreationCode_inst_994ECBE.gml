@@ -1,1 +1,0 @@
-locais_andar = [3,2,1,0]

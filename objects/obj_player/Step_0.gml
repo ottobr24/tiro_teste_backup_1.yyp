@@ -2,15 +2,15 @@ abre_modificacao()
 
 if(global.pause) exit;
 
+estado()
+colidindo()
+
 var ct = controle
 var cn = ct and gamepad_is_connected(0)
 	
 var men_tec = !cn ? keyboard_check_pressed(ord("Q")) : gamepad_button_check_pressed(0,gp_padd)
 var mas_tec = !cn ? keyboard_check_pressed(ord("E")) : gamepad_button_check_pressed(0,gp_padu)
 	
-estado()
-colidindo()
-
 if (mas_tec or men_tec){
     
     instance_destroy(arma)
@@ -57,3 +57,4 @@ if (keyboard_check_pressed(vk_backspace) or gamepad_button_check_pressed(0,gp_st
 }
 	
 global.portas_abrir = instance_exists(obj_porta) ? instance_nearest(x,y,obj_porta) : -4 
+vendo_tudo()

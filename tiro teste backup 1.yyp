@@ -354,6 +354,8 @@
     {"id":{"name":"spr_ak_47_granada","path":"sprites/spr_ak_47_granada/spr_ak_47_granada.yy",},},
     {"id":{"name":"spr_ak_47_pente_1","path":"sprites/spr_ak_47_pente_1/spr_ak_47_pente_1.yy",},},
     {"id":{"name":"spr_ak_47_pente","path":"sprites/spr_ak_47_pente/spr_ak_47_pente.yy",},},
+    {"id":{"name":"spr_ak_47_pica_1","path":"sprites/spr_ak_47_pica_1/spr_ak_47_pica_1.yy",},},
+    {"id":{"name":"spr_ak_47_pica","path":"sprites/spr_ak_47_pica/spr_ak_47_pica.yy",},},
     {"id":{"name":"spr_ak_47","path":"sprites/spr_ak_47/spr_ak_47.yy",},},
     {"id":{"name":"spr_ar_15_calibre_1","path":"sprites/spr_ar_15_calibre_1/spr_ar_15_calibre_1.yy",},},
     {"id":{"name":"spr_ar_15_calibre","path":"sprites/spr_ar_15_calibre/spr_ar_15_calibre.yy",},},

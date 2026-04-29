@@ -5,10 +5,10 @@ global.acessorios = {
 	
 	#region Acessorios Gerais
 	
-	nada_bloqx : function(pos,idbloq,val2 = []){
+	nada_bloqx : function(pos,idbloq,idr = 300,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [300,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,idbloq,1,0]
+		var variaveis = [idr,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,idbloq,1,0]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -113,7 +113,7 @@ global.acessorios = {
 	colt_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [2,0,0,.75,0,0,0,-.25,0,0,0,0,0.01,.05,-.1,0,0,-1,0,0]
+		var variaveis = [2,0,0,.75,0,0,0,-.25,0,0,0,0,0.01,.05,-.1,0,0,-1,0,-35]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -136,7 +136,7 @@ global.acessorios = {
 	rhino_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [2,0,0,.75,0,0,0,-.25,0,0,0,0,0.01,.05,-.1,0,0,-1,0,0]
+		var variaveis = [2,0,0,.75,0,0,0,-.25,0,0,0,0,0.01,.05,-.1,0,0,-1,0,-35]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -220,7 +220,7 @@ global.acessorios = {
 	pistola_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [4,0,0,-.25,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,-1,0,0]
+		var variaveis = [4,0,0,-.25,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,-1,0,-100]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -300,7 +300,7 @@ global.acessorios = {
 	m1911_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [4,0,0,-.25,-.5,0,-.5,-.5,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,0]
+		var variaveis = [4,0,0,-.25,-.5,0,-.5,-.5,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-150]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -403,7 +403,7 @@ global.acessorios = {
 	berreta_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [4,0,0,-.25,-.35,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,0,0]
+		var variaveis = [4,0,0,-.25,-.35,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,0,-100]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -422,7 +422,7 @@ global.acessorios = {
 	berreta_freio : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [3,0,0,0,-.75,0,0,0,-.75,0,0,0,0,0.01,0.2,0,0,-1,0,0]
+		var variaveis = [3,0,0,0,-.75,0,0,0,-.75,0,0,0,0,0.01,0.2,0,0,-1,0,20]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -445,7 +445,7 @@ global.acessorios = {
 	usp_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [4,0,0,-.25,-.35,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,0,0]
+		var variaveis = [4,0,0,-.25,-.35,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,0,-100]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -571,7 +571,7 @@ global.acessorios = {
 	sub_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [4,0,0,-.15,-.35,0,0,0,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,0]
+		var variaveis = [4,0,0,-.15,-.35,0,0,0,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-125]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -727,7 +727,7 @@ global.acessorios = {
 	mp9_bala : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [16,0,0,1,4,10,2.5,2.5,3,0,0,0,0.00,-0.03,0.7,0,0,-1,0,0]
+		var variaveis = [16,0,-6,2,3.5,30,2.5,2.5,3,0,0,0,0.00,0.04,0.4,0,0,-1,0,125]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -811,7 +811,7 @@ global.acessorios = {
 	mac_bala : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [16,0,-3,1.5,3.5,30,2,2,3,0,0,0,0.00,0.05,0.3,0,0,-1,0,0]
+		var variaveis = [16,0,-3,1.5,3,30,2,2,3,0,0,0,0.00,0.05,0.3,0,0,-1,0,75]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -895,7 +895,7 @@ global.acessorios = {
 	pp_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [2,0,0,.25,-.5,0,-.5,-.5,-.75,0,0,0,0.03,0.075,0,6,0,-1,0,0]
+		var variaveis = [2,0,0,.25,-.5,0,-.5,-.5,-.75,0,0,0,0.03,0.075,0,6,0,-1,0,-50]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1135,7 +1135,7 @@ global.acessorios = {
 	m1897_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [2,0,0,.5,-.5,0,-.5,-.5,-.5,0,0,0,0.02,0.15,0.1,0,0,-1,0,0]
+		var variaveis = [2,0,0,.5,-.5,0,-.5,-.5,-.5,0,0,0,0.02,0.15,0.1,0,0,-1,0,-50]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1261,7 +1261,7 @@ global.acessorios = {
 	saiga_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [4,0,0,-.25,-.5,0,0,0,-.25,0,0,0,0.02,0.04,0,0,0,-1,0,0]
+		var variaveis = [4,0,0,-.25,-.5,0,0,0,-.25,0,0,0,0.02,0.04,0,0,0,-1,0,-100]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1303,6 +1303,44 @@ global.acessorios = {
 	#region Fuzis de assalto
 	
 	#region Geral
+	
+	cab_pica : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
+		var variaveis = [24,0,0,0,0,0,0,0,0,0,0,0,0.02,0.03,0,0,0,-1,0,0]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	cab_pica1 : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
+		var variaveis = [26,0,0,0,0,0,0,0,0,0,0,0,0.02,0.03,0,0,0,-1,0,0]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
 	
 	cab_gran : function(pos,val2 = []){
 	
@@ -1516,7 +1554,7 @@ global.acessorios = {
 	cab_frei : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [3,0,0,0,-.15,0,-.25,-.25,-.25,0,0,0,0.00,0.02,0,0,0,-1,0,0]
+		var variaveis = [3,0,0,0,-.15,0,-.25,-.25,-.25,0,0,0,0.00,0.02,0,0,0,-1,0,25]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1535,7 +1573,7 @@ global.acessorios = {
 	cab_sile : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [4,0,0,-.25,-.35,0,-.55,-.55,-.55,0,0,0,0.03,0.06,0,0,0,-1,0,0]
+		var variaveis = [4,0,0,-.25,-.35,0,-.55,-.55,-.55,0,0,0,0.03,0.06,0,0,0,-1,0,-125]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1631,6 +1669,143 @@ global.acessorios = {
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
 		var variaveis = [17,0,0,0,-.25,0,0,0,0,0,0,0,0.04,0.05,0,0,0,20,1,0]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	#endregion
+	
+	#region AK-47
+	
+	ak_gran : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
+		var variaveis = [11,0,0,0,0,0,0,0,0,0,0,0,0.02,0.1,0,0,0,26,0,200]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	ak_mira : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
+		var variaveis = [5,0,0,0,-.35,0,0,0,0,0,0,0,0.05,0.02,0,0,0,23,0,0]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	ak_mira1 : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
+		var variaveis = [5,0,0,0,-.5,0,0,0,0,0,0,0,0.1,0.05,0,0,0,23,0,0]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	ak_mira2 : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
+		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.1,0.07,0,0,0,23,0,0]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+		
+	ak_laser : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
+		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,25,0,0]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	ak_fore : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
+		var variaveis = [10,0,0,0,-.5,0,-.4,-.4,-.5,0,0,0,0.01,0.04,0,0,0,25,0,0]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	ak_fore1 : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
+		var variaveis = [10,0,0,0,-.5,0,-.3,-.3,-.4,0,0,0,0.01,0.05,0,0,0,25,0,0]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1767,7 +1942,7 @@ global.acessorios = {
 	ar_bala : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [16,0,0,-.5,1,-15,1,1,1,0,0,0,-0.025,0.00,-.2,0,0,-1,0,0]
+		var variaveis = [16,0,0,-.5,1,-15,1,1,1,0,0,0,-0.025,0.00,-.2,0,0,-1,0,-200]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1786,7 +1961,7 @@ global.acessorios = {
 	ar_bala1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [16,0,0,1.5,2,45,2.5,2.5,2.5,0,0,0,0.025,0.05,.3,0,0,-1,0,0]
+		var variaveis = [16,0,-5,1.5,2,30,2.5,2.5,2.5,0,0,0,0.025,0.05,.3,0,0,-1,0,100]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1843,7 +2018,7 @@ global.acessorios = {
 	ar_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [2,0,0,-.15,.25,0,.25,.25,.35,0,0,0,-0.05,-0.05,0,-3,0,-1,0,0]
+		var variaveis = [2,0,0,-.15,.25,0,.25,.25,.35,0,0,0,-0.05,-0.05,0,-3,0,-1,0,25]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1862,7 +2037,7 @@ global.acessorios = {
 	ar_cano1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [21,0,0,.25,-.35,0,-.35,-.35,-.5,0,0,0,0.075,0.1,0,4,0,-1,0,0]
+		var variaveis = [21,0,0,.25,-.35,0,-.35,-.35,-.5,0,0,0,0.075,0.1,0,4,0,-1,0,-45]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1984,7 +2159,7 @@ global.acessorios = {
 	hk_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [2,0,0,.15,-.25,0,-.25,-.25,-.35,0,0,0,0.05,0.05,0,2,0,-1,0,0]
+		var variaveis = [2,0,0,.15,-.25,0,-.25,-.25,-.35,0,0,0,0.05,0.05,0,2,0,-1,0,-25]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2003,7 +2178,7 @@ global.acessorios = {
 	hk_cano1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [21,0,0,.25,-.5,0,-.5,-.5,-.75,0,0,0,0.05,0.15,0,6,0,-1,0,0]
+		var variaveis = [21,0,0,.25,-.5,0,-.5,-.5,-.75,0,0,0,0.05,0.15,0,6,0,-1,0,-45]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2121,7 +2296,7 @@ global.acessorios = {
 	acr_bala : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [16,0,0,.75,1,30,1,1,1,0,0,0,0.025,0.035,.2,0,0,-1,0,0]
+		var variaveis = [16,0,-5,.75,1,30,1,1,1,0,0,0,0.025,0.035,.2,0,0,-1,0,60]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2159,7 +2334,7 @@ global.acessorios = {
 	acr_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [2,0,0,-.25,.35,0,.35,.35,.35,0,0,0,-0.075,-0.05,0,-2,0,-1,0,0]
+		var variaveis = [2,0,0,-.25,.35,0,.35,.35,.35,0,0,0,-0.075,-0.05,0,-2,0,-1,0,40]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2178,7 +2353,7 @@ global.acessorios = {
 	acr_cano1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [2,0,0,.15,.25,0,.25,.25,.25,0,0,0,0.05,0.05,0,2,0,-1,0,0]
+		var variaveis = [2,0,0,.15,.25,0,.25,.25,.25,0,0,0,0.05,0.05,0,2,0,-1,0,-20]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2197,7 +2372,7 @@ global.acessorios = {
 	acr_cano2 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,me,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [21,0,0,.35,.5,0,.5,.5,.5,0,0,0,0.1,0.1,0,5,0,-1,0,0]
+		var variaveis = [21,0,0,.35,.5,0,.5,.5,.5,0,0,0,0.1,0.1,0,5,0,-1,0,-40]
 		
 		for (var i=0;i<array_length(val2);i++){
 			

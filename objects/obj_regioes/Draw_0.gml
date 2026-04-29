@@ -1,10 +1,18 @@
+if (!place_meeting(x,y,obj_camera)) exit;
+
+draw_set_colour(c_black)
+draw_set_alpha(alp)
+
+draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,0)
+
+draw_set_alpha(1)
+draw_set_colour(-1)
+	
 if (global.debug){
 	
-	var cores = [c_aqua,c_black,c_blue,c_dkgray,c_fuchsia,c_gray,c_green,c_lime,c_ltgray,c_maroon,c_navy]
-
 	draw_self()
-	draw_set_colour(cores[reg])
-	draw_text(x+sprite_width/2,y+sprite_height/2,reg)
+	draw_set_colour(image_blend)
+	draw_text(x+sprite_width/2,y+sprite_height/2,vendo)
 	draw_set_colour(-1)
 	
 }

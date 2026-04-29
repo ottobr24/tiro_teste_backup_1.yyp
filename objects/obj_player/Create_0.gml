@@ -1,3 +1,5 @@
+#region Variaveis
+
 randomise()
 
 hspd=0
@@ -22,6 +24,10 @@ qtd = global.player_ord
 
 global.player_ord++
 
+#endregion 
+
+#region Sumindo
+
 if (global.player_ord>global.players){ 
 	
 	instance_destroy()
@@ -29,9 +35,11 @@ if (global.player_ord>global.players){
 	
 }
 
-//sprite_prefetch()
+#endregion
 
-while(global.players>1){
+#region Spawn aleatorio
+
+while(global.spawn_aleatorio){
 	
 	randomise()
 	x = irandom_range(0,room_width )
@@ -46,6 +54,10 @@ while(global.players>1){
 	}
 }
 
+#endregion
+
+#region Extras
+
 audio_listener_position(x,y,0)
 
 if (!qtd){
@@ -53,9 +65,15 @@ if (!qtd){
 	instance_create_layer(x,y,layer,obj_camera)
 	instance_create_layer(x,y,layer,obj_controlador)
 	instance_create_layer(x,y,layer,obj_cria_particulas)
-	instance_create_layer(x,y,"Colisao",obj_modificacao)
+	instance_create_layer(x,y,"UI",obj_modificacao)
 
 }
+
+visao_inicio()
+
+#endregion
+
+#region Metodos
 
 movendo = function(andar=1,equip=1){
 	
@@ -159,6 +177,8 @@ controla_arma = function(){
 				shak = global.armas_shak[i]
 				
 				bala = global.armas_bala[i]
+				
+				baru = global.armas_baru[i]
 				
 				sons = array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
 				
@@ -307,6 +327,66 @@ abre_modificacao = function(){
 	}
 }
 
+vendo_tudo = function(){
+	
+	var lan = 0
+	
+	if (instance_exists(arma)){
+
+		for (var m1=0;m1<array_length(arma.mods);m1++){
+	
+			if (array_length(global.armas_modn[armai][m1])>0 and is_array(global.armas_mode[armai][m1][arma.mods[m1]]) and array_length(global.armas_mode[armai][m1][arma.mods[m1]])>3 and global.armas_mode[armai][m1][arma.mods[m1]][3] = 8){
+	
+				lan = m1+1
+	
+			}
+		}
+	}
+	
+	with(obj_regioes) vendo = 0
+	
+	var raios = !lan ? 15 : 35
+	var objs = visao(290,"",x,y,direction,obj_regioes,[obj_miniparede,obj_miniporta,obj_regioes],raios,,,,1,1,1)
+	var is = []
+	
+	for (var o=0;o<array_length(objs);o++){
+		
+		if (objs[o].object_index = obj_regioes){
+		
+			with(objs[o]){
+				
+				vendo = 1
+				is[array_length(is)] = reg
+ 				
+			}
+		}
+	}
+	
+	var o = instance_place(x,y,obj_regioes)
+	
+	if (o){
+		
+		is[array_length(is)] = o.reg
+		o.vendo = 1
+		
+	}
+	
+	with(obj_regioes){
+		
+		if (achando_na_array(is,reg)>-1){ 
+			
+			vendo = 1
+			
+		}
+		
+		var nao_vejo = lan ? .01 : .05
+		
+		if (!vendo) alp = lerp(alp,1,nao_vejo	)
+		if ( vendo) alp = lerp(alp,0,.10		)
+	
+	}
+}
+
 colidindo = function(){
 	
 	audio_listener_orientation(0,0,1,0,-1,0)
@@ -417,3 +497,5 @@ estado_morrendo = function(){
 }
 
 estado = estado_parado
+
+#endregion

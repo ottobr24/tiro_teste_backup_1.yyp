@@ -1,4 +1,4 @@
-if (!place_meeting(x,y,obj_camera)) exit;
+if (!place_meeting(x,y,obj_camera) or global.pause) exit;
 
 draw_self() //desenhando()
 
@@ -6,11 +6,11 @@ if (global.debug){
 
 	draw_set_colour(c_black)
 
-	draw_text(x-32,y+40,[x,y])
-	draw_text(x-32,y+20,player_x)
+	draw_text(x-32,y+40,arma)
+	draw_text(x-32,y+20,arma_usar)
 	draw_text(x-32,y,estado_txt)
-	draw_text(x-32,y-20,player_y)
-	draw_text(x-32,y-40,point_in_circle(x,y,player_x,player_y,3))
+	draw_text(x-32,y-20,arma_atira)
+	draw_text(x-32,y-40,instance_exists(arma))
 
 	draw_set_colour(c_white)
 

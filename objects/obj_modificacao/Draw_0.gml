@@ -94,7 +94,6 @@ if (i<array_length(global.armas_mods) and alp){
 	
 			var mod_mx = 0 
 			var mod_my = 0
-			var deb = keyboard_check_pressed(ord("A"))
 			
 			var arm = pai.arma
 		
@@ -217,7 +216,8 @@ if (i<array_length(global.armas_mods) and alp){
 			
 			var acha = 1
 			var bqtd = 0
-			var bmes = global.armas_modp[i][p][0] = 0 //asset_get_type(global.armas_modp[i][p][0]) != asset_sprite
+			var bmes = array_length(global.armas_modn[i][p]) //asset_get_type(global.armas_modp[i][p][0]) != asset_sprite
+			var deb = keyboard_check_pressed(ord("A")) and p = 8
 			
 			for (var h=0;h<array_length(bloq);h++){
 				
@@ -227,13 +227,14 @@ if (i<array_length(global.armas_mods) and alp){
 					
 					for (var b=0;b<array_length(ids[p]);b++){
 					
+						if(deb)show_message(idsa)
+						if(deb)show_message(bloq[h][0])
+						if(deb)show_message(b)
+							
 						if (achando_na_array(idsa,bloq[h][0])>-1){
 						
 							bqtd++
 							array_delete(idsa,achando_na_array(idsa,bloq[h][0]),1)
-							if(deb)show_message(ids[p])
-							if(deb)show_message(bloq[h][0])
-							if(deb)show_message(b)
 							//bloqueados[h][achando_na_array(idsa,bloq[h][0])] = 1
 							
 						}
@@ -241,10 +242,15 @@ if (i<array_length(global.armas_mods) and alp){
 				}
 			}
 			
-			acha = bqtd - (bmes) > 0
+			acha = bmes>1 and bmes - bqtd <= 1 ? 1 : 0
+			
 			draw_set_halign(0)
 			
-			//draw_text(10,499,bloq)
+			deb = keyboard_check_pressed(vk_f1) and p = 8
+			
+			if deb show_message(bqtd)
+			if deb show_message(bmes)
+			if deb show_message(acha)
 			
 			draw_set_halign(-1)
 			

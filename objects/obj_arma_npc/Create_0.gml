@@ -59,8 +59,6 @@ volu = 1
 
 peso = 0
 
-emitter = audio_emitter_create()
-
 modo = 0
 mung = 1
 tirg = mung
@@ -75,6 +73,8 @@ modi = []
 
 mx = device_mouse_x_to_gui(0)
 my = device_mouse_y_to_gui(0)
+
+visao_inicio()
 
 #endregion
 
@@ -110,54 +110,9 @@ muda_estados = function(pa=1,at=1,re=1,mi=1){
 	}
 }
 
-mirando = function(){
-	
-	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
-	var cn = ct and gamepad_is_connected(0)
-	var rh = cn ? gamepad_axis_value(0,gp_axisrh)  : 0
-	var rv = cn ? gamepad_axis_value(0,gp_axisrv)  : 0
-	
-	mira = 0//!cn ? mouse_check_button(mb_right) : gamepad_button_check(0,gp_shoulderlb)
-	mira_vel = clamp(mira_vel,0.01,1)
-	
-	if (mira){
-		
-		pai.vel -=.5
-		mira_alp = lerp(mira_alp,1,mira_vel)
-		
-	}else{
-		
-		mira_alp = lerp(mira_alp,0,.1)
-		
-	}
-	
-	if (!cn){
-		
-		mx = device_mouse_x_to_gui(0)
-		my = device_mouse_y_to_gui(0)
-		
-	}
-	
-	if ( cn){
-		
-		mx = x + lengthdir_x(200,pai.direction)
-		my = y + lengthdir_y(200,pai.direction)
-		
-		//if (rh!=0 or rv!=0){
-		//
-		//	mx = x + lengthdir_x(600,pai.direction)
-		//	my = y + lengthdir_y(600,pai.direction)
-		//
-		//}
-	}
-	
-	mx = clamp(mx,50,display_get_gui_width ()-50)
-	my = clamp(my,50,display_get_gui_height()-50)
-	
-}
-
 desenha_sprite = function(){
 	
+	image_alpha = pai.image_alpha
 	sprite_index = global.armas_sprt[i]
 	image_index = tiro = 0
 	draw_self()
@@ -193,6 +148,10 @@ desenha_fogo = function(){
 		draw_sprite_ext(spr_fogo,fogo_ii,_x,_y,fogo_ix*image_xscale,fogo_ix,image_angle,image_blend,image_alpha)
 	
 	}
+}
+
+mirando = function(){
+	
 }
 
 atira = function(){
@@ -278,7 +237,7 @@ atira = function(){
 					pai.cx -= coix *1.5          
 					pai.cy -= coiy *1.5          
 			
-					global.shake += shak / 2    
+					global.shake += shak / 4   
             
 					//toca_som(global.armas_sons[i][0],1,0,1,.15)
 					fogo_tempo = 10
@@ -295,7 +254,7 @@ atira = function(){
 				
 					}
 				
-					vol = sil ? 0.05 : 1
+					vol = sil ? 0.25 : 1
 				
 				}                                            
 				
@@ -651,8 +610,6 @@ reseta_coisas = function(){
 }
 
 colocando_os_acessorios = function(){
-	
-	audio_emitter_position(emitter,x,y,1)
 	
 	if (i<array_length(global.armas_mods)){
 	
