@@ -12,8 +12,8 @@ randomise()
 hspd =0 
 vspd =0
 
-velc = 1.6 
-vela = random_range(.8,1.2)
+velc = random_range(1.4,1.8)
+vela = random_range(1,1.4)
 vel = 0
 
 vida_max = 20
@@ -42,8 +42,8 @@ caminhando_timer = 0//caminhando_tempo
 vendo_player = 0
 vendo_player_timer = 0
 
-vendo_player_dist = 350
-atirar_player_dist = 250
+vendo_player_dist = 400
+atirar_player_dist = 350
 
 arma = noone
 armai = irandom_range(0,array_length(global.armas_nome)-1)
@@ -65,9 +65,13 @@ parado_tempo = 60*4
 parado_timer = parado_tempo
 
 perigo = 0
+
 player_perigo = 0
+
 player_x = x
 player_y = y
+
+player_dir = 0
 
 volta_atirar_tempo = 5
 volta_atirar_timer = volta_atirar_tempo
@@ -84,6 +88,8 @@ vigia_volta = 1
 
 arma_atira = 0
 arma_usar = 1
+
+colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
 
 visao_inicio()
 
@@ -146,7 +152,7 @@ sofrendo_dano = function(){
 		
 			direction = point_direction(x,y,dano_pai.x,dano_pai.y)
 			
-			if (visao(vendo_player_dist,"vendo_player",,,,dano_pai,,35,0,1)){
+			if (vendo_player){
 				
 				player_x = dano_pai.x
 				player_y = dano_pai.y
@@ -191,9 +197,12 @@ puxa_arma = function(){
 				cliq				= global.armas_cliq[i]
 				rajadas_tempo		= global.armas_raca[i] * 1
 				rajadas_total		= global.armas_raja[i]
-				shak				= global.armas_shak[i] / 2
+				shak				= global.armas_shak[i] / 4
 				bala				= global.armas_bala[i] 
 				rext				= global.armas_rext[i]
+				
+				baru				= global.armas_baru[i]
+				
 				sons				= array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
 				
 				mods = array_create(array_length(global.armas_modn[i]),0)
@@ -325,14 +334,17 @@ movendo = function(_x = -1,_y = -1){
 			
 		}
 		
-		if (mp_grid_path(map,caminho,x,y,dest_x,dest_y,diag) == true and mp_grid_get_cell(map,dest_x,dest_y)=-1){
+		var sel_x = dest_x div obj_controlador.tmdw * obj_controlador.tmdw - obj_controlador.tmdw/2
+		var sel_y = dest_y div obj_controlador.tmdh * obj_controlador.tmdh - obj_controlador.tmdh/2
+			
+		if (mp_grid_path(map,caminho,x,y,sel_x,sel_y,diag) == true and mp_grid_get_cell(map,sel_x,sel_y)=-1){
 			
 			path_start(caminho,vela,path_action_stop,!diag)
 			
 			cria_caminho = 0
 			
-			alvox = dest_x
-			alvoy = dest_y
+			alvox = sel_x
+			alvoy = sel_y
 			
 		}
 	}
@@ -355,9 +367,6 @@ achando_o_caminho = function(){
 			
 			if (xm and ym and gar){
 				
-				show_debug_message(px2)
-				show_debug_message(py2)
-				
 				var dir = point_direction(x,y,px2,py2)
 				
 				x+=lengthdir_x(vela,dir)
@@ -365,8 +374,18 @@ achando_o_caminho = function(){
 				
 				player_x = px2
 				player_y = py2
-				break;
 				
+				if (place_meeting(x,y,colisao)){
+				
+					x-=lengthdir_x(vela,dir)
+					y-=lengthdir_y(vela,dir)
+					cria_caminho = 1
+					
+				}else{
+				
+					break;
+				
+				}
 			}
 		}
 	}
@@ -456,9 +475,6 @@ ouvindo = function(){
 vendo_o_perigo = function(){
 	
 	var alv = obj_player
-	var x1 = alv.x + lengthdir_x(vendo_player_dist,alv.direction)
-	var y1 = alv.y + lengthdir_y(vendo_player_dist,alv.direction)
-	var col = collision_line(alv.x,alv.y,x1,y1,id,0,0)
 	
 	if (vendo_player and !vendo_player_timer and alv.equipado){
 		
@@ -466,6 +482,7 @@ vendo_o_perigo = function(){
 		player_perigo=1
 		player_x = alv.x
 		player_y = alv.y
+		player_dir = point_direction(x,y,alv.x,alv.y)
 		vigia_volta = 0
 		
 	}
@@ -708,6 +725,8 @@ estado_atirando = function(){
 	
 	arma_usar = 1
 	arma_atira = 1
+	
+	direction = point_direction(x,y,obj_player.x,obj_player.y)
 	
 	ouvindo()
 	sofrendo_dano()

@@ -9,3 +9,6 @@ mapa = mp_grid_create(0,0,mapaw,mapah,tmdw,tmdh)
 att = 1
 
 barulhos = [[0,0,0]]
+
+vib_e = 0
+vib_d = 0

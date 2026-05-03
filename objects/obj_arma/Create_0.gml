@@ -116,10 +116,15 @@ muda_estados = function(pa=1,at=1,re=1,mi=1){
 
 mirando = function(){
 	
+	var gw = display_get_gui_width()
+	var gh = display_get_gui_height()
+	
 	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
 	var cn = ct and gamepad_is_connected(0)
 	var rh = cn ? gamepad_axis_value(0,gp_axisrh)  : 0
 	var rv = cn ? gamepad_axis_value(0,gp_axisrv)  : 0
+	
+	var vel = 15
 	
 	mira = !cn ? mouse_check_button(mb_right) : gamepad_button_check(0,gp_shoulderlb)
 	mira_vel = clamp(mira_vel,0.01,1)
@@ -130,6 +135,29 @@ mirando = function(){
 		mira_alp = lerp(mira_alp,1,mira_vel)
 		
 		obj_camera.roo = 2
+		
+		if ( cn){
+			
+			var cx = obj_camera.x
+			var cy = obj_camera.y
+			
+			var cw = obj_camera.cmw * obj_camera.escala
+			var ch = obj_camera.cmh * obj_camera.escala
+			
+			var _x = (x - cx) * (gw / cw)
+			var _y = (y - cy) * (gh / ch)
+			
+			mx += rh*vel
+			my += rv*vel
+			
+			mx = clamp(mx,50,display_get_gui_width ()-50)
+			my = clamp(my,50,display_get_gui_height()-50)
+	
+			direction = point_direction(_x,_y,mx,my)
+			pai.direction = direction
+			
+		}
+		
 		obj_camera.pose[0] = lerp(obj_camera.pose[0],lengthdir_x(100,direction),.1)
 		obj_camera.pose[1] = lerp(obj_camera.pose[1],lengthdir_y(100,direction),.1)
 		
@@ -139,6 +167,21 @@ mirando = function(){
 		obj_camera.pose[0] = lerp(obj_camera.pose[0],lengthdir_x(0,direction),.1)
 		obj_camera.pose[1] = lerp(obj_camera.pose[1],lengthdir_y(0,direction),.1)
 		
+		if ( cn){
+			
+			var cx = obj_camera.x
+			var cy = obj_camera.y
+			
+			var cw = obj_camera.cmw * obj_camera.escala
+			var ch = obj_camera.cmh * obj_camera.escala
+			
+			var _x = (x - cx) * (gw / cw)
+			var _y = (y - cy) * (gh / ch)
+			
+			mx = _x + lengthdir_x(200,direction)
+			my = _y + lengthdir_y(200,direction)
+			
+		}
 	}
 	
 	if (!cn){
@@ -148,32 +191,8 @@ mirando = function(){
 		
 	}
 	
-	if ( cn){
-		
-		mx = x + lengthdir_x(200,pai.direction)
-		my = y + lengthdir_y(200,pai.direction)
-		
-	}
-	
 	mx = clamp(mx,50,display_get_gui_width ()-50)
 	my = clamp(my,50,display_get_gui_height()-50)
-	
-	var _x = mx
-	var _y = my
-	
-	var _p = prec*2
-
-	draw_set_color(c_red)
-	draw_set_alpha(mira_alp)
-	
-	draw_rectangle(_x-1, _y+10+_p ,_x+2   ,_y+1+_p,0)
-	draw_rectangle(_x-1, _y-10-_p ,_x+2   ,_y-1-_p,0)
-	draw_rectangle(_x-10-_p, _y-1  ,_x-1-_p,_y+2   ,0)
-	draw_rectangle(_x+10+_p, _y-1  ,_x+1+_p,_y+2   ,0)
-
-	draw_set_alpha(1)
-	draw_set_color(-1)
-	draw_set_font(-1)
 	
 }
 
@@ -198,23 +217,6 @@ desenha_sprite = function(){
 
 desenha_mao = function(){
 	
-	var mx = global.armas_maox[i]
-	var my = global.armas_maoy[i]
-	var ms = global.armas_maos[i]
-	var mq = global.armas_maoq[i]
-	var m=0
-	
-	repeat(mq){
-		
-		var ang = image_angle
-		var ma = my[m]>0 ? ang-90 : ang-90
-			
-		var _x = x+lengthdir_x(mx[m]*image_xscale,ang) + lengthdir_x(my[m],ma)
-		var _y = y+lengthdir_y(mx[m]*image_xscale,ang) + lengthdir_y(my[m],ma)
-		
-		draw_sprite_ext(ms,m,_x,_y,image_xscale,image_yscale,image_angle,c_white,image_alpha)
-	
-	}
 }
 
 desenha_modificacao = function(){
@@ -495,7 +497,9 @@ atira = function(){
 					}
 				
 					vol = sil ? 0.25 : 1
-				
+					
+					obj_controlador.vib_d += shak
+					
 				}                                            
 				
 				#endregion
@@ -667,8 +671,15 @@ preparando = function(){
 			sons[1] = toca_som(global.armas_sons[i][1],1,10,50,,0,.05,0)
 			if (sem) refff = 1
 			
-			if (global.armas_rext[i]-global.armas_munc[i] = -1 and cock = 1) tiro+=rext
-			
+			if (global.armas_rext[i]-global.armas_munc[i] = -1 and cock = 1){ 
+				
+				tiro+=rext
+				
+				obj_controlador.vib_e += 1.5
+				obj_controlador.vib_d += 1.5
+		
+				
+			}
 		}
 		
 		if (cock=2){ 
@@ -733,7 +744,10 @@ recarrega = function(){
 		
 		if (rec_tec and !recarregando){ 
 			
-			if (municao>0 and global.armas_rext[i]>1 and !modo) municao = 1 //reseta municao, so pra mostrar pro player que a arma ta sendo recarregada
+			obj_controlador.vib_e += .5
+			obj_controlador.vib_d += .5
+		
+			if (municao>0 and global.armas_rext[i]>1 and !modo and municao-rext = 1)  tiro = 1 //reseta municao, so pra mostrar pro player que a arma ta sendo recarregada
 			
 			#region Cria som
 			
@@ -776,7 +790,9 @@ recarrega = function(){
 	
 					sons[6] = toca_som(global.armas_sons[i][6],1,50,250,,0,.1,0)
 					refff = 0
-				
+					
+					tiro = 0
+					
 				}
 				
 				pode_pente = 0
@@ -818,9 +834,18 @@ recarrega = function(){
 		if (recarregando_timer<=0){
 			
 			var passa = global.armas_rext[i]-global.armas_munc[i] = -1 and global.armas_rext[i]>1 ? 1 : 0 //se ele usa um pente, clip ou qualquer outra coisa que nao seja um por um, ele passa
+			var retx = tiro+rext > municao and global.armas_retr[i]>0 ? global.armas_retr[i] : 0
 			
-			if (!modo and !passa) tiro += rext// - munc
-			if ( modo			) tirg += mung// - munc
+			if (!retx){
+			
+				if (!modo and !passa) tiro += rext// - munc
+				if ( modo			) tirg += mung// - munc
+			
+			}else{
+				
+				tiro += retx
+				
+			}
 			
 			tiro = clamp(tiro,0,municao)
 			tiro_timer = tiro_tempo
@@ -828,16 +853,38 @@ recarrega = function(){
 			
 			var munt = rext == 1 ? tiro >= municao : tiro >= municao-1
 			
-			if (munt or passa){ 
+			if (!retx){
+			
+				if (munt or passa){ 
 				
-				cock = 1
-				reff = cock
-				recarregando=0
+					obj_controlador.vib_e += 1
+					obj_controlador.vib_d += 1
+		
+					cock = 1
+					reff = cock
+					recarregando=0
 				
-				pode_pente = 1
-				pode_tirof = 1
-				tem_pente = 1
+					pode_pente = 1
+					pode_tirof = 1
+					tem_pente = 1
 				
+				}
+			}else{
+				
+				if (tiro >= municao){ 
+				
+					obj_controlador.vib_e += 1
+					obj_controlador.vib_d += 1
+		
+					cock = 1
+					reff = cock
+					recarregando=0
+				
+					pode_pente = 1
+					pode_tirof = 1
+					tem_pente = 1
+				
+				}
 			}
 			
 			if (modo) recarregando=0
@@ -846,7 +893,8 @@ recarrega = function(){
 			
 			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>3 and asset_get_type(global.armas_sons[i][3]) == asset_sound){ 
 				
-				if (!modo) sons[3] = toca_som(global.armas_sons[i][3],1,10,50,,0,.1,0)
+				if (!modo and !retx) sons[3] = toca_som(global.armas_sons[i][3],1,10,50,,0,.1,0)
+				if (!modo and  retx) sons[3] = toca_som(snd_win_recf,1,10,50,,0,.1,0)
 				if ( modo){sons[3] = toca_som(snd_lanca_recf,1,10,50,,0,.1,0) cock = 0}
 			
 			}
@@ -943,6 +991,7 @@ colocando_os_acessorios = function(){
 
 estado_parado = function(){
 	
+	mirando()
 	recarrega()
 	preparando()
 	atira()
@@ -957,6 +1006,7 @@ estado_parado = function(){
 
 estado_atirando = function(){
 	
+	mirando()
 	recarrega()
 	preparando()
 	atira()
@@ -971,6 +1021,7 @@ estado_atirando = function(){
 
 estado_recarregando = function(){
 	
+	mirando()
 	recarrega()
 	preparando()
 	
@@ -984,6 +1035,7 @@ estado_recarregando = function(){
 
 estado_mirando = function(){
 	
+	mirando()
 	recarrega()
 	preparando()
 	atira()

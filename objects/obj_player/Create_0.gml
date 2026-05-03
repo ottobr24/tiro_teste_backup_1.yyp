@@ -4,25 +4,40 @@ randomise()
 
 hspd=0
 vspd=0
+
 vel = 2
+
 estado = 0
 estado_txt = ""
+
 armai = irandom_range(0,array_length(global.armas_nome)-1)
 arma = -4
+
 vida_max = 100
 vida = vida_max
+
 cx = 0
 cy = 0
+
 cx3 = x
 cy3 = y
+
 cd  = 0
 cdm = 0
+
+dano = 0
+
 colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
+
 equipado = 1
+
 controle = 1
+
 qtd = global.player_ord
 
 global.player_ord++
+
+visao_inicio()
 
 #endregion 
 
@@ -75,13 +90,29 @@ visao_inicio()
 
 #region Metodos
 
+sofrendo_dano = function(){
+	
+	if (dano){
+		
+		vida-=dano
+		
+		obj_controlador.vib_e += dano
+		obj_controlador.vib_d += dano
+		
+		dano = 0
+		
+	}
+}
+
 movendo = function(andar=1,equip=1){
 	
 	var cn = gamepad_is_connected(0) and controle
+	
 	var d = keyboard_check(ord("D"))
 	var a = keyboard_check(ord("A"))
 	var w = keyboard_check(ord("W"))
 	var s = keyboard_check(ord("S"))
+	
 	var e = keyboard_check_pressed(ord("T")) or (cn and gamepad_button_check_pressed(0,gp_face4))
 	
 	if (cn) gamepad_set_axis_deadzone(0,.1)
@@ -96,7 +127,7 @@ movendo = function(andar=1,equip=1){
 	
     if (!controle) direction = point_direction(0,0,(d-a)*vel,(s-w)*vel	)
     
-	if ( controle and (rh!=0 or rv!=0)){ 
+	if ( controle and (rh!=clamp(rh,-.1,.1) or rv!=clamp(rv,-.1,.1)) and !gamepad_button_check(0,gp_shoulderlb)){ 
 		
 		direction = point_direction(0,0,rh		,rv			)
 		
@@ -346,7 +377,7 @@ vendo_tudo = function(){
 	with(obj_regioes) vendo = 0
 	
 	var raios = !lan ? 15 : 35
-	var objs = visao(290,"",x,y,direction,obj_regioes,[obj_miniparede,obj_miniporta,obj_regioes],raios,,,,1,1,1)
+	var objs = visao(290,"",x,y,direction,obj_regioes,[obj_miniparede,obj_miniporta,obj_regioes],raios,,,,1,1,1,1)
 	var is = []
 	
 	for (var o=0;o<array_length(objs);o++){
@@ -459,6 +490,7 @@ colidindo = function(){
 
 estado_parado = function(){
 	
+	sofrendo_dano()
 	movendo()
 	controla_arma()
 	
@@ -472,6 +504,7 @@ estado_parado = function(){
 
 estado_andando = function(){
 	
+	sofrendo_dano()
 	movendo()
 	controla_arma()
 	
@@ -491,7 +524,7 @@ estado_morrendo = function(){
 		global.player_ord = 0
 		
 	}
-		
+	
 	instance_destroy()
 	
 }

@@ -28,22 +28,26 @@ draw_text(20+(gw*qtd),20,global.armas_nome[i])
 draw_text(20+(gw*qtd),60,dano)
 draw_text(20+(gw*qtd),80,prec_menos)
 draw_text(20+(gw*qtd),100,tiro_tempo)
-draw_text(20+(gw*qtd),120,recarregando_tempo)
-draw_text(20+(gw*qtd),140,peso)
+draw_text(20+(gw*qtd),120,direction)
+draw_text(20+(gw*qtd),140,pai.direction)
 
-draw_set_colour(-1)
 draw_set_halign(-1)
 
-//if (array_length(global.armas_mode[i][2])>0 and array_length(global.armas_mode[i][2][global.armas_mods[i][2]])>0) draw_text(20,160,global.armas_mode[i][2][global.armas_mods[i][2]][0])
+draw_set_color(c_red)
+draw_set_alpha(mira_alp)
 
-//if (array_length(sons)>1){
-//	
-//	//audio_sound_length(sons[4])
-//	draw_text(20,140,audio_sound_get_track_position(sons[1]) = audio_sound_length(sons[1])/2)
-//	
-//}
-//draw_text(20,140,global.armas_mods[i])
-//if (array_length(global.armas_mods[i])>2 and array_length(global.armas_modn[i][2])>0) draw_text(20,160,global.armas_modn[i][2][global.armas_mods[i][2]])
+var _x = mx
+var _y = my
 
-mirando()
+var _p = prec*2
+
+draw_rectangle(_x-1, _y+10+_p ,_x+2   ,_y+1+_p,0)
+draw_rectangle(_x-1, _y-10-_p ,_x+2   ,_y-1-_p,0)
+draw_rectangle(_x-10-_p, _y-1  ,_x-1-_p,_y+2   ,0)
+draw_rectangle(_x+10+_p, _y-1  ,_x+1+_p,_y+2   ,0)
+
+draw_set_alpha(1)
+draw_set_color(-1)
+draw_set_font(-1)
+	
 reseta_coisas()

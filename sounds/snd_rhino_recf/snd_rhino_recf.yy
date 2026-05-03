@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.5085941,
+  "duration":0.2882086,
   "exportDir":"",
   "name":"snd_rhino_recf",
   "parent":{

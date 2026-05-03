@@ -37,9 +37,8 @@ for (var b=0;b<array_length(colisao);b++){
 		var obj = instance_place(x,y,colisao[b][m])
 		var col = place_meeting(x,y,colisao[b][m])
 
-		if (col and obj!=pai and ds_list_find_index(atacados,obj)=-1){
+		if (col and obj!=pai){
 			
-			ds_list_add(atacados,obj)
 			#region Criando particulas
 			
 			var dano_max = clamp(dano*1.5,1,10)

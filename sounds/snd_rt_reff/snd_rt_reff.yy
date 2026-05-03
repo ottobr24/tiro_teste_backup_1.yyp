@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.2882086,
+  "duration":0.8629932,
   "exportDir":"",
   "name":"snd_rt_reff",
   "parent":{

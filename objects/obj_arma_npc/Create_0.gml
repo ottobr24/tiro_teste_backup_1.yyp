@@ -59,6 +59,8 @@ volu = 1
 
 peso = 0
 
+baru = 0
+
 modo = 0
 mung = 1
 tirg = mung
@@ -237,7 +239,7 @@ atira = function(){
 					pai.cx -= coix *1.5          
 					pai.cy -= coiy *1.5          
 			
-					global.shake += shak / 4   
+					global.shake += shak  
             
 					//toca_som(global.armas_sons[i][0],1,0,1,.15)
 					fogo_tempo = 10
@@ -584,23 +586,24 @@ reseta_coisas = function(){
 	rajando_timer--
 	prec = lerp(prec,global.armas_precin[i],.05)
 	
-	municao = global.armas_munc[i]
-	tiro_tempo = global.armas_cadn[i]
-	prec_menos = global.armas_prec[i]
-	coix = global.armas_coix[i]
-	coiy = global.armas_coiy[i]
-	dano = global.armas_dano[i]
-	recarregando_tempo = global.armas_reca[i]
-	cliq = global.armas_cliq[i]
-	rajadas_tempo = global.armas_raca[i]
-	rajadas_total = global.armas_raja[i]
-	shak = global.armas_shak[i]
-	bala = global.armas_bala[i]
-	rext = global.armas_rext[i]
-	peso = global.armas_peso[i]
-	pext = []
-	mira_vel = .1
-	volu = 1
+	municao				= global.armas_munc[i]
+	tiro_tempo			= global.armas_cadn[i] 
+	prec_menos			= global.armas_prec[i] * 1.4
+	coix				= global.armas_coix[i]
+	coiy				= global.armas_coiy[i] 
+	dano				= global.armas_dano[i]
+	recarregando_tempo	= global.armas_reca[i] * 1.4		
+	cliq				= global.armas_cliq[i]
+	rajadas_tempo		= global.armas_raca[i] * 1.4
+	rajadas_total		= global.armas_raja[i]
+	shak				= global.armas_shak[i] / 4
+	bala				= global.armas_bala[i] 
+	rext				= global.armas_rext[i]
+	peso				= global.armas_peso[i] * 1
+	baru				= global.armas_baru[i]
+	pext = []								   
+	mira_vel = .1							   
+	volu = 1								  
 	
 	equip = pai.arma_usar
 	usar = pai.arma_atira
@@ -640,6 +643,7 @@ colocando_os_acessorios = function(){
 				mira_vel			-=global.armas_mode[i][m][mod_i][15]
 				peso				+=global.armas_mode[i][m][mod_i][16]
 				volu				+=global.armas_mode[i][m][mod_i][17]
+				baru				+=global.armas_mode[i][m][mod_i][22]
 				pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4]
 				
 			}	

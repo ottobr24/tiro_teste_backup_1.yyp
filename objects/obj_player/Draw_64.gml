@@ -1,5 +1,13 @@
 if (!qtd){
 	
+	var gw = display_get_gui_width()-20
+	
+	draw_set_halign(fa_right)
+	
+	draw_text(gw,25,fps)
+	
+	draw_set_halign(-1)
+	
 	debugando(
 
 	[

@@ -22,3 +22,8 @@ for (var b=0;b<array_length(barulhos);b++){
 	if (barulhos[b][2]<0 or !instance_exists(barulhos[b][3])) array_delete(barulhos,b,1)
 	
 }
+
+gamepad_set_vibration(0,vib_e,vib_d)
+
+vib_e = lerp(vib_e,0,.25)
+vib_d = lerp(vib_d,0,.25)
