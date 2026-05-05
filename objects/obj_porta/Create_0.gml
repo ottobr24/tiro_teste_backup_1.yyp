@@ -74,7 +74,7 @@ abrindo_e_sendo_empurrada = function(){
 		}
 	}
 
-	if (dist[0]<75 and tec_a and global.portas_abrir = id){//  and visao(75,"",x,y,point_direction(x,y,obj_player.x,obj_player.y),obj_player,adiciona_na_array(global.colisao_normal,obj_player),1,1,0,0)){
+	if (dist[0]<75 and tec_a and global.portas_abrir = id){
 	
 		if (image_angle = clamp(image_angle,ima_org-20,ima_org+20)){
 		
@@ -89,7 +89,6 @@ abrindo_e_sendo_empurrada = function(){
 		
 		}
 	}	
-	
 	
 	if (mudando == 2){
 		
@@ -147,13 +146,13 @@ cria_filhos = function(){
 	    var _y = image_angle = 0 ? y : y - (margx * i)
     
 	    var bloc = instance_create_layer(_x,_y,"Level",obj_miniporta)
-    
+    	
 		bloc.pai = id
 	    bloc.image_angle = image_angle
-    
+    	
 	    bloc.image_xscale = image_xscale / qtd 
 	    bloc.image_yscale = 1//image_yscale / qtd 
-    
+    	
 	    bloc.sprite_index = sprite_index
 		
 		filhos[i] = bloc
@@ -162,6 +161,8 @@ cria_filhos = function(){
     
 	}
 }
+
+//instance_count
 
 controla_filhos = function(){
 	

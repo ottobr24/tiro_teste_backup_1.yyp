@@ -1,3 +1,5 @@
+if (!alp) exit;
+
 enter = 0
 
 var cn = gamepad_is_connected(0)
@@ -459,7 +461,5 @@ if (lista){
 #region Extras
 
 rot = clamp(rot,-1,1)
-global.pause  = alp
-obj_camera.roo= alp
 
 #endregion

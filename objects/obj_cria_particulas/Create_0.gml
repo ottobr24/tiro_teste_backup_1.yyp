@@ -24,7 +24,7 @@ sprites = 0
 cria_as_coisas = function(){
     
 	if (array_length(velm)>0){
-	
+		
 		var a = [c_white,make_color_rgb(80,80,80),make_color_rgb(160,65,13),make_color_rgb(255,10,10)]
 		
 		randomize()

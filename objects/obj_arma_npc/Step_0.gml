@@ -5,7 +5,7 @@ if (!instance_exists(pai)){
 	
 }
 
-image_speed=0
+reseta_coisas()
 
 if (global.pause or !usar or !place_meeting(x,y,obj_camera)) exit;
 

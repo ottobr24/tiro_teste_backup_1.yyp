@@ -1,2 +1,0 @@
-mirando()
-reseta_coisas()

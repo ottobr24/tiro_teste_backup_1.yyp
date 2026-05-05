@@ -82,8 +82,6 @@ visao_inicio()
 
 #endregion
 
-audio_falloff_set_model(audio_falloff_exponent_distance)
-
 #region Metodos
 
 #region Funções
@@ -442,7 +440,8 @@ atira = function(){
 				
 				var bar = obj_controlador
 				var tmdb = array_length(bar.barulhos)
-				
+				var dentro_bar = 0
+
 				var vol = 0
 				
 				if (!rajadas and tec) rajadas = rajadas_total
@@ -470,11 +469,15 @@ atira = function(){
 				
 					var dir = direction - random_range(prec,-prec)
 					var t = instance_create_layer(_x,_y,"Level",obj_tiro)
-					t.i = i                                     
+					t.i = i            
+					
 					t.direction = dir                           
-					t.image_angle = dir                         
+					t.image_angle = dir  
+					
+					t.vel = global.tiros_velo[i]
 					t.dano = dano                
-					t.pai = pai                                 
+					t.pai = pai           
+					
 					prec+=prec_menos             
 				
 					pai.cx -= coix *1.5          
@@ -554,11 +557,25 @@ atira = function(){
 				
 				//audio_play_sound(snd_249_cock,10,0)
 				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound) sons[0] = toca_som(global.armas_sons[i][0],volu*vol,50,75,,0,.20,0)
-		
-				bar.barulhos[tmdb][0] = x
-				bar.barulhos[tmdb][1] = y
-				bar.barulhos[tmdb][2] = baru
-				bar.barulhos[tmdb][3] = pai
+				
+				for (var b=0;b<tmdb;b++){
+					
+					if (point_in_circle(x,y,bar.barulhos[b][0],bar.barulhos[b][1],bar.barulhos[b][2])){
+						
+						dentro_bar = 1
+						bar.barulhos[b][2] += baru/2
+						
+					}
+				}
+				
+				if (!dentro_bar){
+				
+					bar.barulhos[tmdb][0] = x
+					bar.barulhos[tmdb][1] = y
+					bar.barulhos[tmdb][2] = baru
+					bar.barulhos[tmdb][3] = pai
+					
+				}
 					
 			}else{
 			
@@ -593,11 +610,15 @@ atira = function(){
 			randomize()      
 			
 			var dir = direction - random_range(prec,-prec)
-			var t = instance_create_layer(_x,_y,"Level",obj_granadas)             
+			var t = instance_create_layer(_x,_y,"Level",obj_granadas)           
+			
 			t.direction = dir                           
-			t.image_angle = dir             
+			t.image_angle = dir 
+			
+			t.vel = global.tiros_velo[i]
 			t.pai = pai                                 
 			t.dano = 1
+			
 			prec+=prec_menos             
 	        
 			pai.cx -= coix *2          
@@ -1051,3 +1072,4 @@ estado_mirando = function(){
 #endregion
 
 estado = estado_parado
+image_speed=0

@@ -1,3 +1,5 @@
+if (!alp) exit;
+
 #region Variaveis
 
 var gw = room_width 
@@ -445,6 +447,8 @@ if (lista){
 if ( alp and !colidindo and !enter) window_set_cursor(cr_arrow)
 //draw_text(600,200,pontos_perto)
 //draw_text(600,220,pontos)
+
+colidindo = 0
 
 draw_set_alpha(1)
 draw_set_font(-1)

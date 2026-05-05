@@ -1,3 +1,4 @@
+
 #region Variaveis
 
 if (!global.cria_inimigos){
@@ -112,7 +113,7 @@ muda_estados = function (a = 1, p = 1,mo = 1,v = 1,at=1,pat=1,se=1,ac=1){
 	var an = !parado_timer
 	var seg = player_perigo and !point_in_circle(x,y,player_x,player_y,3) and !vigia_volta
 	var ate = player_perigo and !vendo_player and  point_in_circle(x,y,player_x,player_y,3)	and !vigia_volta
-	var ata = ve_e_pe
+	var ata = ve_e_pe and place_meeting(x,y,obj_camera)
 	var mor = vida<=0
 	var ests = [a and an		,p and pa 		,v and vi 		,se and seg 	,ac and ate		,at and ata 	,mo and mor 	]
     var estz = [estado_andando	,estado_parado	,estado_vigiando,estado_seguindo,estado_atencao	,estado_atirando,estado_morrendo]
@@ -125,7 +126,6 @@ muda_estados = function (a = 1, p = 1,mo = 1,v = 1,at=1,pat=1,se=1,ac=1){
 				
 				if (estado != estz[e]){
 				
-					estados[array_length(estados)] = estz[e]
 					estado = estz[e]
 				
 				}
@@ -148,7 +148,7 @@ sofrendo_dano = function(){
 		vida-=dano
 		dano = 0
 		
-		if (instance_exists(dano_pai)){
+		if (instance_exists(dano_pai) and dano_pai.object_index != obj_inimigo){
 		
 			direction = point_direction(x,y,dano_pai.x,dano_pai.y)
 			
@@ -299,7 +299,6 @@ movendo = function(_x = -1,_y = -1){
 		randomise()
 		
 		var map = obj_controlador.mapa
-		var cam = path_duplicate(caminho)
 		
 		var diag = 0
 		
@@ -320,6 +319,7 @@ movendo = function(_x = -1,_y = -1){
 				reg_y = bbox_top
 				reg_w = bbox_right
 				reg_h = bbox_bottom
+				exit;
 				
 			}
 		}
@@ -574,7 +574,7 @@ me_destacando = function(){
 	}else{
 		
 		ds_list_clear(visao_col)
-
+	
 		var obj = []
 	
 		instance_place_list(x,y,obj_regioes,visao_col,0)

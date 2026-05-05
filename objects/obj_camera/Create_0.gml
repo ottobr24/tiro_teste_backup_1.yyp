@@ -82,7 +82,8 @@ segue_player = function(){
 		cx = clamp(cx,0,room_width -cw)
 		cy = clamp(cy,0,room_height-ch)
 		
-		set_camera(cx,cy,cx+cmw*escala,cy+cmh*escala)
+		camera_set_view_pos(view_camera[0],cx,cy)
+		//set_camera(cx,cy,cx+cmw*escala,cy+cmh*escala)
 		
 		x = clamp(cx,0+pose[0],room_width +pose[0])
 		y = clamp(cy,0+pose[1],room_height+pose[1])

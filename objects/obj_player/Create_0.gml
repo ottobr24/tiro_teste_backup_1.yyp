@@ -1,20 +1,23 @@
+timer = 0
+fps_real2 = fps_real
+
 #region Variaveis
 
 randomise()
 
-hspd=0
-vspd=0
+hspd		=	0
+vspd		=	0
+			
+vel			=	2
+				
+estado		=	0
+estado_txt	=	""
 
-vel = 2
+armai		=	irandom_range(0,array_length(global.armas_nome)-1)
+arma		=	-4
 
-estado = 0
-estado_txt = ""
-
-armai = irandom_range(0,array_length(global.armas_nome)-1)
-arma = -4
-
-vida_max = 100
-vida = vida_max
+vida_max	=	100
+vida		=	vida_max
 
 cx = 0
 cy = 0
@@ -334,6 +337,8 @@ abre_modificacao = function(){
 			lista = -1
 			pai = other.id
 			i = pai.armai
+			global.pause = alp
+			obj_camera.roo= alp
 			
 			if (i<array_length(global.armas_mods)){
 	

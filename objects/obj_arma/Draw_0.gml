@@ -7,6 +7,8 @@ if (!instance_exists(pai)){
 	
 }
 
+draw_self()
+
 draw_set_colour(c_black)
 //draw_text(x,y-20,mods)
 //draw_text(x,y-40,direction)

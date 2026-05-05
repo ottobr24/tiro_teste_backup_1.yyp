@@ -1,4 +1,4 @@
-if (!place_meeting(x,y,obj_camera) or global.pause) exit;
+if (!place_meeting(x,y,obj_camera) or global.pause or image_alpha!=0) exit;
 
 draw_self() //desenhando()
 

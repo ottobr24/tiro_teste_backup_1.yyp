@@ -5,8 +5,6 @@ if (!instance_exists(pai)){
 	
 }
 
-image_speed=0
-
 if (global.pause) exit;
 
 colocando_os_acessorios()

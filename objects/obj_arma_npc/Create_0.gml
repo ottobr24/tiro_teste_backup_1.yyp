@@ -4,6 +4,9 @@ pai = id
 
 i=0
 
+equip = 0
+usar  = 0
+
 recarregando = 0
 recarregando_timer = 0
 recarregando_tempo = 0
@@ -230,7 +233,9 @@ atira = function(){
 					
 					t.i = i                                     
 					t.direction = dir                           
-					t.image_angle = dir                         
+					t.image_angle = dir
+					
+					t.vel = global.tiros_velo[i]
 					t.dano = dano                
 					t.pai = pai                 
 					
@@ -351,9 +356,12 @@ atira = function(){
 			var dir = direction - random_range(prec,-prec)
 			var t = instance_create_layer(_x,_y,"Level",obj_granadas)             
 			t.direction = dir                           
-			t.image_angle = dir             
+			t.image_angle = dir  
+			
+			t.vel = global.tiros_velo[i]           
 			t.pai = pai                                 
 			t.dano = 1
+			
 			prec+=prec_menos             
 	        
 			pai.cx -= coix *2          
@@ -446,7 +454,7 @@ recarrega = function(){
 	
 	var rec = rec_tec and !cock
 	var atr = prs_tec
-	var dirp = image_xscale=1 ? direction+180 : direction-180
+	var dirp = image_xscale!=1 ? direction+90 : direction-90
 	var munp = global.armas_part[i][1] = "mun" ? abs(tiro-municao) : global.armas_part[i][1]
 	var munc = rext == 1 ? 0 : 1
 	var tiiv = 3.5

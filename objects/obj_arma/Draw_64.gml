@@ -19,7 +19,7 @@ if (qtd = 1) draw_set_halign(fa_right)
 
 draw_set_font(fnt_menu)
 
-if (!modo)	draw_text_transformed(20+(gw*qtd),40,string(tiro) + "/" + string(municao	),1,1,0)
+if (!modo)	draw_text_transformed(20+(gw*qtd),40,string(tiro) + "/" + string(municao),1,1,0)
 if ( modo)	draw_text_transformed(20+(gw*qtd),40,string(tirg) + "/" + string(mung	),1,1,0)
 
 draw_set_font(-1)
