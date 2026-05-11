@@ -1,5 +1,3 @@
-//if (!place_meeting(x,y,obj_camera)) exit;
-
 for (var t=0;t<array_length(tracejante);t++){
 	
 	var _x = tracejante[t][0]

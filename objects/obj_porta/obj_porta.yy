@@ -10,8 +10,8 @@
   "name":"obj_porta",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Level",
+    "path":"folders/Objetos/Level.yy",
   },
   "parentObjectId":null,
   "persistent":false,

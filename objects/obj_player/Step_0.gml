@@ -27,31 +27,14 @@ if (mas_tec or men_tec){
 	
 }
 
-if (qtd = 0){
-	
-	if (keyboard_check_pressed(vk_f12)){
-		
-		var foi = 0
-		
-		if (window_get_fullscreen() = 0){ 
-			
-			window_set_fullscreen(1)
-			foi = 1
-			
-		}else{
-			
-			if (!foi) window_set_fullscreen(0)
-			
-		}
-	}
-}
-
 if (keyboard_check_pressed(vk_backspace) or gamepad_button_check_pressed(0,gp_stickl)){ 
 	
 	randomise()
 	armai = irandom_range(0,array_length(global.armas_nome)-1)
 	
 	global.player_ord = 0
+	timer=0
+	instance_destroy(arma)
 	game_restart()   
 	
 }

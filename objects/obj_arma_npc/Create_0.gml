@@ -165,9 +165,9 @@ atira = function(){
 	var grd = 0
 	var cn = ct and gamepad_is_connected(0)
 	
-	if (i<array_length(global.armas_mods)){
+	if (i<array_length(global.armas_mods[0])){
 	
-		for (var m=0;m<array_length(global.armas_mods[i]);m++){
+		for (var m=0;m<array_length(global.armas_mods[0][i]);m++){
 		
 			if (array_length(global.armas_modn[i][m])>0 and is_array(global.armas_mode[i][m][mods[m]]) and global.armas_mode[i][m][mods[m]][3]=11){
 				
@@ -202,17 +202,14 @@ atira = function(){
 		
 			if (tiro>0){
 				
-				var bar = obj_controlador
-				var tmdb = array_length(bar.barulhos)
-				
 				var vol = 0
 				
 				if (!rajadas and tec) rajadas = rajadas_total
 		
 				repeat(bala){
 			
-					var sil = i<array_length(global.armas_mods) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
-					var fre = i<array_length(global.armas_mods) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=3
+					var sil = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
+					var fre = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=3
 				
 					var sprh	= sprite_width*image_xscale
 					var dirp	= image_xscale=1	? direction+90 : direction-90
@@ -229,7 +226,7 @@ atira = function(){
 					randomize()      
 				
 					var dir = direction - random_range(prec,-prec)
-					var t = instance_create_layer(_x,_y,"Level",obj_tiro)
+					var t = instance_create_layer(_x,_y,"Pessoas",obj_tiro)
 					
 					t.i = i                                     
 					t.direction = dir                           
@@ -244,7 +241,7 @@ atira = function(){
 					pai.cx -= coix *1.5          
 					pai.cy -= coiy *1.5          
 			
-					global.shake += shak  
+					global.shake += shak*global.shakes[global.configs[1][0]]  
             
 					//toca_som(global.armas_sons[i][0],1,0,1,.15)
 					fogo_tempo = 10
@@ -315,12 +312,9 @@ atira = function(){
 				
 				//audio_play_sound(snd_249_cock,10,0)
 				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound) sons[0] = toca_som(global.armas_sons[i][0],volu*vol,50,75,,0,.20,0)
-		
-				bar.barulhos[tmdb][0] = x
-				bar.barulhos[tmdb][1] = y
-				bar.barulhos[tmdb][2] = global.armas_baru[i]
-				bar.barulhos[tmdb][3] = pai
-					
+				
+				fazendo_barulho(x,y,global.armas_baru[i],pai)
+				
 			}else{
 			
 				if (prs_tec){
@@ -354,7 +348,7 @@ atira = function(){
 			randomize()      
 			
 			var dir = direction - random_range(prec,-prec)
-			var t = instance_create_layer(_x,_y,"Level",obj_granadas)             
+			var t = instance_create_layer(_x,_y,"Pessoas",obj_granadas)             
 			t.direction = dir                           
 			t.image_angle = dir  
 			
@@ -367,7 +361,7 @@ atira = function(){
 			pai.cx -= coix *2          
 			pai.cy -= coiy *2          
 			
-			global.shake+=shak*1.5     
+			global.shake+=shak*1.5 * global.shakes[global.configs[1][0]]     
             
 			fogo_tempo = 10
 			fogo_ii = irandom_range(0,sprite_get_number(spr_fogo))
@@ -478,7 +472,7 @@ recarrega = function(){
 			
 			#region Variaveis
 			
-			var cabe = i<array_length(global.armas_mods)
+			var cabe = i<array_length(global.armas_mods[0])
 			var temmod = cabe and array_length(global.armas_modp[i])>4
 			var temspr = temmod and array_length(global.armas_modp[i][4])>0
 			var mod_i = mods[4]
@@ -622,7 +616,7 @@ reseta_coisas = function(){
 
 colocando_os_acessorios = function(){
 	
-	if (i<array_length(global.armas_mods)){
+	if (i<array_length(global.armas_mods[0])){
 	
 		for (var m=0;m<array_length(global.armas_mode[i]);m++){
 		

@@ -10,8 +10,8 @@
   "name":"obj_cria_particulas",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Particulas",
+    "path":"folders/Objetos/Particulas.yy",
   },
   "parentObjectId":null,
   "persistent":false,

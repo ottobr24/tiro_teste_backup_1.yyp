@@ -43,7 +43,8 @@ for (var b=0;b<array_length(colisao);b++){
 		var dano_max = clamp(dano*1.5,1,10)
 		var dan = dano
 		var angt = image_angle
-			
+		var meu_i = i
+		
 		var distc = [180	,180	,90		,90			,180	]
 		var vels  = [vel/2	,vel/2	,vel	,vel		,vel/2	]
 		var velm  = [vel/4	,vel/4	,vel/2	,vel/2		,vel/4	]
@@ -77,14 +78,17 @@ for (var b=0;b<array_length(colisao);b++){
 				with(obj){
 					
 					with(pai){
-					
+						
+						if (global.armas_nome_tipo[global.armas_tipo[meu_i]] = "Shotgun") trancado = 0
+						
 						var ang = 180
 						var ang_min = image_angle-ang+360
 						var ang_max = image_angle//+ang
 
 						var fo = angt = clamp(angt,min(ang_min,ang_max),max(ang_min,ang_max)) ? dan*2 : -dan*2
-						frc += fo
-					
+						
+						if (!trancado) frc += fo
+						
 					}
 				}
 				

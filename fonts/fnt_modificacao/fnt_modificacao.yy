@@ -215,8 +215,8 @@
   "maintainGms1Font":false,
   "name":"fnt_modificacao",
   "parent":{
-    "name":"tiro teste backup 1",
-    "path":"tiro teste backup 1.yyp",
+    "name":"Fontes",
+    "path":"folders/Fontes.yy",
   },
   "pointRounding":0,
   "ranges":[

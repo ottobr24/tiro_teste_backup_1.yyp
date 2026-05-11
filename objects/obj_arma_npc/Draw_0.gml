@@ -21,9 +21,9 @@ var cn = ct and gamepad_is_connected(0)
 var grd = 0
 var las_tec = 0
 			
-if (i<array_length(global.armas_mods)){
+if (i<array_length(global.armas_mods[0])){
 
-	for (var m1=0;m1<array_length(global.armas_mods[i]);m1++){
+	for (var m1=0;m1<array_length(global.armas_mods[0][i]);m1++){
 	
 		if (array_length(global.armas_modn[i][m1])>0 and is_array(global.armas_mode[i][m1][mods[m1]]) and global.armas_mode[i][m1][mods[m1]][3]=11){
 	
@@ -35,9 +35,9 @@ if (i<array_length(global.armas_mods)){
 	
 if (las_tec) laser=!laser
 
-if (i<array_length(global.armas_mods)){
+if (i<array_length(global.armas_mods[0])){
 
-	for (var m=array_length(global.armas_mods[i])-1;m>=0;m--){
+	for (var m=array_length(global.armas_mods[0][i])-1;m>=0;m--){
 		
 		var cabep = array_length(global.armas_modp[i][m])>0
 		var pente = cabep and (m != 4 or (!recarregando and !cock))
@@ -87,7 +87,7 @@ if (i<array_length(global.armas_mods)){
 				var _x = x + mod_xo + mod_mx2 
 				var _y = y + mod_yo + mod_my2
 		
-                visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,obj_miniporta),1,0,0,c_red)
+				visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,obj_miniporta),1,0,0,c_red)
 				
 			}
 			

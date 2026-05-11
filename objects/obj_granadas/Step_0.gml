@@ -89,7 +89,7 @@ for (var b=0;b<array_length(colisao);b++){
 				grd.image_yscale = 2
 				grd.dano = 100
 				audio_play_sound(snd_lanca_tirf,10,0,1)
-				global.shake+=75
+				global.shake+=75 * global.shakes[global.configs[1][0]]    
 				instance_destroy()
 				
 			}

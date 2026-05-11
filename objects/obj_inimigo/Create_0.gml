@@ -108,15 +108,16 @@ muda_estados = function (a = 1, p = 1,mo = 1,v = 1,at=1,pat=1,se=1,ac=1){
     
     var est = estado
 	var vi = array_length(locais_andar) = 0 and vigia_volta
-    var ve_e_pe = player_perigo and vendo_player and point_distance(x,y,obj_player.x,obj_player.y)<atirar_player_dist
+    var ve_e_pe = player_perigo and vendo_player and instance_exists(obj_player) and point_distance(x,y,obj_player.x,obj_player.y)<atirar_player_dist
 	var pa = parado_timer
 	var an = !parado_timer
 	var seg = player_perigo and !point_in_circle(x,y,player_x,player_y,3) and !vigia_volta
 	var ate = player_perigo and !vendo_player and  point_in_circle(x,y,player_x,player_y,3)	and !vigia_volta
 	var ata = ve_e_pe and place_meeting(x,y,obj_camera)
 	var mor = vida<=0
-	var ests = [a and an		,p and pa 		,v and vi 		,se and seg 	,ac and ate		,at and ata 	,mo and mor 	]
-    var estz = [estado_andando	,estado_parado	,estado_vigiando,estado_seguindo,estado_atencao	,estado_atirando,estado_morrendo]
+	var pau = global.pause
+	var ests = [a and an		,p and pa 		,v and vi 		,se and seg 	,ac and ate		,at and ata 	,mo and mor 	,pau		 ]
+    var estz = [estado_andando	,estado_parado	,estado_vigiando,estado_seguindo,estado_atencao	,estado_atirando,estado_morrendo,estado_pause]
 	
 	for (var e =0;e<array_length(ests);e++){
 		
@@ -476,7 +477,7 @@ vendo_o_perigo = function(){
 	
 	var alv = obj_player
 	
-	if (vendo_player and !vendo_player_timer and alv.equipado){
+	if (vendo_player and !vendo_player_timer and instance_exists(alv) and alv.equipado){
 		
 		perigo=1
 		player_perigo=1
@@ -726,7 +727,7 @@ estado_atirando = function(){
 	arma_usar = 1
 	arma_atira = 1
 	
-	direction = point_direction(x,y,obj_player.x,obj_player.y)
+	if (instance_exists(obj_player)) direction = point_direction(x,y,obj_player.x,obj_player.y)
 	
 	ouvindo()
 	sofrendo_dano()
@@ -775,10 +776,25 @@ estado_morrendo = function(){
 	
 }
 
+estado_pause = function(){
+    
+	puxa_arma()
+	
+    estado = estado_pause
+    estado_txt = "estado_pause"     
+	
+	arma_atira = 0
+	
+	muda_estados()
+	
+	path_end()
+	
+}
+
 #endregion
 
 #endregion
 
 estado = estado_parado
 
-direction = point_direction(x,y,obj_player.x,obj_player.y)   
+if (instance_exists(obj_player)) direction = point_direction(x,y,obj_player.x,obj_player.y)   

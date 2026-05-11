@@ -132,7 +132,7 @@ mirando = function(){
 		pai.vel -=.5
 		mira_alp = lerp(mira_alp,1,mira_vel)
 		
-		obj_camera.roo = 2
+		if (instance_number(obj_player)<2) obj_camera.roo = 2
 		
 		if ( cn){
 			
@@ -156,10 +156,12 @@ mirando = function(){
 			
 		}
 		
-		obj_camera.pose[0] = lerp(obj_camera.pose[0],lengthdir_x(100,direction),.1)
-		obj_camera.pose[1] = lerp(obj_camera.pose[1],lengthdir_y(100,direction),.1)
+		if (instance_number(obj_player)<2) obj_camera.pose[0] = lerp(obj_camera.pose[0],lengthdir_x(100,direction),.1)
+		if (instance_number(obj_player)<2) obj_camera.pose[1] = lerp(obj_camera.pose[1],lengthdir_y(100,direction),.1)
 		
 	}else{
+		
+		obj_camera.roo = 0
 		
 		mira_alp = lerp(mira_alp,0,.1)
 		obj_camera.pose[0] = lerp(obj_camera.pose[0],lengthdir_x(0,direction),.1)
@@ -230,9 +232,9 @@ desenha_modificacao = function(){
 	
 	#region Tem lança granadas? e laser
 	
-	if (i<array_length(global.armas_mods)){
+	if (i<array_length(global.armas_mods[0])){
 
-		for (var m1=0;m1<array_length(global.armas_mods[i]);m1++){
+		for (var m1=0;m1<array_length(mods);m1++){
 	
 			if (array_length(global.armas_modn[i][m1])>0 and is_array(global.armas_mode[i][m1][mods[m1]]) and global.armas_mode[i][m1][mods[m1]][3]=11){
 	
@@ -248,14 +250,14 @@ desenha_modificacao = function(){
 	
 	#region Modificação
 	
-	if (i<array_length(global.armas_mods)){
+	if (i<array_length(global.armas_mods[0])){
 
-		for (var m=array_length(global.armas_mods[i])-1;m>=0;m--){
+		for (var m=array_length(mods)-1;m>=0;m--){
 		
 			var cabep = array_length(global.armas_modp[i][m])>0
 			var pente = cabep and (m != 4 or (!recarregando and !cock) or modo = 1)
 			var sprreal = pente and cabep and asset_get_type(global.armas_modp[i][m][mods[m]]) = asset_sprite
-		
+			
 			if (sprreal){
 			
 				var um_laser = is_array(global.armas_mode[i][m][mods[m]]) and global.armas_mode[i][m][mods[m]][3] = 9
@@ -304,8 +306,12 @@ desenha_modificacao = function(){
 					var _x = x + mod_xo + mod_mx2 
 					var _y = y + mod_yo + mod_my2
 					
+					draw_set_alpha(1)
+					
 	                visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,obj_miniporta),1,0,0,c_red)
 				
+					draw_set_alpha(image_alpha)
+					
 				}
 				
 				#endregion
@@ -407,9 +413,9 @@ atira = function(){
 	
 	#region Mudando de modo de tiro, vendo se tem um lança granadas equipado e limitando a quantidade maxima de tiro
 	
-	if (i<array_length(global.armas_mods)){
+	if (i<array_length(global.armas_mods[0])){
 	
-		for (var m=0;m<array_length(global.armas_mods[i]);m++){
+		for (var m=0;m<array_length(mods);m++){
 		
 			if (array_length(global.armas_modn[i][m])>0 and is_array(global.armas_mode[i][m][mods[m]]) and global.armas_mode[i][m][mods[m]][3]=11){
 				
@@ -438,10 +444,6 @@ atira = function(){
 		
 			if (tiro>0){
 				
-				var bar = obj_controlador
-				var tmdb = array_length(bar.barulhos)
-				var dentro_bar = 0
-
 				var vol = 0
 				
 				if (!rajadas and tec) rajadas = rajadas_total
@@ -450,8 +452,8 @@ atira = function(){
 				
 				repeat(bala){
 			
-					var sil = i<array_length(global.armas_mods) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
-					var fre = i<array_length(global.armas_mods) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=3
+					var sil = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
+					var fre = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=3
 				
 					var sprh = sprite_width*image_xscale
 					var dirp = image_xscale=1 ? direction+90 : direction-90
@@ -468,7 +470,7 @@ atira = function(){
 					randomize()      
 				
 					var dir = direction - random_range(prec,-prec)
-					var t = instance_create_layer(_x,_y,"Level",obj_tiro)
+					var t = instance_create_layer(_x,_y,"Pessoas",obj_tiro)
 					t.i = i            
 					
 					t.direction = dir                           
@@ -483,7 +485,7 @@ atira = function(){
 					pai.cx -= coix *1.5          
 					pai.cy -= coiy *1.5          
 			
-					global.shake+=shak     
+					global.shake+=shak*global.shakes[global.configs[1][0]]        
             
 					fogo_tempo = 10
 					fogo_ii = irandom_range(0,sprite_get_number(spr_fogo))
@@ -528,10 +530,10 @@ atira = function(){
 					
 					var cabe = i<array_length(global.armas_sprf)
 					
-					var mod_i = modi[4]
+					var mod_i = mods[4]
 					var spr_i = modi[4]
 					
-					var cla_i = clamp(mod_i,0,array_length(global.armas_sprf[i]))
+					var cla_i = mod_i
 					
 					var espr = asset_get_type(global.armas_sprf[i][cla_i]) == asset_sprite and pode_tirof and tem_pente
 			
@@ -558,25 +560,8 @@ atira = function(){
 				//audio_play_sound(snd_249_cock,10,0)
 				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound) sons[0] = toca_som(global.armas_sons[i][0],volu*vol,50,75,,0,.20,0)
 				
-				for (var b=0;b<tmdb;b++){
-					
-					if (point_in_circle(x,y,bar.barulhos[b][0],bar.barulhos[b][1],bar.barulhos[b][2])){
-						
-						dentro_bar = 1
-						bar.barulhos[b][2] += baru/2
-						
-					}
-				}
+				fazendo_barulho(x,y,baru,pai)
 				
-				if (!dentro_bar){
-				
-					bar.barulhos[tmdb][0] = x
-					bar.barulhos[tmdb][1] = y
-					bar.barulhos[tmdb][2] = baru
-					bar.barulhos[tmdb][3] = pai
-					
-				}
-					
 			}else{
 			
 				if (prs_tec){
@@ -610,7 +595,7 @@ atira = function(){
 			randomize()      
 			
 			var dir = direction - random_range(prec,-prec)
-			var t = instance_create_layer(_x,_y,"Level",obj_granadas)           
+			var t = instance_create_layer(_x,_y,"Pessoas",obj_granadas)           
 			
 			t.direction = dir                           
 			t.image_angle = dir 
@@ -624,7 +609,7 @@ atira = function(){
 			pai.cx -= coix *2          
 			pai.cy -= coiy *2          
 			
-			global.shake+=shak*1.5     
+			global.shake+=shak*1.5 * global.shakes[global.configs[1][0]]            
             
 			fogo_tempo = 10
 			fogo_ii = irandom_range(0,sprite_get_number(spr_fogo))
@@ -634,6 +619,8 @@ atira = function(){
 			toca_som(snd_lanca_tiro,1,10,50,,0,.10,0)
 		
 			tirg--
+			
+			fazendo_barulho(x,y,200,pai)
 			
 		}
 	}
@@ -699,7 +686,6 @@ preparando = function(){
 				obj_controlador.vib_e += 1.5
 				obj_controlador.vib_d += 1.5
 		
-				
 			}
 		}
 		
@@ -768,7 +754,7 @@ recarrega = function(){
 			obj_controlador.vib_e += .5
 			obj_controlador.vib_d += .5
 		
-			if (municao>0 and global.armas_rext[i]>1 and !modo and municao-rext = 1)  tiro = 1 //reseta municao, so pra mostrar pro player que a arma ta sendo recarregada
+			if (municao>0 and global.armas_rext[i]>1 and !modo and municao-rext = 1 and tiro>0)  tiro = 1 //reseta municao, so pra mostrar pro player que a arma ta sendo recarregada
 			
 			#region Cria som
 			
@@ -785,7 +771,7 @@ recarrega = function(){
 			
 			#region Variaveis
 			
-			var cabe = i<array_length(global.armas_mods)
+			var cabe = i<array_length(global.armas_mods[0])
 			var temmod = cabe and array_length(global.armas_modp[i])>4
 			var temspr = temmod and array_length(global.armas_modp[i][4])>0
 			var mod_i = mods[4]
@@ -878,9 +864,6 @@ recarrega = function(){
 			
 				if (munt or passa){ 
 				
-					obj_controlador.vib_e += 1
-					obj_controlador.vib_d += 1
-		
 					cock = 1
 					reff = cock
 					recarregando=0
@@ -894,9 +877,6 @@ recarrega = function(){
 				
 				if (tiro >= municao){ 
 				
-					obj_controlador.vib_e += 1
-					obj_controlador.vib_d += 1
-		
 					cock = 1
 					reff = cock
 					recarregando=0
@@ -965,9 +945,9 @@ colocando_os_acessorios = function(){
 	equip = pai.equipado
 	if (!equip) exit;
 	
-	if (i<array_length(global.armas_mods)){
+	if (i<array_length(global.armas_mods[0])){
 	
-		for (var m=0;m<array_length(global.armas_mode[i]);m++){
+		for (var m=0;m<array_length(mods);m++){
 		
 			var mod_i = mods[m]
 			var ptmd = array_length(pext)

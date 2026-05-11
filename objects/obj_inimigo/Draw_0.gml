@@ -1,4 +1,4 @@
-if (!place_meeting(x,y,obj_camera) or global.pause or image_alpha!=0) exit;
+if (!place_meeting(x,y,obj_camera) or image_alpha=0) exit;
 
 draw_self() //desenhando()
 
@@ -22,7 +22,7 @@ if (global.debug){
 
 	draw_circle(x,y,atirar_player_dist,1)
 
-	if (global.mostra_visao) visao(vendo_player_dist,"vendo_player")
+	if (global.mostra_visao and instance_exists(obj_player)) visao(vendo_player_dist,"vendo_player")
 
 	draw_set_colour(c_yellow)
 

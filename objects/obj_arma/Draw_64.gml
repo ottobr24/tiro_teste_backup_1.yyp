@@ -11,6 +11,14 @@ var hs = [fa_left,fa_right]
 var co = pai.image_blend
 var gw = display_get_gui_width()-40
 
+var gui_w = display_get_gui_width ()
+var gui_h = display_get_gui_height()
+
+var texto_xesc	= 1//gui_w / 1280
+var texto_yesc	= 1//gui_h / 720
+
+var texto_margy = 20*texto_yesc
+
 draw_set_halign(hs[qtd])
 draw_set_colour(co)
 
@@ -19,21 +27,21 @@ if (qtd = 1) draw_set_halign(fa_right)
 
 draw_set_font(fnt_menu)
 
-if (!modo)	draw_text_transformed(20+(gw*qtd),40,string(tiro) + "/" + string(municao),1,1,0)
-if ( modo)	draw_text_transformed(20+(gw*qtd),40,string(tirg) + "/" + string(mung	),1,1,0)
+if (!modo)	draw_text_transformed(20+(gw*qtd),texto_margy*2,string(tiro) + "/" + string(municao	),texto_xesc,texto_yesc,0)
+if ( modo)	draw_text_transformed(20+(gw*qtd),texto_margy*2,string(tirg) + "/" + string(mung	),texto_xesc,texto_yesc,0)
 
-draw_set_font(-1)
-
-draw_text(20+(gw*qtd),20,global.armas_nome[i])
-draw_text(20+(gw*qtd),60,dano)
-draw_text(20+(gw*qtd),80,prec_menos)
-draw_text(20+(gw*qtd),100,tiro_tempo)
-draw_text(20+(gw*qtd),120,direction)
-draw_text(20+(gw*qtd),140,pai.direction)
+draw_text_transformed(20+(gw*qtd),texto_margy*1	,global.armas_nome[i]	,texto_xesc,texto_yesc,0)
+draw_text_transformed(20+(gw*qtd),texto_margy*3	,dano					,texto_xesc,texto_yesc,0)
+draw_text_transformed(20+(gw*qtd),texto_margy*4	,prec_menos				,texto_xesc,texto_yesc,0)
+draw_text_transformed(20+(gw*qtd),texto_margy*5	,tiro_tempo				,texto_xesc,texto_yesc,0)
+draw_text_transformed(20+(gw*qtd),texto_margy*6	,direction				,texto_xesc,texto_yesc,0)
+draw_text_transformed(20+(gw*qtd),texto_margy*7	,pai.direction			,texto_xesc,texto_yesc,0)
 
 draw_set_halign(-1)
 
-draw_set_color(c_red)
+var mira_co = [c_red,c_green]
+	
+draw_set_color(mira_co[qtd])
 draw_set_alpha(mira_alp)
 
 var _x = mx
@@ -41,10 +49,14 @@ var _y = my
 
 var _p = prec*2
 
-draw_rectangle(_x-1, _y+10+_p ,_x+2   ,_y+1+_p,0)
-draw_rectangle(_x-1, _y-10-_p ,_x+2   ,_y-1-_p,0)
-draw_rectangle(_x-10-_p, _y-1  ,_x-1-_p,_y+2   ,0)
-draw_rectangle(_x+10+_p, _y-1  ,_x+1+_p,_y+2   ,0)
+var tmdb	= 10 * texto_xesc
+var tmdd1	= 2	 * texto_xesc
+var tmdd2	= 1	 * texto_xesc
+
+draw_rectangle(_x-tmdd2		,_y+tmdb+_p	,_x+tmdd1	,_y+tmdd2+_p,0)
+draw_rectangle(_x-tmdd2		,_y-tmdb-_p	,_x+tmdd1	,_y-tmdd2-_p,0)
+draw_rectangle(_x-tmdb-_p	,_y-tmdd2	,_x-tmdd2-_p,_y+tmdd1	,0)
+draw_rectangle(_x+tmdb+_p	,_y-tmdd2	,_x+tmdd2+_p,_y+tmdd1	,0)
 
 draw_set_alpha(1)
 draw_set_color(-1)

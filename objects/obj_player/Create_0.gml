@@ -1,5 +1,6 @@
 timer = 0
 fps_real2 = fps_real
+window_set_cursor(cr_none)
 
 #region Variaveis
 
@@ -13,30 +14,30 @@ vel			=	2
 estado		=	0
 estado_txt	=	""
 
-armai		=	irandom_range(0,array_length(global.armas_nome)-1)
+armai		=	global.arma //irandom_range(0,array_length(global.armas_nome)-1)
 arma		=	-4
 
 vida_max	=	100
 vida		=	vida_max
 
-cx = 0
-cy = 0
+cx			=	0
+cy			=	0
+				
+cx3			=	x
+cy3			=	y
+				
+cd			=	0
+cdm			=	0
+				
+dano		=	0
 
-cx3 = x
-cy3 = y
+colisao		= [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
 
-cd  = 0
-cdm = 0
+equipado	= 1
+			
+controle	= 1
 
-dano = 0
-
-colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
-
-equipado = 1
-
-controle = 1
-
-qtd = global.player_ord
+qtd			= global.player_ord
 
 global.player_ord++
 
@@ -77,13 +78,15 @@ while(global.spawn_aleatorio){
 #region Extras
 
 audio_listener_position(x,y,0)
+window_set_cursor(cr_none)
 
 if (!qtd){
 
 	instance_create_layer(x,y,layer,obj_camera)
 	instance_create_layer(x,y,layer,obj_controlador)
 	instance_create_layer(x,y,layer,obj_cria_particulas)
-	instance_create_layer(x,y,"UI",obj_modificacao)
+	//instance_create_layer(x,y,"UI",obj_mod)
+	instance_create_layer(x,y,"UI",obj_pause)
 
 }
 
@@ -182,6 +185,8 @@ controla_arma = function(){
 			
 				i = pai.armai
 				
+				qtd = pai.qtd
+				
 				municao = global.armas_munc[i]
 				
 				recarregando_timer = global.armas_reca[i]
@@ -216,10 +221,8 @@ controla_arma = function(){
 				
 				sons = array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
 				
-				mods = array_create(array_length(global.armas_modn[i]),0)
-				modi = array_create(array_length(global.armas_modn[i]),0)
-				
-				qtd = pai.qtd
+				mods = [] array_copy(mods,0,global.armas_mods[qtd][i],0,array_length(global.armas_mods[qtd][i]))
+				modi = [] array_copy(modi,0,global.armas_modi[qtd][i],0,array_length(global.armas_modi[qtd][i]))
 				
 			}
 		
@@ -286,12 +289,7 @@ controla_arma = function(){
 		
 		cx3 = x
 		cy3 = y
-		//if (instance_exists(arma)){
-		//	
-		//	instance_destroy(arma)
-		//	arma = -4
-		//	
-		//}
+		
 	}
 }
 
@@ -328,61 +326,54 @@ abre_modificacao = function(){
 	
 	var esc_tec = !cn ? keyboard_check_pressed(vk_escape)	: gamepad_button_check_pressed(0,gp_start)
 
-	if (esc_tec){
-	
-		with(obj_modificacao){
-	
-			listan=0
-			alp=!alp
-			lista = -1
-			pai = other.id
-			i = pai.armai
-			global.pause = alp
-			obj_camera.roo= alp
-			
-			if (i<array_length(global.armas_mods)){
-	
-				for (var m=0;m<array_length(global.armas_mods[i]);m++){
+	if (esc_tec and !instance_exists(obj_mod)){
 		
-					var mod_i = global.armas_mods[i][m]
-					var ptmd = m
-					var ptm1 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>18 ? global.armas_mode[i][m][mod_i][18] : 0
-					var ptm2 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>19 ? global.armas_mode[i][m][mod_i][19] : 0
-					var ptm3 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0]: 0
-					var ptm4 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1]: 0
-					var ptm5 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>21 ? global.armas_mode[i][m][mod_i][21] : 0
-			
-					pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4,ptm5]
-			
-				}
-			}
-	
-			window_set_cursor(cr_none)
-	
-		}
+		var cursores = [cr_none,cr_arrow]
+		
+		obj_camera.roo = 0
+		global.pause=!global.pause
+		obj_pause.pai = id
+		
+		window_set_cursor(cursores[global.pause])
+		
+		salvando()
+		
 	}
 }
 
 vendo_tudo = function(){
 	
+	if (qtd = 0) with(obj_regioes) vendo = 0
+	
 	var lan = 0
 	
 	if (instance_exists(arma)){
+	
+		var mods = arma.mods
+		var i = armai
+		var deb = keyboard_check_pressed(ord(("L")))
+	
+		if (i<array_length(global.armas_mods[0])){
 
-		for (var m1=0;m1<array_length(arma.mods);m1++){
+			for (var m1=0;m1<array_length(mods);m1++){
+			
+				if (deb) show_message(global.armas_mode[5][2][mods[2]])
+				if (deb) show_message(array_length(global.armas_modn[i]))
+				if (deb) show_message(array_length(mods))
+				if (deb) if (array_length(global.armas_modn[i][m1])>0) show_message(is_array(global.armas_mode[i][m1][mods[m1]]))
+				if (deb) if (array_length(global.armas_modn[i][m1])>0 and is_array(global.armas_mode[i][m1][mods[m1]])) show_message(global.armas_mode[i][m1][mods[m1]][3]=8)
+			
+				if (array_length(global.armas_modn[i][m1])>0 and is_array(global.armas_mode[i][m1][mods[m1]]) and global.armas_mode[i][m1][mods[m1]][3]=8){
 	
-			if (array_length(global.armas_modn[armai][m1])>0 and is_array(global.armas_mode[armai][m1][arma.mods[m1]]) and array_length(global.armas_mode[armai][m1][arma.mods[m1]])>3 and global.armas_mode[armai][m1][arma.mods[m1]][3] = 8){
+					lan = m1+1
 	
-				lan = m1+1
-	
+				}
 			}
 		}
 	}
 	
-	with(obj_regioes) vendo = 0
-	
 	var raios = !lan ? 15 : 35
-	var objs = visao(290,"",x,y,direction,obj_regioes,[obj_miniparede,obj_miniporta,obj_regioes],raios,,,,1,1,1,1)
+	var objs = visao(400,"",x,y,direction,obj_regioes,[obj_miniparede,obj_miniporta,obj_regioes],raios,,,,1,1,1,1)
 	var is = []
 	
 	for (var o=0;o<array_length(objs);o++){
@@ -525,12 +516,13 @@ estado_morrendo = function(){
 	
 	if (global.players = 1 or instance_number(obj_player)-1 = 0){
 		
-		game_restart()
+		room_restart()
 		global.player_ord = 0
 		
 	}
 	
 	instance_destroy()
+	exit;
 	
 }
 
