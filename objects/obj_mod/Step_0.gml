@@ -12,7 +12,7 @@ var mes_tec = keyboard_check_pressed(vk_left)	or gamepad_button_check_pressed(0,
 var cim_tec = keyboard_check_pressed(vk_up)		or gamepad_button_check_pressed(0,gp_padu)
 var bai_tec = keyboard_check_pressed(vk_down)	or gamepad_button_check_pressed(0,gp_padd)
 												
-var mod_tec = keyboard_check_pressed(vk_enter)	or gamepad_button_check_pressed(0,gp_face1)
+var mod_tec = keyboard_check_pressed(vk_enter)	or gamepad_button_check_pressed(0,gp_face1) or mouse_check_button_pressed(mb_left)
 	
 #region Me mexendo nas modificações	
 
@@ -308,13 +308,23 @@ if (!lista and alp){
 
 if (mas_tec){ 
 	
-	listan=1
+	if (listan = 2) listan = 0
+	if (listan = 1) listan = 0
+	
+	listan++
+	
+	listan = clamp(listan,0,2)
 	
 }
 
 if (mes_tec){ 
 	
-	listan=0
+	if (listan = 1) listan = 3
+	if (listan = 2) listan = 1
+	
+	listan--
+	
+	listan = clamp(listan,0,2)
 	
 }
 
@@ -384,8 +394,32 @@ if (lista){
 		}
 		
 		if (!acha){
-			
+		
 			var arm = pai.arma
+		
+			if (listan = 2){
+			
+				for (var s=0;s<array_length(arm.mods);s++){
+					
+					var cod0 = array_length(global.armas_mode[i][s])>0
+					var cod1 = cod0 and array_length(global.armas_mode[i][s][arm.mods[s]])>2
+					var cod2 = cod1 and is_array(global.armas_mode[i][s][arm.mods[s]][2])
+					var cod3 = array_length(global.armas_mode[i][lista-1][listai]) > 2
+					var cod4 = cod3 and array_length(global.armas_mode[i][lista-1][listai][2]) > 0
+					
+					var var1 = cod2 ? global.armas_mode[i][s][arm.mods[s]][2] : 0
+					var var2 = cod4 > 0 ? global.armas_mode[i][lista-1][listai][2][arm.modi[lista-1]] : -10
+					
+					var cod5 = is_array(var1) ? achando_na_array(var1,var2)>-1 : 0
+					
+					if (cod5){ 
+						
+						arm.modi[s] = achando_na_array(var1,var2)//arm.modi[lista-1]
+						global.armas_modi[ind][i][s] = achando_na_array(var1,var2)//arm.modi[lista-1]
+			
+					}
+				}
+			}
 			
 			global.armas_mods[ind][i][lista-1]		= listai
 			arm.mods[lista-1]		= listai
@@ -393,11 +427,11 @@ if (lista){
 			listai = 0
 			listan = 0
 			enter = 1
-			
+		
 		}else{
-			
+		
 			show_message("erro")
-			
+		
 		}
 	}
 	
@@ -406,8 +440,8 @@ if (lista){
 		var arm = pai.arma
 			
 		if (array_length(pext)>lista-1) pext[lista-1] = 0
-		if (!listan) listai--
-		if ( listan) arm.modi[lista-1]--
+		if (listan=0) listai--
+		if (listan=1) arm.modi[lista-1]--
 		
 		listai = clamp(listai	,0,array_length(global.armas_modp[i][lista-1])-1)
 		
@@ -435,8 +469,8 @@ if (lista){
 		var arm = pai.arma
 			
 		if (array_length(pext)>lista-1) pext[lista-1] = 0
-		if (!listan)listai++
-		if ( listan)arm.modi[lista-1]++
+		if (listan=0)listai++
+		if (listan=1)arm.modi[lista-1]++
 		
 		listai = clamp(listai	,0,array_length(global.armas_modp[i][lista-1])-1)
 		arm.modi[lista-1] = clamp(arm.modi[lista-1]	,0,sprite_get_number(global.armas_modp[i][lista-1][listai])-1)

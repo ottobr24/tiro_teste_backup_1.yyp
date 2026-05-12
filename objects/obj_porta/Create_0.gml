@@ -15,7 +15,11 @@ tecla_pressionada = [0,0]
 player_prox = -4
 chute_tempo = 30
 chutou = 0
+som = [0,0,0,0,0]
 
+som[4] = toca_som(snd_porta_chiado,1,15,50,,1,.05)
+audio_pause_sound(som[4])
+			
 abrindo_e_sendo_empurrada = function(){
 	
 	cade_alp = clamp(cade_alp,0,1)
@@ -122,7 +126,7 @@ abrindo_e_sendo_empurrada = function(){
 					var tec_ord = cn
 					tec_a = !cn ? keyboard_check_released(ord(tecla_abrir[0])) and tecla_pressionada[0] < chute_tempo/2 : gamepad_button_check_released(0,tecla_abrir[1]) and tecla_pressionada[1] < chute_tempo/2
 					
-					if (tec_a and !trancado and !chutou){
+					if (tec_a and !chutou){
 										    
 						dist[0] = point_distance(_x,_y,obj_player.x,obj_player.y)
 						dist[1] = f
@@ -139,6 +143,7 @@ abrindo_e_sendo_empurrada = function(){
 						tecla_pressionada[tec_ord] = 0
 						
 						fazendo_barulho(x,y,150,id)
+						som[2] = toca_som(snd_porta_chuta,1,15,125,,,.05)
 						
 					}
 				}
@@ -150,23 +155,40 @@ abrindo_e_sendo_empurrada = function(){
 	
 	if (dist[0]<75 and tec_a and global.portas_abrir = id){
 	
-		if (image_angle = clamp(image_angle,ima_org-20,ima_org+20)){
-		
-			mudando = 1
-			if (ima_org = 90) abre_dir = x>obj_player.x ? -1 : 1
-			if (ima_org =  0) abre_dir = y>obj_player.y ? -1 : 1
+		if (!trancado){
+	
+			if (image_angle = clamp(image_angle,ima_org-20,ima_org+20)){
 			
+				som[0] = toca_som(snd_porta_abre,1,15,50,,,.05)
+				fazendo_barulho(x,y,15,id)
+				mudando = 1
+				if (ima_org = 90) abre_dir = x>obj_player.x ? -1 : 1
+				if (ima_org =  0) abre_dir = y>obj_player.y ? -1 : 1
+			
+			}else{
+		
+				som[3] = toca_som(snd_porta_trancado,1,15,50,,,.05)
+				mudando = 2
+				//show_message("2")
+		
+			}
 		}else{
-		
-			mudando = 2
-			//show_message("2")
-		
+			
+			fazendo_barulho(x,y,15,id)
+			
 		}
 	}	
 	
 	if (mudando == 2){
 		
 		image_angle = lerp(image_angle,ima_org,.15) 
+		
+		if (image_angle = clamp(image_angle,ima_org-1.5,ima_org+1.5) and !audio_is_playing(som[1])){
+			
+			som[1] = toca_som(snd_porta_fecha,1,15,50,,,.05)
+			fazendo_barulho(x,y,15,id)
+			
+		}
 		
 		if (image_angle = clamp(image_angle,ima_org-.1,ima_org+.1)){
 			
@@ -196,9 +218,7 @@ abrindo_e_sendo_empurrada = function(){
 		
 		var s = -1
 		
-		//show_message(frc)
 		frc *= s / 5 
-		//show_message(frc)
 		
 	}
 	

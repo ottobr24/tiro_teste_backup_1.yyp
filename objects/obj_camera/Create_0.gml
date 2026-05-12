@@ -66,7 +66,7 @@ segue_player = function(){
 			ind = 0
 			seg=!seg
 			
-			if (!instance_exists(alvos[seg])) seg=!seg
+			//if (!instance_exists(alvos[seg][ind])) seg=!seg
 			
 		}
 		

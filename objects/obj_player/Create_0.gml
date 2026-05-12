@@ -400,7 +400,7 @@ vendo_tudo = function(){
 	
 	with(obj_regioes){
 		
-		if (achando_na_array(is,reg)>-1){ 
+		if (achando_na_array(is,reg)>-1 or obj_camera.seg = 1){ 
 			
 			vendo = 1
 			
@@ -516,8 +516,11 @@ estado_morrendo = function(){
 	
 	if (global.players = 1 or instance_number(obj_player)-1 = 0){
 		
+		randomise()
 		room_restart()
 		global.player_ord = 0
+		armai = irandom_range(0,array_length(global.armas_nome)-1)
+		arma = -4
 		
 	}
 	

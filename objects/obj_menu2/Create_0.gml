@@ -27,8 +27,6 @@ if (array_length(global.armas_mods) = 0){
 	}
 }
 
-salvando()
-
 if (file_exists(global.save_ling				)) carregando_idioma()
 if (file_exists(global.saves[global.savei][0]	)) carregando()
 	

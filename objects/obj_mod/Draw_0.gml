@@ -244,11 +244,7 @@ if (i<array_length(global.armas_mods[0]) and alp){
 			
 			if (!global.armas_aval[i]) acha = 1
 			
-			draw_set_halign(0)
-			
 			deb = keyboard_check_pressed(vk_f1) and p = 8
-			
-			draw_set_halign(-1)
 			
 			if (lista = p+1) cor = make_colour_rgb(200,200,0)
 			
@@ -388,7 +384,7 @@ if (lista){
 		
 		draw_set_colour(cor2)
 	
-		draw_text(sprx-200,20+20*l,global.armas_modn[i][lista-1][l])
+		draw_text(sprx-300,20+20*l,global.armas_modn[i][lista-1][l])
 	
 		draw_set_colour(-1)
 
@@ -427,14 +423,45 @@ if (lista){
 		
 		draw_set_colour(cor2)
 	
-		draw_text(sprx+200,20+20*c,tex[c])
+		draw_text(sprx+300,20+20*c,tex[c])
 		
 		draw_set_colour(-1)
-
+		
 		if (global.debug) draw_rectangle(sprx+200,20+(20*c)-tex_h,sprx+200+tex_w,20+(20*c)+tex_h,1)
 		
 	}
 	
+	if (listan>0){
+	
+		var tex = "Trocar as cores"
+	
+		var margx = 0
+		var margy = 15
+		
+		var tex_w = (string_width (tex)-margx)
+		var tex_h = (string_height(tex)-margy)/2
+	
+		if (point_in_rectangle(mouse_x,mouse_y,sprx,50-tex_h,sprx+tex_w,50+tex_h)){
+		
+			listan = 2
+		
+		}
+	
+		var col2 = listan=2 //se eu to em cima do texto da modificaçãp
+		var cor2 = col2 ? c_yellow : c_white //se o c é o index da modificação, amarelo
+	
+		draw_set_colour(cor2)
+		
+		draw_set_halign(fa_middle)
+		draw_text(room_width/2,50,tex)
+		draw_set_halign(1)
+	
+		draw_set_colour(-1)
+	
+		if (global.debug) draw_rectangle(sprx+200,20+(20*c)-tex_h,sprx+200+tex_w,20+(20*c)+tex_h,1)
+		
+	}
+		
 	#endregion
 	
 }
