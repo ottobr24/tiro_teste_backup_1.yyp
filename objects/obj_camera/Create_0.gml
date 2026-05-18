@@ -38,7 +38,7 @@ segue_player = function(){
 	if (instance_exists(obj_player)){
 		
 		var obj = 0
-		var alvos = [obj_player,obj_inimigo]
+		var alvos = [obj_player,obj_inimigo,obj_zumbi_pai]
 		var numb = 0
 		
 		if (instance_exists(alvos[seg])){
@@ -114,9 +114,9 @@ segue_player = function(){
 					
 				}
 				
-				var marg	= 250
-				var margx	= 75	*escala
-				var margy	= 75	*escala
+				var marg	= 300
+				var margx	= 100	*escala
+				var margy	= 100	*escala
 				
 				var difx = abs(pid[0].x-pid[1].x)
 				var dify = abs(pid[0].y-pid[1].y)
@@ -156,7 +156,7 @@ segue_player = function(){
 		instance_deactivate_region(bbox_left,bbox_top,bbox_right,bbox_bottom,0,1)
 		instance_activate_region(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
 		
-		var objs_espcs = [obj_player,obj_pause,obj_mod,obj_inimigo,obj_granadas_exp,obj_tiro,object_index,obj_arma,obj_controlador,obj_cria_particulas,obj_granadas,obj_regioes,obj_arma_npc]
+		var objs_espcs = [obj_player,obj_criador,obj_criador_ponto,obj_pause,obj_mod,obj_inimigo,obj_zumbi_pai,obj_granadas_exp,obj_tiro,object_index,obj_arma,obj_controlador,obj_cria_particulas,obj_granadas,obj_regioes,obj_arma_npc]
 		
 		for (var o=0;o<array_length(objs_espcs);o++){
 			

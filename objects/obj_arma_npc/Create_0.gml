@@ -223,9 +223,11 @@ atira = function(){
 					var _x = x + lengthdir_x(sprite_width*image_xscale,direction)
 					var _y = y + margy + lengthdir_y(sprh,direction)
 			
-					randomize()      
+					randomise()      
 				
 					var dir = direction - random_range(prec,-prec)
+					var dir_dif = random_range(-(coix+coiy),(coix+coiy))
+					
 					var t = instance_create_layer(_x,_y,"Pessoas",obj_tiro)
 					
 					t.i = i                                     
@@ -235,6 +237,8 @@ atira = function(){
 					t.vel = global.tiros_velo[i]
 					t.dano = dano                
 					t.pai = pai                 
+					
+					pai.coid += dir_dif
 					
 					prec+=prec_menos             
 				
@@ -345,7 +349,7 @@ atira = function(){
 			var _x = x + lengthdir_x(sprh,direction)
 			var _y = y + margy + lengthdir_y(sprh,direction)
 			
-			randomize()      
+			randomise()      
 			
 			var dir = direction - random_range(prec,-prec)
 			var t = instance_create_layer(_x,_y,"Pessoas",obj_granadas)             

@@ -27,7 +27,7 @@ cria_as_coisas = function(){
 		
 		var a = [c_white,make_color_rgb(80,80,80),make_color_rgb(160,65,13),make_color_rgb(255,10,10)]
 		
-		randomize()
+		randomise()
 		var r = irandom_range(mxs[0][0],mxs[0][1])
 			
 		for (var b=0;b<r;b++){

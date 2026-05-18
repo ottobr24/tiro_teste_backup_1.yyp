@@ -7,9 +7,9 @@ if (array_length(global.armas_mods) = 0){
 		for (var i2=0;i2<array_length(global.armas_modn);i2++){
 	
 			for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
-	
+				
 				global.armas_mods[i1][i2][i3] = 0
-	
+				
 			}
 		}
 	}
@@ -25,11 +25,86 @@ if (array_length(global.armas_mods) = 0){
 			}
 		}
 	}
+	
+	for (var i1=0;i1<2;i1++){
+	
+		for (var i2=0;i2<array_length(global.armas_modn);i2++){
+	
+			for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+	
+				for (var i4=0;i4<array_length(global.armas_modn[i2][i3]);i4++){
+					
+					global.armas_moda[i1][i2][i3][i4] = !i4
+	
+				}
+			}
+		}
+	}
 }
 
 if (file_exists(global.save_ling				)) carregando_idioma()
 if (file_exists(global.saves[global.savei][0]	)) carregando()
+
+if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)){
+
+	for (var i1=0;i1<2;i1++){
+
+		for (var i2=0;i2<array_length(global.armas_modn);i2++){
+			
+			var foi = 0
+			
+			for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+				
+				if (global.armas_mods[i1][i2][i3] >= array_length(global.armas_modn[i2][i3])){
+					
+					global.armas_mods[i1][i2][i3] = clamp(global.armas_mods[i1][i2][i3],0,array_length(global.armas_modn[i2][i3])-1)
+					
+				}
+				
+				if (array_length(global.armas_mods[i1][i2])<=i3){
+			
+					global.armas_mods[i1][i2][i3] = 0
+					foi = 1
+					
+				}
+			}
+		}
+	}
 	
+	for (var i1=0;i1<2;i1++){
+	
+		for (var i2=0;i2<array_length(global.armas_modn);i2++){
+	
+			for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+	
+				if (array_length(global.armas_modi[i1][i2])<=i3){
+			
+					global.armas_modi[i1][i2][i3] = 0
+	
+				}
+			}
+		}
+	}
+	
+	for (var i1=0;i1<2;i1++){
+	
+		for (var i2=0;i2<array_length(global.armas_modn);i2++){
+	
+			for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+	
+				for (var i4=0;i4<array_length(global.armas_modn[i2][i3]);i4++){
+					
+					if (array_length(global.armas_mods[i1][i2][i3])<=i4){
+					
+						global.armas_moda[i1][i2][i3][i4] = 1
+					
+					}
+				}
+			}
+		}
+	}
+}
+
 #endregion
 
 #region Variaveis
@@ -158,7 +233,12 @@ arma.modi = [] array_copy(arma.modi,0,global.armas_modi[0][i],0,array_length(glo
 
 window_set_size(resol[global.configs[3][1]][global.configs[3][2]][0],resol[global.configs[3][1]][global.configs[3][2]][1])
 window_set_fullscreen(global.configs[3][0])
-			
+
+global.pause = 0
+global.player_ord = 0
+global.zumbi = 0
+global.rodada = 1
+
 #endregion
 
 #region Metodos
@@ -612,11 +692,15 @@ usando_o_menu = function(){
 						
 						var i = global.arma
 						
+						var arm = arma
+			
 						var mo = instance_create_layer(x,y,layer,obj_mod)
 						mo.alp = 1
 						mo.pai = pai
 						mo.i = i
 				
+						array_copy(mo.mods_atual,0,arm.mods,0,array_length(arm.mods))
+							
 						for (var m=0;m<array_length(global.armas_mods[0][i]);m++){
 						
 							var mod_i = global.armas_mods[0][i][m]
@@ -803,7 +887,54 @@ usando_o_menu = function(){
 			
 					case 0:
 						
-						//textos_mostrar = [0,7]
+						global.destino = rm_zumbi
+						seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
+						salvando()
+						global.zumbi = 1
+						global.spawn_aleatorio = 1
+						global.arma = 0
+						
+						for (var a=0;a<array_length(global.armas_nome);a++){
+				
+							global.armas_nome[a] = 1
+				
+						}
+						
+						for (var i1=0;i1<2;i1++){
+	
+							for (var i2=0;i2<array_length(global.armas_modn);i2++){
+	
+								for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+				
+									global.armas_mods[i1][i2][i3] = 0
+				
+								}
+							}
+
+							for (var i2=0;i2<array_length(global.armas_modn);i2++){
+	
+								for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+	
+									global.armas_modi[i1][i2][i3] = 0
+	
+								}
+							}
+							
+							for (var i2=0;i2<array_length(global.armas_modn);i2++){
+	
+								for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+	
+									for (var i4=0;i4<array_length(global.armas_modn[i2][i3]);i4++){
+					
+										if (array_length(global.armas_mods[i1][i2][i3])<=i4){
+					
+											global.armas_moda[i1][i2][i3][i4] = !i4
+					
+										}
+									}
+								}
+							}
+						}
 						
 					break;
 					
@@ -1083,14 +1214,11 @@ mexendo_na_resol = function(){
 			
 			if (direita or esquerda){ 
 			
+				global.configs[3][2] = clamp(global.configs[3][2],0,array_length(textos_resol[global.configs[2][0]][2][global.configs[3][1]])-1)
+				window_set_size(resol[global.configs[3][1]][global.configs[3][2]][0],resol[global.configs[3][1]][global.configs[3][2]][1])
+		
 				if (index = 0) window_set_fullscreen(global.configs[3][0])
 				
-				if (index = 1){ 
-					
-					global.configs[3][2] = clamp(global.configs[3][2],0,array_length(textos_resol[global.configs[2][0]][2][global.configs[3][1]])-1)
-					window_set_size(resol[global.configs[3][1]][global.configs[3][2]][0],resol[global.configs[3][1]][global.configs[3][2]][1])
-		
-				}
 			}
 			
 		}else if (index=2){

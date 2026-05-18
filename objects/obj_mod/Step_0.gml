@@ -12,7 +12,7 @@ var mes_tec = keyboard_check_pressed(vk_left)	or gamepad_button_check_pressed(0,
 var cim_tec = keyboard_check_pressed(vk_up)		or gamepad_button_check_pressed(0,gp_padu)
 var bai_tec = keyboard_check_pressed(vk_down)	or gamepad_button_check_pressed(0,gp_padd)
 												
-var mod_tec = keyboard_check_pressed(vk_enter)	or gamepad_button_check_pressed(0,gp_face1) or mouse_check_button_pressed(mb_left)
+var mod_tec = (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter) or gamepad_button_check_pressed(0,gp_face1))
 	
 #region Me mexendo nas modificações	
 
@@ -336,104 +336,66 @@ if (lista){
 	
 	var arm = pai.arma
 	
-	global.armas_mods[ind][i][lista-1]		= listai
-	arm.mods[lista-1]	= listai
+	mods_atual[lista-1]	= listai
 		
 	if (mod_tec){
 		
-		#region Pontos ids
-			
-		var ids = []
-	
-		for (var m=0;m<array_length(global.armas_mode[i]);m++){
-			
-			var btmd = array_length(ids)
-			ids[m][0] = -2
+		if (listan = 2){
+		
+			for (var s=0;s<array_length(mods_atual);s++){
 				
-			if (array_length(global.armas_mode[i][m])>0){	
-			
-				var btmd2 = 0
-				var mod_i =	arm.mods[m] //modificador usado
-				var ar1 = array_length(global.armas_mode[i][m])>0 //verifica se tem algo na array
-				var ar2 = ar1 and is_array(global.armas_mode[i][m][mod_i]) //verifica se tem uma array na array
-				var ar3 = ar2 and array_length(global.armas_mode[i][m][mod_i])>3 //verifica se na segunda array tem o id do modificador
-				ids[btmd][btmd2] = ar3 ? global.armas_mode[i][m][mod_i][3] : -2
+				var cod0 = array_length(global.armas_mode[i][s])>0
+				var cod1 = cod0 and array_length(global.armas_mode[i][s][mods_atual[s]])>2
+				var cod2 = cod1 and is_array(global.armas_mode[i][s][mods_atual[s]][2])
+				var cod3 = array_length(global.armas_mode[i][lista-1][listai]) > 2
+				var cod4 = cod3 and array_length(global.armas_mode[i][lista-1][listai][2]) > 0
 				
-			}
-		}
-		
-		#endregion
-		
-		#region Achando os bloqueados
-		
-		var bloqs = []
-		
-		for (var m=0;m<array_length(global.armas_modp[i][lista-1]);m++){
-			
-			var mod_i = m //modificador usado
-			var ar1 = array_length(global.armas_mode[i][lista-1])>0 //verifica se tem algo na array
-			var ar2 = ar1 and is_array(global.armas_mode[i][lista-1][mod_i]) //verifica se tem uma array na array
-			var ar3 = ar2 and array_length(global.armas_mode[i][lista-1][mod_i])>21 //verifica se na segunda array tem o id do modificador
-			var btmd = array_length(bloqs)
-			//show_message(global.armas_mode[i])
-			bloqs[btmd] = ar3 ? global.armas_mode[i][lista-1][mod_i][21] : -3
-			
-		}
-		
-		#endregion
-		
-		var acha = 0//achando_na_array(ids[lista-1],bloqs[l])>-1
-		
-		for (var a =0;a<array_length(ids);a++){
-			
-			if (achando_na_array(ids[a],bloqs[listai])>-1){ 
+				var var1 = cod2 ? global.armas_mode[i][s][mods_atual[s]][2] : 0
+				var var2 = cod4 > 0 ? global.armas_mode[i][lista-1][listai][2][arm.modi[lista-1]] : -10
 				
-				acha = 1
+				var cod5 = is_array(var1) ? achando_na_array(var1,var2)>-1 : 0
 				
-			}
-		}
+				if (cod5){ 
+					
+					arm.modi[s] = achando_na_array(var1,var2)//arm.modi[lista-1]
+					global.armas_modi[ind][i][s] = achando_na_array(var1,var2)//arm.modi[lista-1]
 		
-		if (!acha){
-		
-			var arm = pai.arma
-		
-			if (listan = 2){
-			
-				for (var s=0;s<array_length(arm.mods);s++){
-					
-					var cod0 = array_length(global.armas_mode[i][s])>0
-					var cod1 = cod0 and array_length(global.armas_mode[i][s][arm.mods[s]])>2
-					var cod2 = cod1 and is_array(global.armas_mode[i][s][arm.mods[s]][2])
-					var cod3 = array_length(global.armas_mode[i][lista-1][listai]) > 2
-					var cod4 = cod3 and array_length(global.armas_mode[i][lista-1][listai][2]) > 0
-					
-					var var1 = cod2 ? global.armas_mode[i][s][arm.mods[s]][2] : 0
-					var var2 = cod4 > 0 ? global.armas_mode[i][lista-1][listai][2][arm.modi[lista-1]] : -10
-					
-					var cod5 = is_array(var1) ? achando_na_array(var1,var2)>-1 : 0
-					
-					if (cod5){ 
-						
-						arm.modi[s] = achando_na_array(var1,var2)//arm.modi[lista-1]
-						global.armas_modi[ind][i][s] = achando_na_array(var1,var2)//arm.modi[lista-1]
-			
-					}
 				}
 			}
-			
-			global.armas_mods[ind][i][lista-1]		= listai
-			arm.mods[lista-1]		= listai
-			lista = -1
-			listai = 0
-			listan = 0
-			enter = 1
-		
-		}else{
-		
-			show_message("erro")
-		
 		}
+		
+		if (global.dinheiro >= global.armas_modc[i][lista-1][mods_atual[lista-1]]){
+			
+			global.dinheiro -= global.armas_modc[i][lista-1][mods_atual[lista-1]]
+			global.armas_moda[ind][i][lista-1][listai] = 1
+			
+		}
+		
+		for (var s=0;s<array_length(global.armas_moda[ind][i]);s++){
+			
+			if (is_array(global.armas_moda[ind][i][s])){
+				
+				if (global.armas_moda[ind][i][s][mods_atual[s]]){
+					
+					global.armas_mods[ind][i][s]	= mods_atual[s]
+					arm.mods[s]						= mods_atual[s]
+					
+				}else{
+				
+					mods_atual[s] = arm.mods[s]	
+				
+				}
+			}
+		}
+		
+		lista = -1
+		listai = 0
+		listan = 0
+		enter = 1
+		
 	}
+	
+	show_debug_message(i)
 	
 	if (cim_tec and lista){
 	
@@ -446,7 +408,6 @@ if (lista){
 		listai = clamp(listai	,0,array_length(global.armas_modp[i][lista-1])-1)
 		
 		arm.modi[lista-1] = clamp(arm.modi[lista-1]	,0,sprite_get_number(global.armas_modp[i][lista-1][listai])-1)
-		
 		global.armas_modi[ind][i][lista-1]		= arm.modi[lista-1]
 		
 		var mod_i = lista-1
@@ -473,8 +434,8 @@ if (lista){
 		if (listan=1)arm.modi[lista-1]++
 		
 		listai = clamp(listai	,0,array_length(global.armas_modp[i][lista-1])-1)
-		arm.modi[lista-1] = clamp(arm.modi[lista-1]	,0,sprite_get_number(global.armas_modp[i][lista-1][listai])-1)
 		
+		arm.modi[lista-1] = clamp(arm.modi[lista-1]	,0,sprite_get_number(global.armas_modp[i][lista-1][listai])-1)
 		global.armas_modi[ind][i][lista-1]		= arm.modi[lista-1]
 		
 		var mod_i = lista-1

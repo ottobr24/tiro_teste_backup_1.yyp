@@ -1,7 +1,3 @@
-timer = 0
-fps_real2 = fps_real
-window_set_cursor(cr_none)
-
 #region Variaveis
 
 randomise()
@@ -28,10 +24,12 @@ cy3			=	y
 				
 cd			=	0
 cdm			=	0
+
+coid		=	0
 				
 dano		=	0
 
-colisao		= [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
+colisao		= [] array_copy(colisao,0,adiciona_na_array(global.colisao_normal,obj_colisao),0,array_length(global.colisao_normal))
 
 equipado	= 1
 			
@@ -42,6 +40,9 @@ qtd			= global.player_ord
 global.player_ord++
 
 visao_inicio()
+
+timer = 0
+fps_real2 = fps_real
 
 #endregion 
 
@@ -85,8 +86,9 @@ if (!qtd){
 	instance_create_layer(x,y,layer,obj_camera)
 	instance_create_layer(x,y,layer,obj_controlador)
 	instance_create_layer(x,y,layer,obj_cria_particulas)
-	//instance_create_layer(x,y,"UI",obj_mod)
 	instance_create_layer(x,y,"UI",obj_pause)
+	
+	if (room = rm_zumbi) instance_create_layer(x,y,layer,obj_criador)
 
 }
 
@@ -180,7 +182,7 @@ controla_arma = function(){
 		
 			arma = instance_create_layer(x,y,"Arma",obj_arma)
 			arma.pai = id
-		
+			
 			with(arma){
 			
 				i = pai.armai
@@ -235,7 +237,7 @@ controla_arma = function(){
         
 			var x1 = x + lengthdir_x(cx2,direction) 
 	        var y1 = y + lengthdir_y(cy2,direction)
-	        var dir = direction
+	        var dir = direction + coid
 			
 	        with(arma){
             
@@ -278,11 +280,12 @@ controla_arma = function(){
 			
 			arma.x = cx3
 			arma.y = cy3
-			arma.direction = direction
+			arma.direction = direction + coid
 			arma.image_angle = cd
 			arma.image_xscale = ix
 			
 			cdm = ang
+			coid = lerp(coid,0,.1)
 			
 		}
 	}else{
@@ -400,7 +403,7 @@ vendo_tudo = function(){
 	
 	with(obj_regioes){
 		
-		if (achando_na_array(is,reg)>-1 or obj_camera.seg = 1){ 
+		if (achando_na_array(is,reg)>-1 or (instance_exists(obj_camera) and obj_camera.seg = 1)){ 
 			
 			vendo = 1
 			

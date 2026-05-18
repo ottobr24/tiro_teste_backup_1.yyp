@@ -12,7 +12,7 @@ if (!point_in_rectangle(x,y,0,0,room_width,room_height)){
 vel = 13 //global.tiros_velo[i]
 var _x =lengthdir_x(vel,image_angle)
 var _y =lengthdir_y(vel,image_angle)
-var colisao = [[obj_miniparede],[obj_miniporta],[obj_player,obj_inimigo],[obj_vidro]]
+var colisao = [[obj_miniparede,obj_mesa_mod],[obj_miniporta],[obj_player,obj_inimigo],[obj_vidro],[obj_zumbi_pai]]
 	  
 sprite_index = spr_granadas
 
@@ -29,10 +29,10 @@ for (var b=0;b<array_length(colisao);b++){
 			
 			var dano_max = clamp(dano*1.5,1,10)
 			
-			var cores = [make_color_rgb(80,80,80)	,make_color_rgb(160,65,13)	,make_color_rgb(255,10,10)	,make_color_rgb(163,205,200)]
-			var distc = [180						,180						,90							,180						]
-			var vels  = [vel*2						,vel*2						,vel*2						,vel						]
-			var velm  = [vel						,vel						,vel						,vel/4						]
+			var cores = [make_color_rgb(80,80,80)	,make_color_rgb(160,65,13)	,make_color_rgb(160,65,13)	,make_color_rgb(255,10,10)	,make_color_rgb(163,205,200),c_green					]
+			var distc = [180						,180						,180						,90							,180						,90							]
+			var vels  = [vel*2						,vel*2						,vel*2						,vel*2						,vel						,vel*2						]
+			var velm  = [vel						,vel						,vel						,vel						,vel/4						,vel						]
             seta_part("cria_parede",x-_x,y-_y,[18,40],spr_particula_parede,cores[b],direction,[vels[b],vels[b]],[2,2.5],[2,2.5],distc[b],[velm[b],velm[b]],0,0)
 			
 			#endregion

@@ -7,7 +7,7 @@ filhos = []
 filhos_qtd = 3
 mudando = 0
 abre_dir = 0
-trancado = irandom_range(0,1)
+trancado = room = rm_zumbi ? 0 : irandom_range(0,1)
 cade_alp = 0
 tecla_abrir = ["F"		,gp_face2]
 tecla_chuta = [vk_space	,gp_face2]
@@ -22,209 +22,238 @@ audio_pause_sound(som[4])
 			
 abrindo_e_sendo_empurrada = function(){
 	
-	cade_alp = clamp(cade_alp,0,1)
+	if (instance_exists(obj_player)){
+		
+		cade_alp = clamp(cade_alp,0,1)
 	
-	var alvos = [obj_player,obj_inimigo]
-	var dist = [1000,100]
-	var tec_a = keyboard_check_pressed(ord("F"))
-	var chu_t = 30
+		var alvos = [obj_player,obj_inimigo,obj_zumbi_pai]
+		var dist = [1000,100]
+		var tec_a = keyboard_check_pressed(ord("F"))
+		var chu_t = 30
 	
-	#region Empurrando a porta
-	
-	if (!trancado){
-	
-		with(obj_player){
+		#region Empurrando a porta
+		
+		if (!trancado and instance_exists(obj_player)){
+		
+			with(obj_inimigo){
 			
-			for (var f =0;f<array_length(other.filhos);f++){
+				for (var f =0;f<array_length(other.filhos);f++){
 			
-				if (achando_na_array(colisao,other.filhos[f])>-1){
+					if (achando_na_array(colisao,other.filhos[f])>-1){
 				
-					colisao = retira_da_array(colisao,other.filhos[f])
-					att = 1
+						colisao = retira_da_array(colisao,other.filhos[f])
+						att = 1
 				
+					}
+				}
+			}
+		
+			with(obj_player){
+			
+				for (var f =0;f<array_length(other.filhos);f++){
+			
+					if (achando_na_array(colisao,other.filhos[f])>-1){
+				
+						colisao = retira_da_array(colisao,other.filhos[f])
+						att = 1
+				
+					}
+				}
+			}
+		
+			for (var a =0;a<array_length(alvos);a++){
+		
+				if (instance_exists(alvos[a])){
+		
+					var h = alvos[a].hspd
+					var v = alvos[a].vspd
+			
+					var qtd = 0
+					var col = 0
+		
+					for (var f = 0;f<array_length(filhos);f++){
+			
+						if (instance_exists(filhos[f])){
+				
+							with(filhos[f]){
+					
+								if (place_meeting(x,y,alvos[a])) col = 1
+					
+							}
+						}
+					}
+		
+					if (place_meeting(x,y,alvos[a]) and col){
+			
+						var dira = point_direction(0,0,h,v)
+						var dir = angle_difference(dira,image_angle)
+			
+						fra -= h*2
+						fra -= v*2 //ddadwadlengthdir_y(v*2,dir)
+						mudando = 0
+			
+					}
+		
+					qtd = 0
+		
+				}
+			}
+		}else{
+		
+			with(obj_player){
+			
+				for (var f =0;f<array_length(other.filhos);f++){
+			
+					if (achando_na_array(colisao,other.filhos[f])=-1){
+				
+						colisao = adiciona_na_array(colisao,other.filhos[f])
+					
+					}
+				}
+			}
+		
+			with(obj_inimigo){
+			
+				for (var f =0;f<array_length(other.filhos);f++){
+			
+					if (achando_na_array(colisao,other.filhos[f])=-1){
+				
+						colisao = adiciona_na_array(colisao,other.filhos[f])
+					
+					}
 				}
 			}
 		}
+	
+		#endregion
 		
-		for (var a =0;a<array_length(alvos);a++){
+		#region Começando a abrir, fechar ou chutar a porta
 		
-			if (instance_exists(alvos[a])){
+		if (instance_exists(filhos[0]) and point_distance(x,y,obj_player.x,obj_player.y)<150){
 		
-				var h = alvos[a].hspd
-				var v = alvos[a].vspd
+			for (var f = 0;f<filhos_qtd;f++){
+		
+				if (instance_exists(filhos[f])){
+		
+					var _x = filhos[f].x
+					var _y = filhos[f].y
+		
+					if (global.portas_abrir = id and point_distance(_x,_y,obj_player.x,obj_player.y)<75){
+		
+						cade_alp += .05
+		
+					}
 			
-				var qtd = 0
-				var col = 0
-		
-				for (var f = 0;f<array_length(filhos);f++){
-			
-					if (instance_exists(filhos[f])){
-				
-						with(filhos[f]){
+					if (point_distance(_x,_y,obj_player.x,obj_player.y)<dist[0]){
 					
-							if (place_meeting(x,y,alvos[a])) col = 1
+						player_prox = instance_nearest(_x,_y,obj_player)
+						var ct = instance_exists(player_prox) and variable_instance_exists(player_prox,"controle") ? player_prox.controle : 0
+						var cn = ct and gamepad_is_connected(0)
+						var tec_ord = cn
+						tec_a = !cn ? keyboard_check_released(ord(tecla_abrir[0])) and tecla_pressionada[0] < chute_tempo/2 : gamepad_button_check_released(0,tecla_abrir[1]) and tecla_pressionada[1] < chute_tempo/2
 					
+						if (tec_a and !chutou){
+										    
+							dist[0] = point_distance(_x,_y,obj_player.x,obj_player.y)
+							dist[1] = f
+					
+						}
+					
+						if (tecla_pressionada[tec_ord] >= chu_t and !chutou and image_angle = clamp(image_angle,ima_org-20,ima_org+20)){
+						
+							var dir = ima_org = 90 ? sign(player_prox.x-x) : sign(player_prox.y-y)
+						
+							frc += 20 * dir
+							trancado = 0
+							chutou = 1
+							tecla_pressionada[tec_ord] = 0
+						
+							fazendo_barulho(x,y,150,id)
+							som[2] = toca_som(snd_porta_chuta,1,15,125,,,.05)
+						
 						}
 					}
 				}
-		
-				if (place_meeting(x,y,alvos[a]) and col){
-			
-					var dira = point_direction(0,0,h,v)
-					var dir = angle_difference(dira,image_angle)
-			
-					fra -= h*2
-					fra -= v*2 //ddadwadlengthdir_y(v*2,dir)
-					mudando = 0
-			
-				}
-		
-				qtd = 0
-		
 			}
 		}
-	}else{
 		
-		with(obj_player){
-			
-			for (var f =0;f<array_length(other.filhos);f++){
-			
-				if (achando_na_array(colisao,other.filhos[f])=-1){
-				
-					colisao = adiciona_na_array(colisao,other.filhos[f])
-					
-				}
-			}
-			
-			mp_grid_add_instances(obj_controlador.mapa,other,0)
-			
-		}
-	}
+		#endregion 
+		
+		#region Efetivamente abrindo ela
 	
-	#endregion
+		if (dist[0]<75 and tec_a and global.portas_abrir = id){
 	
-	if (instance_exists(filhos[0]) and point_distance(x,y,obj_player.x,obj_player.y)<150){
+			if (!trancado){
 	
-		for (var f = 0;f<filhos_qtd;f++){
+				if (image_angle = clamp(image_angle,ima_org-20,ima_org+20)){
+			
+					som[0] = toca_som(snd_porta_abre,1,15,50,,,.05)
+					fazendo_barulho(x,y,15,id)
+					mudando = 1
+					if (ima_org = 90) abre_dir = x>obj_player.x ? -1 : 1
+					if (ima_org =  0) abre_dir = y>obj_player.y ? -1 : 1
+			
+				}else{
 		
-			if (instance_exists(filhos[f])){
-		
-				var _x = filhos[f].x
-				var _y = filhos[f].y
-		
-				if (global.portas_abrir = id and point_distance(_x,_y,obj_player.x,obj_player.y)<75){
-		
-					cade_alp += .05
+					som[3] = toca_som(snd_porta_trancado,1,15,50,,,.05)
+					mudando = 2
+					//show_message("2")
 		
 				}
-			
-				if (point_distance(_x,_y,obj_player.x,obj_player.y)<dist[0]){
-					
-					player_prox = instance_nearest(_x,_y,obj_player)
-					var ct = instance_exists(player_prox) and variable_instance_exists(player_prox,"controle") ? player_prox.controle : 0
-					var cn = ct and gamepad_is_connected(0)
-					var tec_ord = cn
-					tec_a = !cn ? keyboard_check_released(ord(tecla_abrir[0])) and tecla_pressionada[0] < chute_tempo/2 : gamepad_button_check_released(0,tecla_abrir[1]) and tecla_pressionada[1] < chute_tempo/2
-					
-					if (tec_a and !chutou){
-										    
-						dist[0] = point_distance(_x,_y,obj_player.x,obj_player.y)
-						dist[1] = f
-					
-					}
-					
-					if (tecla_pressionada[tec_ord] >= chu_t and !chutou and image_angle = clamp(image_angle,ima_org-20,ima_org+20)){
-						
-						var dir = ima_org = 90 ? sign(player_prox.x-x) : sign(player_prox.y-y)
-						
-						frc += 20 * dir
-						trancado = 0
-						chutou = 1
-						tecla_pressionada[tec_ord] = 0
-						
-						fazendo_barulho(x,y,150,id)
-						som[2] = toca_som(snd_porta_chuta,1,15,125,,,.05)
-						
-					}
-				}
-			}
-		}
-	}
-	
-	#region Efetivamente abrindo ela
-	
-	if (dist[0]<75 and tec_a and global.portas_abrir = id){
-	
-		if (!trancado){
-	
-			if (image_angle = clamp(image_angle,ima_org-20,ima_org+20)){
-			
-				som[0] = toca_som(snd_porta_abre,1,15,50,,,.05)
-				fazendo_barulho(x,y,15,id)
-				mudando = 1
-				if (ima_org = 90) abre_dir = x>obj_player.x ? -1 : 1
-				if (ima_org =  0) abre_dir = y>obj_player.y ? -1 : 1
-			
 			}else{
+			
+				fazendo_barulho(x,y,15,id)
+			
+			}
+		}	
+	
+		if (mudando == 2){
 		
-				som[3] = toca_som(snd_porta_trancado,1,15,50,,,.05)
-				mudando = 2
-				//show_message("2")
+			image_angle = lerp(image_angle,ima_org,.15) 
+		
+			if (image_angle = clamp(image_angle,ima_org-1.5,ima_org+1.5) and !audio_is_playing(som[1])){
+			
+				som[1] = toca_som(snd_porta_fecha,1,15,50,,,.05)
+				fazendo_barulho(x,y,15,id)
+			
+			}
+		
+			if (image_angle = clamp(image_angle,ima_org-.1,ima_org+.1)){
+			
+				mudando = 0
+			
+			}
+		}
+	
+		if (mudando == 1){ 
+		
+			image_angle = lerp(image_angle,ima_org+(90*abre_dir),.15)
+		
+			if (image_angle = clamp(image_angle,min(ima_org+(90.1*abre_dir),ima_org+(89.9*abre_dir)),max(ima_org+(90.1*abre_dir),ima_org+(89.9*abre_dir)))){ 
+			
+				mudando = 0
 		
 			}
-		}else{
-			
-			fazendo_barulho(x,y,15,id)
-			
 		}
-	}	
 	
-	if (mudando == 2){
+		#endregion
+	
+		image_angle+=frc
+		image_angle = lerp(image_angle,image_angle+fra,0.1)
+		fra = lerp(fra,0,0.1)
+	
+		if (image_angle != clamp(image_angle,ima_org-90,ima_org+90) and frc!=0){
 		
-		image_angle = lerp(image_angle,ima_org,.15) 
+			var s = -1
 		
-		if (image_angle = clamp(image_angle,ima_org-1.5,ima_org+1.5) and !audio_is_playing(som[1])){
-			
-			som[1] = toca_som(snd_porta_fecha,1,15,50,,,.05)
-			fazendo_barulho(x,y,15,id)
-			
+			frc *= s / 5 
+		
 		}
-		
-		if (image_angle = clamp(image_angle,ima_org-.1,ima_org+.1)){
-			
-			mudando = 0
-			
-		}
+	
+		frc = lerp(frc,0,0.1)
+		image_angle = clamp(image_angle,ima_org-90,ima_org+90)
+	
 	}
-	
-	if (mudando == 1){ 
-		
-		image_angle = lerp(image_angle,ima_org+(90*abre_dir),.15)
-		
-		if (image_angle = clamp(image_angle,min(ima_org+(90.1*abre_dir),ima_org+(89.9*abre_dir)),max(ima_org+(90.1*abre_dir),ima_org+(89.9*abre_dir)))){ 
-			
-			mudando = 0
-		
-		}
-	}
-	
-	#endregion
-	
-	image_angle+=frc
-	image_angle = lerp(image_angle,image_angle+fra,0.1)
-	fra = lerp(fra,0,0.1)
-	
-	if (image_angle != clamp(image_angle,ima_org-90,ima_org+90) and frc!=0){
-		
-		var s = -1
-		
-		frc *= s / 5 
-		
-	}
-	
-	frc = lerp(frc,0,0.1)
-	image_angle = clamp(image_angle,ima_org-90,ima_org+90)
-	
 }
 	
 cria_filhos = function(){

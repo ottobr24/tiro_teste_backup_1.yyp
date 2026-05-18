@@ -1,0 +1,5 @@
+draw_set_halign(1)
+draw_set_colour(c_green)
+draw_text_transformed(display_get_gui_width()/2,rod_y,"Rodada: " + string(global.rodada),1.5,1.5,0)
+draw_set_colour(-1)
+draw_set_halign(-1)

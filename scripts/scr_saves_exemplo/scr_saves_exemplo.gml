@@ -17,6 +17,7 @@ function salvando(i=global.savei){
 		
 		armas_mods : global.armas_mods,
 		armas_modi : global.armas_modi,
+		armas_moda : global.armas_moda,
 		
 	};
 	
@@ -75,7 +76,7 @@ function carregando(i=global.savei){
 	
 	var _struct = json_parse(_json)
 	
-	var texts = ["armas_aval","armas_mods","armas_modi","arma"]
+	var texts = ["armas_aval","armas_mods","armas_modi","armas_moda","arma"]
 	
 	for (i=0;i<array_length(texts);i++){
 		

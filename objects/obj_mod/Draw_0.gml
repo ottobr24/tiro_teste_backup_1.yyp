@@ -16,7 +16,7 @@ var spry = gh/2
 var sprxo = sprite_get_xoffset(spr)
 var spryo = sprite_get_yoffset(spr)
 var mod_esc = sprxs / 4
-var mod_tec = mouse_check_button_pressed(mb_left) or keyboard_check_pressed(vk_enter) or gamepad_button_check_pressed(0,gp_face1)
+var mod_tec = (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter) or gamepad_button_check_pressed(0,gp_face1))
 
 #endregion
 
@@ -24,19 +24,27 @@ var mod_tec = mouse_check_button_pressed(mb_left) or keyboard_check_pressed(vk_e
 
 draw_set_alpha(alp)
 draw_set_colour(c_navy)
+draw_set_font(fnt_modificacao)
 draw_rectangle(0,0,gw,gh,0)
 draw_set_colour(-1)
+
+draw_sprite_ext(spr_mods_item,0,118,48,2,2,0,c_white,alp)
+
+draw_set_halign(fa_left)
+draw_set_valign(fa_middle)
+
+draw_text_transformed(148,48,round(global.dinheiro),2,2,0)
 
 #endregion
 
 #region Desenha Arma
 
-draw_set_font(fnt_modificacao)
 draw_set_halign(1)
 draw_set_valign(1)
 
-sprite_set_offset(spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
-draw_sprite_ext(spr,0,sprx,spry,sprxs,sprys,0,c_white,alp)
+//sprite_set_offset(spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
+//draw_sprite_ext(spr,0,sprx,spry,sprxs,sprys,0,c_white,alp)
+//
 
 #endregion
 
@@ -46,17 +54,17 @@ if (i<array_length(global.armas_mods[0]) and alp){
 	
 	var arm = pai.arma
 		
-	for (var m=array_length(arm.mods)-1;m>=0;m--){
+	for (var m=array_length(mods_atual)-1;m>=0;m--){
 		
-		if (array_length(global.armas_modp[i][m])>0 and global.armas_modp[i][m][arm.mods[m]]!=0){ //vendo se tem alguma sprite pra desenhar
+		if (array_length(global.armas_modp[i][m])>0 and global.armas_modp[i][m][mods_atual[m]]!=0){ //vendo se tem alguma sprite pra desenhar
 
-			var mod_spr =  global.armas_modp[i][m][arm.mods[m]] //sprite
+			var mod_spr =  global.armas_modp[i][m][mods_atual[m]] //sprite
 			var mod_xo = sprite_get_xoffset(mod_spr) //xoff
 			var mod_yo = sprite_get_yoffset(mod_spr) //yoff
 			var mod_mx = 0 
 			var mod_my = 0
-			var mod_x1 = global.armas_mode[i][m][arm.mods[m]][0]//xspr
-			var mod_y1 = global.armas_mode[i][m][arm.mods[m]][1]//yspr
+			var mod_x1 = global.armas_mode[i][m][mods_atual[m]][0]//xspr
+			var mod_y1 = global.armas_mode[i][m][mods_atual[m]][1]//yspr
 			
 			for (var md=0;md<array_length(pext);md++){
 				
@@ -75,7 +83,7 @@ if (i<array_length(global.armas_mods[0]) and alp){
 
 			draw_sprite_ext(mod_spr,mod_i,mod_x,mod_y,sprxs,sprys,0,c_white,alp)
 			
-			if (index = m){
+			if (index = m and global.armas_aval[i]){
 				
 				draw_sprite_ext(mod_spr,mod_i,mod_x,mod_y,sprxs,sprys,0,c_yellow,alp)
 			
@@ -90,7 +98,7 @@ if (i<array_length(global.armas_mods[0]) and alp){
 	
 	#region Pontos de modificação
 	
-	for (var p=0;p<array_length(arm.mods);p++){
+	for (var p=0;p<array_length(mods_atual);p++){
 	
 		if (array_length(global.armas_modx[i][p])>0){
 	
@@ -112,7 +120,7 @@ if (i<array_length(global.armas_mods[0]) and alp){
 			
 			#endregion
 			
-			var mod_spr = global.armas_modp[i][p][arm.mods[p]]
+			var mod_spr = global.armas_modp[i][p][mods_atual[p]]
 			var mod_x1	= global.armas_modx[i][p][0]+.5 + mod_mx
 			var mod_y1	= global.armas_modx[i][p][1]+.5 + mod_my
 			
@@ -135,7 +143,7 @@ if (i<array_length(global.armas_mods[0]) and alp){
 				if (array_length(global.armas_mode[i][m])>0){	
 					
 					var btmd2 = 0
-					var mod_i = arm.mods[m] //modificador usado
+					var mod_i = mods_atual[m] //modificador usado
 					var ar1 = array_length(global.armas_mode[i][m])>0 //verifica se tem algo na array
 					var ar2 = ar1 and is_array(global.armas_mode[i][m][mod_i]) //verifica se tem uma array na array
 					var ar3 = ar2 and array_length(global.armas_mode[i][m][mod_i])>3 //verifica se na segunda array tem o id do modificador
@@ -185,9 +193,9 @@ if (i<array_length(global.armas_mods[0]) and alp){
 			
 			for (var m=0;m<array_length(ids);m++){
 				
-				var deb = keyboard_check(ord("K")) and m = 9
+				var deb = keyboard_check(ord("K"))
 			
-				var mod_i = arm.mods[m]
+				var mod_i = mods_atual[m]
 				var ar1 = array_length(global.armas_mode[i][m])>0 //verifica se tem algo na array
 				var ar2 = ar1 and is_array(global.armas_mode[i][m][mod_i]) //verifica se tem uma array na array
 				var ar3 = ar2 and array_length(global.armas_mode[i][m][mod_i])>20 //verifica se na segunda array tem o id do modificador
@@ -205,7 +213,7 @@ if (i<array_length(global.armas_mods[0]) and alp){
 				if (achando_na_array(bloqs2,bid)>-1){ 
 				
 					global.armas_mods[ind][i][m]		= 0
-					arm.mods[m] = 0
+					mods_atual[m] = 0
 				
 				}
 			}
@@ -246,7 +254,7 @@ if (i<array_length(global.armas_mods[0]) and alp){
 			
 			deb = keyboard_check_pressed(vk_f1) and p = 8
 			
-			if (lista = p+1) cor = make_colour_rgb(200,200,0)
+			if (lista = p+1 and global.armas_aval[i] = 1) cor = make_colour_rgb(200,200,0)
 			
 			#region Muda cor
 			
@@ -272,12 +280,12 @@ if (i<array_length(global.armas_mods[0]) and alp){
 	
 					if ( point_in_circle(mouse_x,mouse_y,mod_x,mod_y,abs(mod_esc))) window_set_cursor(cr_drag)
 				
-					if (mod_tec){
-				
+					if (mod_tec and colidindo!=-2){
+						
 						if (lista != p+1 and !enter){
 				
 							lista = p+1
-							listai = arm.mods[lista-1]
+							listai = mods_atual[lista-1]
 						
 							var mod_i = lista-1
 					
@@ -302,7 +310,7 @@ if (i<array_length(global.armas_mods[0]) and alp){
 
 sprite_set_offset(spr,sprxo,spryo)
 
-//draw_text(60,20,global.armas_mods[i])
+draw_text(300,20,mods_atual)
 
 if (lista){
 	
@@ -323,7 +331,7 @@ if (lista){
 			if (array_length(global.armas_mode[i][m])>0){	
 			
 				var btmd2 = 0
-				var mod_i = arm.mods[m] //modificador usado
+				var mod_i = mods_atual[m] //modificador usado
 				var ar1 = array_length(global.armas_mode[i][m])>0 //verifica se tem algo na array
 				var ar2 = ar1 and is_array(global.armas_mode[i][m][mod_i]) //verifica se tem uma array na array
 				var ar3 = ar2 and array_length(global.armas_mode[i][m][mod_i])>3 //verifica se na segunda array tem o id do modificador
@@ -344,6 +352,7 @@ if (lista){
 			
 			listai = l
 			listan=0
+			colidindo = 1
 			
 		}
 		
@@ -381,12 +390,25 @@ if (lista){
 		}
 		
 		if (acha) cor2 = c_gray
+		if (global.armas_moda[ind][i][lista-1][l] = 0) cor2 = make_colour_rgb(128,0,0) 
+		
+		if (cor2 = make_colour_rgb(128,0,0) and l = listai) cor2 = c_red
+		if (cor2 = make_colour_rgb(128,0,0) and acha) cor2 = make_colour_rgb(64,0,0) 
+		
+		if (cor2 = c_gray and l = listai) cor2 = make_colour_rgb(192,192,192)
 		
 		draw_set_colour(cor2)
 	
 		draw_text(sprx-300,20+20*l,global.armas_modn[i][lista-1][l])
-	
+		
 		draw_set_colour(-1)
+
+		if (cor2 = c_red){
+			
+			draw_sprite(spr_mods_item,0,sprx-48,550)
+			draw_text(sprx,550,global.armas_modc[i][lista-1][l])
+			
+		}
 
 		if (global.debug) draw_rectangle(sprx-200,20+(20*l)-tex_h,sprx-200+tex_w,20+(20*l)+tex_h,1)
 		
@@ -413,6 +435,7 @@ if (lista){
 			arm.modi[lista-1] = c
 			global.armas_modi[ind][i][lista-1]		= c
 			listan = 1
+			colidindo = 1
 			
 		}
 		
@@ -444,6 +467,7 @@ if (lista){
 		if (point_in_rectangle(mouse_x,mouse_y,sprx,50-tex_h,sprx+tex_w,50+tex_h)){
 		
 			listan = 2
+			colidindo = 1
 		
 		}
 	
@@ -467,8 +491,6 @@ if (lista){
 }
 
 if ( alp and !colidindo and !enter) window_set_cursor(cr_arrow)
-//draw_text(600,200,pontos_perto)
-//draw_text(600,220,pontos)
 
 colidindo = 0
 

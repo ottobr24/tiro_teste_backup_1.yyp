@@ -1,4 +1,4 @@
-if (!global.pause) exit;
+if (!global.pause or global.pause>1) exit;
 
 colocando_o_controle()
 usando_o_menu()

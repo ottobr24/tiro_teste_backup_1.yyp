@@ -1,16 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_arma_mod",
+  "%Name":"obj_criador_ponto",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_arma_mod",
+  "name":"obj_criador_ponto",
   "overriddenProperties":[],
   "parent":{
-    "name":"Menu",
-    "path":"folders/Objetos/Menu.yy",
+    "name":"Controlador",
+    "path":"folders/Objetos/Controlador.yy",
   },
   "parentObjectId":null,
   "persistent":false,

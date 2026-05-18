@@ -10,9 +10,9 @@ if (ii>= sprite_get_number(sprite_index)){
 	
 }
 
-if (place_meeting(x,y,[obj_player,obj_inimigo,obj_miniparede,obj_porta])){
+if (place_meeting(x,y,[obj_player,obj_zumbi_pai,obj_inimigo,obj_miniparede,obj_miniporta])){
 	
-	var obj = instance_place(x,y,[obj_player,obj_inimigo,obj_miniparede,obj_porta])
+	var obj = instance_place(x,y,[obj_player,obj_zumbi_pai,obj_inimigo,obj_miniparede,obj_miniporta])
 	
 	if (!ds_list_find_index(atacados,obj)){
 		

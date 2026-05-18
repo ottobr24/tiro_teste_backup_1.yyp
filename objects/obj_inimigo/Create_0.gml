@@ -42,6 +42,8 @@ caminhando_timer = 0//caminhando_tempo
 
 vendo_player = 0
 vendo_player_timer = 0
+vendo_atencao_mais	= 1
+vendo_atencao_menos = 1
 
 vendo_player_dist = 400
 atirar_player_dist = 350
@@ -55,6 +57,7 @@ cx3 = x
 cy3 = y
 cd  = 0
 cdm = 0
+coid = 0
 
 terminou_caminho = 0
 cria_caminho = 0
@@ -151,14 +154,12 @@ sofrendo_dano = function(){
 		
 		if (instance_exists(dano_pai) and dano_pai.object_index != obj_inimigo){
 		
-			direction = point_direction(x,y,dano_pai.x,dano_pai.y)
+			player_x = dano_pai.x
+			player_y = dano_pai.y
+				
+			direction = point_direction(x,y,player_x,player_y)
+			cria_caminho = 1
 			
-			if (vendo_player){
-				
-				player_x = dano_pai.x
-				player_y = dano_pai.y
-				
-			}	
 		}
 		
 		vendo_player_timer-=15
@@ -177,7 +178,9 @@ puxa_arma = function(){
 		
 		if (!instance_exists(arma) and arma = -4){
 			
-			arma = instance_create_layer(x,y,"Arma",obj_arma_npc)
+			cx3 = x+16
+			cy3 = y+16
+			arma = instance_create_layer(cx3,cy3,"Arma",obj_arma_npc)
 			arma.pai = id
 		
 			with(arma){
@@ -227,7 +230,7 @@ puxa_arma = function(){
         
 			var x1 = x + lengthdir_x(cx2,direction) 
 	        var y1 = y + lengthdir_y(cy2,direction)
-	        var dir = direction
+	        var dir = direction + coid
 			
 	        with(arma){
             
@@ -270,11 +273,12 @@ puxa_arma = function(){
 			
 			arma.x = cx3
 			arma.y = cy3
-			arma.direction = direction
+			arma.direction = direction + coid
 			arma.image_angle = cd
 			arma.image_xscale = ix
 		
 			cdm = ang
+			coid = lerp(coid,0,.1)
 			
 		}
 	}
@@ -284,13 +288,13 @@ puxa_arma = function(){
 
 #region Movimentação
 
-movendo = function(_x = -1,_y = -1){
+movendo = function(_x = -1,_y = -1,seg = 0){
     
 	var col = point_in_circle(x,y,alvox,alvoy,3)
 	
-	if (cria_caminho or col or _x > -1){
+	if (cria_caminho or col or _x !=-1){
 		
-		if (col and !cria_caminho){
+		if (col and !cria_caminho and _x !=-1){
 			
 			parado_timer = parado_tempo
 			exit
@@ -320,7 +324,6 @@ movendo = function(_x = -1,_y = -1){
 				reg_y = bbox_top
 				reg_w = bbox_right
 				reg_h = bbox_bottom
-				exit;
 				
 			}
 		}
@@ -347,6 +350,12 @@ movendo = function(_x = -1,_y = -1){
 			alvox = sel_x
 			alvoy = sel_y
 			
+			if (seg){
+				
+				player_x = alvox
+				player_y = alvoy
+				
+			}
 		}
 	}
 }
@@ -380,7 +389,10 @@ achando_o_caminho = function(){
 				
 					x-=lengthdir_x(vela,dir)
 					y-=lengthdir_y(vela,dir)
+					path_end()
 					cria_caminho = 1
+					player_x = x
+					player_y = y
 					
 				}else{
 				
@@ -389,6 +401,18 @@ achando_o_caminho = function(){
 				}
 			}
 		}
+	}else{
+		
+		if (place_meeting(x,y,colisao)){
+				
+			path_end()
+			cria_caminho = 1
+			player_x = x
+			player_y = y
+			x -= hspd 
+			y -= vspd 
+			
+		}	
 	}
 }
 
@@ -396,7 +420,7 @@ colidindo = function(){
 	
 	//speed = 0
 	terminou_caminho=0
-	var vp = !vendo_player ? -1 : 1
+	var vp = !vendo_player ? -vendo_atencao_mais : vendo_atencao_menos
 	
 	vendo_player_timer -= vp
 	vendo_player_timer = clamp(vendo_player_timer,0,60)
@@ -407,6 +431,8 @@ colidindo = function(){
 	xult = x
 	yult = y
 	
+	if (estado = estado_seguindo) direction = point_direction(x,y,player_x,player_y)
+		
 }
 
 #endregion 
@@ -425,7 +451,7 @@ ouvindo = function(){
 			
 				if (bar[b][3].object_index != object_index){
 			
-					var dist = 32
+					var dist = 16
 			
 					randomise()
 			
@@ -443,12 +469,14 @@ ouvindo = function(){
 				
 					player_perigo = 1
 					vigia_volta = 0
-			
+					
+					direction = point_direction(x,y,player_x,player_y)
+					
 				}else{
 				
 					var px = bar[b][3].player_x
 					var py = bar[b][3].player_y
-					var dist = 10
+					var dist = 16
 			
 					randomise()
 			
@@ -467,6 +495,8 @@ ouvindo = function(){
 					player_perigo = 1
 					vigia_volta = 0
 			
+					direction = point_direction(x,y,player_x,player_y)
+						
 				}
 			}
 		}
@@ -612,6 +642,8 @@ estado_parado = function(){
 	
 	perigo = 0
 	cria_caminho = 1
+	vendo_atencao_mais = 1
+	vendo_atencao_menos = 1
 	
 	vendo_o_perigo()
 	visao(vendo_player_dist,"vendo_player",,,,,adiciona_na_array(global.colisao_normal,object_index),35,0,1)
@@ -632,14 +664,18 @@ estado_parado = function(){
 	
 	muda_estados()
 		
-	//path_end()
+	path_end()
 	
 }
 
 estado_andando = function(){
     
+	var dir = direction
+	
 	arma_usar = player_perigo
 	arma_atira = 0
+	vendo_atencao_mais	= 1
+	vendo_atencao_menos = .75
 	
 	ouvindo()
 	sofrendo_dano()
@@ -651,7 +687,8 @@ estado_andando = function(){
 	
 	var tmd = path_get_length(caminho)
 	if (x = xult and y = yult) path_position = vela / tmd
-		
+	direction = dir
+	
     estado = estado_andando
     estado_txt = "estado_andando"       
 	
@@ -669,14 +706,15 @@ estado_vigiando = function(){
 	
 	if(!point_in_circle(x,y,xstart,ystart,2)){ 
 		
+		var dir = direction
+		
 		movendo(xstart,ystart) 
+		
 		var tmd = path_get_length(caminho)
 		
-		if (x = xult and y = yult) path_position = vela / tmd
+		direction = dir
 		
-		//show_debug_message("corrigindo a andada: " + string(vela / tmd))
-		//show_debug_message("velo: " + string(vela ))
-		//show_debug_message("tmd: " + string(tmd))
+		if (x = xult and y = yult) path_position = vela / tmd
 		
 	}else{
 		
@@ -691,7 +729,9 @@ estado_vigiando = function(){
 	visao(vendo_player_dist,"vendo_player",,,,,adiciona_na_array(global.colisao_normal,object_index),60,0,1)
 	
     estado = estado_vigiando
-    estado_txt = "estado_vigiando"       
+    estado_txt = "estado_vigiando"     
+	vendo_atencao_mais	= 2
+	vendo_atencao_menos = 1  
 	
 	muda_estados()
 	
@@ -704,12 +744,19 @@ estado_seguindo = function(){
 	
 	vigia_volta = 0
 	
+	vendo_atencao_mais = 2
+	vendo_atencao_menos = .5
+	
 	ouvindo()
 	sofrendo_dano()
 	vendo_o_perigo()
 	puxa_arma()
 	
-	if (player_x!=alvox or player_y!=alvoy) movendo(player_x,player_y)
+	if (player_x!=alvox or player_y!=alvoy){ 
+		
+		movendo(player_x,player_y,1)
+		
+	}
 	
 	achando_o_caminho()
 		
@@ -727,8 +774,6 @@ estado_atirando = function(){
 	arma_usar = 1
 	arma_atira = 1
 	
-	if (instance_exists(obj_player)) direction = point_direction(x,y,obj_player.x,obj_player.y)
-	
 	ouvindo()
 	sofrendo_dano()
 	vendo_o_perigo()
@@ -737,6 +782,11 @@ estado_atirando = function(){
 	
     estado = estado_atirando
     estado_txt = "estado_atirando"       
+	
+	vendo_atencao_mais = 2
+	vendo_atencao_menos = .5
+	
+	if (instance_exists(obj_player)) direction = point_direction(x,y,obj_player.x,obj_player.y)
 	
 	muda_estados()
 	
@@ -761,6 +811,9 @@ estado_atencao = function(){
     estado = estado_atencao
     estado_txt = "estado_atencao"       
 	
+	vendo_atencao_mais = 2
+	vendo_atencao_menos = .35
+	
 	muda_estados()
 	
 	path_end()
@@ -784,6 +837,7 @@ estado_pause = function(){
     estado_txt = "estado_pause"     
 	
 	arma_atira = 0
+	cria_caminho = 1
 	
 	muda_estados()
 	

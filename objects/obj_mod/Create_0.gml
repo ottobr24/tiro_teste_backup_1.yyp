@@ -1,20 +1,34 @@
 i = global.arma
+
 index = 0
+
 rot = 1
 rotd = 1
+
 alp=0
-lista =0
+
+lista = -1
 listai =0
 listan =0
+
 pext = []
-colidindo = 0
+
+colidindo = -2
+
 pontos_perto = [0,0]
 pontos = [] 
+
 bloqueados = []
+
 enter = 0
+
 pai = -4
+
 ind = 0
+
 criou = 0
+
+mods_atual = []
 
 cria_botoes = function(){
 	

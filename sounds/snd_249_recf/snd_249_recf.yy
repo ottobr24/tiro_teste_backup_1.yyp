@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.8965533,
+  "duration":4.043583,
   "exportDir":"",
   "name":"snd_249_recf",
   "parent":{

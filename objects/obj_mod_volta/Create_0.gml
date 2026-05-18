@@ -17,6 +17,7 @@ sai_do_mod = function(){
 			if (instance_exists(obj_camera)) obj_camera.roo = 0
 			if (instance_exists(obj_menu2)) obj_menu2.textos_mostrar = [0]
 			if (instance_exists(obj_pause)) obj_pause.textos_mostrar = [0]
+			if (global.pause = 2) global.pause = 0
 			
 			instance_destroy(obj_mod)
 			instance_destroy(obj_mod_seta)

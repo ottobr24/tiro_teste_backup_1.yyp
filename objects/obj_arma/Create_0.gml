@@ -390,7 +390,7 @@ desenha_fogo = function(){
 
 atira = function(){
 	
-	#region Variaveis 1
+	#region Variaveis
 	
 	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
 	var grd = 0
@@ -451,7 +451,11 @@ atira = function(){
 				#region Tiro de vdd
 				
 				repeat(bala){
-			
+					
+					var mirc = mira ? 2		: 1
+					var mirp = mira ? 1.25	: 1
+					var mirs = mira ? 1.5	: 1
+					
 					var sil = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
 					var fre = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=3
 				
@@ -467,9 +471,11 @@ atira = function(){
 					var _x = x + lengthdir_x(sprite_width*image_xscale,direction)
 					var _y = y + margy + lengthdir_y(sprh,direction)
 			
-					randomize()      
+					randomise()      
 				
 					var dir = direction - random_range(prec,-prec)
+					var dir_dif = random_range(-(coix+coiy)/1.5,(coix+coiy)/1.5) / mirc
+					
 					var t = instance_create_layer(_x,_y,"Pessoas",obj_tiro)
 					t.i = i            
 					
@@ -480,12 +486,14 @@ atira = function(){
 					t.dano = dano                
 					t.pai = pai           
 					
-					prec+=prec_menos             
+					pai.coid += dir_dif
+					
+					prec+=prec_menos / mirp        
 				
 					pai.cx -= coix *1.5          
 					pai.cy -= coiy *1.5          
 			
-					global.shake+=shak*global.shakes[global.configs[1][0]]        
+					global.shake	+=	shak*global.shakes[global.configs[1][0]] / mirs  
             
 					fogo_tempo = 10
 					fogo_ii = irandom_range(0,sprite_get_number(spr_fogo))
@@ -503,7 +511,7 @@ atira = function(){
 				
 					vol = sil ? 0.25 : 1
 					
-					obj_controlador.vib_d += shak
+					obj_controlador.vib_d += shak / mirs  
 					
 				}                                            
 				
@@ -592,7 +600,7 @@ atira = function(){
 			var _x = x + lengthdir_x(sprh,direction)
 			var _y = y + margy + lengthdir_y(sprh,direction)
 			
-			randomize()      
+			randomise()      
 			
 			var dir = direction - random_range(prec,-prec)
 			var t = instance_create_layer(_x,_y,"Pessoas",obj_granadas)           
@@ -685,7 +693,9 @@ preparando = function(){
 				
 				obj_controlador.vib_e += 1.5
 				obj_controlador.vib_d += 1.5
-		
+				
+				global.shake += 2 * global.shakes[global.configs[1][0]]
+				
 			}
 		}
 		
@@ -754,6 +764,8 @@ recarrega = function(){
 			obj_controlador.vib_e += .5
 			obj_controlador.vib_d += .5
 		
+			global.shake += 1.25 * global.shakes[global.configs[1][0]]
+				
 			if (municao>0 and global.armas_rext[i]>1 and !modo and municao-rext = 1 and tiro>0)  tiro = 1 //reseta municao, so pra mostrar pro player que a arma ta sendo recarregada
 			
 			#region Cria som
@@ -845,8 +857,8 @@ recarrega = function(){
 			
 			if (!retx){
 			
-				if (!modo and !passa) tiro += rext// - munc
-				if ( modo			) tirg += mung// - munc
+				if (!modo and !passa){ tiro += rext																}
+				if ( modo			){ tirg += mung global.shake += 1.5 * global.shakes[global.configs[1][0]]	}
 			
 			}else{
 				
@@ -863,8 +875,9 @@ recarrega = function(){
 			if (!retx){
 			
 				if (munt or passa){ 
-				
+					
 					cock = 1
+					
 					reff = cock
 					recarregando=0
 				
@@ -951,9 +964,6 @@ colocando_os_acessorios = function(){
 		
 			var mod_i = mods[m]
 			var ptmd = array_length(pext)
-			//show_message(is_array(global.armas_mode[i][m]))
-			//show_message(is_array(global.armas_mode[i][m][mod_i]))
-			//show_message(array_length(global.armas_mode[i][m][mod_i])>3)
 			
 			if (array_length(global.armas_mode[i][m])>0 and is_array(global.armas_mode[i][m][mod_i]) and array_length(global.armas_mode[i][m][mod_i])>8){
 				

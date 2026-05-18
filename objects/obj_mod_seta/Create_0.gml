@@ -25,9 +25,14 @@ muda_arma = function(){
 		
 			obj.i = clamp(obj.i,0,array_length(global.armas_bala)-1)
 		
-			arm.mods = [] array_copy(arm.mods,0,global.armas_mods[0][obj.i],0,array_length(global.armas_mods[0][obj.i]))
-			arm.modi = [] array_copy(arm.modi,0,global.armas_modi[0][obj.i],0,array_length(global.armas_modi[0][obj.i]))
+			arm.mods		= [] array_copy(arm.mods		,0,global.armas_mods[0][obj.i],0,array_length(global.armas_mods[0][obj.i]))
+			arm.modi		= [] array_copy(arm.modi		,0,global.armas_modi[0][obj.i],0,array_length(global.armas_modi[0][obj.i]))
+			obj.mods_atual	= [] array_copy(obj.mods_atual	,0,global.armas_mods[0][obj.i],0,array_length(global.armas_mods[0][obj.i]))
 			
+			obj.lista = -1
+			obj.listai = 0
+			obj.listan = 0
+		
 			var i = obj.i
 			
 			for (var m=0;m<array_length(global.armas_mods[0][i]);m++){

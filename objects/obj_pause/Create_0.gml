@@ -560,6 +560,7 @@ usando_o_menu = function(){
 					case 1:
 						
 						global.pause = 0
+						global.rodada = 1
 						global.player_ord = 0
 						obj_player.timer=0
 						instance_destroy(obj_arma)
@@ -569,28 +570,34 @@ usando_o_menu = function(){
 			
 					case 2:
 						
-						obj_camera.roo = 1
-						textos_mostrar = [8]
+						if (!global.zumbi){
 						
-						var i = pai.armai
+							obj_camera.roo = 1
+							textos_mostrar = [8]
 						
-						var mo = instance_create_layer(x,y,"Modificacao",obj_mod)
-						mo.alp = 1
-						mo.pai = pai
-						mo.i = i
-				
-						for (var m=0;m<array_length(global.armas_mods[0][i]);m++){
+							var i = pai.armai
+							var arm = pai.arma
 						
-							var mod_i = global.armas_mods[0][i][m]
-							var ptmd = m
-							var ptm1 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>18 ? global.armas_mode[i][m][mod_i][18] : 0
-							var ptm2 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>19 ? global.armas_mode[i][m][mod_i][19] : 0
-							var ptm3 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0]: 0
-							var ptm4 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1]: 0
-							var ptm5 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>21 ? global.armas_mode[i][m][mod_i][21] : 0
+							var mo = instance_create_layer(x,y,"Modificacao",obj_mod)
+							mo.alp = 1
+							mo.pai = pai
+							mo.i = i
+							
+							array_copy(mo.mods_atual,0,arm.mods,0,array_length(arm.mods))
+							
+							for (var m=0;m<array_length(global.armas_mods[0][i]);m++){
 						
-							mo.pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4,ptm5]
+								var mod_i = global.armas_mods[0][i][m]
+								var ptmd = m
+								var ptm1 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>18 ? global.armas_mode[i][m][mod_i][18] : 0
+								var ptm2 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>19 ? global.armas_mode[i][m][mod_i][19] : 0
+								var ptm3 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][0]: 0
+								var ptm4 = array_length(global.armas_modx[i][m])>1 ? global.armas_modx[i][m][1]: 0
+								var ptm5 = array_length(global.armas_mode[i][m])>1 and array_length(global.armas_mode[i][m][mod_i])>21 ? global.armas_mode[i][m][mod_i][21] : 0
 						
+								mo.pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4,ptm5]
+						
+							}
 						}
 						
 					break;
@@ -606,12 +613,14 @@ usando_o_menu = function(){
 						global.player_ord = 0
 						global.destino = rm_menu
 						seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
+						carregando()
 						salvando()
 		
 					break;
 					
 					case 5:
 				
+						salvando()
 						game_end()
 				
 					break;
@@ -989,32 +998,15 @@ trocando_cores = function(){
 	var menu_tmd = array_length(textos_mostrar)-1
 	var menu_index = textos_mostrar[menu_tmd]
 	
+	textos_cores[0][2] = !global.zumbi ? c_white  : c_gray
+	
 	for (var i=0;i<array_length(texto_mostrado);i++){
 		
 		switch(menu_index){
 			
-			//case 6:
+			case 0:
 				
-			//	static saves_infos = [-1,-1,-1,-1]
-			//	//textos_cores[menu_index][i] = i<3 and file_exists(global.saves[i][0]) ? c_white  : make_color_rgb(190,190,190);
-			//	//textos_cores[menu_index][array_length(saves_infos)-1] = c_white
 				
-			//	if (saves_infos[i] == -1 and i<3 and file_exists(global.saves[i][0])){
-					
-			//		var info = carregando(i,1)
-					
-			//		textos[global.configs[2][0]][menu_index][i] += " (" + string(info) + ")%"
-					
-			//	}
-				
-			//	saves_infos[i] = 0
-					
-			//break;
-			
-			case 7:
-				
-				textos_cores[menu_index][0] = file_exists(global.saves[global.savei][0]) ? c_white  : make_color_rgb(190,190,190);
-				textos_cores[menu_index][2] = file_exists(global.saves[global.savei][0]) ? c_white  : make_color_rgb(190,190,190);
 				
 			break;
 			

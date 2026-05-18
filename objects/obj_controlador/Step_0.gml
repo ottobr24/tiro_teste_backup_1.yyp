@@ -1,4 +1,4 @@
-var objs = [obj_miniparede,obj_vidro]
+var objs = global.colisao_normal
 
 if (att){
 
