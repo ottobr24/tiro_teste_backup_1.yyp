@@ -1,3 +1,4 @@
+image_blend = !controle ? c_white : c_purple
 timer++
 
 if (timer%10 = 0) fps_real2 = fps_real

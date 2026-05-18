@@ -6,6 +6,8 @@ tecla_texto = ["F"		,"B"		]
 tecla_chuta = [vk_space	,gp_face2	]
 pai = -4
 
+visao_inicio()
+
 abrindo_a_modificacao = function(){
 	
 	if (instance_exists(obj_player)){
@@ -15,15 +17,17 @@ abrindo_a_modificacao = function(){
 		var alvo = instance_nearest(x,y,obj_player)
 		var cn = alvo.controle
 		var dist = point_distance(x,y,alvo.x,alvo.y)
-		var dist_total = 96
+		var dist_total = 64
 		var tec_a = !cn ? keyboard_check_pressed(ord(tecla_abrir[cn])) : gamepad_button_check_pressed(0,tecla_abrir[cn])
-	
+		var vis = 1//visao(dist_total,"",x,y,point_direction(x,y,alvo.x,alvo.y),alvo,[obj_miniparede],1,1)
+		var por = !instance_exists(global.portas_abrir) or  point_distance(alvo.x,alvo.y,global.portas_abrir.x,global.portas_abrir.y) > dist
+		
 		#region Efetivamente abrindo ela
 		
-		if (dist<dist_total) cade_alp += .05
-		if (dist>dist_total) cade_alp -= .025
+		if (dist<dist_total and por and vis) cade_alp += .05
+		if (dist<dist_total and por and vis) cade_alp -= .025
 				 
-		if (dist<dist_total and tec_a){
+		if (dist<dist_total and por and vis and tec_a){
 			
 			pai = alvo
 			

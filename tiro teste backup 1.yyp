@@ -682,6 +682,7 @@
     {"id":{"name":"spr_xm8_mira","path":"sprites/spr_xm8_mira/spr_xm8_mira.yy",},},
     {"id":{"name":"spr_xm8_pente","path":"sprites/spr_xm8_pente/spr_xm8_pente.yy",},},
     {"id":{"name":"spr_xm8","path":"sprites/spr_xm8/spr_xm8.yy",},},
+    {"id":{"name":"spr_zumbi_braco","path":"sprites/spr_zumbi_braco/spr_zumbi_braco.yy",},},
     {"id":{"name":"spr_zumbi","path":"sprites/spr_zumbi/spr_zumbi.yy",},},
   ],
   "resourceType":"GMProject",

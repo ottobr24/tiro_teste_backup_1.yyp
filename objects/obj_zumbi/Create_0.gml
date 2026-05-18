@@ -32,15 +32,19 @@ yult = y
 
 caminho = path_add()
 cria_caminho = 1
+caminho_dist = random_range(16,48)
 
 ataque_tempo = 60
 ataque_timer = ataque_tempo
+ataque_dist = random_range(48,96)
 
 dano_dmg = 0
 
 drops = []
 
 colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
+
+braco_dir = direction
 
 visao_inicio()
 
@@ -99,7 +103,7 @@ movendo = function(_x = -1,_y = -1){
 		var dis = 32
 		var diag = 1
 	
-		if (point_distance(alvox,alvoy,ply.x,ply.y)>dis or cria_caminho){
+		if (point_distance(alvox,alvoy,ply.x,ply.y)>caminho_dist or cria_caminho){
 		
 			var map = obj_controlador.mapa
 		
@@ -165,6 +169,26 @@ me_destacando = function(){
 	
 }
 
+bracos = function(){
+	
+	braco_dir = point_direction(x,y,obj_player.x,obj_player.y) //lerp(braco_dir,direction,.1)
+	
+	var _x = x + lengthdir_x(8	,braco_dir)
+
+	var y1 = y + lengthdir_y(8	,braco_dir) + lengthdir_y(8	,braco_dir+90)
+	var y2 = y - lengthdir_y(8	,braco_dir) + lengthdir_y(8	,braco_dir-90)
+	
+	draw_set_colour(image_blend)
+	draw_set_alpha(image_alpha)
+	
+	draw_sprite_ext(spr_zumbi_braco,0,_x,y1,1,1,braco_dir-5,image_blend,image_alpha)
+	draw_sprite_ext(spr_zumbi_braco,0,_x,y2,1,1,braco_dir+5,image_blend,image_alpha)
+	
+	draw_set_alpha(1)
+	draw_set_colour(-1)
+	
+}
+
 #endregion
 
 #endregion
@@ -181,12 +205,14 @@ estado_seguindo = function(){
 		var obj = instance_nearest(x,y,obj_player)
 		direction = point_direction(x,y,obj.x,obj.y)
 		
-		if (point_distance(x,y,obj.x,obj.y)<64){
+		if (point_distance(x,y,obj.x,obj.y)<ataque_dist){
 			
+			image_blend = c_orange
 			ataque_timer--
 			
 			if (!ataque_timer){
 				
+				image_blend = c_red
 				obj.dano+=dano_dmg
 				ataque_timer = ataque_tempo
 				global.shake+=dano_dmg
@@ -212,10 +238,12 @@ estado_morrendo = function(){
 	var chan_a = irandom_range(0,100)
 	var chan_m = irandom_range(0,100)
 	
+	var chac_e = 95 - 3 * (instance_number(obj_player)-1)
+	
     estado = estado_morrendo
     estado_txt = "estado_morrendo"       
 	
-	if (chan_a>99){
+	if (chan_a>=chac_e){
 		
 		var armi = irandom_range(0,array_length(drops)-1)
 		

@@ -41,9 +41,6 @@ draw_set_halign(-1)
 
 var mira_co = [c_red,c_green]
 	
-draw_set_color(mira_co[qtd])
-draw_set_alpha(mira_alp)
-
 var _x = mx
 var _y = my
 
@@ -53,10 +50,22 @@ var tmdb	= 10 * texto_xesc
 var tmdd1	= 2	 * texto_xesc
 var tmdd2	= 1	 * texto_xesc
 
+var bordt	= 0	 //* texto_xesc
+
+draw_set_alpha(mira_alp)
+draw_set_color(mira_co[qtd])
+
 draw_rectangle(_x-tmdd2		,_y+tmdb+_p	,_x+tmdd1	,_y+tmdd2+_p,0)
 draw_rectangle(_x-tmdd2		,_y-tmdb-_p	,_x+tmdd1	,_y-tmdd2-_p,0)
 draw_rectangle(_x-tmdb-_p	,_y-tmdd2	,_x-tmdd2-_p,_y+tmdd1	,0)
 draw_rectangle(_x+tmdb+_p	,_y-tmdd2	,_x+tmdd2+_p,_y+tmdd1	,0)
+
+draw_set_colour(c_black)
+
+draw_rectangle(_x-tmdd2		,_y+tmdb+_p	,_x+tmdd1	,_y+tmdd2+_p,1)
+draw_rectangle(_x-tmdd2		,_y-tmdb-_p	,_x+tmdd1	,_y-tmdd2-_p,1)
+draw_rectangle(_x-tmdb-_p	,_y-tmdd2	,_x-tmdd2-_p,_y+tmdd1	,1)
+draw_rectangle(_x+tmdb+_p	,_y-tmdd2	,_x+tmdd2+_p,_y+tmdd1	,1)
 
 draw_set_alpha(1)
 draw_set_color(-1)

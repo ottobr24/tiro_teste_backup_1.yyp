@@ -102,6 +102,7 @@ sofrendo_dano = function(){
 	
 	if (dano){
 		
+		image_blend = c_red
 		vida-=dano
 		
 		obj_controlador.vib_e += dano
@@ -195,7 +196,7 @@ controla_arma = function(){
 				recarregando_tempo = global.armas_reca[i]
 				rext = global.armas_rext[i]
 				
-				tiro = municao-1
+				tiro = municao
 				tiro_tempo = global.armas_cade[i]
 				tiro_timer = tiro_tempo
 				
@@ -517,6 +518,8 @@ estado_andando = function(){
 	
 estado_morrendo = function(){
 	
+	instance_destroy(arma)
+	
 	if (global.players = 1 or instance_number(obj_player)-1 = 0){
 		
 		randomise()
@@ -528,6 +531,7 @@ estado_morrendo = function(){
 	}
 	
 	instance_destroy()
+	
 	exit;
 	
 }

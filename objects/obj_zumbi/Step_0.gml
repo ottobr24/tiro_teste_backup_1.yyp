@@ -1,3 +1,4 @@
+image_blend = c_green
 estado()    
 colidindo()
 

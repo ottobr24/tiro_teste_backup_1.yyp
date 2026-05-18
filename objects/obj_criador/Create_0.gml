@@ -5,8 +5,9 @@ colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.co
 
 pontos = []
 
-objs_qtd	= [0,7,15,29,50,76,100]
-objs_drps	= [[[1,2,3],3],[[1,2,3,4,5,6],5,],[[1,2,3,4,5,6,7,8],8],[[1,2,3,4,5,6,7,8,9,12,15,32,31,30,29],12],[[1,2,3,4,5,6,7,8,9,10,11,12,13,15,32,31,30,29,27],17],[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,27,29,30,31,32],17]]
+objs_tem	= [0,49	,46,43,37,36,34,34,33,33,32,31,29]
+objs_qtd	= [0,7	,12,19,24,31,40,55,61,68,73,82,96]
+objs_drps	= [[[1,2,3],3],[[1,2,3,4,5,6],5],[[1,2,3,4,5,6,7,8],8],[[1,2,3,4,5,6,7,8,9,12,15,32,31,30,29],12],[[1,2,3,4,5,6,7,8,9,10,11,12,13,15,32,31,30,29,27],17],[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,27,29,30,31,32],23],[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33],30]]
 objs_atu	= [0]
 
 rod = global.rodada-1
@@ -46,9 +47,10 @@ criando_coisas = function(){
 		
 		randomise()
 		
-		var vid_mar = 1+global.rodada/10
+		var vid_mar = 1+global.rodada/12
 		var dan_mar = 1+global.rodada/20
 		var moe_mar = 1+global.rodada/15
+		var ply_mar = 1+(instance_number(obj_player)-1)/2
 		
 		var lug = irandom_range(0,array_length(pontos)-1)
 		
@@ -57,10 +59,10 @@ criando_coisas = function(){
 		
 		var alet = random_range(.6,1.4)
 		
-		var vid = random_range(1*vid_mar,5*vid_mar)
-		var dan = random_range(1*dan_mar,3*dan_mar)
+		var vid = random_range(1*vid_mar,3*vid_mar)	* ply_mar
+		var dan = random_range(1*dan_mar,3*dan_mar)	* ply_mar
 		var moe = random_range(6*dan_mar,30*dan_mar)
-		var vel = random_range(1 ,1.7)
+		var vel = random_range(.8,1.8)
 		var dps = []
 		
 		for (var d=0;d<array_length(objs_drps);d++){
@@ -84,7 +86,7 @@ criando_coisas = function(){
 		obj.drops = dps
 		obj.moedas = moe
 		
-		cria_timer = cria_tempo * alet
+		cria_timer = objs_tem[rod]
 		objs_atu[0] ++
 		
 	}
@@ -107,6 +109,20 @@ passando_as_rodadas = function(){
 				global.rodada++
 				rod_muda_timer = rod_muda_tempo
 				obj_player.vida = obj_player.vida_max
+				
+				if (instance_number(obj_player)<global.players){
+					
+					var dif = abs(instance_number(obj_player)-global.players)
+					global.arma = 0
+					global.player_ord = instance_number(obj_player)
+					
+					repeat(dif){
+					
+						instance_create_layer(x,y,layer,obj_player)
+					
+					}					
+				}
+				
 				objs_atu[0] = 0
 				
 			}

@@ -1,4 +1,3 @@
-image_blend = !controle ? c_white : c_purple
 draw_self()
 
 desenha_barra(vida,vida_max,100,20,c_black,c_green,x,y-50)

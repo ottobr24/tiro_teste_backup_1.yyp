@@ -227,7 +227,8 @@ desenha_modificacao = function(){
 	var cn = ct and gamepad_is_connected(0)
 	var grd = 0
 	var las_tec = !cn ? keyboard_check_pressed(ord("Z")) : gamepad_button_check_pressed(0,gp_stickr)
-		
+	var mira_co = [c_red,c_green]
+	
 	#endregion
 	
 	#region Tem lança granadas? e laser
@@ -308,7 +309,7 @@ desenha_modificacao = function(){
 					
 					draw_set_alpha(1)
 					
-	                visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,obj_miniporta),1,0,0,c_red)
+	                visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,obj_miniporta),1,0,0,mira_co[qtd])
 				
 					draw_set_alpha(image_alpha)
 					
@@ -741,7 +742,7 @@ recarrega = function(){
 	var rec_tec = !cn ? keyboard_check(ord("R")) : gamepad_button_check(0,gp_face3)
 	var prs_tec = cn ? gamepad_button_check_pressed(0,gp_shoulderrb) : mouse_check_button_pressed(mb_left)
 	
-	var rec = rec_tec and !cock
+	var rec = rec_tec and !cock and tiro<municao
 	var atr = prs_tec and global.armas_rext[i] = 1
 	
 	var dirt = image_xscale=1 ? direction+180 : direction-180

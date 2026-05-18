@@ -126,7 +126,7 @@ segue_player = function(){
 				
 				cesc[cap][roo] = (difx+dify+marg) / cmw
 				
-				escala = clamp(escala,.5,infinity)
+				escala = clamp(escala,.5,1.5)
 				
 				x = lerp(x,_x,0.05)
 				y =	lerp(y,_y,0.05)

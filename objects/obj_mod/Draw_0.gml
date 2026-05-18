@@ -7,16 +7,26 @@ var gh = room_height
 var cn = gamepad_is_connected(0)
 
 var spr = global.armas_sprt[i]
+
 var sprw = sprite_get_width (spr)
 var sprh = sprite_get_height(spr)
+
 var sprxs = 20 * rot
 var sprys = 20 
+
 var sprx = gw/2
 var spry = gh/2
+
 var sprxo = sprite_get_xoffset(spr)
 var spryo = sprite_get_yoffset(spr)
+
 var mod_esc = sprxs / 4
 var mod_tec = (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter) or gamepad_button_check_pressed(0,gp_face1))
+
+var moe_x = 48
+var moe_y = 664
+
+var moe_tex_x = 32
 
 #endregion
 
@@ -28,12 +38,12 @@ draw_set_font(fnt_modificacao)
 draw_rectangle(0,0,gw,gh,0)
 draw_set_colour(-1)
 
-draw_sprite_ext(spr_mods_item,0,118,48,2,2,0,c_white,alp)
+draw_sprite_ext(spr_mods_item,0,moe_x,moe_y,2,2,0,c_white,alp)
 
 draw_set_halign(fa_left)
 draw_set_valign(fa_middle)
 
-draw_text_transformed(148,48,round(global.dinheiro),2,2,0)
+draw_text_transformed(moe_x+moe_tex_x,moe_y,round(global.dinheiro),2,2,0)
 
 #endregion
 
@@ -310,8 +320,6 @@ if (i<array_length(global.armas_mods[0]) and alp){
 
 sprite_set_offset(spr,sprxo,spryo)
 
-draw_text(300,20,mods_atual)
-
 if (lista){
 	
 	var arm = pai.arma
@@ -405,8 +413,10 @@ if (lista){
 
 		if (cor2 = c_red){
 			
-			draw_sprite(spr_mods_item,0,sprx-48,550)
-			draw_text(sprx,550,global.armas_modc[i][lista-1][l])
+			draw_set_halign(fa_left)
+			draw_sprite_ext(spr_mods_item,0,sprx-48,600,2,2,0,c_white,1)
+			draw_text(sprx,600,global.armas_modc[i][lista-1][l])
+			draw_set_halign(1)
 			
 		}
 

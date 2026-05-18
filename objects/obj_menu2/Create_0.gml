@@ -1,5 +1,7 @@
 #region Extras
 
+//file_delete("testetiro.save")
+
 if (array_length(global.armas_mods) = 0){
 
 	for (var i1=0;i1<2;i1++){
@@ -896,7 +898,7 @@ usando_o_menu = function(){
 						
 						for (var a=0;a<array_length(global.armas_nome);a++){
 				
-							global.armas_nome[a] = 1
+							global.armas_aval[a] = 1
 				
 						}
 						

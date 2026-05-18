@@ -535,6 +535,7 @@
     {"name":"spr_xm8_grip","order":4,"path":"sprites/spr_xm8_grip/spr_xm8_grip.yy",},
     {"name":"spr_xm8_mira","order":5,"path":"sprites/spr_xm8_mira/spr_xm8_mira.yy",},
     {"name":"spr_xm8","order":8,"path":"sprites/spr_xm8/spr_xm8.yy",},
+    {"name":"spr_zumbi_braco","order":2,"path":"sprites/spr_zumbi_braco/spr_zumbi_braco.yy",},
     {"name":"spr_zumbi","order":1,"path":"sprites/spr_zumbi/spr_zumbi.yy",},
   ],
 }
