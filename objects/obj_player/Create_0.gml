@@ -83,10 +83,10 @@ window_set_cursor(cr_none)
 
 if (!qtd){
 
-	instance_create_layer(x,y,layer,obj_camera)
-	instance_create_layer(x,y,layer,obj_controlador)
-	instance_create_layer(x,y,layer,obj_cria_particulas)
-	instance_create_layer(x,y,"UI",obj_pause)
+	instance_create_layer(x,y,layer	,obj_camera)
+	instance_create_layer(x,y,"UI"	,obj_controlador)
+	instance_create_layer(x,y,layer	,obj_cria_particulas)
+	instance_create_layer(x,y,"UI"	,obj_pause)
 	
 	if (room = rm_zumbi) instance_create_layer(x,y,layer,obj_criador)
 

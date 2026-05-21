@@ -1,7 +1,5 @@
 #region Extras
 
-//file_delete("testetiro.save")
-
 if (array_length(global.armas_mods) = 0){
 
 	for (var i1=0;i1<2;i1++){

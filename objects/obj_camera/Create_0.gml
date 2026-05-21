@@ -105,31 +105,54 @@ segue_player = function(){
 			
 			if (cpos[cap][roo][0]=-2){
 				
-				var pid = []
-				
+				var objs = []
+
 				with(obj_player){
-					
-					var tmd = array_length(pid)
-					pid[tmd] = id
-					
+	
+					objs[array_length(objs)] = id
+	
 				}
 				
-				var marg	= 300
-				var margx	= 100	*escala
-				var margy	= 100	*escala
+				var pos_marg = 100
 				
-				var difx = abs(pid[0].x-pid[1].x)
-				var dify = abs(pid[0].y-pid[1].y)
+				var x1 = clamp(min(objs[0].x,objs[1].x)-pos_marg,0,room_width )
+				var y1 = clamp(min(objs[0].y,objs[1].y)-pos_marg,0,room_height)
+
+				var x2 = abs(objs[0].x - objs[1].x)//>abs(objs[0].y - objs[1].y) ? point_distance(objs[0].x,objs[0].y,objs[1].x,objs[1].y) : point_distance(objs[0].x,objs[0].y,objs[1].x,objs[1].y) * room_width/cmw
+				var y2 = abs(objs[0].y - objs[1].y)
+
+				var camera_mag = pos_marg*2
+				var camera_tmd = x2
+				var camera_rel = camera_tmd + camera_mag
+
+				var x4 = clamp(x1,-camera_rel,room_width - camera_rel	)
+				var y4 = clamp(y1,-camera_rel,room_height-0)
+
+				cesc[cap][roo] = camera_rel/cmw
+				cesc[cap][roo] = clamp(cesc[cap][roo],.5,room_width/cmw)
 				
-				var _x = max(pid[0].x,pid[1].x) - margx - difx
-				var _y = max(pid[0].y,pid[1].y) - margy - dify
+				image_xscale = cesc[cap][roo]
+				image_yscale = cesc[cap][roo]
+
+				with(obj_player){
+					
+					if (!place_meeting(x,y,obj_camera)){
+	
+						while(!place_meeting(x,y,obj_camera)){
+							
+							with(other){
+							
+								cesc[cap][roo] += 0.01
+								image_xscale = cesc[cap][roo]
+								image_yscale = cesc[cap][roo]
+							
+							}
+						}						
+					}					
+				}
 				
-				cesc[cap][roo] = (difx+dify+marg) / cmw
-				
-				escala = clamp(escala,.5,1.5)
-				
-				x = lerp(x,_x,0.05)
-				y =	lerp(y,_y,0.05)
+				x = lerp(x,x4,0.05)
+				y =	lerp(y,y4,0.05)
 		
 			}
 			

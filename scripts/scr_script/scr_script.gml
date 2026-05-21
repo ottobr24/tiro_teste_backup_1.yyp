@@ -7,18 +7,18 @@ global.colisao_normal = [obj_miniparede,obj_vidro,obj_mesa_mod]
 
 #endregion
 
+#region Debugs
+
+global.cria_inimigos = 1
+global.mostra_visao = 1
+
+#endregion
+
 #region Extras
 
 global.portas_abrir = -4
 global.musica_inicia = 0
 global.destino = rm_jogo
-global.cont_dialogos=0
-global.surf_tiro = 0
-global.player_ord = 0
-global.cria_inimigos = 1
-global.players = 1
-global.mostra_visao = 1
-global.spawn_aleatorio = 0
 
 #endregion
 
@@ -113,9 +113,9 @@ global.arma = 0//irandom_range(0,array_length(global.armas_nome)-1)
 
 #region Player
 
-global.xp = 0
-global.level = 0
-global.xp_max = 100
+global.players = 2
+global.player_ord = 0
+global.spawn_aleatorio = 0
 
 #endregion
 

@@ -537,12 +537,14 @@ atira = function(){
 		
 				if (!tiro){ 
 					
+					show_message(mods)
+					
 					var cabe = i<array_length(global.armas_sprf)
 					
 					var mod_i = mods[4]
 					var spr_i = modi[4]
 					
-					var cla_i = mod_i
+					var cla_i = clamp(mod_i,0,array_length(global.armas_sprf[i])-1)
 					
 					var espr = asset_get_type(global.armas_sprf[i][cla_i]) == asset_sprite and pode_tirof and tem_pente
 			
