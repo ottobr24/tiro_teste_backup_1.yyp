@@ -47,7 +47,7 @@ criando_coisas = function(){
 		
 		randomise()
 		
-		var vid_mar = 1+global.rodada/12
+		var vid_mar = 1+global.rodada/15
 		var dan_mar = 1+global.rodada/20
 		var moe_mar = 1+global.rodada/15
 		var ply_mar = 1+(instance_number(obj_player)-1)/2
@@ -113,13 +113,15 @@ passando_as_rodadas = function(){
 				
 				if (instance_number(obj_player)<global.players){
 					
+					var player_atual = obj_player.controle
 					var dif = abs(instance_number(obj_player)-global.players)
 					global.arma = 0
 					global.player_ord = instance_number(obj_player)
 					
 					repeat(dif){
 					
-						instance_create_layer(x,y,layer,obj_player)
+						var ply = instance_create_layer(x,y,"Pessoas",obj_player)
+						ply.controle = !player_atual
 					
 					}					
 				}

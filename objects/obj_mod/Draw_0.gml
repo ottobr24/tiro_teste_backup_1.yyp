@@ -276,6 +276,8 @@ if (i<array_length(global.armas_mods[0]) and alp){
 			
 			}
 			
+			mod_tec = (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter) or gamepad_button_check_pressed(0,gp_face1))
+			
 			#endregion
 			
 			if (!acha){

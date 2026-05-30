@@ -38,6 +38,7 @@ drops = []
 colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
 
 braco_dir = direction
+ii = 0
 
 visao_inicio()
 
@@ -164,7 +165,9 @@ me_destacando = function(){
 
 bracos = function(){
 	
-	braco_dir = point_direction(x,y,obj_player.x,obj_player.y) //lerp(braco_dir,direction,.1)
+	var ply = instance_nearest(x,y,obj_player)
+	
+	braco_dir = point_direction(x,y,ply.x,ply.y) //lerp(braco_dir,direction,.1)
 	
 	var _x = x + lengthdir_x(8	,braco_dir)
 
@@ -174,8 +177,8 @@ bracos = function(){
 	draw_set_colour(image_blend)
 	draw_set_alpha(image_alpha)
 	
-	draw_sprite_ext(spr_zumbi_braco,0,_x,y1,1,1,braco_dir-5,image_blend,image_alpha)
-	draw_sprite_ext(spr_zumbi_braco,0,_x,y2,1,1,braco_dir+5,image_blend,image_alpha)
+	draw_sprite_ext(spr_zumbi_braco,0,_x,y1,1,1,braco_dir-5,c_green,image_alpha)
+	draw_sprite_ext(spr_zumbi_braco,0,_x,y2,1,1,braco_dir+5,c_green,image_alpha)
 	
 	draw_set_alpha(1)
 	draw_set_colour(-1)
@@ -200,7 +203,7 @@ estado_seguindo = function(){
 		
 		if (point_distance(x,y,obj.x,obj.y)<ataque_dist){
 			
-			image_blend = c_orange
+			sprite_index = spr_zumbi_atacando
 			ataque_timer--
 			
 			if (!ataque_timer){

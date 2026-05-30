@@ -888,7 +888,9 @@ usando_o_menu = function(){
 				switch(index){
 			
 					case 0:
-					
+						
+						global.players = get_integer("Quantos jogadores vc quer?", 1)
+						
 						salvando()
 						
 						global.destino = rm_zumbi
@@ -973,6 +975,8 @@ usando_o_menu = function(){
 					
 					default:
 				
+						global.players = get_integer("Quantos jogadores vc quer?", 1)
+						
 						global.destino = global.levels[index]
 						seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
 						salvando()
