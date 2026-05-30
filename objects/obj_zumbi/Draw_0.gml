@@ -4,8 +4,6 @@ draw_self() //desenhando()
 
 bracos()
 
-draw_text(x,y,image_index)
-
 if (global.debug){ 
 
 }

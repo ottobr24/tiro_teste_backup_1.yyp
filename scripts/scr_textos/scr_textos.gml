@@ -19,6 +19,7 @@ global.textos =
 ["Tela cheia: ","Resolução: ","Exibição: ","Voltar"],
 ["Zumbis","Humanos","Voltar"],
 ["Level 1","Voltar"],
+["1 Player","2 Players","Voltar"],
 [""],
 
 ],
@@ -31,8 +32,9 @@ global.textos =
 ["Screen Shake: ","Back"],
 ["","Back"],
 ["Full Screen: ","Resolution: ","Display: ","Back"],
-["Zombies","Humans","Voltar"],
-["Level 1","Voltar"],
+["Zombies","Humans","Back"],
+["Level 1","Back"],
+["1 Player","2 Players","Back"],
 [""],
 
 ]

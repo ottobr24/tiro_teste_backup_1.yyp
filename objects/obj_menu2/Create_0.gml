@@ -1,5 +1,7 @@
 #region Extras
 
+salvando_idioma()
+
 if (array_length(global.armas_mods) = 0){
 
 	for (var i1=0;i1<2;i1++){
@@ -240,6 +242,8 @@ global.pause = 0
 global.player_ord = 0
 global.zumbi = 0
 global.rodada = 1
+
+level_sel = -1
 
 #endregion
 
@@ -889,63 +893,13 @@ usando_o_menu = function(){
 			
 					case 0:
 						
-						global.players = get_integer("Quantos jogadores vc quer?", 1)
-						
-						salvando()
-						
-						global.destino = rm_zumbi
-						seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
-						global.zumbi = 1
-						global.spawn_aleatorio = 1
-						global.arma = 0
-						
-						for (var a=0;a<array_length(global.armas_nome);a++){
-				
-							global.armas_aval[a] = 1
-				
-						}
-						
-						for (var i1=0;i1<2;i1++){
-	
-							for (var i2=0;i2<array_length(global.armas_modn);i2++){
-	
-								for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
-				
-									global.armas_mods[i1][i2][i3] = 0
-				
-								}
-							}
-
-							for (var i2=0;i2<array_length(global.armas_modn);i2++){
-	
-								for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
-	
-									global.armas_modi[i1][i2][i3] = 0
-	
-								}
-							}
-							
-							for (var i2=0;i2<array_length(global.armas_modn);i2++){
-	
-								for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
-	
-									for (var i4=0;i4<array_length(global.armas_modn[i2][i3]);i4++){
-					
-										if (array_length(global.armas_mods[i1][i2][i3])<=i4){
-					
-											global.armas_moda[i1][i2][i3][i4] = !i4
-					
-										}
-									}
-								}
-							}
-						}
+						textos_mostrar = [0,6,8]
 						
 					break;
 					
 					case 1:
 						
-						textos_mostrar = [0,7]
+						textos_mostrar = [0,6,7]
 						
 					break;
 					
@@ -969,15 +923,109 @@ usando_o_menu = function(){
 			
 					case 1:
 						
-						textos_mostrar = [0,6]
+						mudando_texto = [0,6]
 						
 					break;
 					
 					default:
-				
-						global.players = get_integer("Quantos jogadores vc quer?", 1)
 						
-						global.destino = global.levels[index]
+						level_sel = index
+						textos_mostrar = [0,7,8]
+						
+					break;
+					
+				}
+			
+			break;
+			
+			#endregion
+			
+			#region Players
+			
+			case 8:
+			
+				switch(index){
+			
+					case 2:
+						
+						var menu_ult = textos_mostrar[menu_tmd-1]
+						
+						if (menu_ult = 7) mudando_texto = [0,6,7]
+						if (menu_ult = 6) mudando_texto = [0,6]
+						
+					break;
+					
+					default:
+						
+						var menu_ult = textos_mostrar[menu_tmd-1]
+						
+						if (menu_ult = 7){
+							
+							global.players = index + 1
+						
+							global.destino = global.levels[level_sel]
+							seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
+							salvando()
+		
+						}
+						
+						if (menu_ult = 6){
+							
+							global.players = index + 1
+						
+							salvando()
+						
+							global.destino = rm_zumbi
+							seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
+							global.zumbi = 1
+							global.spawn_aleatorio = 1
+							global.arma = 0
+						
+							for (var a=0;a<array_length(global.armas_nome);a++){
+				
+								global.armas_aval[a] = 1
+				
+							}
+						
+							for (var i1=0;i1<2;i1++){
+	
+								for (var i2=0;i2<array_length(global.armas_modn);i2++){
+	
+									for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+				
+										global.armas_mods[i1][i2][i3] = 0
+				
+									}
+								}
+
+								for (var i2=0;i2<array_length(global.armas_modn);i2++){
+	
+									for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+	
+										global.armas_modi[i1][i2][i3] = 0
+	
+									}
+								}
+							
+								for (var i2=0;i2<array_length(global.armas_modn);i2++){
+	
+									for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+	
+										for (var i4=0;i4<array_length(global.armas_modn[i2][i3]);i4++){
+					
+											if (array_length(global.armas_mods[i1][i2][i3])<=i4){
+					
+												global.armas_moda[i1][i2][i3][i4] = !i4
+					
+											}
+										}
+									}
+								}
+							}
+						
+							
+						}
+						
 						seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
 						salvando()
 		

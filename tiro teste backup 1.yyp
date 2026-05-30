@@ -155,6 +155,7 @@
   ],
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.sdfshaders-1.0.0","name":"io.gamemaker.sdfshaders-1.0.0","path":"io.gamemaker.sdfshaders-1.0.0.yyp",},
+    {"link":"io.gamemaker.gmparticlepresets-1.0.0","name":"io.gamemaker.gmparticlepresets-1.0.0","path":"io.gamemaker.gmparticlepresets-1.0.0.yyp",},
   ],
   "IncludedFiles":[],
   "isEcma":false,
@@ -197,6 +198,7 @@
     {"id":{"name":"obj_vidro","path":"objects/obj_vidro/obj_vidro.yy",},},
     {"id":{"name":"obj_zumbi_pai","path":"objects/obj_zumbi_pai/obj_zumbi_pai.yy",},},
     {"id":{"name":"obj_zumbi","path":"objects/obj_zumbi/obj_zumbi.yy",},},
+    {"id":{"name":"ParticleSystem1","path":"particles/ParticleSystem1/ParticleSystem1.yy",},},
     {"id":{"name":"rm_jogo","path":"rooms/rm_jogo/rm_jogo.yy",},},
     {"id":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"id":{"name":"rm_zumbi","path":"rooms/rm_zumbi/rm_zumbi.yy",},},
