@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_revolvers_speed",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.0172563,
+  "exportDir":"",
+  "name":"snd_revolvers_speed",
+  "parent":{
+    "name":"Geral",
+    "path":"folders/Sons/Armas/Armas de fogo/Revolvers/Geral.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_revolvers_speed.wav",
+  "volume":1.0,
+}

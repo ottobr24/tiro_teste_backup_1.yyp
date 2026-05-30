@@ -80,7 +80,8 @@ criando_coisas = function(){
 		
 		var obj = instance_create_layer(_x,_y,"Pessoas",obj_zumbi)
 		
-		obj.vida = vid obj.vida_max = vid
+		obj.vida = vid 
+		obj.vida_max = vid
 		obj.vela = vel
 		obj.dano_dmg = dan
 		obj.drops = dps

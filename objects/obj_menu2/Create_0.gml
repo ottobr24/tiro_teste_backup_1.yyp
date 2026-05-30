@@ -156,6 +156,8 @@ idiomas = global.textos[texto.idiom]
 
 #region Menu Controle
 
+vel = 0
+equipado = 0
 reseta = 1
 index = 0
 ti=0
@@ -227,7 +229,7 @@ arma = instance_create_layer(x,y,layer,obj_arma)
 arma.pai = id
 
 arma.equip = 0
-		
+
 arma.mods = [] array_copy(arma.mods,0,global.armas_mods[0][i],0,array_length(global.armas_mods[0][i]))
 arma.modi = [] array_copy(arma.modi,0,global.armas_modi[0][i],0,array_length(global.armas_modi[0][i]))
 
@@ -431,9 +433,9 @@ desenha_texto = function(){
 			var mox = device_mouse_x_to_gui(0)
 			var moy = device_mouse_y_to_gui(0)
 			
-			var texto_marg = 0//-texto_h/2.5
+			var texto_marg = -texto_h/2
 			
-			if (point_in_rectangle(mox,moy,texto_x[t]-texto_w,texto_y-texto_h-texto_marg,texto_x[t]+texto_w,texto_y+texto_h+texto_marg)){
+			if (point_in_rectangle(mox,moy,texto_x[t]-texto_w,texto_y-texto_h-texto_marg,texto_x[t]+texto_w,texto_y+texto_h)){
 			
 				index = i
 			
@@ -886,10 +888,11 @@ usando_o_menu = function(){
 				switch(index){
 			
 					case 0:
+					
+						salvando()
 						
 						global.destino = rm_zumbi
 						seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
-						salvando()
 						global.zumbi = 1
 						global.spawn_aleatorio = 1
 						global.arma = 0

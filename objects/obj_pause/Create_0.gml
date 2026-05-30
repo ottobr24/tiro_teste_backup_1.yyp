@@ -303,12 +303,14 @@ desenha_texto = function(){
 			var mox = device_mouse_x_to_gui(0)
 			var moy = device_mouse_y_to_gui(0)
 			
-			if (point_in_rectangle(mox,moy,texto_x[t]-texto_w,texto_y-texto_h-texto_marg,texto_x[t]+texto_w,texto_y+texto_h+texto_marg)){
+			var texto_marg = -texto_h/2
+			
+			if (point_in_rectangle(mox,moy,texto_x[t]-texto_w,texto_y-texto_h-texto_marg,texto_x[t]+texto_w,texto_y+texto_h)){
 			
 				index = i
 			
 			}
-			
+		
 			if (t = textos_mostrar_tmd-1){
 			
 				if (i == index){
@@ -559,6 +561,7 @@ usando_o_menu = function(){
 					
 					case 1:
 						
+						obj_camera.roo = 1
 						global.pause = 0
 						global.rodada = 1
 						global.player_ord = 0
@@ -610,17 +613,20 @@ usando_o_menu = function(){
 					
 					case 4:
 						
+						var a = global.armas_mods
+						
 						global.player_ord = 0
 						global.destino = rm_menu
 						seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
+						
 						carregando()
-						salvando()
-		
+						if (room != rm_zumbi) salvando()
+						
 					break;
 					
 					case 5:
 				
-						salvando()
+						if (room != rm_zumbi) salvando()
 						game_end()
 				
 					break;

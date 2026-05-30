@@ -6,21 +6,3 @@ if (global.debug){
 	
 	}
 }
-
-var objs = []
-
-with(obj_player){
-	
-	objs[array_length(objs)] = id
-	
-}
-
-var x1 = objs[0].x
-var y1 = objs[0].y
-
-var x2 = (objs[1].x-objs[0].x) / 2
-var y2 = (objs[0].y-objs[1].y) / 2
-
-var x3 = x1 + x2
-var y3 = y1 - y2
-

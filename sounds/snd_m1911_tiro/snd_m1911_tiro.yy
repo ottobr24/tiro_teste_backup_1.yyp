@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.1244898,
+  "duration":0.7258277,
   "exportDir":"",
   "name":"snd_m1911_tiro",
   "parent":{

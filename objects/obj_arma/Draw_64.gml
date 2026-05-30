@@ -33,9 +33,9 @@ if ( modo)	draw_text_transformed(20+(gw*qtd),texto_margy*2,string(tirg) + "/" + 
 draw_text_transformed(20+(gw*qtd),texto_margy*1	,global.armas_nome[i]	,texto_xesc,texto_yesc,0)
 draw_text_transformed(20+(gw*qtd),texto_margy*3	,dano					,texto_xesc,texto_yesc,0)
 draw_text_transformed(20+(gw*qtd),texto_margy*4	,prec_menos				,texto_xesc,texto_yesc,0)
-draw_text_transformed(20+(gw*qtd),texto_margy*5	,tiro_tempo				,texto_xesc,texto_yesc,0)
-draw_text_transformed(20+(gw*qtd),texto_margy*6	,direction				,texto_xesc,texto_yesc,0)
-draw_text_transformed(20+(gw*qtd),texto_margy*7	,pai.direction			,texto_xesc,texto_yesc,0)
+draw_text_transformed(20+(gw*qtd),texto_margy*5	,modo					,texto_xesc,texto_yesc,0)
+draw_text_transformed(20+(gw*qtd),texto_margy*6	,som_tiro				,texto_xesc,texto_yesc,0)
+//draw_text_transformed(20+(gw*qtd),texto_margy*7	,pai.direction			,texto_xesc,texto_yesc,0)
 
 draw_set_halign(-1)
 

@@ -1,12 +1,5 @@
 #region Variaveis
 
-if (!global.cria_inimigos){
-	
-	instance_destroy()
-	exit;
-	
-}
-
 randomise()
 
 hspd =0 

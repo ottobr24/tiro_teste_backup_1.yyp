@@ -222,6 +222,12 @@ controla_arma = function(){
 				
 				baru = global.armas_baru[i]
 				
+				part_reca = global.armas_part[i][1]
+				part_tiro = global.armas_part[i][0]
+				part_cock = global.armas_part[i][2]
+				
+				som_tiro  = global.armas_sons[i][0]
+				
 				sons = array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
 				
 				mods = [] array_copy(mods,0,global.armas_mods[qtd][i],0,array_length(global.armas_mods[qtd][i]))
@@ -330,7 +336,7 @@ abre_modificacao = function(){
 	
 	var esc_tec = !cn ? keyboard_check_pressed(vk_escape)	: gamepad_button_check_pressed(0,gp_start)
 
-	if (esc_tec and !instance_exists(obj_mod)){
+	if ((esc_tec or gamepad_button_check_pressed(0,gp_face2) and global.pause = 1) and !instance_exists(obj_mod)){
 		
 		var cursores = [cr_none,cr_arrow]
 		
@@ -340,7 +346,7 @@ abre_modificacao = function(){
 		
 		window_set_cursor(cursores[global.pause])
 		
-		salvando()
+		if (room != rm_zumbi) salvando()
 		
 	}
 }

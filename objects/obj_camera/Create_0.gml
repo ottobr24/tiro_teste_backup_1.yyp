@@ -118,7 +118,7 @@ segue_player = function(){
 				var x1 = clamp(min(objs[0].x,objs[1].x)-pos_marg,0,room_width )
 				var y1 = clamp(min(objs[0].y,objs[1].y)-pos_marg,0,room_height)
 
-				var x2 = abs(objs[0].x - objs[1].x)//>abs(objs[0].y - objs[1].y) ? point_distance(objs[0].x,objs[0].y,objs[1].x,objs[1].y) : point_distance(objs[0].x,objs[0].y,objs[1].x,objs[1].y) * room_width/cmw
+				var x2 = abs(objs[0].x - objs[1].x)
 				var y2 = abs(objs[0].y - objs[1].y)
 
 				var camera_mag = pos_marg*2

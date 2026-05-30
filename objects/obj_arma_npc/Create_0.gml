@@ -64,6 +64,10 @@ peso = 0
 
 baru = 0
 
+part_reca = 0
+part_tiro = 0
+part_cock = 0
+
 modo = 0
 mung = 1
 tirg = mung
@@ -266,7 +270,13 @@ atira = function(){
 				
 				}                                            
 				
-				if (global.armas_part[i][0]) seta_part("cria_tiro",tx,ty,[global.armas_part[i][0],global.armas_part[i][0]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+				seta_part("cria_tiro",tx,ty,[part_tiro,part_tiro],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+				
+				repeat(part_tiro){
+					
+					toca_som([snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14],1,10,50,,0,.1,1)
+					
+				}
 					
 				prep--
 				tiro--	
@@ -301,6 +311,12 @@ atira = function(){
 						
 						seta_part("cria_tirof",_x,_y,[1,1],global.armas_sprf[i][cla_i],c_white,dirp,[6,6],[image_xscale,image_xscale],[1,1],20,[3,3],spr_i,0)
 						
+						repeat(1){
+						
+							toca_som([snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14],1,10,50,,0,.1,1)
+						
+						}
+					
 						pode_tirof = 0
 						tem_pente = 0
 						
@@ -308,14 +324,14 @@ atira = function(){
 			
 					if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>6 and asset_get_type(global.armas_sons[i][6]) == asset_sound){ 
 	
-						sons[6] = toca_som(global.armas_sons[i][6],1,50,250,,0,.1,0)
+						sons[6] = toca_som(global.armas_sons[i][6],1,30,200,,0,.1,0)
 						refff = 0
 					
 					}
 				}
 				
 				//audio_play_sound(snd_249_cock,10,0)
-				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound) sons[0] = toca_som(global.armas_sons[i][0],volu*vol,50,75,,0,.20,0)
+				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound) sons[0] = toca_som(global.armas_sons[i][0],volu*vol,300,600,,0,.20,0)
 				
 				fazendo_barulho(x,y,global.armas_baru[i],pai)
 				
@@ -323,7 +339,7 @@ atira = function(){
 			
 				if (prs_tec){
 				
-					toca_som(snd_falha,1,10,50,,0,.1,0)
+					toca_som(snd_falha,1,50,200,,0,.1,0)
 				
 				}
 			
@@ -372,7 +388,7 @@ atira = function(){
 			fogo_dir = dir
 			fogo_ix = 0
 			
-			toca_som(snd_lanca_tiro,1,10,50,,0,.10,0)
+			toca_som(snd_lanca_tiro,1,100,500,,0,.10,0)
 		
 			tirg--
 			
@@ -392,7 +408,7 @@ preparando = function(){
 	
 	if (cock and reff and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>4 and asset_get_type(global.armas_sons[i][4]) == asset_sound){ 
 		
-		sons[4] = toca_som(global.armas_sons[i][4],1,10,50,,0,.1,0)
+		sons[4] = toca_som(global.armas_sons[i][4],1,30,200,,0,.1,0)
 		reff = 0
 		
 	}
@@ -410,11 +426,17 @@ preparando = function(){
 		
 		prep = global.armas_prep[i]
 		
-		if (poc) seta_part("cria_tiro",x,y,[global.armas_part[i][2],global.armas_part[i][2]],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+		if (poc) seta_part("cria_tiro",x,y,[part_cock,part_cock],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+		
+		repeat(part_cock){
+			
+			toca_som([snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14],1,10,50,,0,.1,1)
+			
+		}
 		
 		if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>1 and asset_get_type(global.armas_sons[i][1]) == asset_sound){
 			
-			sons[1] = toca_som(global.armas_sons[i][1],.25,10,50,,0,.05,0)
+			sons[1] = toca_som(global.armas_sons[i][1],.25,30,200,,0,.05,0)
 			if (sem) refff = 1
 			
 		}
@@ -428,6 +450,11 @@ preparando = function(){
 				if (poc) tiro-=qtd
 				if (poc) seta_part("cria_tiro",x,y,[qtd,qtd],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
 			
+				repeat(qtd){
+			
+					toca_som([snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14],1,10,50,,0,.1,1)
+			
+				}
 			}
 		}
 		
@@ -437,7 +464,7 @@ preparando = function(){
 	
 	if (refff == 1 and (array_length(sons)<=1 or !audio_is_playing(sons[1])) and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>5 and asset_get_type(global.armas_sons[i][5]) == asset_sound){ 
 	
-		sons[5] = toca_som(global.armas_sons[i][5],.2,10,50,,0,.1,0)
+		sons[5] = toca_som(global.armas_sons[i][5],.2,30,200,,0,.1,0)
 		refff = 0
 	
 	}
@@ -465,8 +492,8 @@ recarrega = function(){
 			
 			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and asset_get_type(global.armas_sons[i][2]) == asset_sound){
 			
-				if (!modo)sons[2] = toca_som(global.armas_sons[i][2],1,10,50,,0,.1,0)
-				if ( modo)sons[2] = toca_som(snd_lanca_recc,1,10,50,,0,.1,0)
+				if (!modo)sons[2] = toca_som(global.armas_sons[i][2],1,30,200,,0,.1,0)
+				if ( modo)sons[2] = toca_som(snd_lanca_recc			,1,30,200,,0,.1,0)
 			
 			}
 			
@@ -477,7 +504,7 @@ recarrega = function(){
 			#region Variaveis
 			
 			var cabe = i<array_length(global.armas_mods[0])
-			var temmod = cabe and array_length(global.armas_modp[i])>4
+			var temmod = cabe and array_length(global.armas_modp[i])>4 and global.armas_sprm[i][0] != -100
 			var temspr = temmod and array_length(global.armas_modp[i][4])>0
 			var mod_i = mods[4]
 			var spr_i = modi[4]
@@ -504,7 +531,7 @@ recarrega = function(){
 				
 				if (espr and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>6 and asset_get_type(global.armas_sons[i][6]) == asset_sound){ 
 	
-					sons[6] = toca_som(global.armas_sons[i][6],1,50,250,,0,.1,0)
+					sons[6] = toca_som(global.armas_sons[i][6],1,30,200,,0,.1,0)
 					refff = 0
 				
 				}
@@ -523,6 +550,11 @@ recarrega = function(){
 				tiro--
 				seta_part("cria_tiro",x,y,[1,1],global.tiros_part[i],c_white,dirt,[tiro_v,tiro_v],[2,2.5],[2,2.5],45,[tiro_v/2,tiro_v/2],0,0)
 				
+				repeat(1){
+					
+					toca_som([snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14],1,10,50,,0,.1,1)
+					
+				}
 			}
 			
 			#endregion
@@ -567,10 +599,16 @@ recarrega = function(){
 			
 			seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
 			
+			repeat(munp){
+				
+				toca_som([snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14],1,10,50,,0,.1,1)
+				
+			}
+			
 			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>3 and asset_get_type(global.armas_sons[i][3]) == asset_sound){ 
 				
-				if (!modo) sons[3] = toca_som(global.armas_sons[i][3],.5,10,50,,0,.1,0)
-				if ( modo){sons[3] = toca_som(snd_lanca_recf,.5,10,50,,0,.1,0) cock = 0}
+				if (!modo) sons[3] = toca_som(global.armas_sons[i][3]	,.5,30,200,,0,.1,0)
+				if ( modo){sons[3] = toca_som(snd_lanca_recf			,.5,30,200,,0,.1,0) cock = 0}
 			
 			}
 		}
@@ -607,6 +645,11 @@ reseta_coisas = function(){
 	rext				= global.armas_rext[i]
 	peso				= global.armas_peso[i] * 1
 	baru				= global.armas_baru[i]
+				
+	part_reca = global.armas_part[i][1]
+	part_tiro = global.armas_part[i][0]
+	part_cock = global.armas_part[i][2]
+
 	pext = []								   
 	mira_vel = .1							   
 	volu = 1								  
@@ -650,6 +693,8 @@ colocando_os_acessorios = function(){
 				peso				+=global.armas_mode[i][m][mod_i][16]
 				volu				+=global.armas_mode[i][m][mod_i][17]
 				baru				+=global.armas_mode[i][m][mod_i][22]
+				if (array_length(global.armas_mode[i][m][mod_i])<24) show_message([i,m,mod_i]) 
+				part_reca			+=global.armas_mode[i][m][mod_i][23]
 				pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4]
 				
 			}	

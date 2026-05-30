@@ -207,6 +207,10 @@ puxa_arma = function(){
 				
 				baru				= global.armas_baru[i]
 				
+				part_reca			= global.armas_part[i][1]
+				part_tiro			= global.armas_part[i][0]
+				part_cock			= global.armas_part[i][2]
+
 				sons				= array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
 				
 				mods = array_create(array_length(global.armas_modn[i]),0)
@@ -646,7 +650,7 @@ estado_parado = function(){
 	vendo_atencao_menos = 1
 	
 	vendo_o_perigo()
-	visao(vendo_player_dist,"vendo_player",,,,,adiciona_na_array(global.colisao_normal,object_index),35,0,1)
+	visao(vendo_player_dist,"vendo_player",,,,,,35,0,1)
 	
 	if (estado_txt!="estado_parado"){
 		
@@ -680,7 +684,7 @@ estado_andando = function(){
 	ouvindo()
 	sofrendo_dano()
 	vendo_o_perigo()
-	visao(vendo_player_dist,"vendo_player",,,,,adiciona_na_array(global.colisao_normal,object_index),35,0,1)
+	visao(vendo_player_dist,"vendo_player",,,,,,35,0,1)
 	puxa_arma()
 	
 	movendo()
@@ -726,7 +730,7 @@ estado_vigiando = function(){
 	sofrendo_dano()
 	vigiando()
 	vendo_o_perigo()
-	visao(vendo_player_dist,"vendo_player",,,,,adiciona_na_array(global.colisao_normal,object_index),60,0,1)
+	visao(vendo_player_dist,"vendo_player",,,,,,60,0,1)
 	
     estado = estado_vigiando
     estado_txt = "estado_vigiando"     
@@ -760,7 +764,7 @@ estado_seguindo = function(){
 	
 	achando_o_caminho()
 		
-	visao(vendo_player_dist,"vendo_player",,,,,adiciona_na_array(global.colisao_normal,object_index),45,0,1)
+	visao(vendo_player_dist,"vendo_player",,,,,,45,0,1)
 	
     estado = estado_seguindo
     estado_txt = "estado_seguindo"       
@@ -778,7 +782,7 @@ estado_atirando = function(){
 	sofrendo_dano()
 	vendo_o_perigo()
 	puxa_arma()
-	visao(vendo_player_dist,"vendo_player",,,,,adiciona_na_array(global.colisao_normal,object_index),30,0,1)
+	visao(vendo_player_dist,"vendo_player",,,,,,30,0,1)
 	
     estado = estado_atirando
     estado_txt = "estado_atirando"       
@@ -805,7 +809,7 @@ estado_atencao = function(){
 	sofrendo_dano()
 	vigiando()
 	vendo_o_perigo()
-	visao(vendo_player_dist,"vendo_player",,,,,adiciona_na_array(global.colisao_normal,object_index),60,0,1)
+	visao(vendo_player_dist,"vendo_player",,,,,,60,0,1)
 	puxa_arma()
 	
     estado = estado_atencao
