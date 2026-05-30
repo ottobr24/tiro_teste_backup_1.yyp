@@ -59,11 +59,27 @@ if (global.player_ord>global.players){
 
 #region Spawn aleatorio
 
+var qtds = 0
+
 while(global.spawn_aleatorio){
+	
+	if (qtds>20){
+		
+		with(obj_player){
+			
+			if (id != other.id){
+				
+				other.x = x
+				other.y = y
+				
+			}
+		}
+	}
 	
 	randomise()
 	x = irandom_range(0,room_width )
 	y = irandom_range(0,room_height)
+	qtds++
 	
 	if (!place_meeting(x,y,colisao)){
 		

@@ -95,10 +95,19 @@ visao_inicio()
 
 muda_estados = function(pa=1,at=1,re=1,mi=1){
 	
+	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
+	var cn = ct and gamepad_is_connected(0)
+	
+	var atr_tec = 0
+	var prs_tec = cn ? gamepad_button_check_pressed(0,gp_shoulderrb) : mouse_check_button_pressed(mb_left)
+	
+	if (!ct) atr_tec = !cliq ? mouse_check_button(mb_left)				: prs_tec
+	if ( ct) atr_tec = !cliq ? gamepad_button_check(0,gp_shoulderrb)	: prs_tec
+	
 	var est = estado
 	var atr = tiro_timer>=0
 	var rec = recarregando
-	var mir = mouse_check_button_pressed(mb_right)
+	var mir = atr_tec
 	
 	var ests = [!atr and pa		,mir and mi		,atr and at		,rec and re			]
 	var estz = [estado_parado	,estado_mirando	,estado_atirando,estado_recarregando]
@@ -990,7 +999,7 @@ recarrega = function(){
 			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>3 and asset_get_type(global.armas_sons[i][3]) == asset_sound){ 
 				
 				var mod_i = mods[4]
-				var spd_lod = mod_i>=0 and is_array(global.armas_mode[i][4]) and array_length(global.armas_mode[i][4][mod_i]) > 8 and global.armas_mode[i][4][mod_i][3] = 26 
+				var spd_lod = mod_i>=0 and is_array(global.armas_mode[i][4]) and array_length(global.armas_mode[i][4])>0 and array_length(global.armas_mode[i][4][mod_i]) > 8 and global.armas_mode[i][4][mod_i][3] = 26 
 				
 				if (!modo){
 					

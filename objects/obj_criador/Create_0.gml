@@ -113,16 +113,17 @@ passando_as_rodadas = function(){
 				
 				if (instance_number(obj_player)<global.players){
 					
+					global.spawn_aleatorio = 0
 					var player_atual = obj_player.controle
 					var dif = abs(instance_number(obj_player)-global.players)
 					global.arma = 0
-					global.player_ord = instance_number(obj_player)
+					global.player_ord = instance_number(obj_player)-1
 					
 					repeat(dif){
 					
 						var ply = instance_create_layer(x,y,"Pessoas",obj_player)
 						ply.controle = !player_atual
-					
+						
 					}					
 				}
 				
