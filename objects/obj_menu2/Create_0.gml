@@ -47,6 +47,17 @@ if (file_exists(global.saves[global.savei][0]	)) carregando()
 
 if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)){
 	
+	if (array_length(global.armas_aval) < array_length(global.armas_modn)){
+		
+		var dif = abs(array_length(global.armas_aval) - array_length(global.armas_modn))
+		
+		repeat(dif){
+			
+			array_push(global.armas_aval,0)
+			
+		}
+	}
+	
 	for (var i1=0;i1<2;i1++){
 
 		if (array_length(global.armas_mods[i1]) < array_length(global.armas_modn)){
@@ -63,16 +74,16 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 			
 			for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
 				
-				if (global.armas_mods[i1][i2][i3] >= array_length(global.armas_modn[i2][i3])){
-					
-					global.armas_mods[i1][i2][i3] = clamp(global.armas_mods[i1][i2][i3],0,array_length(global.armas_modn[i2][i3])-1)
-					
-				}
-				
 				if (array_length(global.armas_mods[i1][i2])<=i3){
 			
 					global.armas_mods[i1][i2][i3] = 0
 					foi = 1
+					
+				}
+				
+				if (global.armas_mods[i1][i2][i3] >= array_length(global.armas_modn[i2][i3])){
+					
+					global.armas_mods[i1][i2][i3] = clamp(global.armas_mods[i1][i2][i3],0,array_length(global.armas_modn[i2][i3])-1)
 					
 				}
 			}
@@ -83,6 +94,12 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 	
 		for (var i2=0;i2<array_length(global.armas_modn);i2++){
 	
+			if (array_length(global.armas_modi[i1])<=i2){
+			
+				global.armas_modi[i1][i2] = []
+				
+			}
+				
 			for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
 	
 				if (array_length(global.armas_modi[i1][i2])<=i3){
@@ -98,11 +115,23 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 	
 		for (var i2=0;i2<array_length(global.armas_modn);i2++){
 	
+			if (array_length(global.armas_moda[i1][i2])<=i2){
+			
+				global.armas_moda[i1][i2] = 0
+				
+			}
+				
 			for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
 	
+				if (array_length(global.armas_moda[i1][i2])<=i3){
+				
+					global.armas_moda[i1][i2][i3] = []
+					
+				}
+				
 				for (var i4=0;i4<array_length(global.armas_modn[i2][i3]);i4++){
 					
-					if (array_length(global.armas_mods[i1][i2][i3])<=i4){
+					if (array_length(global.armas_moda[i1][i2][i3])<=i4){
 					
 						global.armas_moda[i1][i2][i3][i4] = !i4
 					
@@ -111,7 +140,7 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 			}
 		}
 	}
-}
+}	
 
 #endregion
 
@@ -446,7 +475,7 @@ desenha_texto = function(){
 			
 			var texto_marg = -texto_h/2
 			
-			if (point_in_rectangle(mox,moy,texto_x[t]-texto_w,texto_y-texto_h-texto_marg,texto_x[t]+texto_w,texto_y+texto_h)){
+			if (point_in_rectangle(mox,moy,texto_x[t]-texto_w,texto_y-texto_h-texto_marg,texto_x[t]+texto_w,texto_y+texto_h) and t+1 >= textos_mostrar_tmd){
 			
 				index = i
 			

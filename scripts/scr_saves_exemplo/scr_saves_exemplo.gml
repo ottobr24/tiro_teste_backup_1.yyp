@@ -19,12 +19,14 @@ function salvando(i=global.savei){
 		armas_modi : global.armas_modi,
 		armas_moda : global.armas_moda,
 		
+		dinheiro : global.dinheiro,
+		
 	};
 	
 	var _string = json_stringify(_struct)
 	
 	var _file = file_text_open_write(global.saves[i][0])
-	
+	;
 	file_text_write_string(_file,_string)
 	
 	file_text_close(_file)
@@ -76,7 +78,7 @@ function carregando(i=global.savei){
 	
 	var _struct = json_parse(_json)
 	
-	var texts = ["armas_aval","armas_mods","armas_modi","armas_moda","arma"]
+	var texts = ["armas_aval","armas_mods","armas_modi","armas_moda","arma","dinheiro"]
 	
 	for (i=0;i<array_length(texts);i++){
 		

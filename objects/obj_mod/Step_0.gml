@@ -368,7 +368,7 @@ if (lista){
 		var cod2 = array_length(global.armas_mode[i][lista-1][listai]) > 7
 		var cod3 = array_length(global.armas_mode[i][lista-1][listai]) > 25
 		var dinheiro = cod1 and cod2 and cod3 ? global.armas_mode[i][lista-1][listai][25] : 0
-			
+		
 		if (!global.armas_moda[ind][i][lista-1][listai] and global.dinheiro >= dinheiro){
 			
 			global.dinheiro -= dinheiro
@@ -379,7 +379,7 @@ if (lista){
 		
 		for (var s=0;s<array_length(global.armas_moda[ind][i]);s++){
 			
-			if (is_array(global.armas_moda[ind][i][s])){
+			if (is_array(global.armas_moda[ind][i][s]) and array_length(global.armas_moda[ind][i][s])>mods_atual[s] and mods_atual[s]>=0){
 				
 				if (global.armas_moda[ind][i][s][mods_atual[s]]){
 					

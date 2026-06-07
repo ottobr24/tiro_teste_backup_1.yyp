@@ -33,7 +33,7 @@ colisao		= [] array_copy(colisao,0,adiciona_na_array(global.colisao_normal,obj_c
 
 equipado	= 1
 			
-controle	= 1
+controle	= 0
 
 qtd			= global.player_ord
 

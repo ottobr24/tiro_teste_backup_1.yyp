@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"spr_mp9_foregrip",
+  "%Name":"spr_pistola_foregrip",
   "bboxMode":0,
   "bbox_bottom":3,
   "bbox_left":0,
@@ -21,19 +21,19 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"59bfdcb3-b7f1-4b72-9472-a16a165b4a86","blendMode":0,"displayName":"default","isLocked":false,"name":"59bfdcb3-b7f1-4b72-9472-a16a165b4a86","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_mp9_foregrip",
+  "name":"spr_pistola_foregrip",
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Mp9",
-    "path":"folders/Sprites/Armas/Modificacoes/Submetralhadora/Mp9.yy",
+    "name":"Geral",
+    "path":"folders/Sprites/Armas/Modificacoes/Pistolas/Geral.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"spr_mp9_foregrip",
+    "%Name":"spr_pistola_foregrip",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -57,7 +57,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_mp9_foregrip",
+    "name":"spr_pistola_foregrip",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -69,7 +69,7 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"79dc9602-d946-43e7-948d-eb52490501ac","path":"sprites/spr_mp9_foregrip/spr_mp9_foregrip.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"79dc9602-d946-43e7-948d-eb52490501ac","path":"sprites/spr_pistola_foregrip/spr_pistola_foregrip.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"e55aa8f5-1809-46db-8e9e-fed0e3e640cb","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

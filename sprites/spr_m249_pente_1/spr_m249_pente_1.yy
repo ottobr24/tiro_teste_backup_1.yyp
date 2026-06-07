@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_m249_pente_1",
   "bboxMode":0,
-  "bbox_bottom":12,
+  "bbox_bottom":11,
   "bbox_left":17,
   "bbox_right":18,
   "bbox_top":8,
