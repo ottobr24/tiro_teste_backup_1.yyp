@@ -300,7 +300,7 @@ atira = function(){
 					var mod_i = mods[4]
 					var spr_i = modi[4]
 					
-					var cla_i = clamp(mod_i,0,array_length(global.armas_sprf[i]))
+					var cla_i = clamp(mod_i,0,array_length(global.armas_sprf[i])-1)
 					
 					var espr = asset_get_type(global.armas_sprf[i][cla_i]) == asset_sprite and pode_tirof and tem_pente
 			
@@ -508,7 +508,7 @@ recarrega = function(){
 			var temspr = temmod and array_length(global.armas_modp[i][4])>0
 			var mod_i = mods[4]
 			var spr_i = modi[4]
-			var cla_i = clamp(mod_i,0,array_length(global.armas_sprm[i]))
+			var cla_i = clamp(mod_i,0,array_length(global.armas_sprm[i])-1)
 			var espr = asset_get_type(global.armas_sprm[i][cla_i]) == asset_sprite and modo = 0 and pode_pente and tem_pente
 			
 			#endregion
@@ -525,7 +525,7 @@ recarrega = function(){
 				
 				mod_i = 0
 				
-				cla_i = clamp(mod_i,0,array_length(global.armas_sprf[i]))
+				cla_i = clamp(mod_i,0,array_length(global.armas_sprf[i])-1)
 				
 				espr = asset_get_type(global.armas_sprf[i][cla_i]) == asset_sprite and tem_pente
 				

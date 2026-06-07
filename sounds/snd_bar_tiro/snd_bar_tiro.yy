@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.7635148,
+  "duration":2.2187982,
   "exportDir":"",
   "name":"snd_bar_tiro",
   "parent":{

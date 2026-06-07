@@ -7,9 +7,10 @@ cade_alp -= .05
 
 if (global.debug){
 	
+	var obj = instance_nearest(x,y,obj_player)
 	var ang = 180
-	var h = obj_player.x
-	var v = obj_player.y
+	var h = obj.x
+	var v = obj.y
 	
 	var dira = point_direction(0,0,h,v)
 	var dir = angle_difference(dira,image_angle)
@@ -23,7 +24,7 @@ var cy = y + lengthdir_y(sprite_width/2,image_angle) + lengthdir_y(sprite_height
 
 var obj = player_prox
 var ct = obj!= -4 and instance_exists(obj) and variable_instance_exists(obj,"controle") ? obj.controle : 0
-var cn = ct and gamepad_is_connected(0)
+var cn = ct
 
 var tec_texto = !cn ? tecla_abrir[0] : "B"
 

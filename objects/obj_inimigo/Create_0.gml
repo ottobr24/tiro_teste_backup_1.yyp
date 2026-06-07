@@ -826,8 +826,14 @@ estado_atencao = function(){
 	
 estado_morrendo = function(){
     
+	randomise()
+	
+	var moedas = irandom_range(10,50)
+	
     estado = estado_morrendo
     estado_txt = "estado_morrendo"       
+	
+	global.dinheiro += moedas
 	
 	instance_destroy()
 	

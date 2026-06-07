@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_ak12_recf",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.6644898,
+  "exportDir":"",
+  "name":"snd_ak12_recf",
+  "parent":{
+    "name":"AK-12",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/AK-12.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_ak12_recf.mp3",
+  "volume":1.0,
+}

@@ -5,14 +5,14 @@ colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.co
 
 pontos = []
 
-objs_tem	= [0,49	,46,43,37,36,34,34,33,33,32,31,29]
-objs_qtd	= [0,7	,12,19,24,31,40,55,61,68,73,82,96]
-objs_drps	= [[[1,2,3],3],[[1,2,3,4,5,6],5],[[1,2,3,4,5,6,7,8],8],[[1,2,3,4,5,6,7,8,9,12,15,32,31,30,29],12],[[1,2,3,4,5,6,7,8,9,10,11,12,13,15,32,31,30,29,27],17],[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,27,29,30,31,32],23],[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33],30]]
+objs_tem	= [0,47	,44,42,39,37,35,34,34,33,32,31,30,29,28,26,25,24,23	,22	,20	,19	,18	,17	,16	,15	]
+objs_qtd	= [0,10	,15,20,24,31,37,41,44,50,55,59,70,76,81,86,91,97,104,110,118,125,134,141,150,165]
+objs_drps	= [[[1,2,3],1],[[1,2,3,4,5,6],5],[[1,2,3,4,5,6,7,8],8],[[3,4,5,6,7,8,9,12,15,33,32,31,30],10],[[3,4,5,7,8,9,10,11,12,13,15,33,32,31,30,29],12],[[7,8,9,10,11,12,13,14,15,16,18,19,20,29,30,31,32,33],15],[[7,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33,34],18]]
 objs_atu	= [0]
 
 rod = global.rodada-1
 
-rod_muda_tempo = 120
+rod_muda_tempo = 60*3
 rod_muda_timer = rod_muda_tempo
 rod_dir = -1
 rod_y = -50
@@ -51,6 +51,7 @@ criando_coisas = function(){
 		var dan_mar = 1+global.rodada/20
 		var moe_mar = 1+global.rodada/15
 		var ply_mar = 1+(instance_number(obj_player)-1)/2
+		var ply_num = instance_number(obj_player)
 		
 		var lug = irandom_range(0,array_length(pontos)-1)
 		
@@ -61,7 +62,7 @@ criando_coisas = function(){
 		
 		var vid = random_range(1*vid_mar,3*vid_mar)	* ply_mar
 		var dan = random_range(1*dan_mar,3*dan_mar)	* ply_mar
-		var moe = random_range(6*dan_mar,30*dan_mar)
+		var moe = random_range(1,15) * ply_num
 		var vel = random_range(.8,1.8)
 		var dps = []
 		
@@ -110,6 +111,7 @@ passando_as_rodadas = function(){
 				global.rodada++
 				rod_muda_timer = rod_muda_tempo
 				obj_player.vida = obj_player.vida_max
+				instance_destroy(obj_arma_item)
 				
 				if (instance_number(obj_player)<global.players){
 					

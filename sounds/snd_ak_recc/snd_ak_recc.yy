@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_ak_recc",
   "parent":{
-    "name":"Ak",
-    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/Ak.yy",
+    "name":"AK-47",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/AK-47.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

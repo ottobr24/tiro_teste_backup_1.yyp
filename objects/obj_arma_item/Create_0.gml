@@ -1,4 +1,7 @@
 i=0
+tecla_pegar = ["F"		,gp_face2	]
+
+image_alpha = 0
 
 rodando = function(ixmin = -1,ixmax = 1,vel = 1){
 	

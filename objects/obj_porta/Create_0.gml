@@ -65,8 +65,10 @@ abrindo_e_sendo_empurrada = function(){
 		
 				if (instance_exists(alvos[a])){
 		
-					var h = alvos[a].hspd
-					var v = alvos[a].vspd
+					var obj = instance_nearest(x,y,alvos[a])
+					
+					var h = obj.hspd
+					var v = obj.vspd
 			
 					var qtd = 0
 					var col = 0
@@ -137,18 +139,26 @@ abrindo_e_sendo_empurrada = function(){
 		
 					var _x = filhos[f].x
 					var _y = filhos[f].y
-		
-					if (global.portas_abrir = id and point_distance(_x,_y,obj_player.x,obj_player.y)<75){
-		
+					player_prox = instance_nearest(_x,_y,obj_player)
+					
+					var sou_eu = 0
+					
+					with(player_prox){
+						
+						if (instance_nearest(x,y,obj_porta) = other.id) sou_eu = 1 
+						
+					}
+					
+					if (sou_eu and point_distance(_x,_y,player_prox.x,player_prox.y)<75){
+						
 						cade_alp += .05
 		
 					}
 			
-					if (point_distance(_x,_y,obj_player.x,obj_player.y)<dist[0]){
+					if (point_distance(_x,_y,player_prox.x,player_prox.y)<dist[0]){
 					
-						player_prox = instance_nearest(_x,_y,obj_player)
 						var ct = instance_exists(player_prox) and variable_instance_exists(player_prox,"controle") ? player_prox.controle : 0
-						var cn = ct and gamepad_is_connected(0)
+						var cn = ct
 						var tec_ord = cn
 						tec_a = !cn ? keyboard_check_released(ord(tecla_abrir[0])) and tecla_pressionada[0] < chute_tempo/2 : gamepad_button_check_released(0,tecla_abrir[1]) and tecla_pressionada[1] < chute_tempo/2
 					
@@ -294,7 +304,7 @@ pressionando_tecla = function(){
 	if (global.portas_abrir != id) exit;
 	
 	var ct = instance_exists(player_prox) and variable_instance_exists(player_prox,"controle") ? player_prox.controle : 0
-	var cn = ct and gamepad_is_connected(0)
+	var cn = ct
 	var tec_a = !cn ? keyboard_check(ord(tecla_abrir[0])) : gamepad_button_check(0,tecla_abrir[1])
 	
 	if (!cn and tec_a and !chutou) tecla_pressionada[0] += tec_a
@@ -337,7 +347,7 @@ desenha_chute = function(){
 	
 	var obj = player_prox
 	var ct = obj!= -4 and instance_exists(obj) and variable_instance_exists(obj,"controle") ? obj.controle : 0
-	var cn = ct and gamepad_is_connected(0)
+	var cn = ct
 
 	var cx = x + lengthdir_x(sprite_width/2,image_angle) + lengthdir_x(sprite_height/2,image_angle)
 	var cy = y + lengthdir_y(sprite_width/2,image_angle) + lengthdir_y(sprite_height/2,image_angle)

@@ -4,7 +4,7 @@ cria_botoes()
 
 enter = 0
 
-var cn = gamepad_is_connected(0)
+var cn = pai.controle
 
 var mas_tec = keyboard_check_pressed(vk_right)	or gamepad_button_check_pressed(0,gp_padr)
 var mes_tec = keyboard_check_pressed(vk_left)	or gamepad_button_check_pressed(0,gp_padl)
@@ -364,10 +364,16 @@ if (lista){
 			}
 		}
 		
-		if (global.dinheiro >= global.armas_modc[i][lista-1][mods_atual[lista-1]]){
+		var cod1 = array_length(global.armas_mode[i][lista-1]) > listai
+		var cod2 = array_length(global.armas_mode[i][lista-1][listai]) > 7
+		var cod3 = array_length(global.armas_mode[i][lista-1][listai]) > 25
+		var dinheiro = cod1 and cod2 and cod3 ? global.armas_mode[i][lista-1][listai][25] : 0
 			
-			global.dinheiro -= global.armas_modc[i][lista-1][mods_atual[lista-1]]
+		if (!global.armas_moda[ind][i][lista-1][listai] and global.dinheiro >= dinheiro){
+			
+			global.dinheiro -= dinheiro
 			global.armas_moda[ind][i][lista-1][listai] = 1
+			if (room = rm_zumbi) global.armas_moda[!ind][i][lista-1][listai] = 1
 			
 		}
 		
@@ -394,8 +400,6 @@ if (lista){
 		enter = 1
 		
 	}
-	
-	show_debug_message(i)
 	
 	if (cim_tec and lista){
 	

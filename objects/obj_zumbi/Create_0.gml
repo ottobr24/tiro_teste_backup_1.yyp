@@ -27,9 +27,9 @@ caminho = path_add()
 cria_caminho = 1
 caminho_dist = random_range(16,48)
 
-ataque_tempo = 60
+ataque_tempo = 90
 ataque_timer = ataque_tempo
-ataque_dist = random_range(48,96)
+ataque_dist = random_range(56,96)
 
 dano_dmg = 0
 
@@ -203,7 +203,6 @@ estado_seguindo = function(){
 		
 		if (point_distance(x,y,obj.x,obj.y)<ataque_dist){
 			
-			sprite_index = spr_zumbi_atacando
 			ataque_timer--
 			
 			if (!ataque_timer){
@@ -234,7 +233,7 @@ estado_morrendo = function(){
 	var chan_a = irandom_range(0,100)
 	var chan_m = irandom_range(0,100)
 	
-	var chac_e = 95 - 3 * (instance_number(obj_player)-1)
+	var chac_e = 94 - 3 * (instance_number(obj_player)-1)
 	
     estado = estado_morrendo
     estado_txt = "estado_morrendo"       

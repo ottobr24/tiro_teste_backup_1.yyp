@@ -411,7 +411,7 @@ atira = function(){
 	
 	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
 	var grd = 0
-	var cn = ct and gamepad_is_connected(0)
+	var cn = ct
 	
 	var grd_tec = (keyboard_check_pressed(ord("G")) and !ct) or (cn and gamepad_button_check_pressed(0,gp_padl))
 	
@@ -669,7 +669,7 @@ atira = function(){
 preparando = function(){
 	
 	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
-	var cn = ct and gamepad_is_connected(0)
+	var cn = ct
 	
 	var coc_tec = !cn ? keyboard_check_pressed(ord("H")) : gamepad_button_check_pressed(0,gp_padr)
 	var coc = coc_tec and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
@@ -809,7 +809,7 @@ preparando = function(){
 recarrega = function(){
 	
 	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
-	var cn = ct and gamepad_is_connected(0)
+	var cn = ct
 	
 	var rec_tec = !cn ? keyboard_check(ord("R")) : gamepad_button_check(0,gp_face3)
 	var prs_tec = cn ? gamepad_button_check_pressed(0,gp_shoulderrb) : mouse_check_button_pressed(mb_left)
@@ -1059,7 +1059,7 @@ reseta_coisas = function(){
 	part_tiro = global.armas_part[i][0]
 	part_cock = global.armas_part[i][2]
 
-	som_tiro = global.armas_sons[i][0]
+	som_tiro = array_length(global.armas_sons[i])>0 ? global.armas_sons[i][0] : 0
 
 }
 

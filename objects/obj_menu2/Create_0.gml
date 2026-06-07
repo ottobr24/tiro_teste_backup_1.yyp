@@ -1,7 +1,5 @@
 #region Extras
 
-salvando_idioma()
-
 if (array_length(global.armas_mods) = 0){
 
 	for (var i1=0;i1<2;i1++){
@@ -37,7 +35,7 @@ if (array_length(global.armas_mods) = 0){
 				for (var i4=0;i4<array_length(global.armas_modn[i2][i3]);i4++){
 					
 					global.armas_moda[i1][i2][i3][i4] = !i4
-	
+					
 				}
 			}
 		}
@@ -48,9 +46,17 @@ if (file_exists(global.save_ling				)) carregando_idioma()
 if (file_exists(global.saves[global.savei][0]	)) carregando()
 
 if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)){
-
+	
 	for (var i1=0;i1<2;i1++){
 
+		if (array_length(global.armas_mods[i1]) < array_length(global.armas_modn)){
+			
+			var tmd = array_length(global.armas_mods[i1])
+			
+			global.armas_mods[i1][tmd] = [0]
+		
+		}
+	
 		for (var i2=0;i2<array_length(global.armas_modn);i2++){
 			
 			var foi = 0
@@ -98,7 +104,7 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 					
 					if (array_length(global.armas_mods[i1][i2][i3])<=i4){
 					
-						global.armas_moda[i1][i2][i3][i4] = 1
+						global.armas_moda[i1][i2][i3][i4] = !i4
 					
 					}
 				}
@@ -221,6 +227,7 @@ barra_y = -880
 #region Setando umas coisas
 
 pai = id
+controle = gamepad_is_connected(0)
 
 gamepad_set_axis_deadzone(0,.5)
 layer_sequence_create("Transicao",0,0,seq_transicao_abrindo)
@@ -660,8 +667,19 @@ usando_o_menu = function(){
 	
 	#region Mudando de pos
 	
-	if (baixo) index++
-	if (cima)   index--
+	if (baixo){ 
+		
+		index++
+		toca_som(snd_menu_baixo,1,1000,1000,,0,.25)
+		
+	}
+	
+	if (cima){
+		
+		index--
+		toca_som(snd_menu_cima,1,1000,1000,,0,.25)
+		
+	}
 	
 	if (index=array_length(texto_mostrado)) index=0
 	if (index<0) index=array_length(texto_mostrado)-1
@@ -677,6 +695,8 @@ usando_o_menu = function(){
 	#region Usando o menu
 	
 	if (enter){
+		
+		toca_som(snd_menu_enter,1,1000,1000,,0,.25)
 		
 		switch(menu_index){
 			
@@ -694,7 +714,7 @@ usando_o_menu = function(){
 					
 					case 1:
 						
-						textos_mostrar = [8]
+						textos_mostrar = [9]
 						
 						var i = global.arma
 						

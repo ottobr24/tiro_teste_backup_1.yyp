@@ -3,10 +3,11 @@ sprite_index = spr_zumbi
 estado()    
 colidindo()
 
-ii += 6 / 60
-ii %= 2
+var qtd = 14
+var dif = qtd / ataque_tempo
+var rea = dif * (abs(ataque_timer-ataque_tempo)+1)
 
-image_index = ii
+ii += (2 + rea) / 60 * !global.pause
 
 if (!place_meeting(x,y,obj_camera)) exit;
 

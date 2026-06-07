@@ -4,20 +4,36 @@ direction+=2
 sprite_index = global.armas_sprt[i]
 
 image_xscale = 1
+image_alpha -= .05
+	
+var obj = instance_nearest(x,y,obj_player)
+var dis = 48
+	
+if (point_distance(obj.x,obj.y,x,y)<dis){
+	
+	var cn = obj.controle
 
-if (place_meeting(x,y,obj_player)){
+	image_alpha += .1
+	var tec_a = !cn ? keyboard_check_pressed(ord(tecla_pegar[cn])) : gamepad_button_check_pressed(0,tecla_pegar[cn])
+		
+	if (tec_a){
+		
+		instance_destroy(obj.arma)
 	
-	var obj = instance_place(x,y,obj_player)
+		for (var a=0;a<array_length(global.armas_mods[obj.qtd][i]);a++){
+		
+			global.armas_mods[obj.qtd][i][a] = 0
+		
+		}
 	
-	instance_destroy(obj.arma)
+		obj.arma = -4
+		obj.armai = i
 	
-	obj.arma = -4
-	obj.armai = i
+		instance_destroy()
 	
-	instance_destroy()
-	
+	}
 }
 
 rodando()
 
-if (direction>600*4) instance_destroy()
+image_alpha = clamp(image_alpha,0,1)

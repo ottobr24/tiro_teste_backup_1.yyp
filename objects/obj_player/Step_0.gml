@@ -11,7 +11,7 @@ estado()
 colidindo()
 
 var ct = controle
-var cn = ct and gamepad_is_connected(0)
+var cn = ct
 	
 var men_tec = !cn ? keyboard_check_pressed(ord("Q")) : gamepad_button_check_pressed(0,gp_padd)
 var mas_tec = !cn ? keyboard_check_pressed(ord("E")) : gamepad_button_check_pressed(0,gp_padu)

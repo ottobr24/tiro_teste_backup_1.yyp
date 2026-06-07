@@ -7,7 +7,7 @@ ind = 0
 var es = 1//application_surface_is_enabled()+1
 cpos = [[[-1,-1],[0,0],[-1,-1],[-2,-2]]]
 		  
-cesc = [[.5,1,.43,-1]]
+cesc = [[.5,1,.43,1]]
 pose = [0,0]
 roo = 0
 cmw = 1280
@@ -82,28 +82,15 @@ segue_player = function(){
 		cy = clamp(cy,0,room_height-ch)
 		
 		camera_set_view_pos(view_camera[0],cx,cy)
-		//set_camera(cx,cy,cx+cmw*escala,cy+cmh*escala)
 		
 		x = clamp(cx,0+pose[0],room_width +pose[0])
 		y = clamp(cy,0+pose[1],room_height+pose[1])
 		
-		if (!global.debug or !keyboard_check(vk_shift)){
-		
-			if (cpos[cap][roo][0]>-1){
-		
-				x = lerp(x,cpos[cap][roo][0]+pose[0],0.05)
-				y =	lerp(y,cpos[cap][roo][1]+pose[1],0.05)
-		
-			}
+		if ((!global.debug or !keyboard_check(vk_shift)) and instance_number(obj_player)>=1){
 			
-			if (cpos[cap][roo][0]=-1){
-		
-				x = lerp(x,alvo.x-cw/2+pose[0],0.05)
-				y =	lerp(y,alvo.y-ch/2+pose[1],0.05)
-		
-			}
+			var falha = 0
 			
-			if (cpos[cap][roo][0]=-2){
+			if (cpos[cap][roo][0]=-2 and instance_number(obj_player)>1){
 				
 				var objs = []
 
@@ -113,46 +100,48 @@ segue_player = function(){
 	
 				}
 				
-				var pos_marg = 100
+				var pos_marg = 150
 				
 				var x1 = clamp(min(objs[0].x,objs[1].x)-pos_marg,0,room_width )
 				var y1 = clamp(min(objs[0].y,objs[1].y)-pos_marg,0,room_height)
 
-				var x2 = abs(objs[0].x - objs[1].x)
+				var x2 = abs(objs[0].x - objs[1].x) 
 				var y2 = abs(objs[0].y - objs[1].y)
 
-				var camera_mag = pos_marg*2
-				var camera_tmd = x2
+				var camera_mag = pos_marg*3
+				var camera_tmd = x2 + y2
 				var camera_rel = camera_tmd + camera_mag
 
-				var x4 = clamp(x1,-camera_rel,room_width - camera_rel	)
-				var y4 = clamp(y1,-camera_rel,room_height-0)
+				var x4 = clamp(x1,-camera_rel,room_width  - camera_rel	)
+				var y4 = clamp(y1,-camera_rel,room_height - camera_rel/(cmw/cmh)	)
 
 				cesc[cap][roo] = camera_rel/cmw
-				cesc[cap][roo] = clamp(cesc[cap][roo],.5,room_width/cmw)
+				cesc[cap][roo] = abs(clamp(cesc[cap][roo],.5,room_width/cmw))
 				
 				image_xscale = cesc[cap][roo]
 				image_yscale = cesc[cap][roo]
-
-				with(obj_player){
-					
-					if (!place_meeting(x,y,obj_camera)){
-	
-						while(!place_meeting(x,y,obj_camera)){
-							
-							with(other){
-							
-								cesc[cap][roo] += 0.01
-								image_xscale = cesc[cap][roo]
-								image_yscale = cesc[cap][roo]
-							
-							}
-						}						
-					}					
-				}
 				
 				x = lerp(x,x4,0.05)
 				y =	lerp(y,y4,0.05)
+		
+			}else{
+				
+				falha = 1
+				
+			}
+			
+			if (cpos[cap][roo][0]>-1){
+		
+				x = lerp(x,cpos[cap][roo][0]+pose[0],0.05)
+				y =	lerp(y,cpos[cap][roo][1]+pose[1],0.05)
+				falha = 0
+				
+			}
+			
+			if (cpos[cap][roo][0]=-1 or falha){
+		
+				x = lerp(x,alvo.x-cw/2+pose[0],0.05)
+				y =	lerp(y,alvo.y-ch/2+pose[1],0.05)
 		
 			}
 			

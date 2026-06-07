@@ -131,7 +131,7 @@ sofrendo_dano = function(){
 
 movendo = function(andar=1,equip=1){
 	
-	var cn = gamepad_is_connected(0) and controle
+	var cn = controle
 	
 	var d = keyboard_check(ord("D"))
 	var a = keyboard_check(ord("A"))
@@ -242,7 +242,7 @@ controla_arma = function(){
 				part_tiro = global.armas_part[i][0]
 				part_cock = global.armas_part[i][2]
 				
-				som_tiro  = global.armas_sons[i][0]
+				som_tiro  = array_length(global.armas_sons[i])>0 ? global.armas_sons[i][0] : 0
 				
 				sons = array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
 				
@@ -326,7 +326,7 @@ muda_estado = function(an = 1,pa = 1,mo = 1){
 	var w = keyboard_check(ord("W"))
 	var s = keyboard_check(ord("S"))
 	
-	var cn = gamepad_is_connected(0) and controle
+	var cn = controle
 	var lh = cn ? gamepad_axis_value(0,gp_axislh)  : 0
 	var lv = cn ? gamepad_axis_value(0,gp_axislv)  : 0
 	var cv = cn ? point_distance(0,0,lh,lv) : 0
@@ -348,12 +348,13 @@ muda_estado = function(an = 1,pa = 1,mo = 1){
 abre_modificacao = function(){
 	
 	var ct = controle
-	var cn = ct and gamepad_is_connected(0)
+	var cn = ct
 	
-	var esc_tec = !cn ? keyboard_check_pressed(vk_escape)	: gamepad_button_check_pressed(0,gp_start)
-
-	if ((esc_tec or gamepad_button_check_pressed(0,gp_face2) and global.pause = 1) and !instance_exists(obj_mod)){
+	var esc_tec = !cn ? keyboard_check_pressed(vk_escape)	: gamepad_button_check_pressed(0,gp_start) or (gamepad_button_check_pressed(0,gp_face2) and global.pause == 1)
+	
+	if (esc_tec and !instance_exists(obj_mod)){
 		
+		show_debug_message("a")
 		var cursores = [cr_none,cr_arrow]
 		
 		obj_camera.roo = 0
@@ -398,8 +399,10 @@ vendo_tudo = function(){
 		}
 	}
 	
+	var obj = obj_camera
+	var tmd = obj.cmw / obj.escala
 	var raios = !lan ? 15 : 35
-	var objs = visao(400,"",x,y,direction,obj_regioes,[obj_miniparede,obj_miniporta,obj_regioes],raios,,,,1,1,1,1)
+	var objs = visao(tmd,"",x,y,direction,obj_regioes,[obj_miniparede,obj_porta,obj_regioes],raios,,,,1,1,1,1)
 	var is = []
 	
 	for (var o=0;o<array_length(objs);o++){
@@ -424,19 +427,22 @@ vendo_tudo = function(){
 		
 	}
 	
-	with(obj_regioes){
-		
-		if (achando_na_array(is,reg)>-1 or (instance_exists(obj_camera) and obj_camera.seg = 1)){ 
-			
-			vendo = 1
-			
-		}
-		
-		var nao_vejo = lan ? .01 : .05
-		
-		if (!vendo) alp = lerp(alp,1,nao_vejo	)
-		if ( vendo) alp = lerp(alp,0,.10		)
+	if (qtd = instance_number(obj_player)-1){
 	
+		with(obj_regioes){
+		
+			if (achando_na_array(is,reg)>-1 or (instance_exists(obj_camera) and obj_camera.seg = 1)){ 
+			
+				vendo = 1
+			
+			}
+		
+			var nao_vejo = lan ? .01 : .05
+		
+			if (!vendo) alp = lerp(alp,1,nao_vejo	)
+			if ( vendo) alp = lerp(alp,0,.10		)
+	
+		}
 	}
 }
 
@@ -508,6 +514,9 @@ colidindo = function(){
 	
 	#endregion
 	
+	x = clamp(x,0,room_width )
+	y = clamp(y,0,room_height)
+	
 }
 
 estado_parado = function(){
@@ -550,6 +559,50 @@ estado_morrendo = function(){
 		armai = irandom_range(0,array_length(global.armas_nome)-1)
 		arma = -4
 		
+		if (room = rm_zumbi){
+			
+			for (var a=0;a<array_length(global.armas_nome);a++){
+			
+				global.armas_aval[a] = 1
+			
+			}
+			
+			for (var i1=0;i1<2;i1++){
+	
+				for (var i2=0;i2<array_length(global.armas_modn);i2++){
+	
+					for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+			
+						global.armas_mods[i1][i2][i3] = 0
+			
+					}
+				}
+
+				for (var i2=0;i2<array_length(global.armas_modn);i2++){
+	
+					for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+	
+						global.armas_modi[i1][i2][i3] = 0
+	
+					}
+				}
+			
+				for (var i2=0;i2<array_length(global.armas_modn);i2++){
+	
+					for (var i3=0;i3<array_length(global.armas_modn[i2]);i3++){
+	
+						for (var i4=0;i4<array_length(global.armas_modn[i2][i3]);i4++){
+			
+							if (array_length(global.armas_mods[i1][i2][i3])<=i4){
+			
+								global.armas_moda[i1][i2][i3][i4] = !i4
+			
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	instance_destroy()

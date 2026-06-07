@@ -4,7 +4,7 @@ if (!alp) exit;
 
 var gw = room_width 
 var gh = room_height
-var cn = gamepad_is_connected(0)
+var cn = pai.controle
 
 var spr = global.armas_sprt[i]
 
@@ -415,9 +415,13 @@ if (lista){
 
 		if (cor2 = c_red){
 			
+			var cod1 = array_length(global.armas_mode[i][lista-1][l]) > 7
+			var cod2 = array_length(global.armas_mode[i][lista-1][l]) > 25
+			var dinheiro = cod1 and cod2 ? global.armas_mode[i][lista-1][l][25] : 0
+			
 			draw_set_halign(fa_left)
-			draw_sprite_ext(spr_mods_item,0,sprx-48,600,2,2,0,c_white,1)
-			draw_text(sprx,600,global.armas_modc[i][lista-1][l])
+			draw_sprite_ext(spr_mods_item,0,sprx-48,548,2,2,0,c_white,1)
+			draw_text(sprx,548,dinheiro)
 			draw_set_halign(1)
 			
 		}
