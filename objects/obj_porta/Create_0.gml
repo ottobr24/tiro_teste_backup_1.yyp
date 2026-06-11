@@ -16,6 +16,7 @@ player_prox = -4
 chute_tempo = 30
 chutou = 0
 som = [0,0,0,0,0]
+sou_eu = 0 
 
 som[4] = toca_som(snd_porta_chiado,1,15,50,,1,.05)
 audio_pause_sound(som[4])
@@ -31,6 +32,15 @@ abrindo_e_sendo_empurrada = function(){
 		var tec_a = keyboard_check_pressed(ord("F"))
 		var chu_t = 30
 	
+		var prx = instance_nearest(x,y,obj_player)
+		var dis = distance_to_object(prx)
+		
+		with(prx){
+			
+			global.portas_abrir = instance_nearest(x,y,obj_porta)
+			
+		}
+		
 		#region Empurrando a porta
 		
 		if (!trancado and instance_exists(obj_player)){
@@ -131,7 +141,7 @@ abrindo_e_sendo_empurrada = function(){
 		
 		#region Começando a abrir, fechar ou chutar a porta
 		
-		if (instance_exists(filhos[0]) and point_distance(x,y,obj_player.x,obj_player.y)<150){
+		if (instance_exists(filhos[0]) and dis<150){
 		
 			for (var f = 0;f<filhos_qtd;f++){
 		
@@ -139,39 +149,30 @@ abrindo_e_sendo_empurrada = function(){
 		
 					var _x = filhos[f].x
 					var _y = filhos[f].y
-					player_prox = instance_nearest(_x,_y,obj_player)
 					
-					var sou_eu = 0
-					
-					with(player_prox){
-						
-						if (instance_nearest(x,y,obj_porta) = other.id) sou_eu = 1 
-						
-					}
-					
-					if (sou_eu and point_distance(_x,_y,player_prox.x,player_prox.y)<75){
+					if (global.portas_abrir = id and dis<75){
 						
 						cade_alp += .05
 		
 					}
 			
-					if (point_distance(_x,_y,player_prox.x,player_prox.y)<dist[0]){
+					if (dis<dist[0]){
 					
-						var ct = instance_exists(player_prox) and variable_instance_exists(player_prox,"controle") ? player_prox.controle : 0
+						var ct = variable_instance_exists(prx,"controle") ? prx.controle : 0
 						var cn = ct
 						var tec_ord = cn
 						tec_a = !cn ? keyboard_check_released(ord(tecla_abrir[0])) and tecla_pressionada[0] < chute_tempo/2 : gamepad_button_check_released(0,tecla_abrir[1]) and tecla_pressionada[1] < chute_tempo/2
 					
 						if (tec_a and !chutou){
 										    
-							dist[0] = point_distance(_x,_y,obj_player.x,obj_player.y)
+							dist[0] = point_distance(_x,_y,prx.x,prx.y)
 							dist[1] = f
 					
 						}
 					
 						if (tecla_pressionada[tec_ord] >= chu_t and !chutou and image_angle = clamp(image_angle,ima_org-20,ima_org+20)){
 						
-							var dir = ima_org = 90 ? sign(player_prox.x-x) : sign(player_prox.y-y)
+							var dir = ima_org = 90 ? sign(prx.x-x) : sign(prx.y-y)
 						
 							frc += 20 * dir
 							trancado = 0
@@ -200,8 +201,8 @@ abrindo_e_sendo_empurrada = function(){
 					som[0] = toca_som(snd_porta_abre,1,15,50,,,.05)
 					fazendo_barulho(x,y,15,id)
 					mudando = 1
-					if (ima_org = 90) abre_dir = x>obj_player.x ? -1 : 1
-					if (ima_org =  0) abre_dir = y>obj_player.y ? -1 : 1
+					if (ima_org = 90) abre_dir = x>prx.x ? -1 : 1
+					if (ima_org =  0) abre_dir = y>prx.y ? -1 : 1
 			
 				}else{
 		
@@ -301,9 +302,11 @@ cria_filhos = function(){
 
 pressionando_tecla = function(){
 	
-	if (global.portas_abrir != id) exit;
+	if (!global.portas_abrir = id) exit;
 	
-	var ct = instance_exists(player_prox) and variable_instance_exists(player_prox,"controle") ? player_prox.controle : 0
+	var prx = instance_nearest(x,y,obj_player)
+	
+	var ct = instance_exists(obj_player) and variable_instance_exists(prx,"controle") ? prx.controle : 0
 	var cn = ct
 	var tec_a = !cn ? keyboard_check(ord(tecla_abrir[0])) : gamepad_button_check(0,tecla_abrir[1])
 	
@@ -345,7 +348,7 @@ controla_filhos = function(){
 
 desenha_chute = function(){
 	
-	var obj = player_prox
+	var obj = instance_nearest(x,y,obj_player)
 	var ct = obj!= -4 and instance_exists(obj) and variable_instance_exists(obj,"controle") ? obj.controle : 0
 	var cn = ct
 

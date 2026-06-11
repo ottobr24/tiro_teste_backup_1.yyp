@@ -25,6 +25,8 @@ yult = y
 
 caminho = path_add()
 cria_caminho = 1
+cria_caminho_tempo = 60*9
+cria_caminho_timer = cria_caminho_tempo
 caminho_dist = random_range(16,48)
 
 ataque_tempo = 90
@@ -91,14 +93,17 @@ sofrendo_dano = function(){
 
 movendo = function(_x = -1,_y = -1){
     
+	cria_caminho_timer--
+	
 	if (instance_exists(obj_player)){
 		
 		var ply = instance_nearest(x,y,obj_player)
 		var dis = 32
 		var diag = 1
 	
-		if (point_distance(alvox,alvoy,ply.x,ply.y)>caminho_dist or cria_caminho){
-		
+		if (point_distance(alvox,alvoy,ply.x,ply.y)>caminho_dist or cria_caminho or !cria_caminho_timer){
+			
+			cria_caminho_timer = cria_caminho_tempo
 			var map = obj_controlador.mapa
 		
 			var dest_x = ply.x
@@ -166,8 +171,11 @@ me_destacando = function(){
 bracos = function(){
 	
 	var ply = instance_nearest(x,y,obj_player)
+	var dir = point_direction(x,y,ply.x,ply.y)
 	
-	braco_dir = point_direction(x,y,ply.x,ply.y) //lerp(braco_dir,direction,.1)
+	if (abs(braco_dir-dir) > 240) braco_dir = dir - sign(dir-braco_dir) * 5
+	
+	braco_dir = lerp(braco_dir,dir,.1)
 	
 	var _x = x + lengthdir_x(8	,braco_dir)
 
@@ -182,6 +190,8 @@ bracos = function(){
 	
 	draw_set_alpha(1)
 	draw_set_colour(-1)
+	
+	draw_text(x,y,dir)
 	
 }
 

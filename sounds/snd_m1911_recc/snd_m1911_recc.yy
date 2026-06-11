@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.1244898,
+  "duration":0.2504535,
   "exportDir":"",
   "name":"snd_m1911_recc",
   "parent":{

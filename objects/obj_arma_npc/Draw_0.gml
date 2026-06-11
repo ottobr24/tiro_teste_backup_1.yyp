@@ -87,7 +87,7 @@ if (i<array_length(global.armas_mods[0])){
 				var _x = x + mod_xo + mod_mx2 
 				var _y = y + mod_yo + mod_my2
 		
-				visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,obj_miniporta),1,0,0,c_red)
+				visao(room_width,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,[obj_miniporta,obj_player]),1,0,0,c_red)
 				
 			}
 			

@@ -25,6 +25,8 @@ cy3			=	y
 cd			=	0
 cdm			=	0
 
+adi			=	0
+
 coid		=	0
 				
 dano		=	0
@@ -33,7 +35,7 @@ colisao		= [] array_copy(colisao,0,adiciona_na_array(global.colisao_normal,obj_c
 
 equipado	= 1
 			
-controle	= 0
+controle	= 1
 
 qtd			= global.player_ord
 
@@ -242,8 +244,11 @@ controla_arma = function(){
 				part_tiro = global.armas_part[i][0]
 				part_cock = global.armas_part[i][2]
 				
-				som_tiro  = array_length(global.armas_sons[i])>0 ? global.armas_sons[i][0] : 0
-				
+				som_tiro = array_length(global.armas_sons[i])>0 ? global.armas_sons[i][0] : 0
+				som_cock = array_length(global.armas_sons[i])>1 ? global.armas_sons[i][1] : 0
+				som_recc = array_length(global.armas_sons[i])>2 ? global.armas_sons[i][2] : 0
+				som_recf = array_length(global.armas_sons[i])>3 ? global.armas_sons[i][3] : 0
+	
 				sons = array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
 				
 				mods = [] array_copy(mods,0,global.armas_mods[qtd][i],0,array_length(global.armas_mods[qtd][i]))
@@ -252,18 +257,32 @@ controla_arma = function(){
 			}
 		
 		}else{
-		
+			
+			var prs_tec = controle ? gamepad_button_check_pressed(0,gp_shoulderrb) or !gamepad_button_check(0,gp_shoulderrb) : mouse_check_button_pressed(mb_left) or !mouse_check_button(mb_left)
 	        var cx2 = 8
 	        var cy2 = 8
         
 	        var colisao2 = [obj_miniporta,obj_miniparede]
         
-			var x1 = x + lengthdir_x(cx2,direction) 
-	        var y1 = y + lengthdir_y(cy2,direction)
+			var x1 = x + lengthdir_x(cx2 + 4,direction) 
+	        var y1 = y + lengthdir_y(cy2 + 4,direction)
 	        var dir = direction + coid
+			var canox = 0
 			
 	        with(arma){
             
+				for (var p=0;p<array_length(pext);p++){
+					
+					if (array_length(pext[p]) > 2){
+						
+						canox += pext[p][0]
+						
+					}
+				}
+				
+				x1 += lengthdir_x(canox,direction)
+				y1 += lengthdir_y(canox,direction)
+		
 	            if (place_meeting(x,y1,colisao2)){
 				
 	                while(place_meeting(x,y1,colisao2) and cy2>-32){
@@ -291,10 +310,10 @@ controla_arma = function(){
 			cx3 = lerp(cx3,x + lengthdir_x(cx,direction),.25)
 			cy3 = lerp(cy3,y + lengthdir_y(cy,direction),.25)
 			
-	        var ix = dir = clamp(dir,90,270) ? -1 : 1
-			var ang = ix > 0 ? dir : dir+180
+			if (prs_tec or !arma.tiro) adi = dir = clamp(dir,90,270) ? -1 : 1
 			
-			//cmd = ang
+	        var ix = !adi ? -1 : 1
+			var ang = ix > 0 ? dir : dir+180
 			
 			if (ang-cdm >  140){ cd = ang-5 if (ang-cdm >  260) cd = ang }
 			if (ang-cdm < -140){ cd = ang+5 if (ang-cdm < -260) cd = ang }

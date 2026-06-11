@@ -52,10 +52,6 @@ draw_text_transformed(moe_x+moe_tex_x,moe_y,round(global.dinheiro),2,2,0)
 draw_set_halign(1)
 draw_set_valign(1)
 
-//sprite_set_offset(spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
-//draw_sprite_ext(spr,0,sprx,spry,sprxs,sprys,0,c_white,alp)
-//
-
 #endregion
 
 if (i<array_length(global.armas_mods[0]) and alp){
@@ -325,7 +321,6 @@ sprite_set_offset(spr,sprxo,spryo)
 if (lista){
 	
 	var arm = pai.arma
-	//var bloqs = []
 	
 	for (var l=0;l<array_length(global.armas_modp[i][lista-1]);l++){
 		
@@ -355,10 +350,10 @@ if (lista){
 		var margx = 0
 		var margy = 15
 			
-		var tex_w = (string_width (global.armas_modn[i][lista-1][l])-margx)
+		var tex_w = (string_width (global.armas_modn[i][lista-1][l])-margx)/2
 		var tex_h = (string_height(global.armas_modn[i][lista-1][l])-margy)/2
 		
-		if (point_in_rectangle(mouse_x,mouse_y,sprx-200-tex_w,20+20*l-tex_h,sprx-200+tex_w,20+(20*l)+tex_h)){
+		if (point_in_rectangle(mouse_x,mouse_y,sprx-300-tex_w,20+20*l-tex_h,sprx-300+tex_w,20+(20*l)+tex_h)){
 			
 			listai = l
 			listan=0
@@ -408,6 +403,7 @@ if (lista){
 		if (cor2 = c_gray and l = listai) cor2 = make_colour_rgb(192,192,192)
 		
 		draw_set_colour(cor2)
+		draw_set_halign(1)
 	
 		draw_text(sprx-300,20+20*l,global.armas_modn[i][lista-1][l])
 		
@@ -426,27 +422,28 @@ if (lista){
 			
 		}
 
-		if (global.debug) draw_rectangle(sprx-200,20+(20*l)-tex_h,sprx-200+tex_w,20+(20*l)+tex_h,1)
+		if (global.debug) draw_rectangle(sprx-300-tex_w,20+20*l-tex_h,sprx-300+tex_w,20+(20*l)+tex_h,1)
 		
 	}
 	
 	#region Mostrando variações da modificaçãp
 	
 	var stmd = sprite_get_number(global.armas_modp[i][lista-1][listai])
+	var bloqs = is_array(global.armas_mode[i][lista-1][listai]) ? achando_na_array([11,12],global.armas_mode[i][lista-1][listai][3]) + 1 : 0
 	
 	for (var c=0;c<stmd;c++){
 		
-		if ((is_array(global.armas_mode[i][lista-1][listai]) and global.armas_mode[i][lista-1][listai][3] = 11) or global.armas_modp[i][lista-1][listai] = 0) stmd=0  //se a modificação é um lança granadas, vc trava
+		if (bloqs or global.armas_modp[i][lista-1][listai] = 0) stmd=0  //se a modificação é um lança granadas, vc trava
 		
 		var tex = array_length(global.armas_mode[i][lista-1][listai])=0 or !is_array(global.armas_mode[i][lista-1][listai][2]) ? ["Padrão"] : global.armas_mode[i][lista-1][listai][2] //verificando se tem mais de uma variação da modificação, se tiver mostra o texto dela, se não so mostra o Padrão
 		
 		var margx = 0
 		var margy = 15
 			
-		var tex_w = (string_width (tex)-margx)
+		var tex_w = (string_width (tex)-margx)/2
 		var tex_h = (string_height(tex)-margy)/2
 		
-		if (point_in_rectangle(mouse_x,mouse_y,sprx+200,20+(20*c)-tex_h,sprx+200+tex_w,20+(20*c)+tex_h)){
+		if (point_in_rectangle(mouse_x,mouse_y,sprx+300-tex_w,20+(20*c)-tex_h,sprx+300+tex_w,20+(20*c)+tex_h)){
 			
 			arm.modi[lista-1] = c
 			global.armas_modi[ind][i][lista-1]		= c
@@ -466,7 +463,7 @@ if (lista){
 		
 		draw_set_colour(-1)
 		
-		if (global.debug) draw_rectangle(sprx+200,20+(20*c)-tex_h,sprx+200+tex_w,20+(20*c)+tex_h,1)
+		if (global.debug) draw_rectangle(sprx+300,20+(20*c)-tex_h,sprx+300+tex_w,20+(20*c)+tex_h,1)
 		
 	}
 	

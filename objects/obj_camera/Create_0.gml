@@ -100,15 +100,15 @@ segue_player = function(){
 	
 				}
 				
-				var pos_marg = 150
+				var pos_marg = 100
 				
 				var x1 = clamp(min(objs[0].x,objs[1].x)-pos_marg,0,room_width )
 				var y1 = clamp(min(objs[0].y,objs[1].y)-pos_marg,0,room_height)
 
 				var x2 = abs(objs[0].x - objs[1].x) 
-				var y2 = abs(objs[0].y - objs[1].y)
+				var y2 = abs(objs[0].y - objs[1].y) * (cmw / cmh )
 
-				var camera_mag = pos_marg*3
+				var camera_mag = pos_marg*2
 				var camera_tmd = x2 + y2
 				var camera_rel = camera_tmd + camera_mag
 

@@ -1,5 +1,7 @@
 if (!place_meeting(x,y,obj_camera)) exit;
 
+var obj = instance_nearest(x,y,obj_player)
+	
 draw_set_halign(1)
 draw_set_valign(1)
 
@@ -7,7 +9,6 @@ cade_alp -= .05
 
 if (global.debug){
 	
-	var obj = instance_nearest(x,y,obj_player)
 	var ang = 180
 	var h = obj.x
 	var v = obj.y
@@ -22,7 +23,6 @@ if (global.debug){
 var cx = x + lengthdir_x(sprite_width/2,image_angle) + lengthdir_x(sprite_height/2,image_angle)
 var cy = y + lengthdir_y(sprite_width/2,image_angle) + lengthdir_y(sprite_height/2,image_angle)
 
-var obj = player_prox
 var ct = obj!= -4 and instance_exists(obj) and variable_instance_exists(obj,"controle") ? obj.controle : 0
 var cn = ct
 

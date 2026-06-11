@@ -211,6 +211,8 @@ puxa_arma = function(){
 				part_tiro			= global.armas_part[i][0]
 				part_cock			= global.armas_part[i][2]
 
+				som_tiro			= array_length(global.armas_sons[i])>0 ? global.armas_sons[i][0] : 0
+				
 				sons				= array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
 				
 				mods = array_create(array_length(global.armas_modn[i]),0)

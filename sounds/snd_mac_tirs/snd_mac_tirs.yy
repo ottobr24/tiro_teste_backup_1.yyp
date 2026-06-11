@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.357483,
+  "duration":0.8347619,
   "exportDir":"",
   "name":"snd_mac_tirs",
   "parent":{

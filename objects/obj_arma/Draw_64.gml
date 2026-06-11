@@ -31,10 +31,10 @@ if (!modo)	draw_text_transformed(20+(gw*qtd),texto_margy*2,string(tiro) + "/" + 
 if ( modo)	draw_text_transformed(20+(gw*qtd),texto_margy*2,string(tirg) + "/" + string(mung	),texto_xesc,texto_yesc,0)
 
 draw_text_transformed(20+(gw*qtd),texto_margy*1	,global.armas_nome[i]	,texto_xesc,texto_yesc,0)
-draw_text_transformed(20+(gw*qtd),texto_margy*3	,dano					,texto_xesc,texto_yesc,0)
-draw_text_transformed(20+(gw*qtd),texto_margy*4	,prec_menos				,texto_xesc,texto_yesc,0)
-draw_text_transformed(20+(gw*qtd),texto_margy*5	,i						,texto_xesc,texto_yesc,0)
-draw_text_transformed(20+(gw*qtd),texto_margy*6	,som_tiro				,texto_xesc,texto_yesc,0)
+draw_text_transformed(20+(gw*qtd),texto_margy*3	,som_cock				,texto_xesc,texto_yesc,0)
+draw_text_transformed(20+(gw*qtd),texto_margy*4	,som_recc				,texto_xesc,texto_yesc,0)
+draw_text_transformed(20+(gw*qtd),texto_margy*5	,som_recf				,texto_xesc,texto_yesc,0)
+//draw_text_transformed(20+(gw*qtd),texto_margy*6	,som_tiro				,texto_xesc,texto_yesc,0)
 //draw_text_transformed(20+(gw*qtd),texto_margy*7	,pai.direction			,texto_xesc,texto_yesc,0)
 
 draw_set_halign(-1)

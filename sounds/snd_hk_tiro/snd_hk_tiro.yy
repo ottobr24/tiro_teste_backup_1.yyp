@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":3.482517,
+  "duration":2.8279364,
   "exportDir":"",
   "name":"snd_hk_tiro",
   "parent":{

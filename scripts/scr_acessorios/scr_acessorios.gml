@@ -337,7 +337,7 @@ global.acessorios = {
 	m1911_pente : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [6,0,8,0,2,30,3,3,3,0,0,0,.04,0.15,0,0,0,-1,0,0,-91,[],500]
+		var variaveis = [6,0,8,0,2,30,3,3,3,0,0,0,.04,0.15,0,0,0,-1,0,0,-91,[0,0,snd_m1911_recc2,snd_m1911_recf2],500]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -521,6 +521,86 @@ global.acessorios = {
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
 		var variaveis = [6,0,7,0,1.5,25,1,1,2,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91,[],450]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	#endregion
+	
+	#region FNX
+	
+	fnx_freio : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
+		var variaveis = [3,0,0,0,-.75,0,0,0,-.75,0,0,0,0,0.01,0.2,0,0,25,0,20,-91,[],300]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	fnx_silenciador : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
+		var variaveis = [4,0,0,-.25,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,25,0,-100,-91,[snd_fnx_tirs],350]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	fnx_pica : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
+		var variaveis = [26,0,0,0,0,0,0,0,0,0,0,0,0.01,0.02,0,0,0,-1,0,0,-91,[],500]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	fnx_cano : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
+		var variaveis = [2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,-1,0,-35,-91,[],250]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -764,7 +844,7 @@ global.acessorios = {
 	mp9_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,-1.5,0,-1,-1,-1.25,0,0,0,.01,.05,0,0,0,-1,0,0,-91,[],700]
+		var variaveis = [13,0,0,0,-1.25,0,-.75,-.75,-.75,0,0,0,.01,.05,0,0,0,-1,0,0,-91,[],700]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -921,6 +1001,25 @@ global.acessorios = {
 		
 	},
 	
+	mac_silenciador : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
+		var variaveis = [4,0,0,-.15,-.35,0,0,0,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-125,-91,[snd_mac_tirs],400]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
 	#endregion
 	
 	#region Kriss Vector
@@ -1028,6 +1127,25 @@ global.acessorios = {
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
 		var variaveis = [13,0,0,0,-.5,0,-.5,-.5,-.75,0,0,0,0.01,0.06,0,0,0,-1,0,-1,0,0,-91,[],900]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	pp_silenciador : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
+		var variaveis = [4,0,0,-.15,-.35,0,0,0,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-125,-91,[snd_pp_tirs],400]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2212,6 +2330,25 @@ global.acessorios = {
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
 		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,11,0,0,-91,[],350]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	m4_sile : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
+		var variaveis = [4,0,0,-.25,-.35,0,-.55,-.55,-.55,0,0,0,0.03,0.06,0,0,0,-1,0,-125,-91,[snd_m4a1_tirs],750]
 		
 		for (var i=0;i<array_length(val2);i++){
 			

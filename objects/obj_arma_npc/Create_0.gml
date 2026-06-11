@@ -83,6 +83,12 @@ modi = []
 mx = device_mouse_x_to_gui(0)
 my = device_mouse_y_to_gui(0)
 
+part_reca = 0
+part_tiro = 0
+part_cock = 0
+
+som_tiro = 0
+
 visao_inicio()
 
 #endregion
@@ -143,13 +149,24 @@ desenha_fogo = function(){
 	
 	if (fogo_tempo>0){
 	
-		var sprh = sprite_get_width(global.armas_sprt[i]) +12
+		var canox = 0
+		
+		for (var p=0;p<array_length(pext);p++){
+			
+			if (array_length(pext[p]) > 2){
+				
+				canox += pext[p][0]
+				
+			}
+		}
+		
+		var sprh = sprite_get_width(global.armas_sprt[i]) + 12 + canox
 		var dirp = image_xscale=1 ? direction+90 : direction-90
 		var dirp2 = image_xscale!=1 ? direction+90 : direction-90
 		var margy = lengthdir_y(3,dirp2)
 	
-		var _x = x + lengthdir_x(sprh,direction)
-		var _y = y + margy + lengthdir_y(sprh,direction)
+		var _x = x + lengthdir_x(sprh,direction) + lengthdir_x(3,dirp2)
+		var _y = y + lengthdir_y(sprh,direction) + lengthdir_y(3,dirp2)
 			
 		var tmdx = global.tiros_velo[i]/10
 		var tmdy = global.tiros_velo[i]/10
@@ -165,22 +182,6 @@ mirando = function(){
 
 atira = function(){
 	
-	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
-	var grd = 0
-	var cn = ct and gamepad_is_connected(0)
-	
-	if (i<array_length(global.armas_mods[0])){
-	
-		for (var m=0;m<array_length(global.armas_mods[0][i]);m++){
-		
-			if (array_length(global.armas_modn[i][m])>0 and is_array(global.armas_mode[i][m][mods[m]]) and global.armas_mode[i][m][mods[m]][3]=11){
-				
-				grd = m+1
-				
-			}
-		}
-	}
-	
 	var grd_tec = 0
 	
 	var atr_tec = !tiro_timer
@@ -195,10 +196,11 @@ atira = function(){
 	tiro = clamp(tiro,0,municao)
 	tirg = clamp(tirg,0,mung)
 	
-	var tec = atr_tec
-	var tec2 = 0
-	var atn = (tec or tec2) and !tiro_timer and !recarregando and !rajadas and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
+	var tec = 1
+	var atn = (tec) and !tiro_timer and !recarregando and !rajadas and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	var raj = rajadas and !rajando_timer and !recarregando and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
+	
+	var canox = 0
 	
 	if (!modo){ //atira normal
 	
@@ -206,6 +208,15 @@ atira = function(){
 		
 			if (tiro>0){
 				
+				for (var p=0;p<array_length(pext);p++){
+					
+					if (array_length(pext[p]) > 2){
+						
+						canox += pext[p][0]
+						
+					}
+				}
+		
 				var vol = 0
 				
 				if (!rajadas and tec) rajadas = rajadas_total
@@ -215,7 +226,10 @@ atira = function(){
 					var sil = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
 					var fre = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=3
 				
-					var sprh	= sprite_width*image_xscale
+					var margx = 2
+					var margy = lengthdir_y(3,dirp2)
+					
+					var sprh = (sprite_width + canox - margx) *image_xscale 
 					var dirp	= image_xscale=1	? direction+90 : direction-90
 					var dirp2	= image_xscale!=1	? direction+90 : direction-90
 					var margy	= lengthdir_y(3,dirp2)
@@ -224,8 +238,8 @@ atira = function(){
 					var tx = x + lengthdir_x(sprh/2,direction)
 					var ty = y + margy + lengthdir_y(sprh/2,direction)
 				
-					var _x = x + lengthdir_x(sprite_width*image_xscale,direction)
-					var _y = y + margy + lengthdir_y(sprh,direction)
+					var _x = x + lengthdir_x(sprh,direction) + lengthdir_x(3,dirp2)
+					var _y = y + lengthdir_y(sprh,direction) + lengthdir_y(3,dirp2)
 			
 					randomise()      
 				
@@ -237,6 +251,7 @@ atira = function(){
 					t.i = i                                     
 					t.direction = dir                           
 					t.image_angle = dir
+					t.sprite_index = global.tiros_sprt[i]
 					
 					t.vel = global.tiros_velo[i]
 					t.dano = dano                
@@ -330,8 +345,7 @@ atira = function(){
 					}
 				}
 				
-				//audio_play_sound(snd_249_cock,10,0)
-				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound) sons[0] = toca_som(global.armas_sons[i][0],volu*vol,300,600,,0,.20,0)
+				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(som_tiro) == asset_sound) sons[0] = toca_som(som_tiro,volu*vol,300,600,,0,.20,0)
 				
 				fazendo_barulho(x,y,global.armas_baru[i],pai)
 				
@@ -398,9 +412,6 @@ atira = function(){
 
 preparando = function(){
 	
-	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
-	var cn = ct and gamepad_is_connected(0)
-	
 	var coc_tec = 0
 	var coc = coc_tec and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	
@@ -443,7 +454,7 @@ preparando = function(){
 		
 		if (cock=2){ 
 			
-			var qtd = global.armas_part[i][2]+global.armas_part[i][0]
+			var qtd = part_cock+part_tiro
 			
 			if (tiro>0){
 			
@@ -472,15 +483,13 @@ preparando = function(){
 
 recarrega = function(){
 	
-	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
-	var cn = ct and gamepad_is_connected(0)
 	var rec_tec = !tiro and !tiro_timer
 	var prs_tec = 0
 	
 	var rec = rec_tec and !cock
 	var atr = prs_tec
 	var dirp = image_xscale!=1 ? direction+90 : direction-90
-	var munp = global.armas_part[i][1] = "mun" ? abs(tiro-municao) : global.armas_part[i][1]
+	var munp = part_reca = "mun" ? abs(tiro-municao) : part_reca
 	var munc = rext == 1 ? 0 : 1
 	var tiiv = 3.5
 	
@@ -646,14 +655,20 @@ reseta_coisas = function(){
 	peso				= global.armas_peso[i] * 1
 	baru				= global.armas_baru[i]
 				
-	part_reca = global.armas_part[i][1]
-	part_tiro = global.armas_part[i][0]
-	part_cock = global.armas_part[i][2]
+	part_reca = part_reca
+	part_tiro = part_tiro
+	part_cock = part_cock
 
 	pext = []								   
 	mira_vel = .1							   
 	volu = 1								  
 	
+	part_reca = global.armas_part[i][1]
+	part_tiro = global.armas_part[i][0]
+	part_cock = global.armas_part[i][2]
+
+	som_tiro = array_length(global.armas_sons[i])>0 ? global.armas_sons[i][0] : 0
+
 	equip = pai.arma_usar
 	usar = pai.arma_atira
 	
@@ -677,8 +692,16 @@ colocando_os_acessorios = function(){
 				var ptm3 = global.armas_modx[i][m][0]
 				var ptm4 = global.armas_modx[i][m][1]
 			
+				var sfxs = global.armas_mode[i][m][mod_i][24]
+					
 				cliq				+=global.armas_mode[i][m][mod_i][4]
-				municao				+=global.armas_mode[i][m][mod_i][5]
+				
+				if (global.armas_mode[i][m][mod_i][3] !=26 ){
+					
+					municao			+=global.armas_mode[i][m][mod_i][5]
+				
+				}
+				
 				rext				+=global.armas_mode[i][m][mod_i][5]
 				dano				+=global.armas_mode[i][m][mod_i][6]
 				prec_menos			+=global.armas_mode[i][m][mod_i][7]
@@ -693,8 +716,14 @@ colocando_os_acessorios = function(){
 				peso				+=global.armas_mode[i][m][mod_i][16]
 				volu				+=global.armas_mode[i][m][mod_i][17]
 				baru				+=global.armas_mode[i][m][mod_i][22]
-				if (array_length(global.armas_mode[i][m][mod_i])<24) show_message([i,m,mod_i]) 
 				part_reca			+=global.armas_mode[i][m][mod_i][23]
+				
+				if (array_length(sfxs)>0){ 
+					
+					if (asset_get_type(sfxs[0]) = asset_sound) som_tiro	=	global.armas_mode[i][m][mod_i][24][0]
+				
+				}
+				
 				pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4]
 				
 			}	

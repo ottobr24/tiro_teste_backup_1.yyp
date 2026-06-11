@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_m4a1_tirs",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":2.0073242,
+  "exportDir":"",
+  "name":"snd_m4a1_tirs",
+  "parent":{
+    "name":"M4A1",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/M4A1.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_m4a1_tirs.wav",
+  "volume":1.0,
+}

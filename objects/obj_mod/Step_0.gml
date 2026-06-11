@@ -306,26 +306,29 @@ if (!lista and alp){
 
 #region Variações e modificações
 
-if (mas_tec){ 
-	
-	if (listan = 2) listan = 0
-	if (listan = 1) listan = 0
-	
-	listan++
-	
-	listan = clamp(listan,0,2)
-	
-}
+if(lista){
 
-if (mes_tec){ 
+	if (mas_tec and sprite_get_number(global.armas_modp[i][lista-1][listai])){ 
 	
-	if (listan = 1) listan = 3
-	if (listan = 2) listan = 1
+		if (listan = 2) listan = 0
+		if (listan = 1) listan = 0
 	
-	listan--
+		listan++
 	
-	listan = clamp(listan,0,2)
+		listan = clamp(listan,0,2)
 	
+	}
+
+	if (mes_tec){ 
+	
+		if (listan = 1) listan = 3
+		if (listan = 2) listan = 1
+	
+		listan--
+	
+		listan = clamp(listan,0,2)
+	
+	}
 }
 
 #endregion

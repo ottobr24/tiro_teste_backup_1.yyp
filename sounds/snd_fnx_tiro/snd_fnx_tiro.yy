@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_fnx_tiro",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.51922905,
+  "exportDir":"",
+  "name":"snd_fnx_tiro",
+  "parent":{
+    "name":"FN FNX",
+    "path":"folders/Sons/Armas/Armas de fogo/Pistolas/FN FNX.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_fnx_tiro.wav",
+  "volume":1.0,
+}

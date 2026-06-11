@@ -115,7 +115,7 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 	
 		for (var i2=0;i2<array_length(global.armas_modn);i2++){
 	
-			if (array_length(global.armas_moda[i1][i2])<=i2){
+			if (array_length(global.armas_moda[i1])<=i2){
 			
 				global.armas_moda[i1][i2] = 0
 				
@@ -1029,6 +1029,7 @@ usando_o_menu = function(){
 							global.zumbi = 1
 							global.spawn_aleatorio = 1
 							global.arma = 0
+							global.dinheiro = 0
 						
 							for (var a=0;a<array_length(global.armas_nome);a++){
 				

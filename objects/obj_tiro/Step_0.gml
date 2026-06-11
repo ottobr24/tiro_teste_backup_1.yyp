@@ -22,92 +22,107 @@ var _y =lengthdir_y(vel,image_angle)
 
 var colisao = [obj_miniparede			,obj_miniporta				,obj_player					,obj_inimigo				,obj_vidro					,obj_zumbi_pai	,obj_mesa_mod				]
 var cores	= [make_color_rgb(80,80,80)	,make_color_rgb(160,65,13)	,make_color_rgb(255,10,10)	,make_color_rgb(255,10,10)	,make_color_rgb(163,205,200),c_green		,make_color_rgb(160,65,13)	]
-	  
-sprite_index = global.tiros_sprt[i]
+var a = 100000
+var ob = 0
+var ob2 = -4
 
-for (var b=0;b<array_length(colisao);b++){
+for (var o = 0;o<array_length(colisao);o++){
 	
-	#region Morrendo
+	var pr = instance_nearest(x,y,colisao[o])
 	
-	if (dano<=0) instance_destroy()
-	
-	#endregion
-			
-	var obj = instance_place(x,y,colisao[b])
-	var col = place_meeting(x,y	,colisao[b])
-
-	if (col and obj!=pai){
+	if (distance_to_object(pr)<a and pr != pai){ 
 		
-		#region Criando particulas
-		
-		var dano_max = clamp(dano*1.5,1,10)
-		var dan = dano
-		var angt = image_angle
-		var meu_i = i
-		
-		var distc = [180	,180	,180	,90		,90			,180	,90		]
-		var vels  = [vel/2	,vel/2	,vel/2	,vel	,vel		,vel/2	,vel	]
-		var velm  = [vel/4	,vel/4	,vel/4	,vel/2	,vel/2		,vel/4	,vel/2	]
-        seta_part("cria_parede",x-_x,y-_y,[dano/2,dano_max],spr_particula_parede,cores[b],direction,[vels[b],vels[b]],[2,2.5],[2,2.5],distc[b],[velm[b],velm[b]],0,0)
-		
-		#endregion
-		
-		#region Mexendo portas e entre outros
-		
-		if (variable_instance_exists(obj,"vida") and obj.vida>=0 and dan>0){
-			
-			var dane = variable_instance_exists(obj,"dano")
-			
-			dano-=obj.vida
-			
-			if (dane = 0) obj.vida-=dan
-			if (dane = 1){ 
-				
-				obj.dano+=dan 
-				if (variable_instance_exists(obj,"dano_pai")) obj.dano_pai = pai
-				
-			}
-		}
-		
-		switch(obj.object_index){
-			
-			#region Porta
-			
-			case obj_miniporta:
-				
-				with(obj){
-					
-					with(pai){
-						
-						if (global.armas_nome_tipo[global.armas_tipo[meu_i]] = "Shotgun") trancado = 0
-						
-						var ang = 180
-						var ang_min = image_angle-ang+360
-						var ang_max = image_angle//+ang
-
-						var fo = angt = clamp(angt,min(ang_min,ang_max),max(ang_min,ang_max)) ? dan*2 : -dan*2
-						
-						if (!trancado) frc += fo
-						
-					}
-				}
-				
-			break;
-			
-			#endregion
-			
-		}
-		
-		#endregion
-		
-		if (!variable_instance_exists(obj,"vida")){
-			
-			dano=-10
-			
-		}
+		a = distance_to_object(pr)
+		ob = o
+		ob2 = colisao[o]
 		
 	}
 }
 
 x+=_x
 y+=_y
+
+if (dano<=0){ 
+	
+	instance_destroy()
+	exit;
+	
+}
+
+if (a>vel*1.5) exit;
+
+var obj = instance_place(x,y,ob2)
+
+if (obj){
+	
+	var b = ob
+	
+	#region Criando particulas
+	
+	var dano_max = clamp(dano*1.5,1,10)
+	var dan = dano
+	var angt = image_angle
+	var meu_i = i
+	
+	var distc = [180	,180	,180	,90		,90			,180	,90		]
+	var vels  = [vel/2	,vel/2	,vel/2	,vel	,vel		,vel/2	,vel	]
+	var velm  = [vel/4	,vel/4	,vel/4	,vel/2	,vel/2		,vel/4	,vel/2	]
+	
+	seta_part("cria_parede",x-_x,y-_y,[dano/2,dano_max],spr_particula_parede,cores[b],direction,[vels[b],vels[b]],[2,2.5],[2,2.5],distc[b],[velm[b],velm[b]],0,0)
+	
+	#endregion
+	
+	#region Mexendo portas e entre outros
+	
+	if (variable_instance_exists(obj,"vida") and obj.vida>=0 and dan>0){
+	
+		var dane = variable_instance_exists(obj,"dano")
+	
+		dano-=obj.vida
+	
+		if (dane = 0) obj.vida-=dan
+		if (dane = 1){ 
+		
+			obj.dano+=dan 
+			if (variable_instance_exists(obj,"dano_pai")) obj.dano_pai = pai
+		
+		}
+	}
+	
+	switch(b){
+	
+		#region Porta
+	
+		case 1:
+		
+			with(obj){
+			
+				with(pai){
+				
+					if (global.armas_nome_tipo[global.armas_tipo[meu_i]] = "Shotgun") trancado = 0
+				
+					var ang = 180
+					var ang_min = image_angle-ang+360
+					var ang_max = image_angle//+ang
+
+					var fo = angt = clamp(angt,min(ang_min,ang_max),max(ang_min,ang_max)) ? dan*2 : -dan*2
+				
+					if (!trancado) frc += fo
+				
+				}
+			}
+		
+		break;
+	
+		#endregion
+	
+	}
+	
+	#endregion
+	
+	if (!variable_instance_exists(obj,"vida")){
+	
+		dano=-10
+	
+	}
+}
