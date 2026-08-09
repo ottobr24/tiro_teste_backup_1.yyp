@@ -229,13 +229,15 @@ puxa_arma = function(){
 		
 		if (instance_exists(arma) and arma!=-4){
 		
+	        var marg = 8
+        
 	        var cx2 = 8
 	        var cy2 = 8
         
 	        var colisao2 = [obj_miniporta,obj_miniparede]
         
-			var x1 = x + lengthdir_x(cx2,direction) 
-	        var y1 = y + lengthdir_y(cy2,direction)
+			var x1 = x + lengthdir_x(cx2 + marg,direction) 
+	        var y1 = y + lengthdir_y(cy2 + marg,direction)
 	        var dir = direction + coid
 			
 	        with(arma){

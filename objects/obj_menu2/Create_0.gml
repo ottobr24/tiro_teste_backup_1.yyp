@@ -45,6 +45,8 @@ if (array_length(global.armas_mods) = 0){
 if (file_exists(global.save_ling				)) carregando_idioma()
 if (file_exists(global.saves[global.savei][0]	)) carregando()
 
+global.dinheiro= 100000
+
 if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)){
 	
 	if (array_length(global.armas_aval) < array_length(global.armas_modn)){
@@ -78,6 +80,12 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 			
 					global.armas_mods[i1][i2][i3] = 0
 					foi = 1
+					
+				}
+				
+				if (global.armas_mods[i1][i2][i3] = -1 and array_length(global.armas_modn[i2][i3])){
+					
+					global.armas_mods[i1][i2][i3] = 0
 					
 				}
 				
@@ -706,7 +714,7 @@ usando_o_menu = function(){
 	if (cima){
 		
 		index--
-		toca_som(snd_menu_cima,1,1000,1000,,0,.25)
+		toca_som(snd_menu_cima,6,1000,1000,,0,.25)
 		
 	}
 	
@@ -745,6 +753,7 @@ usando_o_menu = function(){
 						
 						textos_mostrar = [9]
 						
+						controle = gamepad_is_connected(0)
 						var i = global.arma
 						
 						var arm = arma

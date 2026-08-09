@@ -12,6 +12,7 @@ estado_txt	=	""
 
 armai		=	global.arma //irandom_range(0,array_length(global.armas_nome)-1)
 arma		=	-4
+arma_prox	=	-4
 
 vida_max	=	100
 vida		=	vida_max
@@ -65,22 +66,17 @@ var qtds = 0
 
 while(global.spawn_aleatorio){
 	
-	if (qtds>20){
+	if (qtds>60){
 		
-		with(obj_player){
-			
-			if (id != other.id){
-				
-				other.x = x
-				other.y = y
-				
-			}
-		}
+		x = xstart
+		y = ystart
+		break;
+		
 	}
 	
 	randomise()
-	x = irandom_range(0,room_width )
-	y = irandom_range(0,room_height)
+	x = irandom_range(16,room_width -16)
+	y = irandom_range(16,room_height-16)
 	qtds++
 	
 	if (!place_meeting(x,y,colisao)){
@@ -101,10 +97,10 @@ window_set_cursor(cr_none)
 
 if (!qtd){
 
-	instance_create_layer(x,y,layer	,obj_camera)
-	instance_create_layer(x,y,"UI"	,obj_controlador)
-	instance_create_layer(x,y,layer	,obj_cria_particulas)
-	instance_create_layer(x,y,"UI"	,obj_pause)
+	instance_create_layer(x,y,layer			,obj_camera)
+	instance_create_layer(x,y,"UI"			,obj_controlador)
+	instance_create_layer(x,y,"Particulas"	,obj_cria_particulas)
+	instance_create_layer(x,y,"UI"			,obj_pause)
 	
 	if (room = rm_zumbi) instance_create_layer(x,y,layer,obj_criador)
 
@@ -373,7 +369,6 @@ abre_modificacao = function(){
 	
 	if (esc_tec and !instance_exists(obj_mod)){
 		
-		show_debug_message("a")
 		var cursores = [cr_none,cr_arrow]
 		
 		obj_camera.roo = 0
@@ -419,9 +414,9 @@ vendo_tudo = function(){
 	}
 	
 	var obj = obj_camera
-	var tmd = obj.cmw / obj.escala
+	var tmd = obj.cmw / obj.escala / 2
 	var raios = !lan ? 15 : 35
-	var objs = visao(tmd,"",x,y,direction,obj_regioes,[obj_miniparede,obj_porta,obj_regioes],raios,,,,1,1,1,1)
+	var objs = visao(tmd,"",x,y,direction,obj_regioes,[obj_miniparede,obj_miniporta,obj_regioes],1,,,0,1,1,1,1)
 	var is = []
 	
 	for (var o=0;o<array_length(objs);o++){
@@ -535,6 +530,8 @@ colidindo = function(){
 	
 	x = clamp(x,0,room_width )
 	y = clamp(y,0,room_height)
+	
+	arma_prox = instance_exists(obj_arma_item) ? instance_nearest(x,y,obj_arma_item) : -4
 	
 }
 

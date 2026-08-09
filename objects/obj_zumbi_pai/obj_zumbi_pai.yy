@@ -6,8 +6,8 @@
   "name":"obj_zumbi_pai",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inimigos",
-    "path":"folders/Objetos/Inimigos.yy",
+    "name":"Pais",
+    "path":"folders/Objetos/Pais.yy",
   },
   "parentObjectId":null,
   "persistent":false,

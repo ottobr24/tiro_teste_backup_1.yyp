@@ -1,4 +1,7 @@
+//seta_part("cria_tiro",x,y,[1,1],spr_capsula,c_white,direction ,[4,4],[2,2.5],[2,2.5],45,[4/2,4/2],0,0)
+					
 image_blend = !controle ? c_white : c_purple
+depth = -y
 timer++
 
 if (timer%10 = 0) fps_real2 = fps_real
@@ -41,4 +44,3 @@ if (keyboard_check_pressed(vk_backspace) or gamepad_button_check_pressed(0,gp_st
 }
 	
 global.portas_abrir = instance_exists(obj_porta) ? instance_nearest(x,y,obj_porta) : -4 
-vendo_tudo()

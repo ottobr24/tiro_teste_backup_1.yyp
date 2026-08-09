@@ -9,8 +9,4 @@ var rea = dif * (abs(ataque_timer-ataque_tempo)+1)
 
 ii += (2 + rea) / 60 * !global.pause
 
-if (!place_meeting(x,y,obj_camera)) exit;
-
-me_destacando()
-
 image_blend = c_white

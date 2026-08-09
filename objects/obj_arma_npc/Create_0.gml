@@ -89,11 +89,13 @@ part_cock = 0
 
 som_tiro = 0
 
+canox = 0
+
+grd = 0
+
 visao_inicio()
 
 #endregion
-
-audio_falloff_set_model(audio_falloff_exponent_distance)
 
 #region Metodos
 
@@ -113,12 +115,6 @@ muda_estados = function(pa=1,at=1,re=1,mi=1){
 		
 		if (ests[e]){
 			
-			if (estz[e] != estado){
-				
-				
-				
-			}
-			
 			estado = estz[e]	
 			
 		}
@@ -129,16 +125,10 @@ desenha_sprite = function(){
 	
 	image_alpha = pai.image_alpha
 	sprite_index = global.armas_sprt[i]
-	image_index = tiro = 0
-	draw_self()
 	
 	if (global.debug){
 	
 		draw_set_colour(c_black)
-	
-		//draw_text(x,y,estado_txt)
-		//draw_text(x,y-20,recarregando)
-		//draw_text(x,y-40,keyboard_check(ord("R")))
 	
 		draw_set_colour(-1)
 	
@@ -149,17 +139,6 @@ desenha_fogo = function(){
 	
 	if (fogo_tempo>0){
 	
-		var canox = 0
-		
-		for (var p=0;p<array_length(pext);p++){
-			
-			if (array_length(pext[p]) > 2){
-				
-				canox += pext[p][0]
-				
-			}
-		}
-		
 		var sprh = sprite_get_width(global.armas_sprt[i]) + 12 + canox
 		var dirp = image_xscale=1 ? direction+90 : direction-90
 		var dirp2 = image_xscale!=1 ? direction+90 : direction-90
@@ -176,6 +155,109 @@ desenha_fogo = function(){
 	}
 }
 
+desenha_modificacoes = function(){
+	
+	if (i<array_length(global.armas_mods[0])){
+
+		for (var m=array_length(global.armas_mods[0][i])-1;m>=0;m--){
+		
+			if (array_length(global.armas_modn[i][m])>0 and is_array(global.armas_mode[i][m][mods[m]]) and global.armas_mode[i][m][mods[m]][3]=11){
+	
+				grd = m+1
+	
+			}
+			
+			var cabep = array_length(global.armas_modp[i][m])>0
+			var pente = cabep and (m != 4 or (!recarregando and !cock))
+			var sprreal = pente and cabep and asset_get_type(global.armas_modp[i][m][mods[m]]) = asset_sprite
+		
+			if (sprreal){
+			
+				var um_laser = is_array(global.armas_mode[i][m][mods[m]]) and global.armas_mode[i][m][mods[m]][3] = 9
+			
+				var mod_px = 0 
+				var mod_py = 0
+			
+				#region Pext
+			
+				for (var md=0;md<array_length(pext);md++){
+			
+					if (array_length(pext[md])>4 and array_length(pext)>m and array_length(pext[m])>4 and pext[m][4] = 0)	mod_px += global.armas_modx[i][m][0]>pext[md][2] ? pext[md][0] : 0
+					if (array_length(pext[md])>4 and array_length(pext)>m and array_length(pext[m])>4 and pext[m][4] = 0)	mod_py += global.armas_modx[i][m][1]>pext[md][3] ? pext[md][1] : 0
+			
+				}
+				
+				#endregion
+				
+				if (laser and is_array(global.armas_mode[i][m][mods[m]]) and global.armas_mode[i][m][mods[m]][3] = 9){
+				
+					var sprh = global.armas_modx[i][m][0] * image_xscale 
+	                var margy = global.armas_modx[i][m][1]>2 ? global.armas_modx[i][m][1] * image_xscale  : -global.armas_modx[i][m][1] * image_xscale
+                
+	                var ang = image_angle
+
+					var mod_xx = global.armas_mode[i][m][mods[m]][0]
+					var mod_xy = global.armas_mode[i][m][mods[m]][1]
+			
+	                if image_xscale = -1{
+					
+	                    ang += 180
+						mod_xx+=3
+						mod_xy+=3
+					
+	                }
+                
+					var mod_an = mod_xy>0 ? ang-90 : ang-90
+					var mod_xm = lengthdir_x(mod_xx*image_xscale,image_angle) + lengthdir_x(mod_xy*image_xscale,mod_an		)
+					var mod_ym = lengthdir_y(mod_xx*image_xscale,image_angle) + lengthdir_y(mod_xy*image_xscale,mod_an		)
+				
+					var mod_ii = grd-1 = m ? !tirg : modi[m]
+				
+					var mod_mx2 = lengthdir_x(mod_px*image_xscale,image_angle) + lengthdir_x(mod_py*image_xscale,mod_an)
+					var mod_my2	= lengthdir_y(mod_px*image_xscale,image_angle) + lengthdir_y(mod_py*image_xscale,mod_an)
+			
+					var _x = x + mod_xm + mod_mx2 
+					var _y = y + mod_ym + mod_my2
+		
+					visao(room_width/2,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,[obj_miniporta,obj_player,obj_zumbi_pai]),1,0,0,c_red)
+				
+				}
+			
+				var mod_spr = global.armas_modp[i][m][mods[m]]
+			
+				var mod_xx = global.armas_mode[i][m][mods[m]][0]
+				var mod_xy = global.armas_mode[i][m][mods[m]][1]
+			
+				var ang = image_angle
+			
+	            if image_xscale = -1{
+				
+	                ang += 180
+				
+	            }
+                
+				var mod_an = ang-90
+				var mod_xm = lengthdir_x(mod_xy*image_xscale,mod_an		)
+				var mod_ym = lengthdir_y(mod_xy*image_xscale,mod_an		)
+				var mod_xo = lengthdir_x(mod_xx*image_xscale,image_angle) + mod_xm
+				var mod_yo = lengthdir_y(mod_xx*image_xscale,image_angle) + mod_ym
+			
+				var mod_ii = grd-1 = m ? !tirg : modi[m]
+			
+				var mod_mx2 = lengthdir_x(mod_px*image_xscale,image_angle) + lengthdir_x(mod_py*image_xscale,mod_an)
+				var mod_my2	= lengthdir_y(mod_px*image_xscale,image_angle) + lengthdir_y(mod_py*image_xscale,mod_an)
+			
+				var mod_x = x + mod_xo + mod_mx2 
+				var mod_y = y + mod_yo + mod_my2
+		
+				draw_sprite_ext(mod_spr,mod_ii,mod_x,mod_y,image_xscale,image_yscale,image_angle,c_white,image_alpha)
+	
+			}
+		}
+	}
+	
+}
+
 mirando = function(){
 	
 }
@@ -187,12 +269,6 @@ atira = function(){
 	var atr_tec = !tiro_timer
 	var prs_tec = tiro_timer=1 and tiro = 0
 	
-	if (grd_tec and grd and !cock and !recarregando){
-		
-		modo=!modo
-	
-	}
-	
 	tiro = clamp(tiro,0,municao)
 	tirg = clamp(tirg,0,mung)
 	
@@ -200,23 +276,12 @@ atira = function(){
 	var atn = (tec) and !tiro_timer and !recarregando and !rajadas and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	var raj = rajadas and !rajando_timer and !recarregando and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	
-	var canox = 0
-	
 	if (!modo){ //atira normal
 	
 		if (atn or raj){
 		
 			if (tiro>0){
 				
-				for (var p=0;p<array_length(pext);p++){
-					
-					if (array_length(pext[p]) > 2){
-						
-						canox += pext[p][0]
-						
-					}
-				}
-		
 				var vol = 0
 				
 				if (!rajadas and tec) rajadas = rajadas_total
@@ -226,12 +291,13 @@ atira = function(){
 					var sil = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
 					var fre = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=3
 				
+					var dirp	= image_xscale=1	? direction+90 : direction-90
+					var dirp2	= image_xscale!=1	? direction+90 : direction-90
+					
 					var margx = 2
 					var margy = lengthdir_y(3,dirp2)
 					
 					var sprh = (sprite_width + canox - margx) *image_xscale 
-					var dirp	= image_xscale=1	? direction+90 : direction-90
-					var dirp2	= image_xscale!=1	? direction+90 : direction-90
 					var margy	= lengthdir_y(3,dirp2)
 				
 					var tiiv = global.tiros_velo[i]*1
@@ -266,7 +332,6 @@ atira = function(){
 			
 					global.shake += shak*global.shakes[global.configs[1][0]]  
             
-					//toca_som(global.armas_sons[i][0],1,0,1,.15)
 					fogo_tempo = 10
 					fogo_ii = irandom_range(0,sprite_get_number(spr_fogo))
 					fogo_dir = dir
@@ -285,11 +350,9 @@ atira = function(){
 				
 				}                                            
 				
-				seta_part("cria_tiro",tx,ty,[part_tiro,part_tiro],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+				if (part_tiro){
 				
-				repeat(part_tiro){
-					
-					toca_som([snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14],1,10,50,,0,.1,1)
+					seta_part("cria_tiro",tx,ty,[part_tiro,part_tiro],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
 					
 				}
 					
@@ -326,12 +389,6 @@ atira = function(){
 						
 						seta_part("cria_tirof",_x,_y,[1,1],global.armas_sprf[i][cla_i],c_white,dirp,[6,6],[image_xscale,image_xscale],[1,1],20,[3,3],spr_i,0)
 						
-						repeat(1){
-						
-							toca_som([snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14],1,10,50,,0,.1,1)
-						
-						}
-					
 						pode_tirof = 0
 						tem_pente = 0
 						
@@ -435,14 +492,22 @@ preparando = function(){
 	
 	if (man or sem){
 		
+		randomise()
+		
 		prep = global.armas_prep[i]
 		
-		if (poc) seta_part("cria_tiro",x,y,[part_cock,part_cock],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+		if (part_cock){
 		
-		repeat(part_cock){
+			var balas = [snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14]
+			var ind = irandom_range(0,array_length(sons)-1)
+					
+			if (poc) seta_part("cria_tiro",x,y,[part_cock,part_cock],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+		
+			repeat(part_cock){
 			
-			toca_som([snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14],1,10,50,,0,.1,1)
+				toca_som(balas[ind],1,10,50,,0,.1,1)
 			
+			}
 		}
 		
 		if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>1 and asset_get_type(global.armas_sons[i][1]) == asset_sound){
@@ -450,23 +515,6 @@ preparando = function(){
 			sons[1] = toca_som(global.armas_sons[i][1],.25,30,200,,0,.05,0)
 			if (sem) refff = 1
 			
-		}
-		
-		if (cock=2){ 
-			
-			var qtd = part_cock+part_tiro
-			
-			if (tiro>0){
-			
-				if (poc) tiro-=qtd
-				if (poc) seta_part("cria_tiro",x,y,[qtd,qtd],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
-			
-				repeat(qtd){
-			
-					toca_som([snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14],1,10,50,,0,.1,1)
-			
-				}
-			}
 		}
 		
 		cock = 0
@@ -497,9 +545,11 @@ recarrega = function(){
 		
 		if (!recarregando){ 
 			
+			var dis = 10000
+			
 			#region Cria som
 			
-			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and asset_get_type(global.armas_sons[i][2]) == asset_sound){
+			if (dis<200 and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and asset_get_type(global.armas_sons[i][2]) == asset_sound){
 			
 				if (!modo)sons[2] = toca_som(global.armas_sons[i][2],1,30,200,,0,.1,0)
 				if ( modo)sons[2] = toca_som(snd_lanca_recc			,1,30,200,,0,.1,0)
@@ -556,12 +606,17 @@ recarrega = function(){
 			
 			if (tiro = municao and global.armas_rext[i]=1){
 				
+				randomise()
+				
+				var balas = [snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14]
+				var ind = irandom_range(0,array_length(sons)-1)
+					
 				tiro--
 				seta_part("cria_tiro",x,y,[1,1],global.tiros_part[i],c_white,dirt,[tiro_v,tiro_v],[2,2.5],[2,2.5],45,[tiro_v/2,tiro_v/2],0,0)
 				
 				repeat(1){
 					
-					toca_som([snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14],1,10,50,,0,.1,1)
+					toca_som(balas[ind],1,10,50,,0,.1,1)
 					
 				}
 			}
@@ -583,6 +638,8 @@ recarrega = function(){
 		recarregando_timer--
 		
 		if (recarregando_timer<=0){
+			
+			var dis = 10000
 			
 			if (!modo) tiro += rext// - munc
 			if ( modo) tirg += mung// - munc
@@ -606,15 +663,23 @@ recarrega = function(){
 			
 			if (modo) recarregando=0
 			
-			seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+			if (munp){
 			
-			repeat(munp){
+				randomise()
+			
+				var balas = [snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14]
+				var ind = irandom_range(0,array_length(sons)-1)
+					
+				seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+			
+				repeat(munp){
 				
-				toca_som([snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14],1,10,50,,0,.1,1)
+					toca_som(balas[ind],1,10,50,,0,.1,1)
 				
+				}
 			}
 			
-			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>3 and asset_get_type(global.armas_sons[i][3]) == asset_sound){ 
+			if (dis<200 and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>3 and asset_get_type(global.armas_sons[i][3]) == asset_sound){ 
 				
 				if (!modo) sons[3] = toca_som(global.armas_sons[i][3]	,.5,30,200,,0,.1,0)
 				if ( modo){sons[3] = toca_som(snd_lanca_recf			,.5,30,200,,0,.1,0) cock = 0}
@@ -636,6 +701,17 @@ recarrega = function(){
 
 reseta_coisas = function(){
 	
+	canox = 0
+	
+	for (var p=0;p<array_length(pext);p++){
+		
+		if (array_length(pext[p]) > 2){
+			
+			canox += pext[p][0]
+			
+		}
+	}
+		
 	rajando_timer--
 	prec = lerp(prec,global.armas_precin[i],.05)
 	

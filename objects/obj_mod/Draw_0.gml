@@ -21,7 +21,7 @@ var sprxo = sprite_get_xoffset(spr)
 var spryo = sprite_get_yoffset(spr)
 
 var mod_esc = sprxs / 4
-var mod_tec = (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter) or gamepad_button_check_pressed(0,gp_face1))
+var mod_tec = !cn ? (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter)) : gamepad_button_check_pressed(0,gp_face1)
 
 var moe_x = 48
 var moe_y = 664
@@ -61,6 +61,8 @@ if (i<array_length(global.armas_mods[0]) and alp){
 	var arm = pai.arma
 		
 	for (var m=array_length(mods_atual)-1;m>=0;m--){
+		
+		if (array_length(global.armas_modp[i][m])>0) show_debug_message(mods_atual[m])
 		
 		if (array_length(global.armas_modp[i][m])>0 and global.armas_modp[i][m][mods_atual[m]]!=0){ //vendo se tem alguma sprite pra desenhar
 

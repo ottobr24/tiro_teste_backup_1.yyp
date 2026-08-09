@@ -5,7 +5,7 @@ randomise()
 hspd =0 
 vspd =0
 
-vela = random_range(1,2)
+vela = random_range(.8,1.8)
 vel = 0
 
 vida_max = 20
@@ -25,9 +25,10 @@ yult = y
 
 caminho = path_add()
 cria_caminho = 1
-cria_caminho_tempo = 60*9
+cria_caminho_tempo = 60*3
 cria_caminho_timer = cria_caminho_tempo
-caminho_dist = random_range(16,48)
+caminho_dist = random_range(48,80)
+criou_caminho = 0
 
 ataque_tempo = 90
 ataque_timer = ataque_tempo
@@ -42,9 +43,13 @@ colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.co
 braco_dir = direction
 ii = 0
 
-visao_inicio()
+ordem = instance_number(obj_zumbi) % 3
+numbr = 0
+lider = -4
 
 image_alpha = 0
+
+ataque_dist = clamp(ataque_dist,caminho_dist+1,infinity)
 
 #endregion
 
@@ -93,41 +98,41 @@ sofrendo_dano = function(){
 
 movendo = function(_x = -1,_y = -1){
     
+	if !instance_exists(obj_player) exit;
+	
+	var ply = instance_nearest(x,y,obj_player)
+		
 	cria_caminho_timer--
 	
-	if (instance_exists(obj_player)){
-		
-		var ply = instance_nearest(x,y,obj_player)
-		var dis = 32
-		var diag = 1
+	if (point_distance(alvox,alvoy,ply.x,ply.y)>caminho_dist or cria_caminho or !cria_caminho_timer){
 	
-		if (point_distance(alvox,alvoy,ply.x,ply.y)>caminho_dist or cria_caminho or !cria_caminho_timer){
-			
+		var diag = 1
+		var map = obj_controlador.mapa
+	
+		var dest_x = ply.x
+		var dest_y = ply.y
+		
+		var sel_x = dest_x
+		var sel_y = dest_y
+		
+		if ((mp_grid_path(map,caminho,x,y,sel_x,sel_y,diag) == true and mp_grid_get_cell(map,sel_x,sel_y)=-1)){
+		
+			path_start(caminho,vela,path_action_stop,!diag)
+		
+			alvox = sel_x
+			alvoy = sel_y
+		
+			cria_caminho = 0
 			cria_caminho_timer = cria_caminho_tempo
-			var map = obj_controlador.mapa
-		
-			var dest_x = ply.x
-			var dest_y = ply.y
-		
-			var sel_x = dest_x
-			var sel_y = dest_y
+			criou_caminho =  1
 			
-			if (mp_grid_path(map,caminho,x,y,sel_x,sel_y,diag) == true and mp_grid_get_cell(map,sel_x,sel_y)=-1){
-				
-				path_start(caminho,vela,path_action_stop,!diag)
-			
-				alvox = sel_x
-				alvoy = sel_y
-				
-				cria_caminho = 0
-				
-			}
 		}
 	}
 }
 
 colidindo = function(){
 	
+	depth = -y
 	hspd = x-xult
 	vspd = y-yult
 	
@@ -147,31 +152,12 @@ desenhando = function(){
 	
 }
 
-me_destacando = function(){
-	
-	ds_list_clear(visao_col)
-	
-	var obj = []
-	
-	instance_place_list(x,y,obj_regioes,visao_col,0)
-	
-	for (var o=0;o<ds_list_size(visao_col);o++){
-	
-		obj[array_length(obj)] = ds_list_find_value(visao_col,o).vendo
-	
-	}
-	
-	if (achando_na_array(obj,1)  = -1) image_alpha = lerp(image_alpha,0,.1)
-	if (achando_na_array(obj,1) != -1) image_alpha = lerp(image_alpha,1,.1)
-	
-	layer = layer_get_id("Level")
-	
-}
-
 bracos = function(){
 	
+	if !instance_exists(obj_player) exit;
+	
 	var ply = instance_nearest(x,y,obj_player)
-	var dir = point_direction(x,y,ply.x,ply.y)
+	var dir = direction
 	
 	if (abs(braco_dir-dir) > 240) braco_dir = dir - sign(dir-braco_dir) * 5
 	
@@ -190,9 +176,7 @@ bracos = function(){
 	
 	draw_set_alpha(1)
 	draw_set_colour(-1)
-	
-	draw_text(x,y,dir)
-	
+
 }
 
 #endregion
@@ -209,7 +193,6 @@ estado_seguindo = function(){
 	if (instance_exists(obj_player)){
 		
 		var obj = instance_nearest(x,y,obj_player)
-		direction = point_direction(x,y,obj.x,obj.y)
 		
 		if (point_distance(x,y,obj.x,obj.y)<ataque_dist){
 			
@@ -241,20 +224,17 @@ estado_morrendo = function(){
     
 	randomise()
 	var chan_a = irandom_range(0,100)
-	var chan_m = irandom_range(0,100)
 	
 	var chac_e = 94 - 3 * (instance_number(obj_player)-1)
-	
-    estado = estado_morrendo
-    estado_txt = "estado_morrendo"       
 	
 	if (chan_a>=chac_e){
 		
 		var armi = irandom_range(0,array_length(drops)-1)
+		armi = clamp(armi,0,array_length(drops)-1)
 		
 		var armai = drops[armi]
 		
-		var obj = instance_create_layer(x,y,"Arma",obj_arma_item)
+		var obj = instance_create_layer(x,y,"Particulas",obj_arma_item)
 		obj.i = armai
 		
 	}
@@ -262,6 +242,7 @@ estado_morrendo = function(){
 	global.dinheiro += moedas
 	
 	instance_destroy()
+	path_delete(caminho)
 	
 }
 
@@ -270,7 +251,6 @@ estado_pause = function(){
     estado = estado_pause
     estado_txt = "estado_pause"     
 	
-	arma_atira = 0
 	cria_caminho = 1
 	
 	x-=hspd
@@ -286,6 +266,4 @@ estado_pause = function(){
 
 #endregion
 
-estado = estado_seguindo
-
-if (instance_exists(obj_player)) direction = point_direction(x,y,obj_player.x,obj_player.y)   
+estado = estado_seguindo  

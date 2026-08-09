@@ -6,13 +6,13 @@ enter = 0
 
 var cn = pai.controle
 
-var mas_tec = keyboard_check_pressed(vk_right)	or gamepad_button_check_pressed(0,gp_padr)
-var mes_tec = keyboard_check_pressed(vk_left)	or gamepad_button_check_pressed(0,gp_padl)
+var mas_tec = !cn ? keyboard_check_pressed(vk_right)	: gamepad_button_check_pressed(0,gp_padr)
+var mes_tec = !cn ? keyboard_check_pressed(vk_left)		: gamepad_button_check_pressed(0,gp_padl)
+			 											
+var cim_tec = !cn ? keyboard_check_pressed(vk_up)		: gamepad_button_check_pressed(0,gp_padu)
+var bai_tec = !cn ? keyboard_check_pressed(vk_down)		: gamepad_button_check_pressed(0,gp_padd)
 												
-var cim_tec = keyboard_check_pressed(vk_up)		or gamepad_button_check_pressed(0,gp_padu)
-var bai_tec = keyboard_check_pressed(vk_down)	or gamepad_button_check_pressed(0,gp_padd)
-												
-var mod_tec = (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter) or gamepad_button_check_pressed(0,gp_face1))
+var mod_tec = !cn ? (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter)) : gamepad_button_check_pressed(0,gp_face1)
 	
 #region Me mexendo nas modificações	
 

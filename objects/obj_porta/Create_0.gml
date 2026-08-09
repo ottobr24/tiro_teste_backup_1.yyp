@@ -17,6 +17,7 @@ chute_tempo = 30
 chutou = 0
 som = [0,0,0,0,0]
 sou_eu = 0 
+perto = 0
 
 som[4] = toca_som(snd_porta_chiado,1,15,50,,1,.05)
 audio_pause_sound(som[4])
@@ -25,6 +26,7 @@ abrindo_e_sendo_empurrada = function(){
 	
 	if (instance_exists(obj_player)){
 		
+		perto = 0
 		cade_alp = clamp(cade_alp,0,1)
 	
 		var alvos = [obj_player,obj_inimigo,obj_zumbi_pai]
@@ -153,7 +155,8 @@ abrindo_e_sendo_empurrada = function(){
 					if (global.portas_abrir = id and dis<75){
 						
 						cade_alp += .05
-		
+						perto = 1
+						
 					}
 			
 					if (dis<dist[0]){
@@ -192,8 +195,8 @@ abrindo_e_sendo_empurrada = function(){
 		
 		#region Efetivamente abrindo ela
 	
-		if (dist[0]<75 and tec_a and global.portas_abrir = id){
-	
+		if (perto and tec_a and global.portas_abrir = id){
+			
 			if (!trancado){
 	
 				if (image_angle = clamp(image_angle,ima_org-20,ima_org+20)){
@@ -298,6 +301,9 @@ cria_filhos = function(){
 	    i++
     
 	}
+		
+	depth-=1
+		
 }
 
 pressionando_tecla = function(){

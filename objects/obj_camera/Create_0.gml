@@ -38,7 +38,7 @@ segue_player = function(){
 	if (instance_exists(obj_player)){
 		
 		var obj = 0
-		var alvos = [obj_player,obj_inimigo,obj_zumbi_pai]
+		var alvos = [obj_player,obj_zumbi_pai,obj_inimigo]
 		var numb = 0
 		
 		if (instance_exists(alvos[seg])){
@@ -59,7 +59,7 @@ segue_player = function(){
 		
 		estado_txt = "Segue Player"
 		estado = segue_player
-		alvo = alvos[seg][ind]
+		alvo = obj_player//alvos[seg][ind]
 		
 		if (keyboard_check_pressed(vk_space)){ 
 			
@@ -90,15 +90,15 @@ segue_player = function(){
 			
 			var falha = 0
 			
-			if (cpos[cap][roo][0]=-2 and instance_number(obj_player)>1){
-				
-				var objs = []
+			var objs = []
 
-				with(obj_player){
+			with(obj_player){
 	
-					objs[array_length(objs)] = id
+				objs[array_length(objs)] = id
 	
-				}
+			}
+				
+			if (cpos[cap][roo][0]=-2 and array_length(objs)=2){
 				
 				var pos_marg = 100
 				
@@ -158,17 +158,21 @@ segue_player = function(){
 		}
 		
 		randomise()
-		var shak = random_range(-global.shake,global.shake)
+		var shak	= random_range(-global.shake,global.shake)
+		var shakx	= global.shakex
+		var shaky	= global.shakey
 	
-		view_set_xport(0,shak)
-		view_set_yport(0,shak)
+		view_set_xport(0,shak + shakx)
+		view_set_yport(0,shak + shaky)
 
-		global.shake = lerp(global.shake,0,0.1)
+		global.shake	= lerp(global.shake	,0,0.15)
+		global.shakex	= lerp(global.shakex,0,0.1)
+		global.shakey	= lerp(global.shakey,0,0.1)
 	
 		instance_deactivate_region(bbox_left,bbox_top,bbox_right,bbox_bottom,0,1)
 		instance_activate_region(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
 		
-		var objs_espcs = [obj_player,obj_criador,obj_criador_ponto,obj_pause,obj_mod,obj_inimigo,obj_zumbi_pai,obj_granadas_exp,obj_tiro,object_index,obj_arma,obj_controlador,obj_cria_particulas,obj_granadas,obj_regioes,obj_arma_npc]
+		var objs_espcs = [obj_player,obj_miniparede,obj_miniporta,obj_criador,obj_criador_ponto,obj_pause,obj_mod,obj_inimigo,obj_zumbi_pai,obj_granadas_exp,obj_tiro,object_index,obj_arma,obj_controlador,obj_cria_particulas,obj_granadas,obj_regioes,obj_arma_npc]
 		
 		for (var o=0;o<array_length(objs_espcs);o++){
 			

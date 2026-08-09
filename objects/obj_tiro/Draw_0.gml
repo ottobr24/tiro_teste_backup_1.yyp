@@ -8,7 +8,7 @@ for (var t=0;t<array_length(tracejante);t++){
 	
 	draw_sprite_ext(sprite_index,image_index,_x,_y,ix,ix,image_angle,image_blend,alp)
 	
-	tracejante[t][2] ++
+	tracejante[t][2] += !global.pause
 	
 	if (alp<=0.05) array_delete(tracejante,t,1)
 	

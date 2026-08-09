@@ -21,40 +21,47 @@ angl = 0
 mxs = []
 sprites = 0
 
+limpa_tempo = 60
+limpa_timer = limpa_tempo
+
 cria_as_coisas = function(){
     
 	if (array_length(velm)>0){
 		
-		var a = [c_white,make_color_rgb(80,80,80),make_color_rgb(160,65,13),make_color_rgb(255,10,10)]
+        randomise()
+        
+		for (var i=0;i<array_length(velm);i++){
 		
-		randomise()
-		var r = irandom_range(mxs[0][0],mxs[0][1])
+			var r = irandom_range(mxs[i][0],mxs[i][1])
 			
-		for (var b=0;b<r;b++){
+			repeat(r){
 			
-			var odr = array_length(particulas)
+				var odr = array_length(particulas)
 			
-			for (var m=0;m<array_length(particulas[0]);m++){
+				var di		= random_range(-dist[i],dist[i])
+				var d		= dir[i]+di
+				var ix		= random_range(ixms[i][0],ixms[i][1])
+				var iy		= random_range(iyms[i][0],iyms[i][1])
+				var hs		= random_range(velm[i][1],vels[i][1])
+				var vs		= velm[i][0] = "hs" ? hs : random_range(velm[i][0],vels[i][0]) 
+                
+				var itens	= [0,d,ix,iy,cor[i],hs,vs,xx[i],yy[i],sprites[i],1,spri[i],angl[i]]
+			
+				for (var m=0;m<array_length(particulas[0]);m++){
 				
-				//var tmp = random_range(60*3,60*7)
-				var di = random_range(-dist[0],dist[0])
-				var d = dir[0]+di
-				var ix =random_range(ixms[0][0],ixms[0][1])
-				var iy =random_range(iyms[0][0],iyms[0][1])
-				var hs = random_range(velm[0][1],vels[0][1])
-				var vs = random_range(velm[0][0],vels[0][0])
-				var itens = [0,d,ix,iy,cor[0],hs,vs,xx[0],yy[0],sprites[0],1,spri[0],angl[0]]
-				particulas[odr][m] = itens[m]
+					particulas[odr][m] = itens[m]
 				
+				}
 			}
 		}
 		
 		var arrays = ["xx","yy","cor","ixms","iyms","mxs","dir","vels","sprites","dist","velm","spri","angl"]
 		
 		for (var ar =0;ar<array_length(arrays);ar++){
-		
-			if (variable_instance_exists(id,arrays[ar])) array_delete(variable_instance_get(id,arrays[ar]),0,1)
+			
+            variable_instance_set(id,arrays[ar],[])
 		
 		}
 	}
 }
+	

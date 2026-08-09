@@ -11,7 +11,10 @@
     "name":"Level",
     "path":"folders/Objetos/Level.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_level_pai",
+    "path":"objects/obj_level_pai/obj_level_pai.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

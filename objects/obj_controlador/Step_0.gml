@@ -1,6 +1,7 @@
-var objs = global.colisao_normal
 
 if (att){
+	
+	var objs = global.colisao_normal
 
 	mp_grid_clear_all(mapa)
 	
@@ -25,5 +26,5 @@ for (var b=0;b<array_length(barulhos);b++){
 
 gamepad_set_vibration(0,vib_e,vib_d)
 
-vib_e = lerp(vib_e,0,.25)
-vib_d = lerp(vib_d,0,.25)
+vib_e = lerp(vib_e,0,.35)
+vib_d = lerp(vib_d,0,.35)

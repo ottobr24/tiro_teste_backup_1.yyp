@@ -1,6 +1,8 @@
 for (var i=1;i<array_length(particulas);i++){
 	
-	particulas[i][0]++
+	if (!is_array(particulas[i])) continue
+	
+	particulas[i][0] += !global.pause
     
 	var alp2	=	0.005
 	var tm		=	particulas[i][0]
@@ -20,43 +22,32 @@ for (var i=1;i<array_length(particulas);i++){
     
 	if (alp>0.15){
 		
-        sprite_index = spr
-        image_xscale = ix
-        image_yscale = iy
-        
-		var x1 = lengthdir_x(hs,d)
-		var y1 = lengthdir_y(vs,d)
+		if (!global.pause){
 		
-		var sw = sprite_get_width (spr) * ix
-		var sh = sprite_get_height(spr) * iy
+	        sprite_index = spr
+	        image_xscale = ix
+	        image_yscale = iy
         
-        var obj = instance_place(_x+x1,_y,colisao)
-        
-        if (obj and col){
-        
-    		hs=-hs/5
+			var x1 = lengthdir_x(hs,d)
+			var y1 = lengthdir_y(vs,d)
+		
+			if (place_meeting(_x+x1,_y+y1,colisao)){
+			
+		    	hs=-hs/5
+				vs=-vs/5
             
-        }
-        
-		_x+=lengthdir_x(hs,d)
+			}
 		
-        obj = place_meeting(_x,_y+y1,colisao)
+			x1 = lengthdir_x(hs,d)
+			y1 = lengthdir_y(vs,d)
+		
+			_x+=x1
+			_y+=y1
 
-		if (obj and col){
-            
-			vs=-vs/5
-            
+			hs = lerp(hs,0,0.1)
+			vs = lerp(vs,0,0.1)
+		
 		}
-		
-		_y+=lengthdir_y(vs,d)
-
-		var m = 0.25
-
-		hs = lerp(hs,0,0.1)
-		hs = clamp(hs,0,10000)
-
-		vs = lerp(vs,0,0.1)
-		vs = clamp(vs,0,10000)
 		
 		if (position_meeting(_x,_y,obj_camera)) draw_sprite_ext(spr,ind,_x,_y,ix,iy,ang,co,alp)
 		

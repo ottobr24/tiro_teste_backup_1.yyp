@@ -1,4 +1,4 @@
-if (global.pause) exit;
+if (global.pause or !instance_exists(obj_player)) exit;
 
 direction+=2
 sprite_index = global.armas_sprt[i]
@@ -16,7 +16,7 @@ if (point_distance(obj.x,obj.y,x,y)<dis){
 	image_alpha += .1
 	var tec_a = !cn ? keyboard_check_pressed(ord(tecla_pegar[cn])) : gamepad_button_check_pressed(0,tecla_pegar[cn])
 		
-	if (tec_a){
+	if (tec_a and obj.arma_prox = id){
 		
 		instance_destroy(obj.arma)
 	

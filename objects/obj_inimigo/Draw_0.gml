@@ -2,9 +2,6 @@ if (!place_meeting(x,y,obj_camera) or image_alpha=0) exit;
 
 draw_self() //desenhando()
 
-draw_text(x,y-20,[cria_caminho])
-draw_text(x,y-40,[alvox,alvoy])
-
 if (global.debug){ 
 
 	draw_set_colour(c_black)

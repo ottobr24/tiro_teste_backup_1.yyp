@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Colisao",
-    "path":"folders/Colisao.yy",
+    "path":"folders/Objetos/Colisao.yy",
   },
   "parentObjectId":null,
   "persistent":false,

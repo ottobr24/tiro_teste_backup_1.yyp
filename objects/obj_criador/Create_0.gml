@@ -7,8 +7,10 @@ pontos = []
 
 objs_tem	= [0,47	,44,42,39,37,35,34,34,33,32,31,30,29,28,26,25,24,23	,22	,20	,19	,18	,17	,16	,15	]
 objs_qtd	= [0,10	,15,20,24,31,37,41,44,50,55,59,70,76,81,86,91,97,104,110,118,125,134,141,150,165]
-objs_drps	= [[[1,2,3],1],[[1,2,3,4,5,6],5],[[1,2,3,4,5,6,7,8,9],8],[[3,4,5,6,7,8,9,10,13,16,34,33,32,31],10],[[3,4,5,7,8,9,10,11,12,13,14,16,34,33,32,31,30],12],[[7,8,9,10,11,12,13,14,15,16,18,19,20,29,30,31,32,33],15],[[7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33,34,35],18]]
+objs_drps	= [[[1,2,3],1],[[1,2,3,4,5,6],5],[[1,2,3,4,5,6,7,8,9],8],[[3,4,5,6,7,8,9,10,13,16,34,33,32,31],10],[[5,7,8,9,10,11,12,13,14,16,34,33,32,31,30],12],[[9,10,11,12,13,14,15,16,18,19,20,29,30,31,32,33],15],[[11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33,34,35],18]]
 objs_atu	= [0]
+
+lideres = []
 
 rod = global.rodada-1
 
@@ -49,48 +51,65 @@ criando_coisas = function(){
 		
 		var vid_mar = 1+global.rodada/15
 		var dan_mar = 1+global.rodada/20
-		var moe_mar = 1+global.rodada/15
+		var moe_mar = 1+global.rodada/10
 		var ply_mar = 1+(instance_number(obj_player)-1)/2
 		var ply_num = instance_number(obj_player)
 		
+		var qtd = objs_atu[0] + 2 <= objs_qtd[rod] ? irandom_range(1,2) : 1
 		var lug = irandom_range(0,array_length(pontos)-1)
+		var lideres_total = 5
 		
 		var _x = pontos[lug].x
 		var _y = pontos[lug].y 
 		
-		var alet = random_range(.6,1.4)
+		repeat(qtd){
 		
-		var vid = random_range(1*vid_mar,3*vid_mar)	* ply_mar
-		var dan = random_range(1*dan_mar,3*dan_mar)	* ply_mar
-		var moe = random_range(1,15) * ply_num
-		var vel = random_range(.8,1.8)
-		var dps = []
+			var alet = random_range(.6,1.4)
 		
-		for (var d=0;d<array_length(objs_drps);d++){
+			var vid = random_range(1*vid_mar,3*vid_mar)	* ply_mar
+			var dan = random_range(1*dan_mar,3*dan_mar)	* ply_mar
+			var moe = random_range(1,15) * ply_num
+			var vel = random_range(.8,1.8)
+			var dps = []
+		
+			for (var d=0;d<array_length(objs_drps);d++){
 			
-			var tmd		= objs_drps[d]
-			var ult	= objs_drps[d][1]
+				var tmd	= objs_drps[d]
+				var ult	= objs_drps[d][1]
 			
-			if (global.rodada<=ult){
+				if (global.rodada<=ult or d = array_length(objs_drps)-1){
 				
-				array_copy(dps,0,objs_drps[d][0],0,array_length(objs_drps[d][0]))
-				break;
+					array_copy(dps,0,objs_drps[d][0],0,array_length(objs_drps[d][0]))
+					break;
+					
+				}
+			}
+		
+			var obj = instance_create_layer(_x,_y,"Pessoas",obj_zumbi)
+		
+			obj.vida = vid 
+			obj.vida_max = vid
+			obj.vela = vel
+			obj.dano_dmg = dan
+			obj.drops = dps
+			obj.moedas = moe
+			obj.numb = objs_atu[0]
+			obj.orde = objs_atu[0] % lideres_total
+			
+			if (objs_atu[0]>lideres_total){
+				
+				obj.lider = lideres
+				
+			}else{
+				
+				lideres[objs_atu[0]] = obj
 				
 			}
-		}
 		
-		var obj = instance_create_layer(_x,_y,"Pessoas",obj_zumbi)
+			cria_timer = objs_tem[rod]
+			objs_atu[0] ++
 		
-		obj.vida = vid 
-		obj.vida_max = vid
-		obj.vela = vel
-		obj.dano_dmg = dan
-		obj.drops = dps
-		obj.moedas = moe
-		
-		cria_timer = objs_tem[rod]
-		objs_atu[0] ++
-		
+		}	
 	}
 }
 
@@ -130,6 +149,7 @@ passando_as_rodadas = function(){
 				}
 				
 				objs_atu[0] = 0
+				lideres = []
 				
 			}
 		}else{
