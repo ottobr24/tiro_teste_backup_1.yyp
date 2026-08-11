@@ -16,8 +16,8 @@ colidindo()
 var ct = controle
 var cn = ct
 	
-var men_tec = !cn ? keyboard_check_pressed(ord("Q")) : gamepad_button_check_pressed(0,gp_padd)
-var mas_tec = !cn ? keyboard_check_pressed(ord("E")) : gamepad_button_check_pressed(0,gp_padu)
+var men_tec = !cn ? keyboard_check_pressed(vk_left	) : gamepad_button_check_pressed(0,gp_padd)
+var mas_tec = !cn ? keyboard_check_pressed(vk_right	) : gamepad_button_check_pressed(0,gp_padu)
 	
 if ((mas_tec or men_tec) and !global.zumbi){
     

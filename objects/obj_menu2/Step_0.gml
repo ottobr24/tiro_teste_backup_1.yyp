@@ -1,6 +1,7 @@
-
 if (keyboard_check_pressed(vk_enter)) teste = 0
 if (keyboard_check_pressed(vk_tab)) room_restart()
+
+mudando_controle()
 
 colocando_o_controle()
 usando_o_menu()

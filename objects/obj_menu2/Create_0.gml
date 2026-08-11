@@ -201,6 +201,9 @@ idiomas = global.textos[texto.idiom]
 
 #region Menu Controle
 
+mxp = mouse_x
+myp = mouse_y
+	
 vel = 0
 equipado = 0
 reseta = 1
@@ -378,8 +381,8 @@ desenha_texto = function(){
 	var ordemx = 0
 	var ordemy = 0
 	
-	var esquerda	= (keyboard_check_pressed(vk_left)	or gamepad_button_check_pressed(0,gp_padl) or gp[1]<0)
-	var direita		= (keyboard_check_pressed(vk_right) or gamepad_button_check_pressed(0,gp_padr) or gp[1]  )
+	var esquerda	= global.controle ? gamepad_button_check_pressed(0,gp_padl) : (keyboard_check_pressed(vk_left ))
+	var direita		= global.controle ? gamepad_button_check_pressed(0,gp_padr) : (keyboard_check_pressed(vk_right))
 	
 	#endregion
 	
@@ -483,7 +486,7 @@ desenha_texto = function(){
 			
 			var texto_marg = -texto_h/2
 			
-			if (point_in_rectangle(mox,moy,texto_x[t]-texto_w,texto_y-texto_h-texto_marg,texto_x[t]+texto_w,texto_y+texto_h) and t+1 >= textos_mostrar_tmd){
+			if (point_in_rectangle(mox,moy,texto_x[t]-texto_w,texto_y-texto_h-texto_marg,texto_x[t]+texto_w,texto_y+texto_h) and t+1 >= textos_mostrar_tmd and global.controle = 0){
 			
 				index = i
 			
@@ -550,6 +553,27 @@ desenha_a_barra = function(spr = spr_barra){
 
 #endregion
 
+mudando_controle = function(){
+	
+	var kcp = keyboard_check_pressed
+	var gbp = gamepad_button_check_pressed
+	var mcp = mouse_check_button_pressed
+	var o = ord
+	
+	var key = kcp(vk_left) or kcp(vk_right) or kcp(vk_down) or kcp(vk_up) or kcp(vk_enter)
+	var mou = mxp != mouse_x or myp != mouse_y
+	var con = gbp(0,gp_face1) or gbp(0,gp_padd) or gbp(0,gp_padu) or gbp(0,gp_padl) or gbp(0,gp_padr)
+	
+	if (key or mou) global.controle = 0
+	if (con)		global.controle = 1
+	
+	mxp = mouse_x
+	myp = mouse_y
+	
+	controle = global.controle
+	
+}
+
 colocando_o_controle = function(imputs=[gp_axislv,gp_axislh]){
 	
 	static timer_controle	= 0
@@ -565,7 +589,7 @@ colocando_o_controle = function(imputs=[gp_axislv,gp_axislh]){
 		
 		}
 		
-		if (gp[0]!=0 or gp[1]!=0)timer_controle = tempo_controle
+		if (gp[0]!=0 or gp[1]!=0) timer_controle = tempo_controle
 		
 	}
 	
@@ -692,11 +716,11 @@ usando_o_menu = function(){
 	var menu_tmd = array_length(textos_mostrar)-1
 	var menu_index = textos_mostrar[menu_tmd]
 	
-	var cima		= (keyboard_check_pressed(vk_up)	or gamepad_button_check_pressed(0,gp_padu) or gp[0]<0)* sign(!muda_controle)
-	var baixo		= (keyboard_check_pressed(vk_down)	or gamepad_button_check_pressed(0,gp_padd) or gp[0]  )* sign(!muda_controle)
-	var esquerda	= (keyboard_check_pressed(vk_left)	or gamepad_button_check_pressed(0,gp_padl) or gp[1]<0)* sign(!muda_controle)
-	var direita		= (keyboard_check_pressed(vk_right) or gamepad_button_check_pressed(0,gp_padr) or gp[1]  )* sign(!muda_controle)
-	var enter		= (keyboard_check_pressed(vk_enter)	or gamepad_button_check_pressed(0,gp_face1) or mouse_check_button_pressed(mb_left)) * sign(!muda_controle)
+	var cima		= global.controle ? gamepad_button_check_pressed(0,gp_padu)   : (keyboard_check_pressed(vk_up)		or gp[0]<0)* sign(!muda_controle)
+	var baixo		= global.controle ? gamepad_button_check_pressed(0,gp_padd)   : (keyboard_check_pressed(vk_down)	or gp[0]  )* sign(!muda_controle)
+	var esquerda	= global.controle ? gamepad_button_check_pressed(0,gp_padl)   : (keyboard_check_pressed(vk_left)	or gp[1]<0)* sign(!muda_controle)
+	var direita		= global.controle ? gamepad_button_check_pressed(0,gp_padr)   : (keyboard_check_pressed(vk_right)	or gp[1]  )* sign(!muda_controle)
+	var enter		= global.controle ? gamepad_button_check_pressed(0,gp_face1)  : (keyboard_check_pressed(vk_enter)	or mouse_check_button_pressed(mb_left)) * sign(!muda_controle)
 	
 	#endregion
 	

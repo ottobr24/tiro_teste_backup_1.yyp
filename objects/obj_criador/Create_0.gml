@@ -121,7 +121,7 @@ passando_as_rodadas = function(){
 		
 		var rod_des = [-50,50]
 		
-		rod_muda_timer--
+		rod_muda_timer -= !global.pause
 		
 		if (global.rodada < array_length(objs_qtd)){
 		
@@ -158,7 +158,7 @@ passando_as_rodadas = function(){
 			
 		}
 		
-		if (rod_dir>-1) rod_y = lerp(rod_y,rod_des[rod_dir],.1) 
+		if (rod_dir>-1 and !global.pause) rod_y = lerp(rod_y,rod_des[rod_dir],.1) 
 		
 	}
 }

@@ -45,94 +45,99 @@ if (dano<=0){
 	
 }
 
-var obj = instance_place(x,y,colisao)
+var col = place_meeting(x,y,colisao)
 
-if (obj and obj != pai){
+if (col){
 	
-	var b = clamp(achando_na_array(colisao,obj.object_index),0,array_length(cores)-1)
+	var obj = instance_place(x,y,colisao)
 	
-	#region Criando particulas
+	if (obj != pai){
 	
-	var dano_max = clamp(dano*1.5,1,10)
-	var dan = dano
-	var angt = image_angle
-	var meu_i = i
+		var b = clamp(achando_na_array(colisao,obj.object_index),0,array_length(cores)-1)
 	
-	var distc = [180	,180	,180	,90		,90			,180	,90		]
-	var vels  = [vel/2	,vel/2	,vel/2	,vel	,vel		,vel/2	,vel	]
-	var velm  = [vel/4	,vel/4	,vel/4	,vel/2	,vel/2		,vel/4	,vel/2	]
+		#region Criando particulas
 	
-	seta_part("cria_parede",x-_x,y-_y,[dano/2,dano_max],spr_particula_parede,cores[b],direction,[vels[b],vels[b]],[2,2.5],[2,2.5],distc[b],[velm[b],velm[b]],0,0)
+		var dano_max = clamp(dano*1.5,1,10)
+		var dan = dano
+		var angt = image_angle
+		var meu_i = i
 	
-	#endregion
+		var distc = [180	,180	,180	,90		,90			,180	,90		]
+		var vels  = [vel/2	,vel/2	,vel/2	,vel	,vel		,vel/2	,vel	]
+		var velm  = [vel/4	,vel/4	,vel/4	,vel/2	,vel/2		,vel/4	,vel/2	]
 	
-	#region Mexendo portas e entre outros
+		seta_part("cria_parede",x-_x,y-_y,[dano/2,dano_max],spr_particula_parede,cores[b],direction,[vels[b],vels[b]],[2,2.5],[2,2.5],distc[b],[velm[b],velm[b]],0,0)
 	
-	if (variable_instance_exists(obj,"vida") and obj.vida>=0 and dan>0){
+		#endregion
 	
-		var dane = variable_instance_exists(obj,"dano")
+		#region Mexendo portas e entre outros
 	
-		dano-=obj.vida
+		if (variable_instance_exists(obj,"vida") and obj.vida>=0 and dan>0){
 	
-		if (dane = 0) obj.vida-=dan
-		if (dane = 1){ 
+			var dane = variable_instance_exists(obj,"dano")
+	
+			dano-=obj.vida
+	
+			if (dane = 0) obj.vida-=dan
+			if (dane = 1){ 
 		
-			obj.dano+=dan 
-			if (variable_instance_exists(obj,"dano_pai")) obj.dano_pai = pai
+				obj.dano+=dan 
+				if (variable_instance_exists(obj,"dano_pai")) obj.dano_pai = pai
 		
-		}
-	}
-	
-	if (obj.object_index = obj_miniporta){
-	
-		with(obj){
-		
-			with(pai){
-			
-                trancado = 0
-                
-				if (global.armas_nome_tipo[global.armas_tipo[meu_i]] = "Shotgun") trancado = 0
-			
-				var ang = 180
-				var ang_min = image_angle-ang+360
-				var ang_max = image_angle//+ang
-
-				var fo = angt = clamp(angt,min(ang_min,ang_max),max(ang_min,ang_max)) ? dan*2 : -dan*2
-			
-				if (!trancado) frc += fo
-			
 			}
 		}
-	}
 	
-	if (object_get_parent(obj.object_index) = obj_level_pai){
+		if (obj.object_index = obj_miniporta){
 	
-		with(obj){
+			with(obj){
+		
+				with(pai){
 			
-			if (!variable_instance_exists(id,"vida")) exit;
+	                trancado = 0
+                
+					if (global.armas_nome_tipo[global.armas_tipo[meu_i]] = "Shotgun") trancado = 0
 			
-			if (vida<=0){ 
-				
-				instance_destroy() 
-				obj_controlador.att = 1 
-				
-				if (object_index = obj_miniporta){
-					
-					if (instance_exists(pai)){
-                        
-                        pai.mudando = 0
-                        
-                    } 
-				
+					var ang = 180
+					var ang_min = image_angle-ang+360
+					var ang_max = image_angle//+ang
+
+					var fo = angt = clamp(angt,min(ang_min,ang_max),max(ang_min,ang_max)) ? dan*2 : -dan*2
+			
+					if (!trancado) frc += fo
+			
 				}
 			}
-			
-			image_index = abs(vida-10)/image_number
-			image_index = clamp(image_index,-0,image_number-.1)
-			
 		}
+	
+		if (object_get_parent(obj.object_index) = obj_level_pai){
+	
+			with(obj){
+			
+				if (!variable_instance_exists(id,"vida")) exit;
+			
+				if (vida<=0){ 
+				
+					instance_destroy() 
+					obj_controlador.att = 1 
+				
+					if (object_index = obj_miniporta){
+					
+						if (instance_exists(pai)){
+                        
+	                        pai.mudando = 0
+                        
+	                    } 
+				
+					}
+				}
+			
+				image_index = abs(vida-10)/image_number
+				image_index = clamp(image_index,-0,image_number-.1)
+			
+			}
+		}
+	
+		#endregion
+	
 	}
-	
-	#endregion
-	
 }

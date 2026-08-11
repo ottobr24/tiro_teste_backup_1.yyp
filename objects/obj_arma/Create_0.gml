@@ -94,6 +94,9 @@ som_recf = 0
 canox = 0
 grd = 0
 
+cano_quente = 0
+cano_quente_max = 100
+
 visao_inicio()
 
 #endregion
@@ -243,6 +246,7 @@ desenha_modificacao = function(){
 	var ct = instance_exists(pai) ? pai.controle : 0
 	var cn = ct and gamepad_is_connected(0)
 	var pente_ext = 0
+	var silenciador = 0
 	var las_tec = !cn ? keyboard_check_pressed(ord("Z")) : gamepad_button_check_pressed(0,gp_stickr)
 	var mira_co = [c_red,c_green]
 	
@@ -263,7 +267,9 @@ desenha_modificacao = function(){
 			if (array_length(global.armas_modn[i][m])>0 and is_array(global.armas_mode[i][m][mods[m]])){
 	
 				if (global.armas_mode[i][m][mods[m]][3] = 11) grd			= m+1
-				if (global.armas_mode[i][m][mods[m]][3] = 12) pente_ext	= m+1
+				if (global.armas_mode[i][m][mods[m]][3] = 12) pente_ext		= m+1
+				if (global.armas_mode[i][m][mods[m]][3] = 12) pente_ext		= m+1
+				if (global.armas_mode[i][m][mods[m]][3] = 4	) silenciador	= m+1
 	
 			}
 			
@@ -273,7 +279,7 @@ desenha_modificacao = function(){
 			
 			if (sprreal){
 			
-				var um_laser = is_array(global.armas_mode[i][m][mods[m]]) and global.armas_mode[i][m][mods[m]][3] = 9
+				var um_laser = global.armas_mode[i][m][mods[m]][3] = 9
 				
 				var mod_px = 0 
 				var mod_py = 0
@@ -292,7 +298,7 @@ desenha_modificacao = function(){
 				#region Laser
 				
 				if (laser and um_laser){
-				
+					
 					var sprh = global.armas_modx[i][m][0] * image_xscale 
 	                var margy = global.armas_modx[i][m][1]>2 ? global.armas_modx[i][m][1] * image_xscale  : -global.armas_modx[i][m][1] * image_xscale
                 
@@ -364,8 +370,12 @@ desenha_modificacao = function(){
 			
 				var mod_x = x + mod_xo + mod_mx2 
 				var mod_y = y + mod_yo + mod_my2
-		
-				draw_sprite_ext(mod_spr,mod_ii,mod_x,mod_y,image_xscale,image_yscale,image_angle,c_white,image_alpha)
+				
+				var cano_calor = 255 - 255 / cano_quente_max * cano_quente
+				
+				var mod_cor = silenciador - 1 = m ? make_colour_rgb(255,cano_calor,cano_calor) : c_white
+				
+				draw_sprite_ext(mod_spr,mod_ii,mod_x,mod_y,image_xscale,image_yscale,image_angle,mod_cor,image_alpha)
 	
 			}
 		}
@@ -379,6 +389,9 @@ desenha_fogo = function(){
 
 	if (fogo_tempo>0){
 		
+		var sil = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
+		var fogo = sil ? spr_fogo_sile : spr_fogo
+		
 		var tmdx = global.tiros_velo[i]/10
 		var tmdy = global.tiros_velo[i]/10
 	
@@ -387,10 +400,12 @@ desenha_fogo = function(){
 		
 		var marg = 2 * tmdx
 	
-		var _x = x + lengthdir_x(sprh,image_angle) + lengthdir_x(marg,dirp2)
-		var _y = y + lengthdir_y(sprh,image_angle) + lengthdir_y(marg,dirp2)
-			
-		draw_sprite_ext(spr_fogo,fogo_ii,_x,_y,fogo_ix*image_xscale,fogo_ix,image_angle,image_blend,image_alpha)
+		var x1 = x + lengthdir_x(sprh	,image_angle)	+ lengthdir_x(marg	,dirp2)
+		var y1 = y + lengthdir_y(sprh	,image_angle)	+ lengthdir_y(marg	,dirp2)
+		var x2 = lengthdir_x(fogo_x * image_xscale	,image_angle)	+ lengthdir_x(fogo_y,dirp2)
+		var y2 = lengthdir_y(fogo_x * image_xscale	,image_angle)	+ lengthdir_y(fogo_y,dirp2)
+		
+		draw_sprite_ext(fogo,fogo_ii,x1+x2,y1+y2,fogo_ix*image_xscale,fogo_ix,image_angle,image_blend,image_alpha)
 	
 	}
 }
@@ -433,10 +448,14 @@ atira = function(){
 	#region Atirando
 	
 	if (!modo){ //atira normal
-	
+		
+		#region Tiros normais
+		
 		if (atn or raj){
 		
 			if (tiro>0){
+				
+				#region Vars e rajada
 				
 				randomise()      
 				
@@ -449,6 +468,8 @@ atira = function(){
 				var sil = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
 				var fre = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=3
 				
+				var fogo = sil ? spr_fogo_sile : spr_fogo
+		
 				var dirp = image_xscale=1 ? direction+90 : direction-90
 				var dirp2 = image_xscale!=1 ? direction+90 : direction-90
 				
@@ -466,14 +487,18 @@ atira = function(){
 			
 				if (!rajadas and tec) rajadas = rajadas_total
 				
-				#region Tiro de vdd
+				#endregion
+				
+				#region Tiro de vdd, fogo e calor
+				
+				#region Tiro
 				
 				repeat(bala){
 					
 					var dir = direction - random_range(prec,-prec)
 					var dir_dif = random_range(-(coix+coiy)/1.5,(coix+coiy)/1.5) / mirc
 					
-					var t = instance_create_layer(_x,_y,"Pessoas",obj_tiro)
+					var t = instance_create_layer(_x,_y,"Particulas",obj_tiro)
 					t.i = i            
 					
 					t.direction = dir                           
@@ -497,20 +522,34 @@ atira = function(){
 					
 					obj_controlador.vib_d += shak / mirs  
 					
+					cano_quente += global.tiros_velo[i] / 1.5
+					
 				}                                            
 				
+				#endregion
+				
+				#region Fogo e calor
+				
 				var bal = bala > 1 ? bala / 1.25 : 1
+				var fog_qut_ix  = cano_quente / 250
+				var fog_qut_tem = cano_quente / 100
 				
-				global.shakex += lengthdir_x(shak,direction) * bal * global.shakes[global.configs[1][0]] / mirs  
-				global.shakey += lengthdir_y(shak,direction) * bal * global.shakes[global.configs[1][0]] / mirs  
-					
-				fogo_tempo	= random_range(6,15)
-				fogo_ii		= irandom_range(0,sprite_get_number(spr_fogo))
-				fogo_ix		= global.tiros_velo[i]/10
+				var fog_chan = fre or !sil ? 100 : random_range(cano_quente,cano_quente_max)
 				
-				if (sil) fogo_tempo = 0
+				global.shakex += lengthdir_x(coix,direction) * bal * global.shakes[global.configs[1][0]] / mirs  
+				global.shakey += lengthdir_y(coiy,direction) * bal * global.shakes[global.configs[1][0]] / mirs  
 				
-				if (fre){ 
+				if (fog_chan > 50){
+				
+					fogo_tempo	= random_range(6,15) + fog_qut_tem
+					fogo_ii		= irandom_range(0,sprite_get_number(fogo))
+					fogo_ix		= global.tiros_velo[i]/10 + fog_qut_ix
+				
+				}
+				
+				cano_quente = clamp(cano_quente,0,cano_quente_max)
+				
+				if (fre or sil){ 
 					
 					fogo_ix *= 1.25
 					fogo_tempo /=2
@@ -518,8 +557,12 @@ atira = function(){
 				}
 				
 				vol = sil ? 0.25 : 1
-					
+				
 				#endregion
+				
+				#endregion
+				
+				#region Particulas
 				
 				if (part_tiro){ 
 					
@@ -534,6 +577,10 @@ atira = function(){
 						
 					}
 				}
+				
+				#endregion
+				
+				#region Resetando vars
 				
 				prep--
 				tiro--	
@@ -550,6 +597,10 @@ atira = function(){
 				
 				}
 		
+				#endregion
+				
+				#region Sem municao e fazendo barulho
+				
 				if (!tiro){ 
 					
 					var cabe = i<array_length(global.armas_sprf)
@@ -588,8 +639,12 @@ atira = function(){
 				
 				}
 				
+				#endregion
+				
 			}else{
 			
+				#region Sem municao
+				
 				if (prs_tec){
 				
 					toca_som(snd_falha,1,25,150,,0,.1,0)
@@ -597,10 +652,17 @@ atira = function(){
 				}
 			
 				rajadas = 0
-			
+				
+				#endregion
+				
 			}
 		}
+		
+		#endregion
+		
 	}else{ //lança granadas
+		
+		#region Lança granadas
 		
 		if (prs_tec and tirg>0){
 			
@@ -621,7 +683,7 @@ atira = function(){
 			randomise()      
 			
 			var dir = direction - random_range(prec,-prec)
-			var t = instance_create_layer(_x,_y,"Pessoas",obj_granadas)           
+			var t = instance_create_layer(_x,_y,"Particulas",obj_granadas)           
 			
 			t.direction = dir                           
 			t.image_angle = dir 
@@ -635,8 +697,11 @@ atira = function(){
 			pai.cx -= coix *2          
 			pai.cy -= coiy *2          
 			
-			global.shake+=shak*1.5 * global.shakes[global.configs[1][0]]            
+			global.shake += shak *1.5 * global.shakes[global.configs[1][0]]            
             
+			global.shakex += lengthdir_x(shak,direction) * 2 * global.shakes[global.configs[1][0]] 
+			global.shakey += lengthdir_y(shak,direction) * 2 * global.shakes[global.configs[1][0]] 
+					
 			fogo_tempo = 10
 			fogo_ii = irandom_range(0,sprite_get_number(spr_fogo))
 			fogo_dir = dir
@@ -649,6 +714,9 @@ atira = function(){
 			fazendo_barulho(x,y,200,pai)
 			
 		}
+			
+		#endregion 
+			
 	}
 	
 	#endregion
@@ -1017,10 +1085,6 @@ recarrega = function(){
 				}
 			}
 			
-			//show_message(i<array_length(global.armas_sons))
-			//show_message(array_length(sons)>3)
-			//show_message(som_recf)
-			//show_message(asset_get_type(som_recf) == asset_sound)
 			if (i<array_length(global.armas_sons) and array_length(sons)>3 and asset_get_type(som_recf) == asset_sound){ 
 				
 				var mod_i = mods[4]
@@ -1057,6 +1121,7 @@ recarrega = function(){
 
 reseta_coisas = function(){
 	
+	if (!global.pause) cano_quente = lerp(cano_quente,0,.035)
 	canox = 0
 	
 	for (var p=0;p<array_length(pext);p++){
@@ -1069,7 +1134,7 @@ reseta_coisas = function(){
 	}
 		
 	if (!rajadas and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and (array_length(sons)<=1 or !audio_is_playing(sons[1]))) tiro_timer--
-	rajando_timer--
+	rajando_timer -= !global.pause
 	prec = lerp(prec,global.armas_precin[i],.1)
 	
 	municao = global.armas_munc[i]
@@ -1099,7 +1164,13 @@ reseta_coisas = function(){
 	som_cock = array_length(global.armas_sons[i])>1 ? global.armas_sons[i][1] : 0
 	som_recc = array_length(global.armas_sons[i])>2 ? global.armas_sons[i][2] : 0
 	som_recf = array_length(global.armas_sons[i])>3 ? global.armas_sons[i][3] : 0
-
+	
+	if (!global.pause){
+	
+		fogo_x = 0
+		fogo_y = 0
+	
+	}
 }
 
 colocando_os_acessorios = function(){
@@ -1127,14 +1198,19 @@ colocando_os_acessorios = function(){
 				var ptm5 = array_length(global.armas_mode[i][m][mod_i])>21 ? global.armas_mode[i][m][mod_i][21] : 0
 			
 				var sfxs = global.armas_mode[i][m][mod_i][24]
+				var fog	 = global.armas_mode[i][m][mod_i][26                                                                                                                                                                                 ]
 					
 				cliq				+=global.armas_mode[i][m][mod_i][4]
+				
+				#region Munição
 				
 				if (global.armas_mode[i][m][mod_i][3] !=26 ){
 					
 					municao			+=global.armas_mode[i][m][mod_i][5]
 				
 				}
+				
+				#endregion
 				
 				rext				+=global.armas_mode[i][m][mod_i][5]
 				dano				+=global.armas_mode[i][m][mod_i][6]
@@ -1152,6 +1228,8 @@ colocando_os_acessorios = function(){
 				baru				+=global.armas_mode[i][m][mod_i][22]
 				part_reca			+=global.armas_mode[i][m][mod_i][23]
 				
+				#region Novos sons
+				
 				if (array_length(sfxs)>0){ 
 					
 					if (array_length(sfxs)>0 and sfxs[0] != 0) som_tiro	=	global.armas_mode[i][m][mod_i][24][0]
@@ -1161,12 +1239,60 @@ colocando_os_acessorios = function(){
 				
 				}
 				
+				#endregion
+				
+				#region Fogo
+				
+				if (array_length(fog)>0){ 
+					
+					if (array_length(fog)>0 and fog[0] != 0) fogo_x		=	fog[0]
+					if (array_length(fog)>1 and fog[1] != 0) fogo_y		=	fog[1]
+					
+				}
+				
+				#endregion
+				
 				pext[m]				= [ptm1,ptm2,ptm3,ptm4,ptm5]
 				
 			}	
 		}
 	}
 	pai.vel-=peso
+}
+
+inclinando_arma = function(){
+	
+	var ct = instance_exists(pai) ? pai.controle : 0
+	var cn = ct
+	
+	var tec = cn ? gamepad_button_check(0,gp_shoulderr) - gamepad_button_check(0,gp_shoulderl) : keyboard_check(ord("E")) - keyboard_check(ord("Q"))
+	var val = 16
+	
+	if (abs(tec)){
+		
+		with(pai){
+			
+			var dir = other.direction - (tec * 90)
+			
+			var valx = lengthdir_x(val,dir)
+			var valy = lengthdir_y(val,dir)
+			
+			cx4 = lerp(cx4,valx,.1)
+			cy4 = lerp(cy4,valy,.1)
+			
+		}
+	}else{
+			
+		with(pai){
+			
+			var valx = val*0
+			var valy = val*0
+			
+			cx4 = lerp(cx4,valx,.1)
+			cy4 = lerp(cy4,valy,.1)
+			
+		}
+	}
 }
 
 #endregion
@@ -1177,6 +1303,7 @@ estado_parado = function(){
 	recarrega()
 	preparando()
 	atira()
+	inclinando_arma()
 	
 	estado = estado_parado
 	estado_txt = "estado_parado"
@@ -1192,6 +1319,7 @@ estado_atirando = function(){
 	recarrega()
 	preparando()
 	atira()
+	inclinando_arma()
 	
 	estado = estado_atirando
 	estado_txt = "estado_atirando"
@@ -1206,6 +1334,7 @@ estado_recarregando = function(){
 	mirando()
 	recarrega()
 	preparando()
+	inclinando_arma()
 	
 	estado = estado_recarregando
 	estado_txt = "estado_recarregando"
@@ -1221,6 +1350,7 @@ estado_mirando = function(){
 	recarrega()
 	preparando()
 	atira()
+	inclinando_arma()
 	
 	estado = estado_mirando
 	estado_txt = "estado_mirando"

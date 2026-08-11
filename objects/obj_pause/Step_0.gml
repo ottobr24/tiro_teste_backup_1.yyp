@@ -1,5 +1,7 @@
 if (!global.pause or global.pause>1) exit;
 
+mudando_controle()
+
 colocando_o_controle()
 usando_o_menu()
 trocando_cores()

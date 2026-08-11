@@ -312,7 +312,7 @@ atira = function(){
 					var dir = direction - random_range(prec,-prec)
 					var dir_dif = random_range(-(coix+coiy),(coix+coiy))
 					
-					var t = instance_create_layer(_x,_y,"Pessoas",obj_tiro)
+					var t = instance_create_layer(_x,_y,"Particulas",obj_tiro)
 					
 					t.i = i                                     
 					t.direction = dir                           
@@ -439,7 +439,7 @@ atira = function(){
 			randomise()      
 			
 			var dir = direction - random_range(prec,-prec)
-			var t = instance_create_layer(_x,_y,"Pessoas",obj_granadas)             
+			var t = instance_create_layer(_x,_y,"Particulas",obj_granadas)             
 			t.direction = dir                           
 			t.image_angle = dir  
 			

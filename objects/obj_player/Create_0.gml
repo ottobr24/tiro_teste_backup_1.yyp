@@ -23,6 +23,9 @@ cy			=	0
 cx3			=	x
 cy3			=	y
 				
+cx4			=	0
+cy4			=	0
+				
 cd			=	0
 cdm			=	0
 
@@ -150,7 +153,7 @@ movendo = function(andar=1,equip=1){
 	
     if (!controle) direction = point_direction(0,0,(d-a)*vel,(s-w)*vel	)
     
-	if ( controle and (rh!=clamp(rh,-.1,.1) or rv!=clamp(rv,-.1,.1)) and !gamepad_button_check(0,gp_shoulderlb)){ 
+	if ( controle and (rh!=clamp(rh,-.6,.6) or rv!=clamp(rv,-.6,.6)) and !gamepad_button_check(0,gp_shoulderlb)){ 
 		
 		direction = point_direction(0,0,rh		,rv			)
 		
@@ -311,13 +314,25 @@ controla_arma = function(){
 	        var ix = !adi ? -1 : 1
 			var ang = ix > 0 ? dir : dir+180
 			
-			if (ang-cdm >  140){ cd = ang-5 if (ang-cdm >  260) cd = ang }
-			if (ang-cdm < -140){ cd = ang+5 if (ang-cdm < -260) cd = ang }
+			if (arma.image_xscale != ix){ 
+				
+				cd = ang - 3 * ix
+			
+			}
+			
+			if (abs(ang-cdm) >  270){
+				
+				var cd2 = sign(ang-cdm)
+				
+				cd = ang - 3 * cd2 
+				
+			}
 			
 			cd = lerp(cd,ang,0.15)
 			
-			arma.x = cx3
-			arma.y = cy3
+			arma.x = cx3 + cx4
+			arma.y = cy3 + cy4
+			
 			arma.direction = direction + coid
 			arma.image_angle = cd
 			arma.image_xscale = ix

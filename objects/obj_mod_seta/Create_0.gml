@@ -2,8 +2,8 @@ prox = 1
 
 muda_arma = function(){
 	
-	var e = keyboard_check_pressed(ord("Q")) or gamepad_button_check_pressed(0,gp_shoulderl)
-	var d = keyboard_check_pressed(ord("E")) or gamepad_button_check_pressed(0,gp_shoulderr)
+	var e = keyboard_check_pressed(ord("Q")	) or gamepad_button_check_pressed(0,gp_shoulderl)
+	var d = keyboard_check_pressed(ord("E")	) or gamepad_button_check_pressed(0,gp_shoulderr)
 	var mouse = mouse_check_button_pressed(mb_left)
 	var setas = e or d
 	

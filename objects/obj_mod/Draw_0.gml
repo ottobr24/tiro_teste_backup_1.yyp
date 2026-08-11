@@ -62,7 +62,7 @@ if (i<array_length(global.armas_mods[0]) and alp){
 		
 	for (var m=array_length(mods_atual)-1;m>=0;m--){
 		
-		if (array_length(global.armas_modp[i][m])>0) show_debug_message(mods_atual[m])
+		//if (array_length(global.armas_modp[i][m])>0) show_debug_message(mods_atual[m])
 		
 		if (array_length(global.armas_modp[i][m])>0 and global.armas_modp[i][m][mods_atual[m]]!=0){ //vendo se tem alguma sprite pra desenhar
 
@@ -506,8 +506,6 @@ if (lista){
 }
 
 if ( alp and !colidindo and !enter) window_set_cursor(cr_arrow)
-
-colidindo = 0
 
 draw_set_alpha(1)
 draw_set_font(-1)

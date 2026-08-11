@@ -412,6 +412,7 @@
     {"name":"spr_fnx_pica","order":2,"path":"sprites/spr_fnx_pica/spr_fnx_pica.yy",},
     {"name":"spr_fnx","order":5,"path":"sprites/spr_fnx/spr_fnx.yy",},
     {"name":"spr_foco","order":2,"path":"sprites/spr_foco/spr_foco.yy",},
+    {"name":"spr_fogo_sile","order":9,"path":"sprites/spr_fogo_sile/spr_fogo_sile.yy",},
     {"name":"spr_fogo","order":6,"path":"sprites/spr_fogo/spr_fogo.yy",},
     {"name":"spr_fundo","order":3,"path":"sprites/spr_fundo/spr_fundo.yy",},
     {"name":"spr_gauge","order":1,"path":"sprites/spr_gauge/spr_gauge.yy",},

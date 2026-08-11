@@ -529,6 +529,7 @@
     {"id":{"name":"spr_fnx_pica","path":"sprites/spr_fnx_pica/spr_fnx_pica.yy",},},
     {"id":{"name":"spr_fnx","path":"sprites/spr_fnx/spr_fnx.yy",},},
     {"id":{"name":"spr_foco","path":"sprites/spr_foco/spr_foco.yy",},},
+    {"id":{"name":"spr_fogo_sile","path":"sprites/spr_fogo_sile/spr_fogo_sile.yy",},},
     {"id":{"name":"spr_fogo","path":"sprites/spr_fogo/spr_fogo.yy",},},
     {"id":{"name":"spr_fundo","path":"sprites/spr_fundo/spr_fundo.yy",},},
     {"id":{"name":"spr_gauge","path":"sprites/spr_gauge/spr_gauge.yy",},},

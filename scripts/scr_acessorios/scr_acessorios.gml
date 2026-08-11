@@ -7,7 +7,7 @@ global.acessorios = {
 	nada_bloqx : function(pos,idbloq,idr = 300,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [idr,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,idbloq,1,0,-91,[],10]
+		var variaveis = [idr,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,idbloq,1,0,-91*0,[],10,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -15,9 +15,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -26,7 +26,7 @@ global.acessorios = {
 	geral_pente : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0,-91,[],10]
+		var variaveis = [6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0,-91*0,[],10,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -34,9 +34,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -45,7 +45,7 @@ global.acessorios = {
 	geral_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0,-91,[],10]
+		var variaveis = [5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0,-91*0,[],10,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -53,9 +53,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -78,9 +78,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -89,7 +89,7 @@ global.acessorios = {
 	rt_grip : function(pos,val2 = []){
 		
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [1]
+		var variaveis = [1/**/]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -97,9 +97,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("x deu erro") array_insert(variaveis,0,0) }
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("y deu erro") array_insert(variaveis,1,0) }
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("x deu erro") array_insert(variaveis,0,0) }
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("y deu erro") array_insert(variaveis,1,0) }
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -108,7 +108,7 @@ global.acessorios = {
 	rt_pente : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [26,0,4,0,0.25,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0,4,[],100]
+		var variaveis = [26,0,4,0,0.25,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0,4,[],100,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -116,9 +116,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -131,7 +131,7 @@ global.acessorios = {
 	colt_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [2,0,0,.75,0,0,0,-.25,0,0,0,0,0.01,.05,-.1,5,0,-1,0,-35,-91,[],250]
+		var variaveis = [2,0,0,.75,0,0,0,-.25,0,0,0,0,0.01,.05,-.1,5,0,-1,0,-35,-91*0,[],250,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -139,9 +139,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -154,7 +154,7 @@ global.acessorios = {
 	rhino_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [2,0,0,.75,0,0,0,-.25,0,0,0,0,0.01,.05,-.1,5,0,-1,0,-35,-91,[],250]
+		var variaveis = [2,0,0,.75,0,0,0,-.25,0,0,0,0,0.01,.05,-.1,5,0,-1,0,-35,-91*0,[],250,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -162,9 +162,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -173,7 +173,7 @@ global.acessorios = {
 	rhino_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.05,0,0,0,0,-1,0,0,-91,[],250]
+		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.05,0,0,0,0,-1,0,0,-91*0,[],250,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -181,9 +181,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -200,7 +200,7 @@ global.acessorios = {
 	pistola_laser : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,-1,0,0,-91,[],200]
+		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,-1,0,0,-91*0,[],200,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -208,9 +208,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -219,7 +219,7 @@ global.acessorios = {
 	pistola_grip : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [1]
+		var variaveis = [1/**/]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -227,9 +227,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -238,7 +238,7 @@ global.acessorios = {
 	pistola_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,0,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,-1,0,-100,-91,[],600]
+		var variaveis = [4,0,0,0,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,-1,0,-100,-91*0,[],600,[9,0]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -246,9 +246,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -257,7 +257,7 @@ global.acessorios = {
 	pistola_lanterna : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,-1,0,0,-91,[],150]
+		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,-1,0,0,-91*0,[],150,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -265,9 +265,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -276,7 +276,7 @@ global.acessorios = {
 	pistola_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.04,0.03,0,0,0,-1,0,0,-91,[],350]
+		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.04,0.03,0,0,0,-1,0,0,-91*0,[],350,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -284,9 +284,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -303,9 +303,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -318,7 +318,7 @@ global.acessorios = {
 	m1911_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,0,-.5,0,-.5,-.5,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-150,-91,[snd_m1911_tirs],550]
+		var variaveis = [4,0,0,0,-.5,0,-.5,-.5,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-150,-91*0,[snd_m1911_tirs],550,[12,-1]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -326,9 +326,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -337,7 +337,7 @@ global.acessorios = {
 	m1911_pente : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [6,0,8,0,2,30,3,3,3,0,0,0,.04,0.15,0,0,0,-1,0,0,-91,[0,0,snd_m1911_recc2,snd_m1911_recf2],500]
+		var variaveis = [6,0,8,0,2,30,3,3,3,0,0,0,.04,0.15,0,0,0,-1,0,0,-91*0,[0,0,snd_m1911_recc2,snd_m1911_recf2],500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -345,9 +345,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -360,7 +360,7 @@ global.acessorios = {
 	glock_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,0,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,-1,0,-100,-91,[snd_glock_tirs],550]
+		var variaveis = [4,0,0,0,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,-1,0,-100,-91*0,[snd_glock_tirs],550,[9,0]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -368,9 +368,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -379,7 +379,7 @@ global.acessorios = {
 	glock_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,-1.5,0,-1,-1,-1,0,0,0,0,0.05,0,0,0,-1,0,0,-91,[],550]
+		var variaveis = [13,0,0,0,-1.5,0,-1,-1,-1,0,0,0,0,0.05,0,0,0,-1,0,0,-91*0,[],550,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -387,9 +387,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -398,7 +398,7 @@ global.acessorios = {
 	glock_pente_extra : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [12,0,0,0,.3,-15,.3,.3,.3,0,0,0,0.03,0.1,0,0,0,-1,0,0,-91,[],400]
+		var variaveis = [12,0,0,0,.3,-15,.3,.3,.3,0,0,0,0.03,0.1,0,0,0,-1,0,0,-91*0,[],400,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -406,9 +406,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -417,7 +417,7 @@ global.acessorios = {
 	glock_pente : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [6,0,5,0,.5,10,0,0,.5,0,0,0,0.01,0.05,0,0,0,-1,0,0,-91,[],350]
+		var variaveis = [6,0,5,0,.5,10,0,0,.5,0,0,0,0.01,0.05,0,0,0,-1,0,0,-91*0,[],350,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -425,9 +425,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -436,7 +436,7 @@ global.acessorios = {
 	glock_fore : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-.5,5,-.5,-.5,-.75,0,0,0,0.00,0.03,0,0,0,-1,0,0,-91,[],900]
+		var variaveis = [5,0,0,0,-.5,5,-.5,-.5,-.75,0,0,0,0.00,0.03,0,0,0,-1,0,0,-91*0,[],900,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -444,9 +444,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -459,7 +459,7 @@ global.acessorios = {
 	berreta_freio : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [3,0,0,0,-.75,0,0,0,-.75,0,0,0,0,0.01,0.2,0,0,-1,0,20,-91,[],300]
+		var variaveis = [3,0,0,0,-.75,0,0,0,-.75,0,0,0,0,0.01,0.2,0,0,-1,0,20,-91*0,[],300,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -467,9 +467,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -478,7 +478,7 @@ global.acessorios = {
 	berreta_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,0,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,-1,0,-100,-91,[snd_m9_tirs],550]
+		var variaveis = [4,0,0,0,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,-1,0,-100,-91*0,[snd_m9_tirs],550,[9,0]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -486,9 +486,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -501,7 +501,7 @@ global.acessorios = {
 	usp_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,0,-.35,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,0,-100,-91,[snd_usp_tirs],550]
+		var variaveis = [4,0,0,0,-.35,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,0,-100,-91*0,[snd_usp_tirs],550,[9,0]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -509,9 +509,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -520,7 +520,7 @@ global.acessorios = {
 	usp_pente : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [6,0,7,0,1.5,25,1,1,2,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91,[],450]
+		var variaveis = [6,0,7,0,1.5,25,1,1,2,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91*0,[],450,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -528,9 +528,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -543,7 +543,7 @@ global.acessorios = {
 	fnx_freio : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [3,0,0,0,-.75,0,0,0,-.75,0,0,0,0,0.01,0.2,0,0,25,0,20,-91,[],300]
+		var variaveis = [3,0,0,0,-.75,0,0,0,-.75,0,0,0,0,0.01,0.2,0,0,25,0,20,-91*0,[],300,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -551,9 +551,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -562,7 +562,7 @@ global.acessorios = {
 	fnx_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,0,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,25,0,-100,-91,[snd_fnx_tirs],350]
+		var variaveis = [4,0,0,0,-.5,0,-.35,-.35,-.35,0,0,0,0,0.03,0,0,0,25,0,-100,-91*0,[snd_fnx_tirs],350,[9,0]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -570,9 +570,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -581,7 +581,7 @@ global.acessorios = {
 	fnx_pica : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [26,0,0,0,0,0,0,0,0,0,0,0,0.01,0.02,0,0,0,-1,0,0,-91,[],150]
+		var variaveis = [26,0,0,0,0,0,0,0,0,0,0,0,0.01,0.02,0,0,0,-1,0,0,-91*0,[],150,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -589,9 +589,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -600,7 +600,7 @@ global.acessorios = {
 	fnx_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,-1,0,-35,-91,[],250]
+		var variaveis = [2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,-1,0,-35,-91*0,[],250,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -608,9 +608,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -623,7 +623,7 @@ global.acessorios = {
 	desert_auto : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [0,-1,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,-1,0,0,-91,[],150]
+		var variaveis = [0,-1,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,-1,0,0,-91*0,[],150,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -631,9 +631,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -642,7 +642,7 @@ global.acessorios = {
 	desert_pente : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [6,0,4,0,2,30,1,1,1.5,0,0,0,0.02,0.15,0,0,0,-1,0,0,-91,[],600]
+		var variaveis = [6,0,4,0,2,30,1,1,1.5,0,0,0,0.02,0.15,0,0,0,-1,0,0,-91*0,[],600,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -650,9 +650,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -669,7 +669,7 @@ global.acessorios = {
 	sub_laser : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.00,0.02,0,0,0,-1,0,0,-91,[],300]
+		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.00,0.02,0,0,0,-1,0,0,-91*0,[],300,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -677,9 +677,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -688,7 +688,7 @@ global.acessorios = {
 	sub_grip : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [1]
+		var variaveis = [1/**/]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -696,9 +696,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -707,7 +707,7 @@ global.acessorios = {
 	sub_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,0,-.35,0,0,0,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-125,-91,[],650]
+		var variaveis = [4,0,0,0,-.35,0,0,0,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-125,-91*0,[],650,[9,0]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -715,9 +715,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -726,7 +726,7 @@ global.acessorios = {
 	sub_lanterna : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,-1,0,0,-91,[],200]
+		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,-1,0,0,-91*0,[],200,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -734,9 +734,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -745,7 +745,7 @@ global.acessorios = {
 	sub_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-.75,0,0,0,0,0,0,0,0.04,0.01,0,0,0,-1,0,0,-91,[],500]
+		var variaveis = [5,0,0,0,-.75,0,0,0,0,0,0,0,0.04,0.01,0,0,0,-1,0,0,-91*0,[],500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -753,9 +753,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -772,9 +772,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -783,7 +783,7 @@ global.acessorios = {
 	sub_fore : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.75,15,-.5,-.5,-1,0,0,0,0.00,0.03,0,0,0,-1,0,0,-91,[],650]
+		var variaveis = [10,0,0,0,-.75,15,-.5,-.5,-1,0,0,0,0.00,0.03,0,0,0,-1,0,0,-91*0,[],650,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -791,9 +791,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -806,7 +806,7 @@ global.acessorios = {
 	mp9_gati : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [0,0,0,-.2,0,0,0,0,0,0,0,0,0,0.015,0,0,0,-1,0,0,-91,[],500]
+		var variaveis = [0,0,0,-.2,0,0,0,0,0,0,0,0,0,0.015,0,0,0,-1,0,0,-91*0,[],500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -814,9 +814,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -825,7 +825,7 @@ global.acessorios = {
 	mp9_fore : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-1,5,-1,-1,-1.5,0,0,0,0.00,0.03,0,0,0,-1,0,0,-91,[],650]
+		var variaveis = [5,0,0,0,-1,5,-1,-1,-1.5,0,0,0,0.00,0.03,0,0,0,-1,0,0,-91*0,[],650,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -833,9 +833,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -844,7 +844,7 @@ global.acessorios = {
 	mp9_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,-1.25,0,-.75,-.75,-.75,0,0,0,.01,.05,0,0,0,-1,0,0,-91,[],700]
+		var variaveis = [13,0,0,0,-1.25,0,-.75,-.75,-.75,0,0,0,.01,.05,0,0,0,-1,0,0,-91*0,[],700,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -852,9 +852,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -863,7 +863,7 @@ global.acessorios = {
 	mp9_bala : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [16,0,-6,2,3.5,30,2.5,2.5,3,0,0,0,0.00,0.04,0.4,0,0,-1,0,125,-91,[],850]
+		var variaveis = [16,0,-6,2,3.5,30,2.5,2.5,3,0,0,0,0.00,0.04,0.4,0,0,-1,0,125,-91*0,[],850,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -871,9 +871,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -886,7 +886,7 @@ global.acessorios = {
 	uzi_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,-1.25,0,-1,-1,-1.25,0,0,0,0.01,0.04,0,0,0,-1,0,0,-91,[],700]
+		var variaveis = [13,0,0,0,-1.25,0,-1,-1,-1.25,0,0,0,0.01,0.04,0,0,0,-1,0,0,-91*0,[],700,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -894,9 +894,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -905,7 +905,7 @@ global.acessorios = {
 	uzi_coronha1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,-1.25,0,-.8,-.8,-1.25,0,0,0,0.02,0.07,0,0,0,-1,0,0,-91,[],600]
+		var variaveis = [13,0,0,0,-1.25,0,-.8,-.8,-1.25,0,0,0,0.02,0.07,0,0,0,-1,0,0,-91*0,[],600,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -913,9 +913,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -928,7 +928,7 @@ global.acessorios = {
 	mac_pente : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [6,0,8,0,.25,10,.15,.15,.25,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91,[],350]
+		var variaveis = [6,0,8,0,.25,10,.15,.15,.25,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91*0,[],350,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -936,9 +936,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -947,7 +947,7 @@ global.acessorios = {
 	mac_bala : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [16,0,-3,1.5,3,30,2,2,3,0,0,0,0.00,0.05,0.3,0,0,-1,0,75,-91,[],900]
+		var variaveis = [16,0,-3,1.5,3,30,2,2,3,0,0,0,0.00,0.05,0.3,0,0,-1,0,75,-91*0,[],900,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -955,9 +955,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -966,7 +966,7 @@ global.acessorios = {
 	mac_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,0,0,0,0,0,0,0,0,0.00,0.0,0,0,0,-1,0,0,-91,[],100]
+		var variaveis = [13,0,0,0,0,0,0,0,0,0,0,0,0.00,0.0,0,0,0,-1,0,0,-91*0,[],100,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -974,9 +974,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -985,7 +985,7 @@ global.acessorios = {
 	mac_coronha1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,-1.5,0,-1.25,-1.25,-1.5,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91,[],900]
+		var variaveis = [13,0,0,0,-1.5,0,-1.25,-1.25,-1.5,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91*0,[],900,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -993,9 +993,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1004,7 +1004,7 @@ global.acessorios = {
 	mac_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,0,-.35,0,0,0,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-125,-91,[snd_mac_tirs],650]
+		var variaveis = [4,0,0,0,-.35,0,0,0,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-125,-91*0,[snd_mac_tirs],650,[9,0]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1012,9 +1012,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1027,7 +1027,7 @@ global.acessorios = {
 	vector_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,-.15,0,0,0,0,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-125,-91,[snd_vector_tirs],650]
+		var variaveis = [4,0,0,-.15,0,0,0,0,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-125,-91*0,[snd_vector_tirs],650,[9,0]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1035,9 +1035,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1046,7 +1046,7 @@ global.acessorios = {
 	vector_fore : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.5,15,-.5,-.5,-.75,0,0,0,0.00,0.04,0,0,0,-1,0,0,-91,[],900]
+		var variaveis = [10,0,0,0,-.5,15,-.5,-.5,-.75,0,0,0,0.00,0.04,0,0,0,-1,0,0,-91*0,[],900,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1054,9 +1054,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1069,7 +1069,7 @@ global.acessorios = {
 	pp_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [2,0,0,.25,-.5,0,-.5,-.5,-.75,0,0,0,0.03,0.075,0,6,0,-1,0,-50,-91,[],750]
+		var variaveis = [2,0,0,.25,-.5,0,-.5,-.5,-.75,0,0,0,0.03,0.075,0,6,0,-1,0,-50,-91*0,[],750,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1077,9 +1077,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1088,7 +1088,7 @@ global.acessorios = {
 	pp_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91,[],10]
+		var variaveis = [13,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91*0,[],10,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1096,9 +1096,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1107,7 +1107,7 @@ global.acessorios = {
 	pp_coronha1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,1,0,1,1,1.5,0,0,0,-0.01,-0.1,0,0,0,-1,0,0,-91,[],100]
+		var variaveis = [13,0,0,0,1,0,1,1,1.5,0,0,0,-0.01,-0.1,0,0,0,-1,0,0,-91*0,[],100,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1115,9 +1115,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1126,7 +1126,7 @@ global.acessorios = {
 	pp_coronha2 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,-.5,0,-.5,-.5,-.75,0,0,0,0.01,0.06,0,0,0,-1,0,-1,0,0,-91,[],900]
+		var variaveis = [13,0,0,0,-.5,0,-.5,-.5,-.75,0,0,0,0.01,0.06,0,0,0,-1,0,-1,0,0,-91*0,[],900,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1134,9 +1134,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1145,7 +1145,7 @@ global.acessorios = {
 	pp_silenciador : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,0,-.35,0,0,0,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-125,-91,[snd_pp_tirs],650]
+		var variaveis = [4,0,0,0,-.35,0,0,0,-.5,0,0,0,0.01,0.03,0,0,0,-1,0,-125,-91*0,[snd_pp_tirs],650,[9,0]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1153,9 +1153,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1172,7 +1172,7 @@ global.acessorios = {
 	sho_sile : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,0,-.5,0,0,0,-.25,0,0,0,0.02,0.04,0,0,0,-1,0,-100,-91,[],1000]
+		var variaveis = [4,0,0,0,-.5,0,0,0,-.25,0,0,0,0.02,0.04,0,0,0,-1,0,-100,-91*0,[],1000,[9,0]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1180,9 +1180,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1191,7 +1191,7 @@ global.acessorios = {
 	sho_auto : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [0,-1,0,0,0,0,0,0,0,0,0,7,0.00,0.0,0,0,0,-1,0,0,-91,[],500]
+		var variaveis = [0,-1,0,0,0,0,0,0,0,0,0,7,0.00,0.0,0,0,0,-1,0,0,-91*0,[],500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1199,9 +1199,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1210,7 +1210,7 @@ global.acessorios = {
 	sho_grip : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [1]
+		var variaveis = [1/**/]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1218,9 +1218,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1229,7 +1229,7 @@ global.acessorios = {
 	sho_laser : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91,[],450]
+		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91*0,[],450,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1237,9 +1237,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1248,7 +1248,7 @@ global.acessorios = {
 	sho_lanterna : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0.00,0.02,0,0,0,-1,0,0,-91,[],250]
+		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0.00,0.02,0,0,0,-1,0,0,-91*0,[],250,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1256,9 +1256,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1275,9 +1275,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1286,7 +1286,7 @@ global.acessorios = {
 	sho_fore : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.75,15,-.5,-.5,-1,0,0,0,0.00,0.03,0,0,0,-1,0,0,-91,[],1000]
+		var variaveis = [10,0,0,0,-.75,15,-.5,-.5,-1,0,0,0,0.00,0.03,0,0,0,-1,0,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1294,9 +1294,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1305,7 +1305,7 @@ global.acessorios = {
 	sho_fore1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.75,15,-.5,-.5,-1,0,0,0,0.00,0.04,0,0,0,-1,0,0,-91,[],1100]
+		var variaveis = [10,0,0,0,-.75,15,-.5,-.5,-1,0,0,0,0.00,0.04,0,0,0,-1,0,0,-91*0,[],1100,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1313,9 +1313,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1324,7 +1324,7 @@ global.acessorios = {
 	sho_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.04,0.01,0,0,0,-1,0,0,-91,[],750]
+		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.04,0.01,0,0,0,-1,0,0,-91*0,[],750,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1332,9 +1332,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1347,7 +1347,7 @@ global.acessorios = {
 	m1897_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [2,0,0,.5,-.5,0,-.5,-.5,-.5,0,0,0,0.02,0.15,0.1,6,0,-1,0,-50,-91,[],850]
+		var variaveis = [2,0,0,.5,-.5,0,-.5,-.5,-.5,0,0,0,0.02,0.15,0.1,6,0,-1,0,-50,-91*0,[],850,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1355,9 +1355,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1370,7 +1370,7 @@ global.acessorios = {
 	m1014_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,0,-15,0,0,0,0,0,0,0.02,0.15,0,0,0,-1,0,0,-91,[],1250]
+		var variaveis = [13,0,0,0,0,-15,0,0,0,0,0,0,0.02,0.15,0,0,0,-1,0,0,-91*0,[],1250,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1378,9 +1378,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1393,7 +1393,7 @@ global.acessorios = {
 	dp_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [3,0,0,0,-1.5,0,0,0,0,0,0,0,0.0,0.0,0,0,0,-1,0,0,-91,[],500]
+		var variaveis = [3,0,0,0,-1.5,0,0,0,0,0,0,0,0.0,0.0,0,0,0,-1,0,0,-91*0,[],500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1401,9 +1401,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1412,7 +1412,7 @@ global.acessorios = {
 	dp_cano1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [3,0,0,0,1.5,0,0,0,0,0,0,0,0.0,0.0,0,0,0,-1,0,0,-91,[],500]
+		var variaveis = [3,0,0,0,1.5,0,0,0,0,0,0,0,0.0,0.0,0,0,0,-1,0,0,-91*0,[],500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1420,9 +1420,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1435,7 +1435,7 @@ global.acessorios = {
 	saiga_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,2,0,1.5,1.5,2,0,0,0,-0.02,-0.06,0,0,0,-1,0,0,-91,[],350]
+		var variaveis = [13,0,0,0,5,0,2.5,2.5,3.5,0,0,0,-0.035,-0.1,0,0,0,-1,0,0,-91*0,[],350,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1443,9 +1443,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1462,9 +1462,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1473,7 +1473,7 @@ global.acessorios = {
 	saiga_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-1.25,0,0,0,0,0,0,0,0.06,0.03,0,0,0,-1,0,0,-91,[],1350]
+		var variaveis = [5,0,0,0,-1.25,0,0,0,0,0,0,0,0.06,0.03,0,0,0,-1,0,0,-91*0,[],1350,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1481,9 +1481,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1500,7 +1500,7 @@ global.acessorios = {
 	cab_pica : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [24,0,0,0,0,0,0,0,0,0,0,0,0.02,0.03,0,0,0,-1,0,0,-91,[],1000]
+		var variaveis = [24,0,0,0,0,0,0,0,0,0,0,0,0.02,0.03,0,0,0,-1,0,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1508,9 +1508,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1519,7 +1519,7 @@ global.acessorios = {
 	cab_pica1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [26,0,0,0,0,0,0,0,0,0,0,0,0.02,0.03,0,0,0,-1,0,0,-91,[],1000]
+		var variaveis = [26,0,0,0,0,0,0,0,0,0,0,0,0.02,0.03,0,0,0,-1,0,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1527,9 +1527,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1538,7 +1538,7 @@ global.acessorios = {
 	cab_gran : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [11,0,0,0,0,0,0,0,0,0,0,0,0.02,0.1,0,0,0,-1,0,0,-91,[],1500]
+		var variaveis = [11,0,0,0,0,0,0,0,0,0,0,0,0.02,0.1,0,0,0,-1,0,0,-91*0,[],1500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1546,9 +1546,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1565,9 +1565,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1584,9 +1584,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1595,7 +1595,7 @@ global.acessorios = {
 	cab_laser : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91,[],650]
+		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,0,0,-91*0,[],650,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1603,9 +1603,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1614,7 +1614,7 @@ global.acessorios = {
 	cab_lanterna : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,-1,0,0,-91,[],350]
+		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,-1,0,0,-91*0,[],350,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1622,9 +1622,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1633,7 +1633,7 @@ global.acessorios = {
 	cab_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [2]
+		var variaveis = [2/**/]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1641,9 +1641,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1652,7 +1652,7 @@ global.acessorios = {
 	cab_fore : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.5,0,-.4,-.4,-.5,0,0,0,0.01,0.04,0,0,0,-1,0,0,-91,[],1250]
+		var variaveis = [10,0,0,0,-.5,0,-.4,-.4,-.5,0,0,0,0.01,0.04,0,0,0,-1,0,0,-91*0,[],1250,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1660,9 +1660,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1671,7 +1671,7 @@ global.acessorios = {
 	cab_fore1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.5,0,-.3,-.3,-.4,0,0,0,0.01,0.05,0,0,0,-1,0,0,-91,[],1400]
+		var variaveis = [10,0,0,0,-.5,0,-.3,-.3,-.4,0,0,0,0.01,0.05,0,0,0,-1,0,0,-91*0,[],1400,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1679,9 +1679,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1698,9 +1698,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1717,9 +1717,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1728,7 +1728,7 @@ global.acessorios = {
 	cab_frei : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [3,0,0,0,-.15,0,-.25,-.25,-.25,0,0,0,0.00,0.02,0,0,0,-1,0,25,-91,[],650]
+		var variaveis = [3,0,0,0,-.15,0,-.25,-.25,-.25,0,0,0,0.00,0.02,0,0,0,-1,0,25,-91*0,[],650,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1736,9 +1736,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1747,7 +1747,7 @@ global.acessorios = {
 	cab_sile : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,0,-.35,0,-.55,-.55,-.55,0,0,0,0.03,0.06,0,0,0,-1,0,-125,-91,[],1000]
+		var variaveis = [4,0,0,0,-.35,0,-.55,-.55,-.55,0,0,0,0.03,0.06,0,0,0,-1,0,-125,-91*0,[],1000,[9,0]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1755,9 +1755,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1766,7 +1766,7 @@ global.acessorios = {
 	cab_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-.35,0,0,0,0,0,0,0,0.05,0.02,0,0,0,-1,0,0,-91,[],1000]
+		var variaveis = [5,0,0,0,-.35,0,0,0,0,0,0,0,0.05,0.02,0,0,0,-1,0,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1774,9 +1774,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1785,7 +1785,7 @@ global.acessorios = {
 	cab_mira1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-.5,0,0,0,0,0,0,0,0.1,0.05,0,0,0,-1,0,0,-91,[],1500]
+		var variaveis = [5,0,0,0,-.5,0,0,0,0,0,0,0,0.1,0.05,0,0,0,-1,0,0,-91*0,[],1500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1793,9 +1793,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1804,7 +1804,7 @@ global.acessorios = {
 	cab_mira2 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.1,0.07,0,0,0,-1,0,0,-91,[],2250]
+		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.1,0.07,0,0,0,-1,0,0,-91*0,[],2250,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1812,9 +1812,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1823,7 +1823,7 @@ global.acessorios = {
 	cab_mirf : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,0,0,0,0,0,0,0,0,0.0,0.00,0,0,0,-200,0,0,-91,[],10]
+		var variaveis = [5,0,0,0,0,0,0,0,0,0,0,0,0.0,0.00,0,0,0,-200,0,0,-91*0,[],10,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1831,9 +1831,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1842,7 +1842,7 @@ global.acessorios = {
 	cab_magf : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [17,0,0,0,-.25,0,0,0,0,0,0,0,0.04,0.05,0,0,0,20,1,0,-91,[],1000]
+		var variaveis = [17,0,0,0,-.25,0,0,0,0,0,0,0,0.04,0.05,0,0,0,20,1,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1850,9 +1850,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1865,7 +1865,7 @@ global.acessorios = {
 	ak_gran : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [11,0,0,0,0,0,0,0,0,0,0,0,0.02,0.1,0,0,0,26,0,200,-91,[],1500]
+		var variaveis = [11,0,0,0,0,0,0,0,0,0,0,0,0.02,0.1,0,0,0,26,0,200,-91*0,[],1500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1873,9 +1873,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1884,7 +1884,7 @@ global.acessorios = {
 	ak_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-.35,0,0,0,0,0,0,0,0.05,0.02,0,0,0,23,0,0,-91,[],1150]
+		var variaveis = [5,0,0,0,-.35,0,0,0,0,0,0,0,0.05,0.02,0,0,0,23,0,0,-91*0,[],1150,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1892,9 +1892,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1903,7 +1903,7 @@ global.acessorios = {
 	ak_mira1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-.5,0,0,0,0,0,0,0,0.1,0.05,0,0,0,23,0,0,-91,[],1750]
+		var variaveis = [5,0,0,0,-.5,0,0,0,0,0,0,0,0.1,0.05,0,0,0,23,0,0,-91*0,[],1750,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1911,9 +1911,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1922,7 +1922,7 @@ global.acessorios = {
 	ak_mira2 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.1,0.07,0,0,0,23,0,0,-91,[],3000]
+		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.1,0.07,0,0,0,23,0,0,-91*0,[],3000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1930,9 +1930,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1941,7 +1941,7 @@ global.acessorios = {
 	ak_laser : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,25,0,0,-91,[],650]
+		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,25,0,0,-91*0,[],650,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1949,9 +1949,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1960,7 +1960,7 @@ global.acessorios = {
 	ak_fore : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.5,0,-.4,-.4,-.5,0,0,0,0.01,0.04,0,0,0,25,0,0,-91,[],1550]
+		var variaveis = [10,0,0,0,-.5,0,-.4,-.4,-.5,0,0,0,0.01,0.04,0,0,0,25,0,0,-91*0,[],1550,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1968,9 +1968,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -1979,7 +1979,7 @@ global.acessorios = {
 	ak_fore1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.5,0,-.3,-.3,-.4,0,0,0,0.01,0.05,0,0,0,25,0,0,-91,[],1900]
+		var variaveis = [10,0,0,0,-.5,0,-.3,-.3,-.4,0,0,0,0.01,0.05,0,0,0,25,0,0,-91*0,[],1900,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -1987,9 +1987,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2002,7 +2002,7 @@ global.acessorios = {
 	ar_magf : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [17,0,0,0,-.25,0,0,0,0,0,0,0,0.04,0.05,0,0,0,-1,1,0,-91,[],1000]
+		var variaveis = [17,0,0,0,-.25,0,0,0,0,0,0,0,0.04,0.05,0,0,0,-1,1,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2010,9 +2010,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2021,7 +2021,7 @@ global.acessorios = {
 	ar_laser : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,1,0,-91,[],500]
+		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,-1,1,0,-91*0,[],500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2029,9 +2029,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2040,7 +2040,7 @@ global.acessorios = {
 	ar_laser1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,2,1,0,-91,[],500]
+		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,2,1,0,-91*0,[],500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2048,9 +2048,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2059,7 +2059,7 @@ global.acessorios = {
 	ar_fore : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.5,0,-.4,-.4,-.5,0,0,0,0.01,0.04,0,0,0,-1,1,0,-91,[],1250]
+		var variaveis = [10,0,0,0,-.5,0,-.4,-.4,-.5,0,0,0,0.01,0.04,0,0,0,-1,1,0,-91*0,[],1250,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2067,9 +2067,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2078,7 +2078,7 @@ global.acessorios = {
 	ar_lanterna : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,2,1,0,-91,[],350]
+		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,2,1,0,-91*0,[],350,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2086,9 +2086,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2097,7 +2097,7 @@ global.acessorios = {
 	ar_fore1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.5,0,-.3,-.3,-.4,0,0,0,0.01,0.05,0,0,0,-1,1,0,-91,[],1400]
+		var variaveis = [10,0,0,0,-.5,0,-.3,-.3,-.4,0,0,0,0.01,0.05,0,0,0,-1,1,0,-91*0,[],1400,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2105,9 +2105,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2116,7 +2116,7 @@ global.acessorios = {
 	ar_bala : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [16,0,0,-.5,1,-15,1,1,1,0,0,0,-0.025,0.00,-.2,0,0,-1,0,-200,-91,[],2000]
+		var variaveis = [16,0,0,-.5,1,-15,1,1,1,0,0,0,-0.025,0.00,-.2,0,0,-1,0,-200,-91*0,[],2000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2124,9 +2124,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2135,7 +2135,7 @@ global.acessorios = {
 	ar_bala1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [16,0,-5,1.5,2,30,2.5,2.5,2.5,0,0,0,0.025,0.05,.3,0,0,-1,0,100,-91,[],1750]
+		var variaveis = [16,0,-5,1.5,2,30,2.5,2.5,2.5,0,0,0,0.025,0.05,.3,0,0,-1,0,100,-91*0,[],1750,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2143,9 +2143,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2154,7 +2154,7 @@ global.acessorios = {
 	ar_raja : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [0,0,0,0,0,0,0,0,0,3,4,13,0.0,0.0,0,0,0,-1,0,0,-91,[],500]
+		var variaveis = [0,0,0,0,0,0,0,0,0,3,4,13,0.0,0.0,0,0,0,-1,0,0,-91*0,[],500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2162,9 +2162,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2173,7 +2173,7 @@ global.acessorios = {
 	ar_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [20,0,0,0,-.25,0,0,0,0,0,0,0,-0.05,0.02,0,0,0,-1,0,0,-91,[],250]
+		var variaveis = [20,0,0,0,-.25,0,0,0,0,0,0,0,-0.05,0.02,0,0,0,-1,0,0,-91*0,[],250,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2181,9 +2181,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2192,7 +2192,7 @@ global.acessorios = {
 	ar_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [2,0,0,-.15,.25,0,.25,.25,.35,0,0,0,-0.05,-0.05,0,-3,0,-1,0,25,-91,[],1550]
+		var variaveis = [2,0,0,-.15,.25,0,.25,.25,.35,0,0,0,-0.05,-0.05,0,-3,0,-1,0,25,-91*0,[],1550,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2200,9 +2200,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2211,7 +2211,7 @@ global.acessorios = {
 	ar_cano1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [21,0,0,.25,-.35,0,-.35,-.35,-.5,0,0,0,0.075,0.1,0,4,0,-1,0,-45,-91,[],2000]
+		var variaveis = [21,0,0,.25,-.35,0,-.35,-.35,-.5,0,0,0,0.075,0.1,0,4,0,-1,0,-45,-91*0,[],2000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2219,9 +2219,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2230,7 +2230,7 @@ global.acessorios = {
 	ar_pente : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [6,0,10,0,.5,30,.5,.5,.5,0,0,0,0.3,0.05,0,0,0,-1,0,0,-91,[],1000]
+		var variaveis = [6,0,10,0,.5,30,.5,.5,.5,0,0,0,0.3,0.05,0,0,0,-1,0,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2238,9 +2238,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2249,7 +2249,7 @@ global.acessorios = {
 	ar_pente1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [6,0,-10,0,-.5,-15,-.5,-.5,-.5,0,0,0,-0.1,-0.05,0,0,0,-1,0,0,-91,[],500]
+		var variaveis = [6,0,-10,0,-.5,-15,-.5,-.5,-.5,0,0,0,-0.1,-0.05,0,0,0,-1,0,0,-91*0,[],500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2257,9 +2257,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2268,7 +2268,7 @@ global.acessorios = {
 	ar_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,-.125,0,-.125,-.125,-.25,0,0,0,0.02,-0.025,0,0,0,-1,0,0,-91,[],3500]
+		var variaveis = [13,0,0,0,-.125,0,-.125,-.125,-.25,0,0,0,0.02,-0.025,0,0,0,-1,0,0,-91*0,[],3500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2276,9 +2276,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2291,7 +2291,7 @@ global.acessorios = {
 	m4_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,-.25,0,-.25,-.25,-.36,0,0,0,0.02,0.05,0,0,0,-1,0,0,-91,[],2500]
+		var variaveis = [13,0,0,0,-.25,0,-.25,-.25,-.36,0,0,0,0.02,0.05,0,0,0,-1,0,0,-91*0,[],2500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2299,9 +2299,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2310,7 +2310,7 @@ global.acessorios = {
 	m4_laser : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,11,0,0,-91,[],650]
+		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,11,0,0,-91*0,[],650,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2318,9 +2318,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2329,7 +2329,7 @@ global.acessorios = {
 	m4_lanterna : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,11,0,0,-91,[],350]
+		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,11,0,0,-91*0,[],350,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2337,9 +2337,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2348,7 +2348,7 @@ global.acessorios = {
 	m4_sile : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [4,0,0,0,-.35,0,-.55,-.55,-.55,0,0,0,0.03,0.06,0,0,0,-1,0,-125,-91,[snd_m4a1_tirs],1000]
+		var variaveis = [4,0,0,0,-.35,0,-.55,-.55,-.55,0,0,0,0.03,0.06,0,0,0,-1,0,-125,-91*0,[snd_m4a1_tirs],1000,[9,0]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2356,9 +2356,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2371,7 +2371,7 @@ global.acessorios = {
 	ak12_fore : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.5,0,-.4,-.4,-.5,0,0,0,0.01,0.04,0,0,0,26,0,0,-91,[],1250]
+		var variaveis = [10,0,0,0,-.5,0,-.4,-.4,-.5,0,0,0,0.01,0.04,0,0,0,26,0,0,-91*0,[],1250,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2379,9 +2379,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2390,7 +2390,7 @@ global.acessorios = {
 	ak12_fore1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.5,0,-.3,-.3,-.4,0,0,0,0.01,0.05,0,0,0,26,0,0,-91,[],1400]
+		var variaveis = [10,0,0,0,-.5,0,-.3,-.3,-.4,0,0,0,0.01,0.05,0,0,0,26,0,0,-91*0,[],1400,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2398,9 +2398,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2409,7 +2409,7 @@ global.acessorios = {
 	ak_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [14,0,0,0,.25,0,.5,.5,.5,0,0,0,-.35,-.075,0,0,0,-1,0,0,-91,[],1000]
+		var variaveis = [14,0,0,0,.25,0,.5,.5,.5,0,0,0,-.35,-.075,0,0,0,-1,0,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2417,9 +2417,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2428,7 +2428,7 @@ global.acessorios = {
 	ak_coronha1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [14,0,0,0,.4,0,-.4,-.4,-.65,0,0,0,0.5,.1,0,0,0,-1,0,0,-91,[],1500]
+		var variaveis = [14,0,0,0,.4,0,-.4,-.4,-.65,0,0,0,0.5,.1,0,0,0,-1,0,0,-91*0,[],1500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2436,9 +2436,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2447,7 +2447,7 @@ global.acessorios = {
 	ak12_pica : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [26,0,0,0,-.1,0,-.1,-.1,-.1,0,0,0,0,0,0,0,0,-1,0,0,-91,[],47]
+		var variaveis = [26,0,0,0,-.1,0,-.1,-.1,-.1,0,0,0,0,0,0,0,0,-1,0,0,-91*0,[],47,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2455,9 +2455,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2466,7 +2466,7 @@ global.acessorios = {
 	ak12_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-.75,0,0,0,0,0,0,0,0.75,0.05,0,0,0,-1,0,0,-91,[],1775]
+		var variaveis = [5,0,0,0,-.75,0,0,0,0,0,0,0,0.75,0.05,0,0,0,-1,0,0,-91*0,[],1770,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2474,9 +2474,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2489,7 +2489,7 @@ global.acessorios = {
 	hk_laser : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,2,1,0,-91,[],650]
+		var variaveis = [9,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,2,1,0,-91*0,[],650,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2497,9 +2497,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2508,7 +2508,7 @@ global.acessorios = {
 	hk_lanterna : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,2,1,0,-91,[],350]
+		var variaveis = [8,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0,0,0,2,1,0,-91*0,[],350,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2516,9 +2516,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2527,7 +2527,7 @@ global.acessorios = {
 	hk_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [2,0,0,.15,-.25,0,-.25,-.25,-.35,0,0,0,0.05,0.05,0,2,0,-1,0,-25,-91,[],1750]
+		var variaveis = [2,0,0,.15,-.25,0,-.25,-.25,-.35,0,0,0,0.05,0.05,0,2,0,-1,0,-25,-91*0,[],1750,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2535,9 +2535,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2546,7 +2546,7 @@ global.acessorios = {
 	hk_cano1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru
-		var variaveis = [21,0,0,.25,-.5,0,-.5,-.5,-.75,0,0,0,0.05,0.15,0,6,0,-1,0,-45,-91,[],2250]
+		var variaveis = [21,0,0,.25,-.5,0,-.5,-.5,-.75,0,0,0,0.05,0.15,0,6,0,-1,0,-45,-91*0,[],2250,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2554,9 +2554,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2565,7 +2565,7 @@ global.acessorios = {
 	hk_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,0,0,0,0,0,0,0,0,0.0,0.00,0,0,0,-1,0,0,-91,[],416]
+		var variaveis = [5,0,0,0,0,0,0,0,0,0,0,0,0.0,0.00,0,0,0,-1,0,0,-91*0,[],416,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2573,9 +2573,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2584,7 +2584,7 @@ global.acessorios = {
 	hk_pente : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [6,0,30,0,1.5,60,2,2,2,0,0,0,0.1,0.15,0,0,0,-1,0,0,-91,[],2000]
+		var variaveis = [6,0,30,0,1.5,60,2,2,2,0,0,0,0.1,0.15,0,0,0,-1,0,0,-91*0,[],2000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2592,9 +2592,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2607,7 +2607,7 @@ global.acessorios = {
 	acr_semi : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [0,1,0,0,-1,0,-1,-1,-1,0,0,0,0.0,0.0,0,0,0,-1,0,0,-91,[],1000]
+		var variaveis = [0,1,0,0,-1,0,-1,-1,-1,0,0,0,0.0,0.0,0,0,0,-1,0,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2615,9 +2615,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2626,7 +2626,7 @@ global.acessorios = {
 	acr_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [20,0,0,0,-1.5,0,0,0,0,0,0,0,0.175,0.125,0,0,0,-1,0,0,-91,[],4000]
+		var variaveis = [20,0,0,0,-1.5,0,0,0,0,0,0,0,0.175,0.125,0,0,0,-1,0,0,-91*0,[],4000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2634,9 +2634,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2645,7 +2645,7 @@ global.acessorios = {
 	acr_magf : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [17,0,0,0,-.25,0,0,0,0,0,0,0,0.04,0.05,0,0,0,20,1,0,-91,[],1000]
+		var variaveis = [17,0,0,0,-.25,0,0,0,0,0,0,0,0.04,0.05,0,0,0,20,1,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2653,9 +2653,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2664,7 +2664,7 @@ global.acessorios = {
 	acr_bala : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [16,0,-5,.75,1,30,1,1,1,0,0,0,0.025,0.035,.2,0,0,-1,0,60,-91,[],1500]
+		var variaveis = [16,0,-5,.75,1,30,1,1,1,0,0,0,0.025,0.035,.2,0,0,-1,0,60,-91*0,[],1500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2672,9 +2672,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2683,7 +2683,7 @@ global.acessorios = {
 	acr_fore : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-.75,0,-.5,-.5,-.5,0,0,0,0.03,0.075,0,0,0,2,1,0,-91,[],2500]
+		var variaveis = [10,0,0,0,-.75,0,-.5,-.5,-.5,0,0,0,0.03,0.075,0,0,0,2,1,0,-91*0,[],2500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2691,9 +2691,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2702,7 +2702,7 @@ global.acessorios = {
 	acr_cano : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [2,0,0,-.25,.35,0,.35,.35,.35,0,0,0,-0.075,-0.05,0,-2,0,-1,0,40,-91,[],1000]
+		var variaveis = [2,0,0,-.25,.35,0,.35,.35,.35,0,0,0,-0.075,-0.05,0,-2,0,-1,0,40,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2710,9 +2710,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2721,7 +2721,7 @@ global.acessorios = {
 	acr_cano1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [2,0,0,.15,.25,0,.25,.25,.25,0,0,0,0.05,0.05,0,2,0,-1,0,-20,-91,[],2500]
+		var variaveis = [2,0,0,.15,.25,0,.25,.25,.25,0,0,0,0.05,0.05,0,2,0,-1,0,-20,-91*0,[],2500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2729,9 +2729,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2740,7 +2740,7 @@ global.acessorios = {
 	acr_cano2 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [21,0,0,.35,.5,0,.5,.5,.5,0,0,0,0.1,0.1,0,5,0,-1,0,-40,-91,[],3500]
+		var variaveis = [21,0,0,.35,.5,0,.5,.5,.5,0,0,0,0.1,0.1,0,5,0,-1,0,-40,-91*0,[],3500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2748,9 +2748,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2759,7 +2759,7 @@ global.acessorios = {
 	acr_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,1,0,1.5,1.5,1.5,0,0,0,-0.1,-0.15,0,0,0,-1,0,0,-91,[],500]
+		var variaveis = [13,0,0,0,1,0,1.5,1.5,1.5,0,0,0,-0.1,-0.15,0,0,0,-1,0,0,-91*0,[],500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2767,9 +2767,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2778,7 +2778,7 @@ global.acessorios = {
 	acr_coronha1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,-.5,0,-.5,-.5,-.5,0,0,0,0.075,0.1,0,0,0,-1,0,0,-91,[],3000]
+		var variaveis = [13,0,0,0,-.5,0,-.5,-.5,-.5,0,0,0,0.075,0.1,0,0,0,-1,0,0,-91*0,[],3000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2786,9 +2786,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2801,7 +2801,7 @@ global.acessorios = {
 	scar_fore : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [10,0,0,0,-1,0,-.4,-.4,-.5,0,0,0,0.03,0.1,0,0,0,-1,0,0,-91,[],2500]
+		var variaveis = [10,0,0,0,-1,0,-.4,-.4,-.5,0,0,0,0.03,0.1,0,0,0,-1,0,0,-91*0,[],2500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2809,9 +2809,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2820,7 +2820,7 @@ global.acessorios = {
 	scar_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [20,0,0,0,-2,0,0,0,0,0,0,0,0.185,0.15,0,0,0,-1,0,0,-91,[],3000]
+		var variaveis = [20,0,0,0,-2,0,0,0,0,0,0,0,0.185,0.15,0,0,0,-1,0,0,-91*0,[],3000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2828,9 +2828,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2839,7 +2839,7 @@ global.acessorios = {
 	scar_mira1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0,-91,[],10]
+		var variaveis = [5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0,-91*0,[],10,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2847,9 +2847,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2858,7 +2858,7 @@ global.acessorios = {
 	scar_magf : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [17,0,0,0,-.25,0,0,0,0,0,0,0,0.04,0.05,0,0,0,20,0,0,-91,[],1000]
+		var variaveis = [17,0,0,0,-.25,0,0,0,0,0,0,0,0.04,0.05,0,0,0,20,0,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2866,9 +2866,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2881,7 +2881,7 @@ global.acessorios = {
 	xm8_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-1.5,0,0,0,0,0,0,0,0.115,0.08,0,0,0,-1,0,0,-91,[],3000]
+		var variaveis = [5,0,0,0,-1.5,0,0,0,0,0,0,0,0.115,0.08,0,0,0,-1,0,0,-91*0,[],3000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2889,9 +2889,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2904,7 +2904,7 @@ global.acessorios = {
 	ia2_coronha : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [13,0,0,0,1.5,0,1.5,1.5,2,0,0,0,-0.05,-0.15,0,0,0,-1,0,0,-91,[],2]
+		var variaveis = [13,0,0,0,1.5,0,1.5,1.5,2,0,0,0,-0.05,-0.15,0,0,0,-1,0,0,-91*0,[],2,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2912,9 +2912,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2931,7 +2931,7 @@ global.acessorios = {
 	bar_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-1.5,0,0,0,0,0,0,0,0.1,0.1,0,0,0,-1,0,0,-91,[],2000]
+		var variaveis = [5,0,0,0,-1.5,0,0,0,0,0,0,0,0.1,0.1,0,0,0,-1,0,0,-91*0,[],2000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2939,9 +2939,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2954,7 +2954,7 @@ global.acessorios = {
 	m1_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [20,0,0,0,-2,0,0,0,0,0,0,0,0.175,0.13,0,0,0,-1,0,0,-91,[],2500]
+		var variaveis = [20,0,0,0,-2,0,0,0,0,0,0,0,0.175,0.13,0,0,0,-1,0,0,-91*0,[],2500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2962,9 +2962,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -2977,7 +2977,7 @@ global.acessorios = {
 	win_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-.75,0,0,0,0,0,0,0,0.02,0.01,0,0,0,-1,0,0,-91,[],1000]
+		var variaveis = [5,0,0,0,-.75,0,0,0,0,0,0,0,0.02,0.01,0,0,0,-1,0,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2985,9 +2985,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -3000,7 +3000,7 @@ global.acessorios = {
 	lee_mira : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.03,0.02,0,0,0,-1,0,0,-91,[],1500]
+		var variaveis = [5,0,0,0,-1,0,0,0,0,0,0,0,0.03,0.02,0,0,0,-1,0,0,-91*0,[],1500,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -3008,9 +3008,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -3023,7 +3023,7 @@ global.acessorios = {
 	m249_pente : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [6,0,0,0,0,-0,-0,-0,-0,0,0,0,-00,-0,0,0,0,-1,0,0,-91,[],1000]
+		var variaveis = [6,0,0,0,0,-0,-0,-0,-0,0,0,0,-00,-0,0,0,0,-1,0,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -3031,9 +3031,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		
@@ -3042,7 +3042,7 @@ global.acessorios = {
 	m249_pente1 : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca
-		var variaveis = [6,0,-100,0,-2.5,-28,-2,-2,-2.5,0,0,0,-0.05,-0.3,0,0,0,-1,0,0,-91,[],1000]
+		var variaveis = [6,0,-100,0,-2.5,-28,-2,-2,-2.5,0,0,0,-0.05,-0.3,0,0,0,-1,0,0,-91*0,[],1000,[]]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -3050,9 +3050,9 @@ global.acessorios = {
 			
 		}
 		
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
-		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
-		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2]) }else{ array_insert(variaveis,2,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
 		
 		return variaveis 
 		

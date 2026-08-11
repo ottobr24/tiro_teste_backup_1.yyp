@@ -12,8 +12,10 @@ var mes_tec = !cn ? keyboard_check_pressed(vk_left)		: gamepad_button_check_pres
 var cim_tec = !cn ? keyboard_check_pressed(vk_up)		: gamepad_button_check_pressed(0,gp_padu)
 var bai_tec = !cn ? keyboard_check_pressed(vk_down)		: gamepad_button_check_pressed(0,gp_padd)
 												
-var mod_tec = !cn ? (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter)) : gamepad_button_check_pressed(0,gp_face1)
-	
+var mod_tec = !cn ? (colidindo > -2 and mouse_check_button_pressed(mb_left)) or keyboard_check_pressed(vk_enter) : gamepad_button_check_pressed(0,gp_face1)
+
+//show_debug_message([colidindo,mouse_check_button_pressed(mb_left),mod_tec])
+
 #region Me mexendo nas modificações	
 
 if (!lista and alp){
@@ -47,12 +49,6 @@ if (!lista and alp){
 			
 			var px2 = array_length(global.armas_modx[i][p])>1 ? global.armas_modx[i][p][0] : -9
 			var py2 = array_length(global.armas_modx[i][p])>1 ? global.armas_modx[i][p][1] : -9
-			
-			#region NAO TA INDO (ELE É O PROBLEMA)
-			
-			//show_message(pext)
-			
-			#endregion
 			
 			if (p = 0){
 			
@@ -340,8 +336,10 @@ if (lista){
 	var arm = pai.arma
 	
 	mods_atual[lista-1]	= listai
-		
+	
 	if (mod_tec){
+		
+		show_debug_message("a")
 		
 		if (listan = 2){
 		
@@ -371,6 +369,8 @@ if (lista){
 		var cod2 = array_length(global.armas_mode[i][lista-1][listai]) > 7
 		var cod3 = array_length(global.armas_mode[i][lista-1][listai]) > 25
 		var dinheiro = cod1 and cod2 and cod3 ? global.armas_mode[i][lista-1][listai][25] : 0
+		
+		show_debug_message(!global.armas_moda[ind][i][lista-1][listai] and global.dinheiro >= dinheiro)
 		
 		if (!global.armas_moda[ind][i][lista-1][listai] and global.dinheiro >= dinheiro){
 			
@@ -466,5 +466,6 @@ if (lista){
 #region Extras
 
 rot = clamp(rot,-1,1)
+colidindo = 0
 
 #endregion
