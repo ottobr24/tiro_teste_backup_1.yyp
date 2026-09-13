@@ -219,7 +219,7 @@ desenha_modificacoes = function(){
 					var _x = x + mod_xm + mod_mx2 
 					var _y = y + mod_ym + mod_my2
 		
-					visao(room_width/2,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,[obj_miniporta,obj_player,obj_zumbi_pai]),1,0,0,c_red)
+					visao(room_width/2,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_visao,[obj_miniporta,obj_player,obj_zumbi_pai]),1,0,0,c_red)
 				
 				}
 			
@@ -352,7 +352,7 @@ atira = function(){
 				
 				if (part_tiro){
 				
-					seta_part("cria_tiro",tx,ty,[part_tiro,part_tiro],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+					seta_part("cria_tiro",tx,ty,[part_tiro,part_tiro],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[image_xscale*1,image_xscale*1.25],[image_xscale*1,image_xscale*1.25],45,[tiiv/2,tiiv/2],0,0)
 					
 				}
 					
@@ -501,7 +501,7 @@ preparando = function(){
 			var balas = [snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14]
 			var ind = irandom_range(0,array_length(sons)-1)
 					
-			if (poc) seta_part("cria_tiro",x,y,[part_cock,part_cock],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+			if (poc) seta_part("cria_tiro",x,y,[part_cock,part_cock],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[image_xscale*1,image_xscale*1.25],[image_xscale*1,image_xscale*1.25],45,[tiiv/2,tiiv/2],0,0)
 		
 			repeat(part_cock){
 			
@@ -612,7 +612,7 @@ recarrega = function(){
 				var ind = irandom_range(0,array_length(sons)-1)
 					
 				tiro--
-				seta_part("cria_tiro",x,y,[1,1],global.tiros_part[i],c_white,dirt,[tiro_v,tiro_v],[2,2.5],[2,2.5],45,[tiro_v/2,tiro_v/2],0,0)
+				seta_part("cria_tiro",x,y,[1,1],global.tiros_part[i],c_white,dirt,[tiro_v,tiro_v],[image_xscale*1,image_xscale*1.25],[image_xscale*1,image_xscale*1.25],45,[tiro_v/2,tiro_v/2],0,0)
 				
 				repeat(1){
 					
@@ -670,7 +670,7 @@ recarrega = function(){
 				var balas = [snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14]
 				var ind = irandom_range(0,array_length(sons)-1)
 					
-				seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+				seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[image_xscale*1,image_xscale*1.25],[image_xscale*1,image_xscale*1.25],45,[tiiv/2,tiiv/2],0,0)
 			
 				repeat(munp){
 				

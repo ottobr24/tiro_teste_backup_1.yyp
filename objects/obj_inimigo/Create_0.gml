@@ -8,6 +8,10 @@ if (!global.cria_inimigos){
 	
 }
 
+cor		= global.parts_cores[objetos.inimigo]
+velp	= global.parts_vel	[objetos.inimigo]
+distc	= global.parts_distc[objetos.inimigo]
+	
 randomise()
 
 hspd =0 

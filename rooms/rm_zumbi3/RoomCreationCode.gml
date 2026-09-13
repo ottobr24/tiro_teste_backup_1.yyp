@@ -1,0 +1,1 @@
+global.spawn_aleatorio = 0

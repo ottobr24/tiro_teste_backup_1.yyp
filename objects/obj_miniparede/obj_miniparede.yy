@@ -8,8 +8,8 @@
   "name":"obj_miniparede",
   "overriddenProperties":[],
   "parent":{
-    "name":"Level",
-    "path":"folders/Objetos/Level.yy",
+    "name":"Minis",
+    "path":"folders/Objetos/Level/Minis.yy",
   },
   "parentObjectId":{
     "name":"obj_level_pai",

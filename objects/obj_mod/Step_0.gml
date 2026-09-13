@@ -14,8 +14,6 @@ var bai_tec = !cn ? keyboard_check_pressed(vk_down)		: gamepad_button_check_pres
 												
 var mod_tec = !cn ? (colidindo > -2 and mouse_check_button_pressed(mb_left)) or keyboard_check_pressed(vk_enter) : gamepad_button_check_pressed(0,gp_face1)
 
-//show_debug_message([colidindo,mouse_check_button_pressed(mb_left),mod_tec])
-
 #region Me mexendo nas modificações	
 
 if (!lista and alp){
@@ -23,6 +21,8 @@ if (!lista and alp){
 	#region Indo da esquerda pra direita
 	
 	if (mas_tec){
+		
+		toca_som(snd_menu_baixo,1,1000,1000,,0,.25) 
 		
 		#region Variaveis
 		
@@ -112,6 +112,8 @@ if (!lista and alp){
 	
 	if (mes_tec){
 		
+		toca_som(snd_menu_cima,6,1000,1000,,0,.25)	
+		
 		var px1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][0] : -8
 		var py1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][1] : -8
 		
@@ -191,6 +193,8 @@ if (!lista and alp){
 	
 	if (bai_tec){
 		
+		if (global.zumbi) toca_som(snd_menu_baixo,1,1000,1000,,0,.25) 
+		
 		var px1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][0] : -8
 		var py1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][1] : -8
 		
@@ -247,6 +251,8 @@ if (!lista and alp){
 	#region Indo pra cima
 	
 	if (cim_tec){
+		
+		if (global.zumbi) toca_som(snd_menu_cima,6,1000,1000,,0,.25)	
 		
 		var px1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][0] : -8
 		var py1 = array_length(global.armas_modx[i][index])>1 ? global.armas_modx[i][index][1] : -8
@@ -376,7 +382,7 @@ if (lista){
 			
 			global.dinheiro -= dinheiro
 			global.armas_moda[ind][i][lista-1][listai] = 1
-			if (room = rm_zumbi) global.armas_moda[!ind][i][lista-1][listai] = 1
+			if (global.zumbi) global.armas_moda[!ind][i][lista-1][listai] = 1
 			
 		}
 		

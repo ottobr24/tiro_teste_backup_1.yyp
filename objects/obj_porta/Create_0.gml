@@ -7,7 +7,7 @@ filhos = []
 filhos_qtd = 3
 mudando = 0
 abre_dir = 0
-trancado = room = rm_zumbi ? 0 : irandom_range(0,1)
+trancado = global.zumbi ? 0 : irandom_range(0,1)
 cade_alp = 0
 tecla_abrir = ["F"		,gp_face2]
 tecla_chuta = [vk_space	,gp_face2]
@@ -39,7 +39,7 @@ abrindo_e_sendo_empurrada = function(){
 		
 		with(prx){
 			
-			global.portas_abrir = instance_nearest(x,y,obj_porta)
+			//global.portas_abrir = instance_nearest(x,y,obj_porta)
 			
 		}
 		
@@ -285,16 +285,8 @@ cria_filhos = function(){
     
 	    var _x = image_angle = 0 ? x + (margx * i) : x
 	    var _y = image_angle = 0 ? y : y - (margx * i)
-    
-	    var bloc = instance_create_layer(_x,_y,"Level",obj_miniporta)
-    	
-		bloc.pai = id
-	    bloc.image_angle = image_angle
-    	
-	    bloc.image_xscale = image_xscale / qtd 
-	    bloc.image_yscale = 1//image_yscale / qtd 
-    	
-	    bloc.sprite_index = sprite_index
+		
+	    var bloc = cria_minis(_x,_y,obj_miniporta,qtd,spr_porta,objetos.porta)
 		
 		filhos[i] = bloc
 		

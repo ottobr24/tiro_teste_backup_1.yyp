@@ -548,8 +548,8 @@ usando_o_menu = function(){
 	
 	#region Mudando de pos
 	
-	if (baixo) index++
-	if (cima)   index--
+	if (baixo){ index++ toca_som(snd_menu_baixo,1,1000,1000,,0,.25) }
+	if (cima) { index--	toca_som(snd_menu_cima,6,1000,1000,,0,.25)  }
 	
 	if (index=array_length(texto_mostrado)) index=0
 	if (index<0) index=array_length(texto_mostrado)-1
@@ -642,13 +642,13 @@ usando_o_menu = function(){
 						seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
 						
 						carregando()
-						if (room != rm_zumbi) salvando()
+						if (!global.zumbi) salvando()
 						
 					break;
 					
 					case 5:
 				
-						if (room != rm_zumbi) salvando()
+						if (!global.zumbi) salvando()
 						game_end()
 				
 					break;

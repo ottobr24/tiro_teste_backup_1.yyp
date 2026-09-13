@@ -12,3 +12,19 @@ enum texto {
 	#endregion
 	
 }
+
+enum objetos{
+	
+	parede		,
+	porta		,
+	player		,
+	inimigo		,
+	vidro		,
+	zumbi		,
+	mesa_mod	,
+	elevador	,
+	grade		,
+	porta_grade	,
+	portao		,
+	
+}	

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_glock_tiro1",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.6988662,
+  "exportDir":"",
+  "name":"snd_glock_tiro1",
+  "parent":{
+    "name":"Glock 18",
+    "path":"folders/Sons/Armas/Armas de fogo/Pistolas/Glock 18.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_glock_tiro1.wav",
+  "volume":1.0,
+}

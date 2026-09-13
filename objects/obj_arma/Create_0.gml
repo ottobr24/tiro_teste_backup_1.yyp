@@ -91,11 +91,16 @@ som_cock = 0
 som_recc = 0
 som_recf = 0
 
+tiro_vel = 0
+tiro_spr = 0
+
 canox = 0
 grd = 0
 
 cano_quente = 0
 cano_quente_max = 100
+
+shak_giro = 0
 
 visao_inicio()
 
@@ -331,7 +336,7 @@ desenha_modificacao = function(){
 					
 					draw_set_alpha(1)
 					
-	                visao(tmd,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_normal,[obj_miniporta,obj_inimigo,obj_zumbi_pai]),1,0,0,mira_co[qtd])
+	                visao(tmd,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_visao,[obj_miniporta,obj_inimigo,obj_zumbi_pai]),1,0,0,mira_co[qtd])
 				
 					draw_set_alpha(image_alpha)
 					
@@ -392,8 +397,8 @@ desenha_fogo = function(){
 		var sil = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
 		var fogo = sil ? spr_fogo_sile : spr_fogo
 		
-		var tmdx = global.tiros_velo[i]/10
-		var tmdy = global.tiros_velo[i]/10
+		var tmdx = tiro_vel/10
+		var tmdy = tiro_vel/10
 	
 		var sprh = (sprite_get_width(global.armas_sprt[i]) + (12*tmdx) + canox) * image_xscale
 		var dirp2 = image_xscale	!=1 ? direction+90 : direction-90
@@ -430,6 +435,8 @@ atira = function(){
 	var atn = (tec or tec2) and !tiro_timer and !recarregando and !rajadas and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	var raj = rajadas and !rajando_timer and !recarregando and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	
+	var inq = cn ? gamepad_button_check(0,gp_shoulderr) - gamepad_button_check(0,gp_shoulderl) : keyboard_check(ord("E")) - keyboard_check(ord("Q"))
+	
 	#endregion
 	
 	#region Mudando de modo de tiro, vendo se tem um lança granadas equipado e limitando a quantidade maxima de tiro
@@ -461,9 +468,10 @@ atira = function(){
 				
 				var vol = 0
 				
-				var mirc = mira ? 2		: 1
-				var mirp = mira ? 1.25	: 1
-				var mirs = mira ? 1.5	: 1
+				var mirc = mira			? 2		: 1
+				var mirp = mira			? 1.25	: 1
+				var mirs = mira			? 1.5	: 1
+				var mire = abs(inq)		? 1.15	: 1
 				
 				var sil = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
 				var fre = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=3
@@ -478,7 +486,7 @@ atira = function(){
 				
 				var sprh = (sprite_width + (canox * image_xscale) - margx) * image_xscale 
 				
-				var tiiv = global.tiros_velo[i]*1
+				var tiiv = tiro_vel
 				var tx = x + lengthdir_x(sprh/2,direction)
 				var ty = y + margy + lengthdir_y(sprh/2,direction)
 				
@@ -505,24 +513,24 @@ atira = function(){
 					t.image_angle = dir  
 					t.sprite_index = global.tiros_sprt[i]
 
-					t.vel = global.tiros_velo[i]
+					t.vel = tiro_vel
 					t.dano = dano                
 					t.pai = pai           
 					
 					pai.coid += dir_dif
 					
-					prec+=prec_menos / mirp        
+					prec+=prec_menos * mire  / mirp      
 				
 					pai.cx -= coix *1.5          
 					pai.cy -= coiy *1.5          
 			
 					fogo_dir	= dir
 				
-					global.shake	+=	shak*global.shakes[global.configs[1][0]] / 2 / mirs  
+					global.shake	+=	shak*global.shakes[global.configs[1][0]] * mire / 2 / mirs  
 					
-					obj_controlador.vib_d += shak / mirs  
+					obj_controlador.vib_d += shak * mire / mirs  
 					
-					cano_quente += global.tiros_velo[i] / 1.5
+					cano_quente += tiro_vel / 1.5
 					
 				}                                            
 				
@@ -536,14 +544,15 @@ atira = function(){
 				
 				var fog_chan = fre or !sil ? 100 : random_range(cano_quente,cano_quente_max)
 				
-				global.shakex += lengthdir_x(coix,direction) * bal * global.shakes[global.configs[1][0]] / mirs  
-				global.shakey += lengthdir_y(coiy,direction) * bal * global.shakes[global.configs[1][0]] / mirs  
+				global.shakex += lengthdir_x(coix,direction)								* bal * mire * global.shakes[global.configs[1][0]] / mirs  
+				global.shakey += lengthdir_y(coiy,direction)								* bal * mire * global.shakes[global.configs[1][0]] / mirs  
+				global.shakeg += random_range(-shak_giro,shak_giro)	* bal * mire / instance_number(obj_player) * global.shakes[global.configs[1][0]] / mirs 
 				
 				if (fog_chan > 50){
 				
 					fogo_tempo	= random_range(6,15) + fog_qut_tem
 					fogo_ii		= irandom_range(0,sprite_get_number(fogo))
-					fogo_ix		= global.tiros_velo[i]/10 + fog_qut_ix
+					fogo_ix		= tiro_vel/10 + fog_qut_ix
 				
 				}
 				
@@ -569,7 +578,7 @@ atira = function(){
 					var balas = [snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14]
 					var ind = irandom_range(0,array_length(sons)-1)
 					
-					seta_part("cria_tiro",tx,ty,[part_tiro,part_tiro],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+					seta_part("cria_tiro",tx,ty,[part_tiro,part_tiro],tiro_spr,c_white,dirp,[tiiv,tiiv],[image_xscale*1,image_xscale*1.25],[1,1.25],45,[tiiv/2,tiiv/2],0,0)
 					
 					repeat(part_tiro){
 						
@@ -632,9 +641,11 @@ atira = function(){
 					}
 				}
 				
-				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(global.armas_sons[i][0]) == asset_sound){ 
+				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and (asset_get_type(global.armas_sons[i][0]) == asset_sound or is_array(global.armas_sons[i][0]))){ 
 					
-					sons[0] = toca_som(som_tiro,volu*vol,500,1000,,0,.20,0)
+					var som = irandom(array_length(som_tiro)-1)
+					
+					sons[0] = toca_som(som_tiro,volu*vol,500,1000,,0,.20,1)
 					fazendo_barulho(x,y,baru,pai)
 				
 				}
@@ -673,7 +684,7 @@ atira = function(){
 			var dirp2 = image_xscale!=1 ? direction+90 : direction-90
 			var margy = lengthdir_y(2+ global.armas_modx[i][_i][1],dirp2)
 			
-			var tiiv = global.tiros_velo[i]*1
+			var tiiv = tiro_vel*1
 			var tx = x + lengthdir_x(5,direction)
 			var ty = y + margy + lengthdir_y(5,direction)
 			
@@ -688,7 +699,7 @@ atira = function(){
 			t.direction = dir                           
 			t.image_angle = dir 
 			
-			t.vel = global.tiros_velo[i]
+			t.vel = tiro_vel
 			t.pai = pai                                 
 			t.dano = 1
 			
@@ -748,7 +759,7 @@ preparando = function(){
 	var man = global.armas_prep[i]>0 and prep<=0 and tiro_timer=tiro_tempo div 2
 	var sem = cock and (array_length(sons)<=5 or !audio_is_playing(sons[5])) and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and (array_length(sons)<=4 or !audio_is_playing(sons[4])) and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	var dirp = image_xscale=1 ? direction+90 : direction-90
-	var tiiv = global.tiros_velo[i]*.75
+	var tiiv = tiro_vel*.75
 	
 	var tmd = 1
 	var pos = 1
@@ -773,7 +784,7 @@ preparando = function(){
 			var tx = x + lengthdir_x(sprh/2,direction)
 			var ty = y + margy + lengthdir_y(sprh/2,direction)
 					
-			seta_part("cria_tiro",tx,ty,[part_cock,part_cock],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+			seta_part("cria_tiro",tx,ty,[part_cock,part_cock],tiro_spr,c_white,dirp,[tiiv,tiiv],[image_xscale*1,image_xscale*1.25],[1,1.25],45,[tiiv/2,tiiv/2],0,0)
 			
 			repeat(part_cock){
 				
@@ -826,7 +837,7 @@ preparando = function(){
 					
 					if (qtd){
 						
-						seta_part("cria_tiro",tx,ty,[qtd,qtd],global.tiros_part[i],c_white,dirp,[tiiv,tiiv],[2,2.5],[2,2.5],45,[tiiv/2,tiiv/2],0,0)
+						seta_part("cria_tiro",tx,ty,[qtd,qtd],tiro_spr,c_white,dirp,[tiiv,tiiv],[image_xscale*1,image_xscale*1.25],[1,1.25],45,[tiiv/2,tiiv/2],0,0)
 					
 						repeat(qtd){
 						
@@ -987,7 +998,7 @@ recarrega = function(){
 				var ind = irandom_range(0,array_length(sons)-1)
 					
 				tiro--
-				seta_part("cria_tiro",x,y,[1,1],global.tiros_part[i],c_white,dirt,[tiro_v,tiro_v],[2,2.5],[2,2.5],45,[tiro_v/2,tiro_v/2],0,0)
+				seta_part("cria_tiro",x,y,[1,1],tiro_spr,c_white,dirt,[tiro_v,tiro_v],[image_xscale*1,image_xscale*1.25],[1,1.25],45,[tiro_v/2,tiro_v/2],0,0)
 				
 				repeat(1){
 					
@@ -1076,7 +1087,7 @@ recarrega = function(){
 				var balas = [snd_bala_caindo_1,snd_bala_caindo_2,snd_bala_caindo_3,snd_bala_caindo_4,snd_bala_caindo_5,snd_bala_caindo_6,snd_bala_caindo_7,snd_bala_caindo_8,snd_bala_caindo_9,snd_bala_caindo_10,snd_bala_caindo_11,snd_bala_caindo_12,snd_bala_caindo_13,snd_bala_caindo_14]
 				var ind = irandom_range(0,array_length(sons)-1)
 					
-				seta_part("cria_tiro",x,y,[munp,munp],global.tiros_part[i],c_white,dirt,[tiro_v,tiro_v],[2,2.5],[2,2.5],45,[tiro_v/2,tiro_v/2],0,0)
+				seta_part("cria_tiro",x,y,[munp,munp],tiro_spr,c_white,dirt,[tiro_v,tiro_v],[image_xscale*1,image_xscale*1.25],[1,1.25],45,[tiro_v/2,tiro_v/2],0,0)
 			
 				repeat(munp){
 				
@@ -1165,6 +1176,11 @@ reseta_coisas = function(){
 	som_recc = array_length(global.armas_sons[i])>2 ? global.armas_sons[i][2] : 0
 	som_recf = array_length(global.armas_sons[i])>3 ? global.armas_sons[i][3] : 0
 	
+	tiro_vel = global.tiros_velo[i]
+	tiro_spr = global.tiros_part[i]
+	
+	shak_giro = global.armas_gira[i]
+	
 	if (!global.pause){
 	
 		fogo_x = 0
@@ -1198,7 +1214,8 @@ colocando_os_acessorios = function(){
 				var ptm5 = array_length(global.armas_mode[i][m][mod_i])>21 ? global.armas_mode[i][m][mod_i][21] : 0
 			
 				var sfxs = global.armas_mode[i][m][mod_i][24]
-				var fog	 = global.armas_mode[i][m][mod_i][26                                                                                                                                                                                 ]
+				var fog	 = global.armas_mode[i][m][mod_i][26]
+				var bal	 = global.armas_mode[i][m][mod_i][27]
 					
 				cliq				+=global.armas_mode[i][m][mod_i][4]
 				
@@ -1251,6 +1268,20 @@ colocando_os_acessorios = function(){
 				}
 				
 				#endregion
+				
+				#region Tiro
+				
+				if (array_length(bal)>0){ 
+					
+					if (array_length(bal)>0 and bal[0] != 0) tiro_spr		=	bal[0]
+					if (array_length(bal)>1 and bal[1] != 0) bala			+=	is_string(bal[1]) ? real(bal[1])-bala : bal[1]
+					if (array_length(bal)>2 and bal[2] != 0) tiro_vel		+=	bal[2]
+					
+				}
+				
+				#endregion
+				
+				shak_giro			+=global.armas_mode[i][m][mod_i][28]
 				
 				pext[m]				= [ptm1,ptm2,ptm3,ptm4,ptm5]
 				

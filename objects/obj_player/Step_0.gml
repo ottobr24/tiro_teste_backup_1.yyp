@@ -1,4 +1,4 @@
-//seta_part("cria_tiro",x,y,[1,1],spr_capsula,c_white,direction ,[4,4],[2,2.5],[2,2.5],45,[4/2,4/2],0,0)
+//seta_part("cria_tiro",x,y,[1,1],spr_capsula,c_white,direction ,[4,4],[1,1.25],[1,1.25],45,[4/2,4/2],0,0)
 					
 image_blend = !controle ? c_white : c_purple
 depth = -y
@@ -42,5 +42,23 @@ if (keyboard_check_pressed(vk_backspace) or gamepad_button_check_pressed(0,gp_st
 	game_restart()   
 	
 }
+
+var dist = 0
+
+for (var p = 0; p<array_length(global.portas);p++){
 	
-global.portas_abrir = instance_exists(obj_porta) ? instance_nearest(x,y,obj_porta) : -4 
+	dist[p] = 100000
+	
+	if (!instance_exists(global.portas[p])) break;
+	
+	var obj = instance_nearest(x,y,global.portas[p])
+	var dis = distance_to_object(obj)
+	
+	if (p = 0 or dist[p-1]>dis){
+		
+		global.portas_abrir = obj
+		dist[p] = dis
+		show_debug_message(obj.object_index)
+		
+	}
+}

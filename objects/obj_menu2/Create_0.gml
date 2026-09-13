@@ -1056,11 +1056,14 @@ usando_o_menu = function(){
 							global.players = index + 1
 						
 							salvando()
+							
+							randomise()
+							var r = random(array_length(global.levels_zumbi)-1)
 						
-							global.destino = rm_zumbi
+							global.destino = global.levels_zumbi[r]
 							seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
 							global.zumbi = 1
-							global.spawn_aleatorio = 1
+							global.spawn_aleatorio = 0
 							global.arma = 0
 							global.dinheiro = 0
 						

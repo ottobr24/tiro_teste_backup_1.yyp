@@ -18,6 +18,8 @@ escala = cesc[cap][roo]
 x = cpos[cap][roo][0]
 y = cpos[cap][roo][1]
 
+view_visible[0] = 1
+
 zoom = function(){
 	
 	camera_set_view_size(view_camera[0],cmw*escala,cmh*escala)
@@ -165,14 +167,18 @@ segue_player = function(){
 		view_set_xport(0,shak + shakx)
 		view_set_yport(0,shak + shaky)
 
+		var matrix = matrix_build(0,0,0,0,0,global.shakeg,1,1,1)
+		matrix_set(matrix_world,matrix)
+
 		global.shake	= lerp(global.shake	,0,0.15)
+		global.shakeg	= lerp(global.shakeg,0,0.15)
 		global.shakex	= lerp(global.shakex,0,0.1)
 		global.shakey	= lerp(global.shakey,0,0.1)
 	
 		instance_deactivate_region(bbox_left,bbox_top,bbox_right,bbox_bottom,0,1)
 		instance_activate_region(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
 		
-		var objs_espcs = [obj_player,obj_miniparede,obj_miniporta,obj_criador,obj_criador_ponto,obj_pause,obj_mod,obj_inimigo,obj_zumbi_pai,obj_granadas_exp,obj_tiro,object_index,obj_arma,obj_controlador,obj_cria_particulas,obj_granadas,obj_regioes,obj_arma_npc]
+		var objs_espcs = [obj_player,obj_miniparede,obj_minigrade,obj_miniporta_grade,obj_miniporta,obj_criador,obj_criador_ponto,obj_pause,obj_mod,obj_inimigo,obj_zumbi_pai,obj_granadas_exp,obj_tiro,object_index,obj_arma,obj_controlador,obj_cria_particulas,obj_granadas,obj_regioes,obj_arma_npc]
 		
 		for (var o=0;o<array_length(objs_espcs);o++){
 			

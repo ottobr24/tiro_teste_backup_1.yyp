@@ -9,7 +9,6 @@ cria_pente   = 0
 cria_tirof   = 0
 t=0
 particulas = [[4,0,0,0,0,0,0,0,0,0,0,0,0]]
-colisao = [obj_miniparede,obj_miniporta]
 particulas_infos = []
 ixms = []
 iyms = []
@@ -101,7 +100,7 @@ desenha_as_coisas = function(){
 				var x1 = lengthdir_x(hs,d)
 				var y1 = lengthdir_y(vs,d)
 		
-				if (place_meeting(_x+x1,_y+y1,colisao)){
+				if (place_meeting(_x+x1,_y+y1,global.colisao_normal)){
 			
 			    	hs=-hs/5
 					vs=-vs/5

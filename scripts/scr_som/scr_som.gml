@@ -14,7 +14,7 @@ function toca_som(_som,_volume,dismn,dismx,fall = audio_falloff_none,_loop=0,pt 
 			
 		}
 		
-		if (alet) ind = irandom_range(0,array_length(som)-1)
+		if (alet) ind = irandom(array_length(som)-1)
 		
 		pit = random_range(1-pt,1+pt)
 		

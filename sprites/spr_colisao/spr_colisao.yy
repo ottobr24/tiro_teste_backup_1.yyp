@@ -1,7 +1,7 @@
 {
   "$GMSprite":"v2",
   "%Name":"spr_colisao",
-  "bboxMode":1,
+  "bboxMode":0,
   "bbox_bottom":31,
   "bbox_left":0,
   "bbox_right":31,

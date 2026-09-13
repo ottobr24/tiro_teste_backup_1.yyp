@@ -12,7 +12,7 @@ sai_do_mod = function(){
 		
 		if (mouse or setas){
 			
-			if (room != rm_zumbi) salvando()
+			if (!global.zumbi) salvando()
 			
 			if (instance_exists(obj_camera)) obj_camera.roo = 0
 			

@@ -32,9 +32,6 @@ if ((x!=xstart or y!=ystart) and place_meeting(x,y,obj_camera)){
 var _x =lengthdir_x(vel,image_angle)
 var _y =lengthdir_y(vel,image_angle)
 
-var colisao = [obj_miniparede			,obj_miniporta				,obj_player					,obj_inimigo				,obj_vidro					,obj_zumbi		,obj_mesa_mod				]
-var cores	= [make_color_rgb(80,80,80)	,make_color_rgb(160,65,13)	,make_color_rgb(255,10,10)	,make_color_rgb(255,10,10)	,make_color_rgb(163,205,200),c_green		,make_color_rgb(160,65,13)	]
-
 x+=_x
 y+=_y
 
@@ -45,15 +42,15 @@ if (dano<=0){
 	
 }
 
-var col = place_meeting(x,y,colisao)
+var col = place_meeting(x,y,global.parts_tiro)
 
 if (col){
 	
-	var obj = instance_place(x,y,colisao)
+	var obj = instance_place(x,y,global.parts_tiro)
 	
 	if (obj != pai){
 	
-		var b = clamp(achando_na_array(colisao,obj.object_index),0,array_length(cores)-1)
+		var b = clamp(achando_na_array(global.parts_tiro,obj.object_index),0,array_length(global.parts_tiro)-1)
 	
 		#region Criando particulas
 	
@@ -61,12 +58,12 @@ if (col){
 		var dan = dano
 		var angt = image_angle
 		var meu_i = i
-	
-		var distc = [180	,180	,180	,90		,90			,180	,90		]
-		var vels  = [vel/2	,vel/2	,vel/2	,vel	,vel		,vel/2	,vel	]
-		var velm  = [vel/4	,vel/4	,vel/4	,vel/2	,vel/2		,vel/4	,vel/2	]
-	
-		seta_part("cria_parede",x-_x,y-_y,[dano/2,dano_max],spr_particula_parede,cores[b],direction,[vels[b],vels[b]],[2,2.5],[2,2.5],distc[b],[velm[b],velm[b]],0,0)
+		
+		var cor		= existe_variavel("cor"		,,obj)	?		existe_variavel("cor"	,,obj) : c_white
+		var velp	= existe_variavel("velp"	,,obj)	? vel * existe_variavel("velp"	,,obj) : vel
+		var distc	= existe_variavel("distc"	,,obj)	?		existe_variavel("distc"	,,obj) : 180
+		
+		seta_part("cria_parede",x-_x,y-_y,[dano/2,dano_max],spr_particula_parede,cor,direction,[velp,velp],[2,2.5],[2,2.5],distc,[velp/2,velp/2],0,0)
 	
 		#endregion
 	
@@ -86,9 +83,9 @@ if (col){
 		
 			}
 		}
-	
-		if (obj.object_index = obj_miniporta){
-	
+		
+		if (achando_na_array(global.portas,obj.object_index)){
+		
 			with(obj){
 		
 				with(pai){
@@ -117,10 +114,9 @@ if (col){
 			
 				if (vida<=0){ 
 				
-					instance_destroy() 
 					obj_controlador.att = 1 
 				
-					if (object_index = obj_miniporta){
+					if (achando_na_array(global.portas,object_index)){
 					
 						if (instance_exists(pai)){
                         
@@ -129,6 +125,9 @@ if (col){
 	                    } 
 				
 					}
+					
+					instance_destroy() 
+					
 				}
 			
 				image_index = abs(vida-10)/image_number

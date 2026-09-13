@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.2261678,
+  "duration":0.8126984,
   "exportDir":"",
   "name":"snd_usp_tirs",
   "parent":{

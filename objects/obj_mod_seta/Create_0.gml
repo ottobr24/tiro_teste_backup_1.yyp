@@ -20,8 +20,8 @@ muda_arma = function(){
 			var obj = obj_mod
 			var arm = obj_menu2.arma
 		
-			if ( prox and (mouse or d)) obj.i++		
-			if (!prox and (mouse or e)) obj.i--		
+			if ( prox and (mouse or d)){ obj.i++	toca_som(snd_menu_baixo,1,1000,1000,,0,.25) }
+			if (!prox and (mouse or e)){ obj.i--	toca_som(snd_menu_cima,6,1000,1000,,0,.25)	}		
 		
 			obj.i = clamp(obj.i,0,array_length(global.armas_bala)-1)
 		

@@ -12,15 +12,8 @@ repeat(qtd){
     var _x = image_angle = 0 ? x + (margx * i) : x
     var _y = image_angle = 0 ? y : y - (margx * i)
     
-    var bloc = instance_create_layer(_x,_y,"Level",obj_miniparede)
-    
-    bloc.image_angle = image_angle
-    
-    bloc.image_xscale = image_xscale / qtd 
-    bloc.image_yscale = 1//image_yscale / qtd 
-    
-    bloc.sprite_index = spr_parede
-    
+	cria_minis(_x,_y,obj_miniparede,qtd,spr_parede,objetos.parede)
+	
     i++
     
 }

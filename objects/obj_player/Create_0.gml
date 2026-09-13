@@ -2,6 +2,10 @@
 
 randomise()
 
+cor		= global.parts_cores[objetos.player]
+velp	= global.parts_vel	[objetos.player]
+distc	= global.parts_distc[objetos.player]
+	
 hspd		=	0
 vspd		=	0
 			
@@ -39,7 +43,7 @@ colisao		= [] array_copy(colisao,0,adiciona_na_array(global.colisao_normal,obj_c
 
 equipado	= 1
 			
-controle	= 1
+controle	= global.players = 1 ? global.controle : 1
 
 qtd			= global.player_ord
 
@@ -105,7 +109,7 @@ if (!qtd){
 	instance_create_layer(x,y,"Particulas"	,obj_cria_particulas)
 	instance_create_layer(x,y,"UI"			,obj_pause)
 	
-	if (room = rm_zumbi) instance_create_layer(x,y,layer,obj_criador)
+	if (global.zumbi) instance_create_layer(x,y,layer,obj_criador)
 
 }
 
@@ -139,7 +143,7 @@ movendo = function(andar=1,equip=1){
 	var w = keyboard_check(ord("W"))
 	var s = keyboard_check(ord("S"))
 	
-	var e = keyboard_check_pressed(ord("T")) or (cn and gamepad_button_check_pressed(0,gp_face4))
+	var e = cn ? gamepad_button_check_pressed(0,gp_face4) : keyboard_check_pressed(ord("T"))
 	
 	if (cn) gamepad_set_axis_deadzone(0,.1)
 	
@@ -250,6 +254,10 @@ controla_arma = function(){
 	
 				sons = array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
 				
+				tiro_vel = global.tiros_velo[i]
+				tiro_spr = global.tiros_part[i]
+				shak_giro = global.armas_gira[i]
+
 				mods = [] array_copy(mods,0,global.armas_mods[qtd][i],0,array_length(global.armas_mods[qtd][i]))
 				modi = [] array_copy(modi,0,global.armas_modi[qtd][i],0,array_length(global.armas_modi[qtd][i]))
 				
@@ -261,7 +269,7 @@ controla_arma = function(){
 	        var cx2 = 8
 	        var cy2 = 8
         
-	        var colisao2 = [obj_miniporta,obj_miniparede]
+	        var global.colisao_normal = [obj_miniporta,obj_miniparede]
         
 			var x1 = x + lengthdir_x(cx2 + 4,direction) 
 	        var y1 = y + lengthdir_y(cy2 + 4,direction)
@@ -282,9 +290,9 @@ controla_arma = function(){
 				x1 += lengthdir_x(canox,direction)
 				y1 += lengthdir_y(canox,direction)
 		
-	            if (place_meeting(x,y1,colisao2)){
+	            if (place_meeting(x,y1,global.colisao_normal)){
 				
-	                while(place_meeting(x,y1,colisao2) and cy2>-32){
+	                while(place_meeting(x,y1,global.colisao_normal) and cy2>-32){
                     
 	                    y1 = y + lengthdir_y(cy2,dir)
 	                    cy2--
@@ -292,9 +300,9 @@ controla_arma = function(){
 	                }
 	            }
             
-	            if (place_meeting(x1,y,colisao2)){
+	            if (place_meeting(x1,y,global.colisao_normal)){
                 
-	                while(place_meeting(x1,y,colisao2) and cx2>-32){
+	                while(place_meeting(x1,y,global.colisao_normal) and cx2>-32){
                     
 	                    x1 = x + lengthdir_x(cx2,dir)
 	                    cx2--
@@ -392,7 +400,7 @@ abre_modificacao = function(){
 		
 		window_set_cursor(cursores[global.pause])
 		
-		if (room != rm_zumbi) salvando()
+		if (!global.zumbi) salvando()
 		
 	}
 }
@@ -590,7 +598,7 @@ estado_morrendo = function(){
 		armai = irandom_range(0,array_length(global.armas_nome)-1)
 		arma = -4
 		
-		if (room = rm_zumbi){
+		if (global.zumbi){
 			
 			for (var a=0;a<array_length(global.armas_nome);a++){
 			

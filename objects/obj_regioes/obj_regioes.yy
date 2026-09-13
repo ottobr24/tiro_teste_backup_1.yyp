@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_colisao",
-    "path":"sprites/spr_colisao/spr_colisao.yy",
+    "name":"spr_colisao_regioes",
+    "path":"sprites/spr_colisao_regioes/spr_colisao_regioes.yy",
   },
   "spriteMaskId":null,
   "visible":true,

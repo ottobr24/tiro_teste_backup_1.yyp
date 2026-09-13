@@ -14,6 +14,4 @@ draw_rectangle(0,0,2000,2000,0)
 draw_set_colour(-1)
 draw_set_alpha(1)
 
-//draw_text(20,20,global.configs)
-draw_text(20,40,global.controle)//resol[global.configs[3][1]][global.configs[3][2]][0])
-//
+draw_text(20,40,global.controle)
