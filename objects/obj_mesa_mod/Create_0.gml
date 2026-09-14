@@ -1,5 +1,7 @@
 randomise()
 
+vida = 100000000
+
 cor		= global.parts_cores[objetos.mesa_mod]
 velp	= global.parts_vel	[objetos.mesa_mod]
 distc	= global.parts_distc[objetos.mesa_mod]

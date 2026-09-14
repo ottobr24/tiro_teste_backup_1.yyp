@@ -573,6 +573,7 @@
     {"id":{"name":"spr_grade","path":"sprites/spr_grade/spr_grade.yy",},},
     {"id":{"name":"spr_gramado1","path":"sprites/spr_gramado1/spr_gramado1.yy",},},
     {"id":{"name":"spr_gramado2","path":"sprites/spr_gramado2/spr_gramado2.yy",},},
+    {"id":{"name":"spr_gramado3","path":"sprites/spr_gramado3/spr_gramado3.yy",},},
     {"id":{"name":"spr_granada_exp","path":"sprites/spr_granada_exp/spr_granada_exp.yy",},},
     {"id":{"name":"spr_granadas","path":"sprites/spr_granadas/spr_granadas.yy",},},
     {"id":{"name":"spr_hk_usp_cor","path":"sprites/spr_hk_usp_cor/spr_hk_usp_cor.yy",},},

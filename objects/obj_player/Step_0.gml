@@ -58,7 +58,6 @@ for (var p = 0; p<array_length(global.portas);p++){
 		
 		global.portas_abrir = obj
 		dist[p] = dis
-		show_debug_message(obj.object_index)
 		
 	}
 }

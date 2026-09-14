@@ -454,6 +454,7 @@
     {"name":"spr_grade","order":7,"path":"sprites/spr_grade/spr_grade.yy",},
     {"name":"spr_gramado1","order":8,"path":"sprites/spr_gramado1/spr_gramado1.yy",},
     {"name":"spr_gramado2","order":9,"path":"sprites/spr_gramado2/spr_gramado2.yy",},
+    {"name":"spr_gramado3","order":13,"path":"sprites/spr_gramado3/spr_gramado3.yy",},
     {"name":"spr_granada_exp","order":3,"path":"sprites/spr_granada_exp/spr_granada_exp.yy",},
     {"name":"spr_granadas","order":1,"path":"sprites/spr_granadas/spr_granadas.yy",},
     {"name":"spr_hk_usp_cor","order":1,"path":"sprites/spr_hk_usp_cor/spr_hk_usp_cor.yy",},
