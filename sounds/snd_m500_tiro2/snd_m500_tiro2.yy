@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_hk_tiro",
+  "%Name":"snd_m500_tiro2",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":2.8279364,
+  "duration":3.6398413,
   "exportDir":"",
-  "name":"snd_hk_tiro",
+  "name":"snd_m500_tiro2",
   "parent":{
-    "name":"HK-416",
-    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/HK-416.yy",
+    "name":"M500",
+    "path":"folders/Sons/Armas/Armas de fogo/Revolvers/M500.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_hk_tiro.wav",
+  "soundFile":"snd_m500_tiro2.wav",
   "volume":1.0,
 }

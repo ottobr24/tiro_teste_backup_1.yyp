@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_rhino_recf",
+  "%Name":"snd_hk416_recf",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":0.5531519,
   "exportDir":"",
-  "name":"snd_rhino_recf",
+  "name":"snd_hk416_recf",
   "parent":{
-    "name":"Rhino",
-    "path":"folders/Sons/Armas/Armas de fogo/Revolvers/Rhino.yy",
+    "name":"HK-416",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/HK-416.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_rhino_recf.wav",
+  "soundFile":"snd_hk416_recf.wav",
   "volume":1.0,
 }

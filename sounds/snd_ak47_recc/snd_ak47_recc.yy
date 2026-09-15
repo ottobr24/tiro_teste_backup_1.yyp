@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_ak_tiro",
+  "%Name":"snd_ak47_recc",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.7837415,
+  "duration":0.0,
   "exportDir":"",
-  "name":"snd_ak_tiro",
+  "name":"snd_ak47_recc",
   "parent":{
     "name":"AK-47",
     "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/AK-47.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_ak_tiro.wav",
+  "soundFile":"snd_ak47_recc.wav",
   "volume":1.0,
 }

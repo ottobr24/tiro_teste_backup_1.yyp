@@ -115,15 +115,12 @@ if (col){
 				if (vida<=0){ 
 				
 					obj_controlador.att = 1 
-				
-					if (achando_na_array(global.portas,object_index)){
 					
-						if (instance_exists(pai)){
-                        
-	                        pai.mudando = 0
-                        
-	                    } 
-				
+					if (existe_variavel("pai",,id) and instance_exists(pai) and achando_na_array(global.portas,pai.object_index)>-1){
+					
+	                    pai.mudando = 0
+						pai.trancado = 0
+							
 					}
 					
 					instance_destroy() 

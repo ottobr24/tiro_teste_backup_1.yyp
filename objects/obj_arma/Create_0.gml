@@ -283,7 +283,7 @@ desenha_modificacao = function(){
 			var sprreal = pente and cabep and asset_get_type(global.armas_modp[i][m][mods[m]]) = asset_sprite
 			
 			if (sprreal){
-			
+				
 				var um_laser = global.armas_mode[i][m][mods[m]][3] = 9
 				
 				var mod_px = 0 

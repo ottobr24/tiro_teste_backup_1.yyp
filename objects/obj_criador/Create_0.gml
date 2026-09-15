@@ -7,7 +7,19 @@ pontos = []
 
 objs_tem	= [0,47	,44,42,39,37,35,34,34,33,32,31,30,29,28,26,25,24,23	,22	,20	,19	,18	,17	,16	,15	]
 objs_qtd	= [0,10	,15,20,24,31,37,41,44,50,55,59,70,76,81,86,91,97,104,110,118,125,134,141,150,165]
-objs_drps	= [[[1,2,3],1],[[1,2,3,4,5,6],5],[[1,2,3,4,5,6,7,8,9],8],[[3,4,5,6,7,8,9,10,13,16,34,33,32,31],10],[[5,7,8,9,10,11,12,13,14,16,34,33,32,31,30],12],[[9,10,11,12,13,14,15,16,18,19,20,29,30,31,32,33],15],[[11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33,34,35],18]]
+
+objs_drps	= [
+
+
+
+[[armas.colt,armas.rhino,armas.m1911],1],
+[[armas.colt,armas.rhino,armas.m1911,armas.glock,armas.m9,armas.usp],5],
+[[armas.colt,armas.rhino,armas.m1911,armas.glock,armas.m9,armas.usp,armas.fnx,armas.desert_eagle,armas.mp9],8],
+[[armas.m500,armas.m1911,armas.glock,armas.usp,armas.m9,armas.fnx,armas.desert_eagle,armas.mp9,armas.uzi,armas.pp,armas.a681,armas.kar,armas.lee,armas.win,armas.m1],10],
+[[armas.m500,armas.glock,armas.fnx,armas.desert_eagle,armas.mp9,armas.uzi,armas.mac,armas.vector,armas.pp,armas.m1897,armas.a681,armas.kar,armas.lee,armas.win,armas.m1,armas.bar],12],
+[[armas.m500,armas.mp9,armas.uzi,armas.mac,armas.vector,armas.pp,armas.m1897,armas.m1014,armas.a681,armas.dp,armas.ak_47,armas.fal,armas.aek,armas.lee,armas.win,armas.m1,armas.bar],15],
+[[armas.m500,armas.mac,armas.vector,armas.m1897,armas.m1014,armas.a681,armas.dp,armas.saiga,armas.ak_47,armas.fal,armas.aek,armas.ar,armas.m4a1,armas.ak_12,armas.hk416,armas.acr,armas.scar,armas.xm7,armas.ia,armas.kar,armas.lee,armas.win,armas.m1,armas.bar,armas.m249],18]]
+
 objs_atu	= [0]
 
 lideres = []
@@ -49,9 +61,9 @@ criando_coisas = function(){
 		
 		randomise()
 		
-		var vid_mar = 1+global.rodada/15
-		var dan_mar = 1+global.rodada/20
-		var moe_mar = 1+global.rodada/10
+		var vid_mar = 1+global.rodada/12.5
+		var dan_mar = 1+global.rodada/17.5
+		var moe_mar = 1+global.rodada/9
 		var ply_mar = 1+(instance_number(obj_player)-1)/2
 		var ply_num = instance_number(obj_player)
 		
@@ -68,7 +80,7 @@ criando_coisas = function(){
 		
 			var vid = random_range(1*vid_mar,3*vid_mar)	* ply_mar
 			var dan = random_range(1*dan_mar,3*dan_mar)	* ply_mar
-			var moe = random_range(1,15) * ply_num
+			var moe = random_range(2,20) * ply_num
 			var vel = random_range(.8,1.8)
 			var dps = []
 		

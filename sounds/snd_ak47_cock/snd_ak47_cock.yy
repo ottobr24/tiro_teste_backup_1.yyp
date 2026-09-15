@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_ak_cock",
+  "%Name":"snd_ak47_cock",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -12,7 +12,7 @@
   "conversionMode":0,
   "duration":0.6417687,
   "exportDir":"",
-  "name":"snd_ak_cock",
+  "name":"snd_ak47_cock",
   "parent":{
     "name":"AK-47",
     "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/AK-47.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_ak_cock.wav",
+  "soundFile":"snd_ak47_cock.wav",
   "volume":1.0,
 }

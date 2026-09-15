@@ -37,12 +37,6 @@ abrindo_e_sendo_empurrada = function(){
 		var prx = instance_nearest(x,y,obj_player)
 		var dis = distance_to_object(prx)
 		
-		with(prx){
-			
-			//global.portas_abrir = instance_nearest(x,y,obj_porta)
-			
-		}
-		
 		#region Empurrando a porta
 		
 		if (!trancado and instance_exists(obj_player)){

@@ -1,4 +1,3 @@
-
 if (att){
 	
 	var objs = global.colisao_normal

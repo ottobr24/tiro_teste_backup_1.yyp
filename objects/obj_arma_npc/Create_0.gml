@@ -402,7 +402,7 @@ atira = function(){
 					}
 				}
 				
-				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and asset_get_type(som_tiro) == asset_sound) sons[0] = toca_som(som_tiro,volu*vol,300,600,,0,.20,0)
+				if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>0 and (asset_get_type(global.armas_sons[i][0]) == asset_sound or is_array(global.armas_sons[i][0]))) sons[0] = toca_som(som_tiro,volu*vol,300,600,,0,.20,1)
 				
 				fazendo_barulho(x,y,global.armas_baru[i],pai)
 				
