@@ -1110,13 +1110,10 @@ usando_o_menu = function(){
 									}
 								}
 							}
-						
-							
 						}
 						
 						seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
-						salvando()
-		
+						
 					break;
 					
 				}

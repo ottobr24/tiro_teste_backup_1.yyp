@@ -12,7 +12,7 @@ repeat(qtd){
     var _x = image_angle = 0 ? x + (margx * i) : x
     var _y = image_angle = 0 ? y : y - (margx * i)
     
-    var bloc = cria_minis(_x,_y,obj_miniportao,qtd,spr_portao_ferro,objetos.portao)
+    var bloc = cria_minis(_x,_y,obj_miniportao_ferro,qtd,spr_portao_ferro,objetos.portao)
 	
     i++
     

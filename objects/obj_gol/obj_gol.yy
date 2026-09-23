@@ -1,20 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_miniportao",
+  "%Name":"obj_gol",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_miniportao",
+  "name":"obj_gol",
   "overriddenProperties":[],
   "parent":{
-    "name":"Minis",
-    "path":"folders/Objetos/Level/Minis.yy",
+    "name":"Level",
+    "path":"folders/Objetos/Level.yy",
   },
-  "parentObjectId":{
-    "name":"obj_level_pai",
-    "path":"objects/obj_level_pai/obj_level_pai.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -32,7 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_gol",
+    "path":"sprites/spr_gol/spr_gol.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

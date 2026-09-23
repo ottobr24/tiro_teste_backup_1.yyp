@@ -3,6 +3,7 @@
 cor		= global.parts_cores[objetos.zumbi]
 velp	= global.parts_vel	[objetos.zumbi]
 distc	= global.parts_distc[objetos.zumbi]
+danos	= global.parts_danos[objetos.zumbi]
 	
 randomise()
 

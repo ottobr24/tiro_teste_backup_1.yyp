@@ -54,17 +54,19 @@ if (col){
 	
 		#region Criando particulas
 	
-		var dano_max = clamp(dano*1.5,1,10)
 		var dan = dano
 		var angt = image_angle
 		var meu_i = i
 		
-		var cor		= existe_variavel("cor"		,,obj)	?		existe_variavel("cor"	,,obj) : c_white
-		var velp	= existe_variavel("velp"	,,obj)	? vel * existe_variavel("velp"	,,obj) : vel
-		var distc	= existe_variavel("distc"	,,obj)	?		existe_variavel("distc"	,,obj) : 180
+		var cor		= existe_variavel("cor"		,,obj)>-1	?			existe_variavel("cor"	,,obj) : c_white
+		var velp	= existe_variavel("velp"	,,obj)>-1	? vel *		existe_variavel("velp"	,,obj) : vel
+		var distc	= existe_variavel("distc"	,,obj)>-1	?			existe_variavel("distc"	,,obj) : 180
+		var dano2	= existe_variavel("danos"	,,obj)>-1	? dano *	existe_variavel("danos"	,,obj) : dano / 2
 		
-		seta_part("cria_parede",x-_x,y-_y,[dano/2,dano_max],spr_particula_parede,cor,direction,[velp,velp],[2,2.5],[2,2.5],distc,[velp/2,velp/2],0,0)
-	
+		var dano_max = dano2 = 0 ? 0 : dano2 * 1.5
+		
+		seta_part("cria_parede",x-_x,y-_y,[dano2,dano_max],spr_particula_parede,cor,direction,[velp,velp],[2,2.5],[2,2.5],distc,[velp/2,velp/2],0,0)
+		
 		#endregion
 	
 		#region Mexendo portas e entre outros
@@ -84,24 +86,27 @@ if (col){
 			}
 		}
 		
-		if (achando_na_array(global.portas,obj.object_index)){
+		if (existe_variavel("pai",,obj)){
 		
 			with(obj){
-		
-				with(pai){
+				
+				if (instance_exists(pai) and achando_na_array(global.portas,pai.object_index)>-1){
+					
+					with(pai){
 			
-	                trancado = 0
+		                trancado = 0
                 
-					if (global.armas_nome_tipo[global.armas_tipo[meu_i]] = "Shotgun") trancado = 0
+						if (global.armas_nome_tipo[global.armas_tipo[meu_i]] = "Shotgun") trancado = 0
 			
-					var ang = 180
-					var ang_min = image_angle-ang+360
-					var ang_max = image_angle//+ang
+						var ang = 180
+						var ang_min = image_angle-ang+360
+						var ang_max = image_angle//+ang
 
-					var fo = angt = clamp(angt,min(ang_min,ang_max),max(ang_min,ang_max)) ? dan*2 : -dan*2
+						var fo = angt = clamp(angt,min(ang_min,ang_max),max(ang_min,ang_max)) ? dan*2 : -dan*2
 			
-					if (!trancado) frc += fo
+						if (!trancado) frc += fo
 			
+					}
 				}
 			}
 		}

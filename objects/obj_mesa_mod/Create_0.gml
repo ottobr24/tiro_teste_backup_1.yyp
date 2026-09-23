@@ -5,6 +5,7 @@ vida = 100000000
 cor		= global.parts_cores[objetos.mesa_mod]
 velp	= global.parts_vel	[objetos.mesa_mod]
 distc	= global.parts_distc[objetos.mesa_mod]
+danos	= global.parts_danos[objetos.mesa_mod]
 	
 cade_alp = 0
 tecla_abrir = ["F"		,gp_face2	]

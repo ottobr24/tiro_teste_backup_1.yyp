@@ -87,6 +87,7 @@ desenha_as_coisas = function(){
 		var ind		=	particulas[i][11]
 		var ang		=	particulas[i][12]
 		var co		=	particulas[i][4]
+		
 		var alp		=	1-(alp2*(tm-60))
     
 		if (alp>0.15){

@@ -80,13 +80,16 @@ segue_player = function(){
 		var cx = x//-cw
 		var cy = y//-ch
 		
-		cx = clamp(cx,0,room_width -cw)
-		cy = clamp(cy,0,room_height-ch)
+		var cmw2 = roo = 1 ? max(cmw,room_width ) : room_width
+		var cmh2 = roo = 1 ? max(cmh,room_height) : room_height
+		
+		cx = clamp(cx,0,cmw2-cw)
+		cy = clamp(cy,0,cmh2-ch)
 		
 		camera_set_view_pos(view_camera[0],cx,cy)
 		
-		x = clamp(cx,0+pose[0],room_width +pose[0])
-		y = clamp(cy,0+pose[1],room_height+pose[1])
+		x = clamp(cx,pose[0],cmw2+pose[0])
+		y = clamp(cy,pose[1],cmh2+pose[1])
 		
 		if ((!global.debug or !keyboard_check(vk_shift)) and instance_number(obj_player)>=1){
 			

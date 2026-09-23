@@ -29,7 +29,7 @@ abrindo_e_sendo_empurrada = function(){
 		perto = 0
 		cade_alp = clamp(cade_alp,0,1)
 	
-		var alvos = [obj_player,obj_inimigo,obj_zumbi_pai]
+		var alvos = [obj_player,obj_inimigo,obj_zumbi_pai,obj_bola]
 		var dist = [1000,100]
 		var tec_a = keyboard_check_pressed(ord("F"))
 		var chu_t = 30
@@ -40,7 +40,9 @@ abrindo_e_sendo_empurrada = function(){
 		#region Empurrando a porta
 		
 		if (!trancado and instance_exists(obj_player)){
-		
+			
+			#region Trancando a porta
+			
 			with(obj_inimigo){
 			
 				for (var f =0;f<array_length(other.filhos);f++){
@@ -66,15 +68,17 @@ abrindo_e_sendo_empurrada = function(){
 					}
 				}
 			}
-		
+			
+			#endregion
+			
 			for (var a =0;a<array_length(alvos);a++){
 		
 				if (instance_exists(alvos[a])){
-		
+				
 					var obj = instance_nearest(x,y,alvos[a])
 					
-					var h = obj.hspd
-					var v = obj.vspd
+					var h = obj ? obj.hspd : 0
+					var v = obj ? obj.vspd : 0
 			
 					var qtd = 0
 					var col = 0
@@ -90,7 +94,9 @@ abrindo_e_sendo_empurrada = function(){
 							}
 						}
 					}
-		
+					
+					#region Empurrando de vdd
+					
 					if (place_meeting(x,y,alvos[a]) and col){
 			
 						var dira = point_direction(0,0,h,v)
@@ -103,7 +109,9 @@ abrindo_e_sendo_empurrada = function(){
 					}
 		
 					qtd = 0
-		
+					
+					#endregion
+					
 				}
 			}
 		}else{
@@ -198,6 +206,7 @@ abrindo_e_sendo_empurrada = function(){
 					som[0] = toca_som(snd_porta_abre,1,15,50,,,.05)
 					fazendo_barulho(x,y,15,id)
 					mudando = 1
+					
 					if (ima_org = 90) abre_dir = x>prx.x ? -1 : 1
 					if (ima_org =  0) abre_dir = y>prx.y ? -1 : 1
 			

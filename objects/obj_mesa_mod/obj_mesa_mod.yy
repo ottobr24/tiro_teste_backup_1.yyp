@@ -10,8 +10,8 @@
   "name":"obj_mesa_mod",
   "overriddenProperties":[],
   "parent":{
-    "name":"Level",
-    "path":"folders/Objetos/Level.yy",
+    "name":"Moveis",
+    "path":"folders/Objetos/Level/Moveis.yy",
   },
   "parentObjectId":{
     "name":"obj_level_pai",

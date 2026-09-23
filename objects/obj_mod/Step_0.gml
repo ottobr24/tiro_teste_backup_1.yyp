@@ -18,6 +18,10 @@ var mod_tec = !cn ? (colidindo > -2 and mouse_check_button_pressed(mb_left)) or 
 
 if (!lista and alp){
 	
+	#region Ajusta camera
+	
+	#endregion
+	
 	#region Indo da esquerda pra direita
 	
 	if (mas_tec){

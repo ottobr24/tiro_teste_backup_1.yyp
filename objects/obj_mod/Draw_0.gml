@@ -2,8 +2,12 @@ if (!alp) exit;
 
 #region Variaveis
 
-var gw = room_width 
-var gh = room_height
+var gw = 1280 //max(1280,room_width) 
+var gh = 720  //max(room_height,1)
+
+var gw_esc = gw / 1280
+var gh_esc = gh / 720
+
 var cn = pai.controle
 
 var spr = global.armas_sprt[i]
@@ -23,8 +27,8 @@ var spryo = sprite_get_yoffset(spr)
 var mod_esc = sprxs / 4
 var mod_tec = !cn ? (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter)) : gamepad_button_check_pressed(0,gp_face1)
 
-var moe_x = 48
-var moe_y = 664
+var moe_x = 48 * gw_esc
+var moe_y = 664 * gh_esc
 
 var moe_tex_x = 32
 
@@ -506,6 +510,8 @@ if (lista){
 }
 
 if ( alp and !colidindo and !enter) window_set_cursor(cr_arrow)
+
+draw_text(60,20,[gw,gh])
 
 draw_set_alpha(1)
 draw_set_font(-1)

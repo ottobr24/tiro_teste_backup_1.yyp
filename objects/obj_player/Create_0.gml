@@ -5,6 +5,7 @@ randomise()
 cor		= global.parts_cores[objetos.player]
 velp	= global.parts_vel	[objetos.player]
 distc	= global.parts_distc[objetos.player]
+danos	= global.parts_danos[objetos.player]
 	
 hspd		=	0
 vspd		=	0
@@ -268,8 +269,6 @@ controla_arma = function(){
 			var prs_tec = controle ? gamepad_button_check_pressed(0,gp_shoulderrb) or !gamepad_button_check(0,gp_shoulderrb) : mouse_check_button_pressed(mb_left) or !mouse_check_button(mb_left)
 	        var cx2 = 8
 	        var cy2 = 8
-        
-	        var global.colisao_normal = [obj_miniporta,obj_miniparede]
         
 			var x1 = x + lengthdir_x(cx2 + 4,direction) 
 	        var y1 = y + lengthdir_y(cy2 + 4,direction)

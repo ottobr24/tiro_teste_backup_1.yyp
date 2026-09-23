@@ -10,7 +10,7 @@ aberto_dist = 64
 aberto = 0
 
 checa_tempo = 60
-checa_timer = checa_tempo
+checa_timer = checa_tempo / 2
 
 var qtd = 2
 var i = 0
@@ -35,6 +35,7 @@ repeat(qtd){
     
 	bloc.cima = i
 	bloc.imx_org = image_xscale * cima_imx / qtd
+	bloc.image_xscale = bloc.imx_org
 	
 	filhos[i] = bloc
 	
