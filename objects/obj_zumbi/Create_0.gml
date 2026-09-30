@@ -1,11 +1,22 @@
 #region Variaveis
 
+randomise()
+
+var vid_mar = 1+global.rodada/12.5
+var ply_mar = 1+(instance_number(obj_player)-1)/2
+var ply_num = instance_number(obj_player)
+
+var vid = random_range(1*vid_mar,3*vid_mar)	* ply_mar
+var moe = random_range(2,20) * ply_num
+			
+event_inherited()
+
 cor		= global.parts_cores[objetos.zumbi]
 velp	= global.parts_vel	[objetos.zumbi]
 distc	= global.parts_distc[objetos.zumbi]
 danos	= global.parts_danos[objetos.zumbi]
-	
-randomise()
+
+moedas = moe
 
 hspd =0 
 vspd =0
@@ -13,7 +24,7 @@ vspd =0
 vela = random_range(.8,1.8)
 vel = 0
 
-vida_max = 20
+vida_max = vid
 vida = vida_max
 
 dano = 0
@@ -28,17 +39,6 @@ alvoy = 0
 xult = x
 yult = y
 
-caminho = path_add()
-cria_caminho = 1
-cria_caminho_tempo = 60*3
-cria_caminho_timer = cria_caminho_tempo
-caminho_dist = random_range(48,80)
-criou_caminho = 0
-
-ataque_tempo = 90
-ataque_timer = ataque_tempo
-ataque_dist = random_range(56,96)
-
 dano_dmg = 0
 
 drops = []
@@ -46,15 +46,13 @@ drops = []
 colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
 
 braco_dir = direction
+braco_spr = spr_zumbi_braco
 ii = 0
 
-ordem = instance_number(obj_zumbi) % 3
-numbr = 0
-lider = -4
-
 image_alpha = 0
-
 ataque_dist = clamp(ataque_dist,caminho_dist+1,infinity)
+
+vermelho = 0
 
 #endregion
 
@@ -68,7 +66,7 @@ muda_estados = function (se = 1,mo = 1){
     
     var est = estado
 	var seg = 1
-	var mor = vida<=0
+	var mor = vida<=0 and !vermelho
 	var pau = global.pause
 	var ests = [se and seg 		,mo and mor 	,pau		 ]
     var estz = [estado_seguindo	,estado_morrendo,estado_pause]
@@ -89,8 +87,12 @@ muda_estados = function (se = 1,mo = 1){
 
 sofrendo_dano = function(){
 	
+	vermelho--
+	vermelho = clamp(vermelho,0,1000)
+	
 	if (dano){
 		
+		vermelho += 3
 		vida-=dano
 		dano = 0
 		
@@ -108,8 +110,9 @@ movendo = function(_x = -1,_y = -1){
 	var ply = instance_nearest(x,y,obj_player)
 		
 	cria_caminho_timer--
+	caminho_dist = clamp(caminho_dist,ataque_dist+1,100)
 	
-	if (point_distance(alvox,alvoy,ply.x,ply.y)>caminho_dist or cria_caminho or !cria_caminho_timer){
+	if (distance_to_object(ply) > caminho_dist or cria_caminho or !cria_caminho_timer){
 	
 		var diag = 1
 		var map = obj_controlador.mapa
@@ -150,13 +153,6 @@ colidindo = function(){
 
 #region Desenhando
 
-desenhando = function(){
-	
-	image_angle = point_direction(0,0,hspd,vspd)
-	draw_self()
-	
-}
-
 bracos = function(){
 	
 	if !instance_exists(obj_player) exit;
@@ -173,14 +169,12 @@ bracos = function(){
 	var y1 = y + lengthdir_y(8	,braco_dir) + lengthdir_y(8	,braco_dir+90)
 	var y2 = y - lengthdir_y(8	,braco_dir) + lengthdir_y(8	,braco_dir-90)
 	
-	draw_set_colour(image_blend)
 	draw_set_alpha(image_alpha)
 	
-	draw_sprite_ext(spr_zumbi_braco,0,_x,y1,1,1,braco_dir-5,c_green,image_alpha)
-	draw_sprite_ext(spr_zumbi_braco,0,_x,y2,1,1,braco_dir+5,c_green,image_alpha)
+	draw_sprite_ext(braco_spr,image_index,_x,y1,1,1,braco_dir-5,c_white,image_alpha)
+	draw_sprite_ext(braco_spr,image_index,_x,y2,1,1,braco_dir+5,c_white,image_alpha)
 	
 	draw_set_alpha(1)
-	draw_set_colour(-1)
 
 }
 
@@ -205,7 +199,6 @@ estado_seguindo = function(){
 			
 			if (!ataque_timer){
 				
-				image_blend = c_red
 				obj.dano+=dano_dmg
 				ataque_timer = ataque_tempo
 				global.shake+=dano_dmg
@@ -226,28 +219,8 @@ estado_seguindo = function(){
 }
 	
 estado_morrendo = function(){
-    
-	randomise()
-	var chan_a = irandom_range(0,100)
 	
-	var chac_e = 94 - 3 * (instance_number(obj_player)-1)
-	
-	if (chan_a>=chac_e){
-		
-		var armi = irandom_range(0,array_length(drops)-1)
-		armi = clamp(armi,0,array_length(drops)-1)
-		
-		var armai = drops[armi]
-		
-		var obj = instance_create_layer(x,y,"Particulas",obj_arma_item)
-		obj.i = armai
-		
-	}
-	
-	global.dinheiro += moedas
-	
-	instance_destroy()
-	path_delete(caminho)
+    morrendo()
 	
 }
 

@@ -1,16 +1,14 @@
 cria_tempo = 30
-cria_timer = cria_tempo
+cria_timer = [30]
 
 colisao = [] array_copy(colisao,0,global.colisao_normal,0,array_length(global.colisao_normal))
 
 pontos = []
 
-objs_tem	= [0,47	,44,42,39,37,35,34,34,33,32,31,30,29,28,26,25,24,23	,22	,20	,19	,18	,17	,16	,15	]
-objs_qtd	= [0,10	,15,20,24,31,37,41,44,50,55,59,70,76,81,86,91,97,104,110,118,125,134,141,150,165]
+objs_tem	= [[0,0],[42,0],[40,0],[38,0],[37,0],[35,140],[35,133],[34,156],[34,150],[33,143],[32,140],[31,137],[30,130],[29,120],[28,114],[26,110],[25,102],[24,100],[23,100],[22,96],[20,92],[19,89],[18,86],[17,84],[16 ,81],[15 ,77]]
+objs_qtd	= [[0,0],[10,0],[17,0],[22,0],[27,0],[31,1	],[36,2	 ],[41,3  ],[45,3  ],[49,4  ],[55,4  ],[60,5  ],[63,6  ],[66,7  ],[69,8  ],[71,9  ],[74,10 ],[76,11 ],[80,11 ],[83,12],[87,13],[91,14],[95,15],[99,16],[105,17],[113,18]]
 
 objs_drps	= [
-
-
 
 [[armas.colt,armas.rhino,armas.m1911],1],
 [[armas.colt,armas.rhino,armas.m1911,armas.glock,armas.m9,armas.usp],5],
@@ -55,79 +53,98 @@ setando_pontos = function(){
 
 criando_coisas = function(){
 	
-	cria_timer -= !global.pause
-	
-	if (!cria_timer and objs_atu[0]<objs_qtd[rod]){
+	for (var z=0;z<array_length(objs_qtd[rod]);z++){
 		
-		randomise()
+		if (array_length(cria_timer)	<= z ) cria_timer[z] = cria_tempo
+		if (array_length(objs_atu)		<= z ) objs_atu[z] = 0
 		
-		var vid_mar = 1+global.rodada/12.5
-		var dan_mar = 1+global.rodada/17.5
-		var moe_mar = 1+global.rodada/9
-		var ply_mar = 1+(instance_number(obj_player)-1)/2
-		var ply_num = instance_number(obj_player)
+		cria_timer[z]--
 		
-		var qtd = objs_atu[0] + 2 <= objs_qtd[rod] ? irandom_range(1,2) : 1
-		var lug = irandom_range(0,array_length(pontos)-1)
-		var lideres_total = 5
+		if (!cria_timer[z] and objs_atu[z]<objs_qtd[rod][z]){
 		
-		var _x = pontos[lug].x
-		var _y = pontos[lug].y 
+			randomise()
 		
-		repeat(qtd){
+			var vid_mar = 1+global.rodada/12.5
+			var dan_mar = 1+global.rodada/17.5
+			var moe_mar = 1+global.rodada/9
+			var ply_mar = 1+(instance_number(obj_player)-1)/2
+			var ply_num = instance_number(obj_player)
 		
-			var alet = random_range(.6,1.4)
+			var qtd = 1//objs_atu[z] + 2 <= objs_qtd[rod][z] ? irandom_range(1,2) : 1
+			var lug = irandom_range(0,array_length(pontos)-1)
+			var lideres_total = 5
 		
-			var vid = random_range(1*vid_mar,3*vid_mar)	* ply_mar
-			var dan = random_range(1*dan_mar,3*dan_mar)	* ply_mar
-			var moe = random_range(2,20) * ply_num
-			var vel = random_range(.8,1.8)
-			var dps = []
+			var _x = pontos[lug].x
+			var _y = pontos[lug].y 
 		
-			for (var d=0;d<array_length(objs_drps);d++){
+			repeat(qtd){
+		
+				var alet = random_range(.6,1.4)
+		
+				var vid = random_range(1*vid_mar,3*vid_mar)	* ply_mar
+				var dan = random_range(1*dan_mar,3*dan_mar)	* ply_mar
+				var moe = random_range(2,20) * ply_num
+				var vel = random_range(.8,1.8)
+				var dps = []
+		
+				for (var d=0;d<array_length(objs_drps);d++){
 			
-				var tmd	= objs_drps[d]
-				var ult	= objs_drps[d][1]
+					var tmd	= objs_drps[d]
+					var ult	= objs_drps[d][1]
 			
-				if (global.rodada<=ult or d = array_length(objs_drps)-1){
+					if (global.rodada<=ult or d = array_length(objs_drps)-1){
 				
-					array_copy(dps,0,objs_drps[d][0],0,array_length(objs_drps[d][0]))
-					break;
+						array_copy(dps,0,objs_drps[d][0],0,array_length(objs_drps[d][0]))
+						break;
 					
+					}
 				}
-			}
-		
-			var obj = instance_create_layer(_x,_y,"Pessoas",obj_zumbi)
-		
-			obj.vida = vid 
-			obj.vida_max = vid
-			obj.vela = vel
-			obj.dano_dmg = dan
-			obj.drops = dps
-			obj.moedas = moe
-			obj.numb = objs_atu[0]
-			obj.orde = objs_atu[0] % lideres_total
 			
-			if (objs_atu[0]>lideres_total){
+				var armi = irandom_range(0,array_length(dps)-1)
+				armi = clamp(armi,0,array_length(dps)-1)
 				
-				obj.lider = lideres
+				var armai = dps[armi]
 				
-			}else{
-				
-				lideres[objs_atu[0]] = obj
-				
-			}
+				var obj = instance_create_layer(_x,_y,"Pessoas",global.zumbis[z])
 		
-			cria_timer = objs_tem[rod]
-			objs_atu[0] ++
+				obj.dano_dmg = dan
+				obj.drops = dps
+				obj.moedas = moe
+				obj.numb = objs_atu[z]
+				obj.orde = objs_atu[z] % lideres_total
+				obj.armai = armai
+			
+				if (objs_atu[z]>lideres_total){
+				
+					obj.lider = lideres
+				
+				}else{
+				
+					lideres[objs_atu[z]] = obj
+				
+				}
 		
-		}	
+				cria_timer[z] = objs_tem[rod][z]
+				objs_atu[z]++
+		
+			}	
+		}
 	}
 }
 
 passando_as_rodadas = function(){
 	
-	if (objs_atu[0] >= objs_qtd[rod] and !instance_exists(obj_zumbi_pai)){
+	var qtd1 = 0
+	var qtd2 = 0
+	
+	for (var z =0;z<array_length(objs_qtd[rod]);z++){
+		
+		qtd1 += objs_atu[z]
+		qtd2 += objs_qtd[rod][z]
+		
+	}
+	
+	if (qtd1 >= qtd2 and !instance_exists(obj_zumbi_pai)){
 		
 		rod_dir = clamp(sign(rod_muda_timer),0,1)
 		
@@ -160,7 +177,7 @@ passando_as_rodadas = function(){
 					}					
 				}
 				
-				objs_atu[0] = 0
+				objs_atu = [0]
 				lideres = []
 				
 			}

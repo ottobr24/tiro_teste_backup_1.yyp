@@ -6,7 +6,9 @@ cor		= global.parts_cores[objetos.player]
 velp	= global.parts_vel	[objetos.player]
 distc	= global.parts_distc[objetos.player]
 danos	= global.parts_danos[objetos.player]
-	
+
+vermelho = 0
+
 hspd		=	0
 vspd		=	0
 			
@@ -122,15 +124,22 @@ visao_inicio()
 
 sofrendo_dano = function(){
 	
+	vermelho--
+	vermelho = clamp(vermelho,0,5)
+	
+	if (vermelho) image_blend = c_red
+	
 	if (dano){
 		
-		image_blend = c_red
 		vida-=dano
+		vermelho += 3
 		
 		obj_controlador.vib_e += dano
 		obj_controlador.vib_d += dano
 		
 		dano = 0
+		
+		global.shake += 10
 		
 	}
 }
@@ -158,7 +167,7 @@ movendo = function(andar=1,equip=1){
 	
     if (!controle) direction = point_direction(0,0,(d-a)*vel,(s-w)*vel	)
     
-	if ( controle and (rh!=clamp(rh,-.6,.6) or rv!=clamp(rv,-.6,.6)) and !gamepad_button_check(0,gp_shoulderlb)){ 
+	if ( controle and abs(rh)>.6 or abs(rv)>.6 and !gamepad_button_check(0,gp_shoulderlb)){ 
 		
 		direction = point_direction(0,0,rh		,rv			)
 		

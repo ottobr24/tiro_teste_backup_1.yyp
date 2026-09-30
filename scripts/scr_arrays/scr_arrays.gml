@@ -21,15 +21,13 @@ function retira_da_array(ar,re){
 
 function adiciona_na_array(ar,ad){
 	
-	var i=0
 	var ar2 = [] array_copy(ar2,0,ar,0,array_length(ar))
 	var ad2 = !is_array(ad) ? [ad] : ad
 	
-	repeat(array_length(ad2)){
+	for (var i=0;i<array_length(ad2);i++){
 		
 		var tmd = array_length(ar2)	
 		ar2[tmd] = ad2[i]
-		i++
 		
 	}
 	

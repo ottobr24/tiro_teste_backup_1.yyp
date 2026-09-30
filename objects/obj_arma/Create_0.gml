@@ -175,9 +175,6 @@ mirando = function(){
 			mx += rh*vel
 			my += rv*vel
 			
-			mx = clamp(mx,50,display_get_gui_width ()-50)
-			my = clamp(my,50,display_get_gui_height()-50)
-	
 			direction = point_direction(_x,_y,mx,my)
 			pai.direction = direction
 			
@@ -218,8 +215,8 @@ mirando = function(){
 		
 	}
 	
-	mx = clamp(mx,50,display_get_gui_width ()-50)
-	my = clamp(my,50,display_get_gui_height()-50)
+	mx = clamp(mx,10,display_get_gui_width ()-10)
+	my = clamp(my,10,display_get_gui_height()-10)
 	
 }
 

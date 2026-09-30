@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_bala_caindo_14",
   "parent":{
-    "name":"Balas",
-    "path":"folders/Sons/Armas/Balas.yy",
+    "name":"Capsulas",
+    "path":"folders/Sons/Armas/Capsulas.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -1,5 +1,3 @@
-//seta_part("cria_tiro",x,y,[1,1],spr_capsula,c_white,direction ,[4,4],[1,1.25],[1,1.25],45,[4/2,4/2],0,0)
-					
 image_blend = !controle ? c_white : c_purple
 depth = -y
 timer++

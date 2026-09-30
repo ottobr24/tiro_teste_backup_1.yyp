@@ -4,7 +4,7 @@ if (!place_meeting(x,y,obj_camera)) exit;
 
 var obj = instance_nearest(x,y,obj_player)
 		
-draw_self() //desenhando()
+desenhando()
 
 bracos()
 

@@ -68,8 +68,6 @@ segue_player = function(){
 			ind = 0
 			seg=!seg
 			
-			//if (!instance_exists(alvos[seg][ind])) seg=!seg
-			
 		}
 		
 		if (keyboard_check_pressed(vk_left )) ind--
@@ -80,8 +78,8 @@ segue_player = function(){
 		var cx = x//-cw
 		var cy = y//-ch
 		
-		var cmw2 = roo = 1 ? max(cmw,room_width ) : room_width
-		var cmh2 = roo = 1 ? max(cmh,room_height) : room_height
+		var cmw2 = roo = 1 ? max(cmw,room_width ) : room_width  + pose[0]
+		var cmh2 = roo = 1 ? max(cmh,room_height) : room_height + pose[1]
 		
 		cx = clamp(cx,0,cmw2-cw)
 		cy = clamp(cy,0,cmh2-ch)
@@ -117,8 +115,8 @@ segue_player = function(){
 				var camera_tmd = x2 + y2
 				var camera_rel = camera_tmd + camera_mag
 
-				var x4 = clamp(x1,-camera_rel,room_width  - camera_rel	)
-				var y4 = clamp(y1,-camera_rel,room_height - camera_rel/(cmw/cmh)	)
+				var x4 = clamp(x1,-camera_rel + pose[0],room_width  - camera_rel			+pose[0])
+				var y4 = clamp(y1,-camera_rel + pose[1],room_height - camera_rel/(cmw/cmh)	+pose[1])
 
 				cesc[cap][roo] = camera_rel/cmw
 				cesc[cap][roo] = abs(clamp(cesc[cap][roo],.5,room_width/cmw))
