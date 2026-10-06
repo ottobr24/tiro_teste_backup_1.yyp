@@ -19,7 +19,7 @@ som = [0,0,0,0,0]
 sou_eu = 0 
 perto = 0
 
-som[4] = toca_som(snd_porta_chiado,1,15,50,,1,.05)
+som[4] = toca_som(snd_porta_chiado,1,15,50,,0,.05)
 audio_pause_sound(som[4])
 			
 abrindo_e_sendo_empurrada = function(){

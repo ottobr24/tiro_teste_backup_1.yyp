@@ -1,3 +1,21 @@
+var kcp = keyboard_check_pressed
+var gbp = gamepad_button_check_pressed
+var mcp = mouse_check_button_pressed
+var o = ord
+
+var key = kcp(vk_anykey)
+var mou = mxp != mouse_x or myp != mouse_y
+var con = gbp(0,gp_face1) or gbp(0,gp_padd) or gbp(0,gp_padu) or gbp(0,gp_padl) or gbp(0,gp_padr)
+
+if (key) controles_mod = 0
+if (con) controles_mod = 1
+if (mou) controles_mod = 2
+
+mxp = mouse_x
+myp = mouse_y
+
+show_debug_message([key,con,mou])
+
 if (!alp) exit;
 
 cria_botoes()
@@ -349,8 +367,8 @@ if (lista){
 	
 	if (mod_tec){
 		
-		show_debug_message("a")
-		
+		//toca_som(snd_menu_enter,1,10000,10000,,,.1)
+						
 		if (listan = 2){
 		
 			for (var s=0;s<array_length(mods_atual);s++){

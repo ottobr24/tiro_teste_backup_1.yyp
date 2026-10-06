@@ -14,7 +14,7 @@ muda_arma = function(){
 		image_blend = c_gray
 		
 		if (mouse or setas){
-		
+			
 			image_blend = make_colour_rgb(64,64,64)
 		
 			var obj = obj_mod

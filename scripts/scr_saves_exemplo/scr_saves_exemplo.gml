@@ -120,3 +120,5 @@ function carregando_idioma(){
 	#endregion
 	
 }
+
+//file_delete(global.saves[0][0])

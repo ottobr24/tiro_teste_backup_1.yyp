@@ -1,4 +1,3 @@
-
 #region Variaveis
 
 if (!global.cria_inimigos){
@@ -374,6 +373,8 @@ movendo = function(_x = -1,_y = -1,seg = 0){
 }
 
 achando_o_caminho = function(){
+	
+	exit;
 	
 	if (x = xult and y = yult){ 
 		

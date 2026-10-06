@@ -21,6 +21,8 @@ compra_arma = function(){
 		
 		if (mouse_check_button_pressed(mb_left) or setas){
 			
+			toca_som(snd_menu_enter,1,10000,10000,,,.1)
+					
 			global.armas_aval[i] = 1
 			global.arma = i
 					

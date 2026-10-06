@@ -566,6 +566,8 @@ usando_o_menu = function(){
 	
 	if (enter){
 		
+		toca_som(snd_menu_enter,1,10000,10000)
+		
 		switch(menu_index){
 			
 			#region Inicio

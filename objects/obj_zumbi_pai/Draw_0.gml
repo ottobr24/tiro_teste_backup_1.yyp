@@ -3,9 +3,9 @@ image_alpha = 1
 if (!place_meeting(x,y,obj_camera)) exit;
 
 var obj = instance_nearest(x,y,obj_player)
-		
+var ply = obj
+			
 desenhando()
-
 bracos()
 
 if (point_distance(x,y,obj.x,obj.y)<ataque_dist){

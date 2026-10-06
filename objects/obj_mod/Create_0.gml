@@ -29,7 +29,11 @@ ind = 0
 criou = 0
 
 mods_atual = []
+controles_mod = 0
 
+mxp = mouse_x
+myp = mouse_y
+	
 cria_botoes = function(){
 	
 	if (!criou){

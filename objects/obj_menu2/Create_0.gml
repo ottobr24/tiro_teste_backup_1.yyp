@@ -1,5 +1,7 @@
 #region Extras
 
+toca_som(snd_musica_menu,3,10000,10000,,1)
+
 if (array_length(global.armas_mods) = 0){
 
 	for (var i1=0;i1<2;i1++){
@@ -381,8 +383,8 @@ desenha_texto = function(){
 	var ordemx = 0
 	var ordemy = 0
 	
-	var esquerda	= global.controle ? gamepad_button_check_pressed(0,gp_padl) : (keyboard_check_pressed(vk_left ))
-	var direita		= global.controle ? gamepad_button_check_pressed(0,gp_padr) : (keyboard_check_pressed(vk_right))
+	var esquerda	= global.controle = 1 ? gamepad_button_check_pressed(0,gp_padl) : (keyboard_check_pressed(vk_left ))
+	var direita		= global.controle = 1 ? gamepad_button_check_pressed(0,gp_padr) : (keyboard_check_pressed(vk_right))
 	
 	#endregion
 	

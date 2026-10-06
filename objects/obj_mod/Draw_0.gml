@@ -138,7 +138,9 @@ if (i<array_length(global.armas_mods[0]) and alp){
 			
 			var mod_x = sprx+mod_x1*sprxs-((sprw*sprxs)/2)
 			var mod_y = spry+mod_y1*sprys-((sprh*sprys)/2)
-			var col = point_in_circle(mouse_x,mouse_y,mod_x,mod_y,abs(mod_esc)) or index = p
+			
+			var col_mou = point_in_circle(mouse_x,mouse_y,mod_x,mod_y,abs(mod_esc) * 3)
+			var col = col_mou or index = p
 			
 			var cor = c_white
 			pontos = []
@@ -245,15 +247,10 @@ if (i<array_length(global.armas_mods[0]) and alp){
 					
 					for (var b=0;b<array_length(ids[p]);b++){
 					
-						if(deb)show_message(idsa)
-						if(deb)show_message(bloq[h][0])
-						if(deb)show_message(b)
-							
 						if (achando_na_array(idsa,bloq[h][0])>-1){
 						
 							bqtd++
 							array_delete(idsa,achando_na_array(idsa,bloq[h][0]),1)
-							//bloqueados[h][achando_na_array(idsa,bloq[h][0])] = 1
 							
 						}
 					}
@@ -264,18 +261,25 @@ if (i<array_length(global.armas_mods[0]) and alp){
 			
 			if (!global.armas_aval[i]) acha = 1
 			
-			deb = keyboard_check_pressed(vk_f1) and p = 8
+			deb = keyboard_check_pressed(vk_f1)// and p = 8
+			var deb2 = 0
 			
-			if (lista = p+1 and global.armas_aval[i] = 1) cor = make_colour_rgb(200,200,0)
+			if (lista = p+1 and global.armas_aval[i] = 1){ 
+				
+				cor = make_colour_rgb(200,200,0)
+				deb2 = 1
+				
+			}
 			
 			#region Muda cor
 			
 			if (col){ //toca no ponto
 				
 				index = p
-				if (point_in_circle(mouse_x,mouse_y,mod_x,mod_y,abs(mod_esc))) colidindo = 1
-				cor = c_yellow
-			
+				if (col_mou) colidindo = 1
+				if (controles_mod !=2 or col_mou) cor = c_yellow
+				deb2 = 2
+				
 			}
 			
 			mod_tec = (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter) or gamepad_button_check_pressed(0,gp_face1))
@@ -292,12 +296,14 @@ if (i<array_length(global.armas_mods[0]) and alp){
 
 				if (col){
 	
-					if ( point_in_circle(mouse_x,mouse_y,mod_x,mod_y,abs(mod_esc))) window_set_cursor(cr_drag)
+					if (col_mou) window_set_cursor(cr_drag)
 				
 					if (mod_tec and colidindo!=-2){
 						
 						if (lista != p+1 and !enter){
 				
+							if (global.zumbi) toca_som(snd_menu_enter,1,10000,10000,,,.1)
+						
 							lista = p+1
 							listai = mods_atual[lista-1]
 						
@@ -510,8 +516,6 @@ if (lista){
 }
 
 if ( alp and !colidindo and !enter) window_set_cursor(cr_arrow)
-
-draw_text(60,20,[gw,gh])
 
 draw_set_alpha(1)
 draw_set_font(-1)

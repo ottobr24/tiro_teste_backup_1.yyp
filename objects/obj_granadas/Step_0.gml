@@ -86,6 +86,7 @@ for (var b=0;b<array_length(colisao);b++){
 				
 				var grd = instance_create_layer(x,y,layer,obj_granadas_exp)
 				grd.sprite_index = spr_granada_exp
+				grd.direction = image_angle
 				grd.image_xscale = 2
 				grd.image_yscale = 2
 				grd.dano = 100

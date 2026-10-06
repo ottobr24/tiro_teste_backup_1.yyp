@@ -13,6 +13,8 @@ tecla_texto = ["F"		,"B"		]
 tecla_chuta = [vk_space	,gp_face2	]
 pai = -4
 
+vai = 0
+			
 visao_inicio()
 
 abrindo_a_modificacao = function(){
@@ -34,24 +36,44 @@ abrindo_a_modificacao = function(){
 		if (dist<dist_total and por and vis) cade_alp += .05
 		if (dist<dist_total and por and vis) cade_alp -= .025
 				 
-		if (dist<dist_total and por and vis and tec_a){
+		if ((dist<dist_total and por and vis and tec_a) or (vai)){
 			
 			pai = alvo
-			
-			global.pause = 2
-			obj_camera.roo = 1
 			
 			var i = pai.armai
 			var arm = pai.arma
 			var qt = pai.qtd
 			
+			if (!instance_exists(arm)){
+				
+				with(obj_player){
+					
+					controla_arma()
+					
+					i	= armai
+					arm = arma
+					qt	= qtd
+			
+				}
+			}
+			
+			global.pause = 2
+			obj_camera.roo = 1
+			cade_alp = 1
+			
 			var mo = instance_create_layer(x,y,"Modificacao",obj_mod)
 			mo.alp = 1
 			mo.pai = pai
 			mo.i = i
+			mo.mods_atual = []//,0,arm.mods,0,array_length(arm.mods))
 			
-			array_copy(mo.mods_atual,0,arm.mods,0,array_length(arm.mods))
-							
+			if (instance_exists(arm)){ 
+				
+				array_copy(mo.mods_atual,0,arm.mods,0,array_length(arm.mods))
+				vai = 0
+				
+			}
+			
 			for (var m=0;m<array_length(global.armas_mods[qt][i]);m++){
 			
 				var mod_i = global.armas_mods[qt][i][m]
@@ -65,6 +87,9 @@ abrindo_a_modificacao = function(){
 				mo.pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4,ptm5]
 			
 			}
+			
+			if (vai) instance_destroy(mo)
+			
 		}	
 	}
 }
