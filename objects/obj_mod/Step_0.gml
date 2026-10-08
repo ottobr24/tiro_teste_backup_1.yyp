@@ -14,8 +14,6 @@ if (mou) controles_mod = 2
 mxp = mouse_x
 myp = mouse_y
 
-show_debug_message([key,con,mou])
-
 if (!alp) exit;
 
 cria_botoes()
@@ -24,13 +22,13 @@ enter = 0
 
 var cn = pai.controle
 
-var mas_tec = !cn ? keyboard_check_pressed(vk_right)	: gamepad_button_check_pressed(0,gp_padr)
-var mes_tec = !cn ? keyboard_check_pressed(vk_left)		: gamepad_button_check_pressed(0,gp_padl)
-			 											
-var cim_tec = !cn ? keyboard_check_pressed(vk_up)		: gamepad_button_check_pressed(0,gp_padu)
-var bai_tec = !cn ? keyboard_check_pressed(vk_down)		: gamepad_button_check_pressed(0,gp_padd)
+var mas_tec = usa_controle(controles.mod_d,1)//!cn ? keyboard_check_pressed(vk_right)	: gamepad_button_check_pressed(0,gp_padr)
+var mes_tec = usa_controle(controles.mod_e,1)//!cn ? keyboard_check_pressed(vk_left)		: gamepad_button_check_pressed(0,gp_padl)
+											 //
+var cim_tec = usa_controle(controles.mod_c,1)//!cn ? keyboard_check_pressed(vk_up)		: gamepad_button_check_pressed(0,gp_padu)
+var bai_tec = usa_controle(controles.mod_b,1)//!cn ? keyboard_check_pressed(vk_down)		: gamepad_button_check_pressed(0,gp_padd)
 												
-var mod_tec = !cn ? (colidindo > -2 and mouse_check_button_pressed(mb_left)) or keyboard_check_pressed(vk_enter) : gamepad_button_check_pressed(0,gp_face1)
+var mod_tec = usa_controle(controles.mod_a,1) or usa_controle(controles.mod_m,1)//(colidindo > -2 and mouse_check_button_pressed(mb_left)) or keyboard_check_pressed(vk_enter) : gamepad_button_check_pressed(0,gp_face1)
 
 #region Me mexendo nas modificações	
 

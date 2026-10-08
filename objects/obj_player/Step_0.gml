@@ -14,8 +14,8 @@ colidindo()
 var ct = controle
 var cn = ct
 	
-var men_tec = !cn ? keyboard_check_pressed(vk_left	) : gamepad_button_check_pressed(0,gp_padd)
-var mas_tec = !cn ? keyboard_check_pressed(vk_right	) : gamepad_button_check_pressed(0,gp_padu)
+var men_tec = usa_controle(controles.arma_at,1)///!cn ? keyboard_check_pressed(vk_left	) : gamepad_button_check_pressed(0,gp_padd)
+var mas_tec = usa_controle(controles.arma_pt,1)///!cn ? keyboard_check_pressed(vk_right	) : gamepad_button_check_pressed(0,gp_padu)
 	
 if ((mas_tec or men_tec) and !global.zumbi){
     
@@ -54,7 +54,7 @@ for (var p = 0; p<array_length(global.portas);p++){
 	
 	if (p = 0 or dist[p-1]>dis){
 		
-		global.portas_abrir = obj
+		global.portas_abrir  = obj
 		dist[p] = dis
 		
 	}

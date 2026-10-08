@@ -27,9 +27,9 @@ abrindo_a_modificacao = function(){
 		var cn = alvo.controle
 		var dist = point_distance(x,y,alvo.x,alvo.y)
 		var dist_total = 64
-		var tec_a = !cn ? keyboard_check_pressed(ord(tecla_abrir[cn])) : gamepad_button_check_pressed(0,tecla_abrir[cn])
+		var tec_a = usa_controle(controles.anda_f,1) //!cn ? keyboard_check_pressed(ord(tecla_abrir[cn])) : gamepad_button_check_pressed(0,tecla_abrir[cn])
 		var vis = 1//visao(dist_total,"",x,y,point_direction(x,y,alvo.x,alvo.y),alvo,[obj_miniparede],1,1)
-		var por = !instance_exists(global.portas_abrir) or  point_distance(alvo.x,alvo.y,global.portas_abrir.x,global.portas_abrir.y) > dist
+		var por = !instance_exists(global.portas_abrir) or point_distance(alvo.x,alvo.y,global.portas_abrir.x,global.portas_abrir.y) > dist
 		
 		#region Efetivamente abrindo ela
 		

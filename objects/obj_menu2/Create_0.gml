@@ -1,6 +1,8 @@
 #region Extras
 
-toca_som(snd_musica_menu,3,10000,10000,,1)
+salvando_idioma(1)
+
+toca_som(snd_musica_menu,3,10000,10000,,1,,,,,1)
 
 if (array_length(global.armas_mods) = 0){
 
@@ -63,7 +65,7 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 	}
 	
 	for (var i1=0;i1<2;i1++){
-
+	
 		if (array_length(global.armas_mods[i1]) < array_length(global.armas_modn)){
 			
 			var tmd = array_length(global.armas_mods[i1])
@@ -152,6 +154,8 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 	}
 }	
 
+salvando()
+
 #endregion
 
 #region Variaveis
@@ -160,7 +164,7 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 
 #region Configuração
 
-controles = ["W","S","A","D"]
+//controles = ["W","S","A","D"]
 volumes = [0,0]
 resolucao = [0,0]
 muda_controle = -1
@@ -170,6 +174,7 @@ teste = 0
 
 #region Textos
 
+texto_max = 8
 texto_cor = 0
 texto_index = 0
 
@@ -202,6 +207,8 @@ idiomas = global.textos[texto.idiom]
 #endregion
 
 #region Menu Controle
+
+tex_y = 0
 
 mxp = mouse_x
 myp = mouse_y
@@ -302,57 +309,19 @@ level_sel = -1
 
 mudando_os_controles = function(){
 	
+	var cima		= usa_controle(controles.menu_c,1)
+	var baixo		= usa_controle(controles.menu_b,1)
+	var esquerda	= usa_controle(controles.menu_e,1) 
+	var direita		= usa_controle(controles.menu_d,1) 
+	var enter		= usa_controle(controles.menu_a,1)
+	
+	if (enter or direita or esquerda or baixo or cima) resetando_o_texto()
+	
 	var win_tmd = [[1280,720],[1408,792],[1536,864],[1664,936],[1792,1008],[1920,1080]]
 	var menu_tmd	= array_length(textos_mostrar)-1
 	var menu_index	= textos_mostrar[menu_tmd]
 	
 	if (muda_controle){
-		
-		#region Mudando o controle
-		
-		//if (menu_index == 2){
-		//
-		//	var gui_w = display_get_gui_width ()
-		//	var gui_h = display_get_gui_height()
-		//
-		//	var texto_xesc	= gui_w / 1366
-		//	var texto_yesc	= gui_h / 768
-		//
-		//	var y1 = 100*texto_yesc
-		//
-		//	draw_set_halign(1)
-		//	draw_set_valign(1)
-		//	draw_set_font(fnt_menu_2)
-		//
-		//	draw_text_transformed(gui_w/2,y1,controles_texto[global.configs[2][0]] + global.configs[0][index],texto_xesc/1.25,texto_yesc/1.25,0)
-		//
-		//	draw_set_font(-1)
-		//	draw_set_halign(-1)
-		//	draw_set_valign(-1)
-		//
-		//	if (keyboard_check_released(vk_anykey) and !keyboard_check_released(vk_enter)){
-		//	
-		//		var let = string_upper(keyboard_lastchar)
-		//		var tmd = array_length(global.configs[0])
-		//	
-		//		for (var i=0;i<tmd;i++){
-		//		
-		//			if (i==tmd-1 and global.configs[0][i]!=let){
-		//	
-		//				global.configs[0][index] = let
-		//				muda_controle = -1
-		//		
-		//			}else if (global.configs[0][i]=let){
-		//			
-		//				////show_message("Ja esta em uso")
-		//				break;
-		//			
-		//			}
-		//		}
-		//	}
-		//}
-		
-		#endregion
 		
 		if (texto_cor!=0){
 			
@@ -383,8 +352,8 @@ desenha_texto = function(){
 	var ordemx = 0
 	var ordemy = 0
 	
-	var esquerda	= global.controle = 1 ? gamepad_button_check_pressed(0,gp_padl) : (keyboard_check_pressed(vk_left ))
-	var direita		= global.controle = 1 ? gamepad_button_check_pressed(0,gp_padr) : (keyboard_check_pressed(vk_right))
+	var esquerda	= usa_controle(controles.menu_e,1)//global.controle = 1 ? gamepad_button_check_pressed(0,gp_padl) : (keyboard_check_pressed(vk_left ))
+	var direita		= usa_controle(controles.menu_d,1)//global.controle = 1 ? gamepad_button_check_pressed(0,gp_padr) : (keyboard_check_pressed(vk_right))
 	
 	#endregion
 	
@@ -400,18 +369,8 @@ desenha_texto = function(){
 		
 		ti = textos_mostrar[t]
 		
-		if ((array_length(textos_alp)<=ti or textos_alp[ti] == 0) or (texto_diminuir = ti)){
-			
-			textos_alp[ti] = [0,0,0,0,0,0,0,0,0]
-			textos_esc[ti] = [0,0,0,0,0,0,0,0,0]
-			textos_acerto_alp[ti] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-			texto_acerto_alp[ti] =  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-			texto_diminuir = -1
-			
-		}
-		
 		texto_mostrado = textos[global.configs[2][0]][ti]
-		
+
 		var texto_xesc	= gui_w / 1366
 		var texto_yesc	= gui_h / 768
 		var texto_margy	= (string_height("I") + 20) * texto_yesc
@@ -421,9 +380,22 @@ desenha_texto = function(){
 		var x2 = 40* texto_xesc
 		var x3 = x1// + (gui_w*.2)
 		
+		if ((array_length(textos_alp)<=ti or textos_alp[ti] == 0) or (texto_diminuir = ti)){
+			
+			show_debug_message(texto_tmd)
+			
+			textos_alp[ti]			= array_create(texto_tmd,0		)//[0,0,0,0,0,0,0,0,0]
+			textos_esc[ti]			= array_create(texto_tmd,0		)//[0,0,0,0,0,0,0,0,0]
+			textos_acerto_alp[ti]	= array_create(texto_tmd,0		)//[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+			texto_acerto_alp[ti]	= array_create(texto_tmd,0		)//[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+			textos_cores[ti]		= array_create(texto_tmd,c_white)
+			texto_diminuir = -1
+			
+		}
+		
 		var y1 = textos_y[0]
 		
-		var textos_x	= [x1,x1,x3,x3,x3,x3,x1,x1,x1,x1,x1]
+		var textos_x	= array_create(array_length(textos[global.configs[2][0]]),x1) //[x1,x1,x3,x3,x3,x3,x1,x1,x1,x1,x1,x1,x1,x1,x1,x1]
 		
 		if (array_length(texto_x) < array_length(textos_x)){ 
 			
@@ -471,52 +443,57 @@ desenha_texto = function(){
 		
 		#endregion
 		
-		for (var i=0;i<texto_tmd;i++){
-			
-			var texto = texto_mostrado[i]
-			
-			var texto_w = string_width (texto) /2 * textos_esc[ti][i]
-			var texto_h = string_height(texto) 
-			
-			var texto_y = texto_y2[ti] + texto_margy * i
-			var texto_alp = .6-texto_alp2
-			
-			var texto_esc = texto_xesc//(1.-texto_esc2)*texto_xesc
-			
-			var mox = device_mouse_x_to_gui(0)
-			var moy = device_mouse_y_to_gui(0)
-			
-			var texto_marg = -texto_h/2
-			
-			if (point_in_rectangle(mox,moy,texto_x[t]-texto_w,texto_y-texto_h-texto_marg,texto_x[t]+texto_w,texto_y+texto_h) and t+1 >= textos_mostrar_tmd and global.controle = 0){
-			
-				index = i
-			
-			}
+		var i_ini = t = 2 ? tex_y : 0
 		
-			if (t = textos_mostrar_tmd-1){
+		for (var i=i_ini;i<texto_tmd;i++){
 			
-				if (i == index){
+			if (i - 1 < texto_max + tex_y){
 			
-					texto_alp+=.4
+				var texto = texto_mostrado[i]
+			
+				var texto_w = string_width (texto) /2 * textos_esc[ti][i]
+				var texto_h = string_height(texto) 
+			
+				var texto_y = texto_y2[ti] + texto_margy * (i - i_ini)
+				var texto_alp = .6-texto_alp2
+			
+				var texto_esc = texto_xesc//(1.-texto_esc2)*texto_xesc
+			
+				var mox = device_mouse_x_to_gui(0)
+				var moy = device_mouse_y_to_gui(0)
+			
+				var texto_marg = -texto_h/2
+			
+				if (point_in_rectangle(mox,moy,texto_x[t]-texto_w,texto_y-texto_h-texto_marg,texto_x[t]+texto_w,texto_y+texto_h) and t+1 >= textos_mostrar_tmd and global.controle = 0){
+			
+					index = i
 			
 				}
+		
+				if (t = textos_mostrar_tmd-1){
+			
+					if (i == index){
+			
+						texto_alp+=.4
+			
+					}
+				}
+			
+				draw_set_color(textos_cores[ti][i])
+				draw_set_alpha(textos_alp[ti][i])
+			
+				draw_set_halign(1)
+				draw_text_transformed(texto_x[t],texto_y,texto,textos_esc[ti][i],textos_esc[ti][i],0)
+			
+				draw_set_color(-1)
+				draw_set_alpha(1)
+			
+				textos_alp[ti][i] = lerp(textos_alp[ti][i],texto_alp,0.1)
+				textos_esc[ti][i] = lerp(textos_esc[ti][i],texto_esc,0.1)
+			
+				textos_cores[ti][i] = c_white //resetando a cor
+			
 			}
-			
-			draw_set_color(textos_cores[ti][i])
-			draw_set_alpha(textos_alp[ti][i])
-			
-			draw_set_halign(1)
-			draw_text_transformed(texto_x[t],texto_y,texto,textos_esc[ti][i],textos_esc[ti][i],0)
-			
-			draw_set_color(-1)
-			draw_set_alpha(1)
-			
-			textos_alp[ti][i] = lerp(textos_alp[ti][i],texto_alp,0.1)
-			textos_esc[ti][i] = lerp(textos_esc[ti][i],texto_esc,0.1)
-			
-			textos_cores[ti][i] = c_white //resetando a cor
-			
 		}
 		
 		texto_alp2-=.1
@@ -557,143 +534,192 @@ desenha_a_barra = function(spr = spr_barra){
 
 mudando_controle = function(){
 	
-	var kcp = keyboard_check_pressed
-	var gbp = gamepad_button_check_pressed
-	var mcp = mouse_check_button_pressed
-	var o = ord
+	var cima		= usa_controle(controles.menu_c,1)
+	var baixo		= usa_controle(controles.menu_b,1)
+	var enter		= usa_controle(controles.menu_a,1)
+	var esquerda	= usa_controle(controles.menu_e,1) 
+	var direita		= usa_controle(controles.menu_d,1) 
 	
-	var key = kcp(vk_left) or kcp(vk_right) or kcp(vk_down) or kcp(vk_up) or kcp(vk_enter)
-	var mou = mxp != mouse_x or myp != mouse_y
-	var con = gbp(0,gp_face1) or gbp(0,gp_padd) or gbp(0,gp_padu) or gbp(0,gp_padl) or gbp(0,gp_padr)
+	if (checa_controle(mxp,myp) or abs(cima+baixo+enter+direita+esquerda)){
+		
+		resetando_o_texto()
 	
-	if (key or mou) global.controle = 0
-	if (con)		global.controle = 1
+	}
 	
 	mxp = mouse_x
 	myp = mouse_y
 	
-	controle = global.controle
-	
-}
+	var c = global.controles
 
-colocando_o_controle = function(imputs=[gp_axislv,gp_axislh]){
+	var menu_tmd	= array_length(textos_mostrar)-1
+	var menu_index	= textos_mostrar[menu_tmd]
+	var enter1		= usa_controle(controles.menu_a,1)
+	var enter2		= usa_controle(controles.menu_a,1) * sign(muda_controle)
 	
-	static timer_controle	= 0
-	var tempo_controle		= 15
+	var opc_tmd = array_length(textos[global.configs[2][0]][menu_index])
+	var opc_tmd2 = opc_tmd - 1
 	
-	if (gamepad_is_connected(0) and !timer_controle){
-		
-		gp = array_create(array_length(imputs),0)
+	if (menu_index != 9) exit;
 	
-		for (var i=0;i<array_length(imputs);i++){
+	var tex = textos[global.configs[2][0]][menu_index]
+	var nomes = ["","Armas","Menu","Player","Modificação"]
+	var contr1 = 0
+	var contr2 = 1
+	
+	if (enter1 and index > -1 and index < opc_tmd2 and achando_na_array(nomes,texto_mostrado[index]) = -1 and menu_index = 9){
 		
-			gp[i] = gamepad_axis_value(0,imputs[i])
+		muda_controle = !enter2 ? index+1 : 0
+		texto_cor = c_yellow
+			
+	}
+	
+	if (muda_controle){
 		
-		}
 		
-		if (gp[0]!=0 or gp[1]!=0) timer_controle = tempo_controle
 		
 	}
 	
-	timer_controle--
-	
 }
 
-adicionando_coisas_em_arrays = function(array,pos1,pos2,val){
+adicionando_coisas_em_arrays = function(array,pos1,pos2,val,num = 1){
 	
 	var array2 = []
-	//show_message(array2)
 	
 	for (var ind =0;ind<array_length(idiomas);ind++){
 	
-		array2[ind] = copiando_array(array,ind,5)
+		array2[ind] = copiando_array(array,ind,5) //problema
 	
 	}
-	//array_copy(array2,0,array,0,array_length(array))
-	
-	//array_
 	
 	for (var i=0;i<array_length(pos1);i++){
 	
 		var p1 = pos1[i]
 		var p2 = pos2[i]
-		array2[global.configs[2][0]][p1][p2]+=string(val[i])
+		
+		if ( num) array2[global.configs[2][0]][p1][p2]+= string(val[i])
+		if (!num) array2[global.configs[2][0]][p1][p2] = string(val[i])
 	
 	}
 	
-	//show_message(array2)
-	//show_message(array)
 	return array2
 	
 }
 
 resetando_o_texto = function(){
 	
+	#region Variaveis
+	
+	var c = global.controles
+	
+	var cont = [
+	
+	0,
+	0,
+	c[controles.anda_d	][global.controle][0][0],		//anda_d	,
+	c[controles.anda_e	][global.controle][0][0],		//anda_e	,
+	c[controles.anda_c	][global.controle][0][0],		//anda_c	,
+	c[controles.anda_b	][global.controle][0][0],		//anda_b	,
+	c[controles.anda_f	][global.controle][0][0],		//anda_f	,	
+	c[controles.anda_ch	][global.controle][0][0],		//anda_ch	,
+	c[controles.anda_s	][global.controle][0][0],		//anda_s																		//anda_m	,
+	0,												
+	0,												
+	0,													  
+	c[controles.arma_a	][global.controle][0][0],		//arma_a	,	  
+	c[controles.arma_m	][global.controle][0][0],		//arma_m	,		  
+	c[controles.arma_g	][global.controle][0][0],		//arma_g	,		  
+	c[controles.arma_l	][global.controle][0][0],		//arma_l	,
+	c[controles.arma_c	][global.controle][0][0],		//arma_c	,
+	c[controles.arma_b	][global.controle][0][0],		//arma_b	,
+	c[controles.arma_e	][global.controle][0][0],		//arma_e	,
+	c[controles.arma_r	][global.controle][0][0],		//arma_r	,
+	c[controles.arma_t	][global.controle][0][0],		//arma_t	,
+	c[controles.arma_at	][global.controle][0][0],		//arma_at	,
+	c[controles.arma_pt	][global.controle][0][0],		//arma_pt	,
+	0,													
+	0,													
+	0,													
+	c[controles.menu_c	][global.controle][0][0],		//menu_c	,
+	c[controles.menu_b	][global.controle][0][0],		//menu_b	,
+	c[controles.menu_e	][global.controle][0][0],		//menu_e	,
+	c[controles.menu_d	][global.controle][0][0],		//menu_d	,
+	c[controles.menu_a	][global.controle][0][0],		//menu_a	,
+	c[controles.menu_m	][global.controle][0][0],		//menu_m	,
+	0,														//		
+	0,														//		
+	0,														//		
+	c[controles.mod_a	][global.controle][0][0],		//mod_a	,
+	c[controles.mod_m	][global.controle][0][0],		//mod_m	,
+	c[controles.mod_d	][global.controle][0][0],		//mod_d	,
+	c[controles.mod_e	][global.controle][0][0],		//mod_e	,
+	c[controles.mod_at	][global.controle][0][0],		//mod_at	,
+	c[controles.mod_pt	][global.controle][0][0],		//mod_pt	,
+	c[controles.mod_c	][global.controle][0][0],		//mod_c	,
+	c[controles.mod_b	][global.controle][0][0],		//mod_b	,
+	c[controles.mod_s	][global.controle][0][0],		//mod_s	,
+	c[controles.mod_cm	][global.controle][0][0],		//mod_cm	,
+					
+]
+	
 	static saves = ["","","",""]
 	
-	if (!muda_save){
-		
+	#endregion
+	
+	for (var ind =0;ind<array_length(idiomas);ind++){
+	
+		textos[ind] = copiando_array(global.textos[texto.menu],ind,5) //problema
+	
 	}
 	
-	textos = adicionando_coisas_em_arrays(global.textos[texto.menu],[2,2,3,4,5,5,5],[0,1,0,0,0,1,2],[global.configs[0][0],global.configs[0][1],efeitos_texto[global.configs[2][0]][global.configs[1][0]],idiomas[global.configs[2][0]],textos_resol[global.configs[2][0]][0][global.configs[3][0]],textos_resol[global.configs[2][0]][1][global.configs[3][1]],textos_resol[global.configs[2][0]][2][global.configs[3][1]][global.configs[3][2]]])
-	
-}
-
-resetando_o_texto()
-
-dando_instrucoes = function(yy1){
-	
-	static y1 = yy1
-	static y2 = yy1
-	static y3 = yy1+32
-	static timer_comecar = 60*.1
-	
-	var ajuda = static_get(desenha_texto).textos_setas[ti]
-	var tmd = 3+2*ajuda
-	var gui_w = display_get_gui_width()
-	var gui_h = display_get_gui_height()
+	for (var cn = 0;cn<array_length(cont);cn++){
 		
-	var texto_xesc	= gui_w / 1366
-
-	var line_margy = 5*texto_xesc
-	
-	timer_comecar--
-	
-	if (timer_comecar<=0){
-		
-		y1 = lerp(y1,gui_h*.875,0.1)
-		y2 = lerp(y2,gui_h*.875,0.1)
-		
-		if (y2<gui_h*.90){
+		if (is_string(cont[cn])){
 			
-			y3 = lerp(y3,gui_h*(.875+(.125/3)),.1)
+			textos = adicionando_coisas_em_arrays(textos,
+			[9],
+			[cn],
+			[
 			
+			cont[cn]
+			//,global.configs[0][1]
+			//,efeitos_texto[global.configs[2][0]][global.configs[1][0]]
+			//,idiomas[global.configs[2][0]]
+			//,textos_resol[global.configs[2][0]][0][global.configs[3][0]]
+			//,textos_resol[global.configs[2][0]][1][global.configs[3][1]]
+			//,textos_resol[global.configs[2][0]][2][global.configs[3][1]][global.configs[3][2]]
+			
+			]
+			,1
+			)
+	
 		}
 	}
 	
-	for (var i=0;i<tmd;i++){
-		
-		var txt_tmd = string_width(textos_ajuda[global.configs[2][0]][2])
-		var lar = sprite_get_width(spr_setas)
-		var esc = lar * texto_xesc
-		var text_marg = (lar/2 * texto_xesc) + (esc*1.25)*1
-		var _x = i<3 ? (lar/2 * texto_xesc) + (esc*1.25)*i : ((lar/2 * texto_xesc) + (esc*1.25)*i) + txt_tmd*1.25
-		
-		draw_sprite_stretched(spr_setas,i,_x,y3,esc,esc)
-		
-		draw_text_transformed(_x+text_marg,y3,textos_ajuda[global.configs[2][0]][i],texto_xesc,texto_xesc,0)
-			
-	}
+	//exit;
 	
-	draw_rectangle(0,y1+line_margy,gui_w,y2,0)
+	textos = adicionando_coisas_em_arrays(
+	textos
+	,[2,2,3,4,5,5,5,11]
+	,[0,1,0,0,0,1,2,0 ]
+	,
+	[
+	 global.configs[0][0]
+	,global.configs[0][1]
+	,efeitos_texto[global.configs[2][0]][global.configs[1][0]]
+	,idiomas[global.configs[2][0]]
+	,textos_resol[global.configs[2][0]][0][global.configs[3][0]]
+	,textos_resol[global.configs[2][0]][1][global.configs[3][1]]
+	,textos_resol[global.configs[2][0]][2][global.configs[3][1]][global.configs[3][2]]
+	,global.textos[texto.posit][global.configs[2][0]][global.reca_auto]
 	
+	]
+	)
+
 }
 
 usando_o_menu = function(){
-	
+		
 	#region Variaveis
-	
-	resetando_o_texto()
 	
 	static mudando_texto = []
 	
@@ -711,18 +737,24 @@ usando_o_menu = function(){
 	var x2 = 40* texto_yesc
 	var x3 = x1// + (gui_w*.2)
 	
-	var textos_x	= [x1,x1,x3,x3,x3,x3,x1,x1,x1,x1,x1]
+	var textos_x	= array_create(array_length(textos[global.configs[2][0]]),x1)
 	
 	draw_set_font(-1)
 	
 	var menu_tmd = array_length(textos_mostrar)-1
 	var menu_index = textos_mostrar[menu_tmd]
+	var opc_tmd = array_length(textos[global.configs[2][0]][menu_index])
+	var opc_tmd2 = opc_tmd - 1
 	
-	var cima		= global.controle ? gamepad_button_check_pressed(0,gp_padu)   : (keyboard_check_pressed(vk_up)		or gp[0]<0)* sign(!muda_controle)
-	var baixo		= global.controle ? gamepad_button_check_pressed(0,gp_padd)   : (keyboard_check_pressed(vk_down)	or gp[0]  )* sign(!muda_controle)
-	var esquerda	= global.controle ? gamepad_button_check_pressed(0,gp_padl)   : (keyboard_check_pressed(vk_left)	or gp[1]<0)* sign(!muda_controle)
-	var direita		= global.controle ? gamepad_button_check_pressed(0,gp_padr)   : (keyboard_check_pressed(vk_right)	or gp[1]  )* sign(!muda_controle)
-	var enter		= global.controle ? gamepad_button_check_pressed(0,gp_face1)  : (keyboard_check_pressed(vk_enter)	or mouse_check_button_pressed(mb_left)) * sign(!muda_controle)
+	var cima		= usa_controle(controles.menu_c,1) * sign(!muda_controle)
+	var baixo		= usa_controle(controles.menu_b,1) * sign(!muda_controle)
+	var enter		= usa_controle(controles.menu_a,1) * sign(!muda_controle)
+	var esquerda	= usa_controle(controles.menu_e,1) * sign(!muda_controle) 
+	var direita		= usa_controle(controles.menu_d,1) * sign(!muda_controle) 
+	
+	var menu_tmd	= array_length(textos_mostrar)-1
+	var menu_index	= textos_mostrar[menu_tmd]
+	var opc_tmd		= array_length(textos[global.configs[2][0]][menu_index])
 	
 	#endregion
 	
@@ -735,6 +767,12 @@ usando_o_menu = function(){
 		index++
 		toca_som(snd_menu_baixo,1,1000,1000,,0,.25)
 		
+		if (index >= texto_max - 1){
+			
+			//index--
+			tex_y ++
+			
+		}
 	}
 	
 	if (cima){
@@ -742,16 +780,39 @@ usando_o_menu = function(){
 		index--
 		toca_som(snd_menu_cima,6,1000,1000,,0,.25)
 		
+		if (index + 1 >= texto_max - 1 and index + texto_max < opc_tmd  ){
+			
+			//index++
+			tex_y --
+			
+		}
 	}
 	
-	if (index=array_length(texto_mostrado)) index=0
-	if (index<0) index=array_length(texto_mostrado)-1
+	if (index=opc_tmd){ 
+		
+		index=0
+		tex_y = 0
+		
+	}
 	
-	if ((keyboard_check_pressed(vk_enter) or mouse_check_button_pressed(mb_left) or gamepad_button_check_pressed(0,gp_face1)) * sign(muda_controle) and !enter){ 
+	if (index<0){ 
+		
+		index=opc_tmd-1
+		
+		if (index >= texto_max){
+			
+			tex_y = opc_tmd - 1 - texto_max
+			
+		}
+	}
+	
+	if (usa_controle(controles.menu_a,1) * sign(muda_controle) and !enter and menu_index != 9){ 
 		
 		muda_controle=-1
 		
 	}
+	
+	//tex_y = clamp(tex_y,0,opc_tmd - 3)
 	
 	#endregion
 	
@@ -777,7 +838,7 @@ usando_o_menu = function(){
 					
 					case 1:
 						
-						textos_mostrar = [9]
+						textos_mostrar = [10]
 						
 						controle = gamepad_is_connected(0)
 						var i = global.arma
@@ -857,6 +918,18 @@ usando_o_menu = function(){
 					break;
 			
 					case 4:
+				
+						textos_mostrar = [0,1,11]
+				
+					break;
+			
+					case 5:
+				
+						textos_mostrar = [0,1,9]
+				
+					break;
+			
+					case 6:
 				
 						textos_mostrar = [0]
 						salvando_idioma()
@@ -1124,7 +1197,55 @@ usando_o_menu = function(){
 			
 			#endregion
 			
+			#region Controles
+			
+			case 9:
+			
+				switch(index){
+			
+					case opc_tmd2:
+				
+						mudando_texto = [0,1]
+						index = 0
+						tex_y = 0
+						muda_save = -1
+						
+					break;
+					
+				}
+			
+			break;
+			
+			#endregion
+			
+			#region Gameplay
+			
+			case 11:
+			
+				switch(index){
+			
+					case 1:
+				
+						mudando_texto = [0,1]
+				
+					break;
+					
+					default:
+						
+						muda_controle = index+1
+						texto_cor = c_yellow
+						
+					break;
+					
+				}
+			
+			break;
+			
+			#endregion
+			
 		}
+		
+		if (!muda_controle) index = 0
 		
 		#region Ajudando
 		
@@ -1201,7 +1322,6 @@ usando_o_menu = function(){
 				}else{
 					
 					//show_message(4)
-					index = 0
 					////show_message(muda_controle)
 			
 				}
@@ -1252,32 +1372,33 @@ mexendo_em_coisas = function(vel,i,val,val_max,val_min=0,index_max=100){
 	var menu_tmd = array_length(textos_mostrar)-1
 	var menu_index = textos_mostrar[menu_tmd]
 	
-	var esquerda	= (keyboard_check_pressed(vk_left)	or gamepad_button_check_pressed(0,gp_padl) or gp[1]<0)
-	var direita		= (keyboard_check_pressed(vk_right) or gamepad_button_check_pressed(0,gp_padr) or gp[1]  )
-	var enter		= (keyboard_check_pressed(vk_enter)	or gamepad_button_check_pressed(0,gp_face1)) 
+	var cima		= usa_controle(controles.menu_c,1)
+	var baixo		= usa_controle(controles.menu_b,1)
+	var esquerda	= usa_controle(controles.menu_e,1) 
+	var direita		= usa_controle(controles.menu_d,1) 
+	var enter		= usa_controle(controles.menu_a,1)
+	
 	vel *= sign(muda_controle+1)
 	
 	if (textos_cores[ti][index] == c_gray) muda_controle = -1
 	
 	if (menu_index == i and index<index_max and textos_cores[ti][index] != c_gray){
 		
-		if (is_array(val)){
-			
-			val[index]+= direita* vel
-			val[index]-= esquerda* vel
-			val[index] = clamp(val[index],val_min,val_max)
-			
-		}else{
-			
-			val+= direita* vel
-			val-= esquerda* vel
-			val = clamp(val,val_min,val_max)
-			
-		}
-		
 		if (direita or esquerda){ 
 			
+			if (is_array(val)){
 			
+				val[index]+= (direita - esquerda) * vel
+				val[index] = clamp(val[index],val_min,val_max)
+			
+			}else{
+			
+				val += (direita - esquerda) * vel
+				val  = clamp(val,val_min,val_max)
+			
+			}
+			
+			resetando_o_texto()
 		
 		}
 	}
@@ -1294,24 +1415,6 @@ trocando_cores = function(){
 	for (var i=0;i<array_length(texto_mostrado);i++){
 		
 		switch(menu_index){
-			
-			//case 6:
-				
-			//	static saves_infos = [-1,-1,-1,-1]
-			//	//textos_cores[menu_index][i] = i<3 and file_exists(global.saves[i][0]) ? c_white  : make_color_rgb(190,190,190);
-			//	//textos_cores[menu_index][array_length(saves_infos)-1] = c_white
-				
-			//	if (saves_infos[i] == -1 and i<3 and file_exists(global.saves[i][0])){
-					
-			//		var info = carregando(i,1)
-					
-			//		textos[global.configs[2][0]][menu_index][i] += " (" + string(info) + ")%"
-					
-			//	}
-				
-			//	saves_infos[i] = 0
-					
-			//break;
 			
 			case 7:
 				
@@ -1331,9 +1434,12 @@ mexendo_na_resol = function(){
 	var menu_tmd = array_length(textos_mostrar)-1
 	var menu_index = textos_mostrar[menu_tmd]
 	
-	var esquerda	= (keyboard_check_pressed(vk_left)	or gamepad_button_check_pressed(0,gp_padl) or gp[1]<0)
-	var direita		= (keyboard_check_pressed(vk_right) or gamepad_button_check_pressed(0,gp_padr) or gp[1]  )
-	var enter		= (keyboard_check_pressed(vk_enter)	or gamepad_button_check_pressed(0,gp_face1)) 
+	var cima		= usa_controle(controles.menu_c,1)
+	var baixo		= usa_controle(controles.menu_b,1)
+	var esquerda	= usa_controle(controles.menu_e,1)
+	var direita		= usa_controle(controles.menu_d,1)
+	var enter		= usa_controle(controles.menu_a,1)
+	
 	vel *= sign(muda_controle+1)
 	
 	if (global.configs[3][0] and menu_index == i){
@@ -1356,6 +1462,8 @@ mexendo_na_resol = function(){
 			
 			if (direita or esquerda){ 
 			
+				resetando_o_texto()
+	
 				global.configs[3][2] = clamp(global.configs[3][2],0,array_length(textos_resol[global.configs[2][0]][2][global.configs[3][1]])-1)
 				window_set_size(resol[global.configs[3][1]][global.configs[3][2]][0],resol[global.configs[3][1]][global.configs[3][2]][1])
 		
@@ -1372,9 +1480,10 @@ mexendo_na_resol = function(){
 			
 			if (direita or esquerda){ 
 				
+				resetando_o_texto()
+	
 				window_set_size(resol[global.configs[3][1]][global.configs[3][2]][0],resol[global.configs[3][1]][global.configs[3][2]][1])
-				//window_set_size(resol[global.configs[3][1]][global.configs[3][2]][0],resol[global.configs[3][1]][global.configs[3][2]][1])
-		
+				
 			}
 		}
 	}

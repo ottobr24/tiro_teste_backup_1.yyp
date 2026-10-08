@@ -14,7 +14,7 @@ if (point_distance(obj.x,obj.y,x,y)<dis){
 	var cn = obj.controle
 
 	image_alpha += .1
-	var tec_a = !cn ? keyboard_check_pressed(ord(tecla_pegar[cn])) : gamepad_button_check_pressed(0,tecla_pegar[cn])
+	var tec_a = usa_controle(controles.anda_f,1)//!cn ? keyboard_check_pressed(ord(tecla_pegar[cn])) : gamepad_button_check_pressed(0,tecla_pegar[cn])
 		
 	if (tec_a and obj.arma_prox = id){
 		

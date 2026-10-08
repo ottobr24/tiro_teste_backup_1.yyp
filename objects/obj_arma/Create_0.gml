@@ -249,7 +249,7 @@ desenha_modificacao = function(){
 	var cn = ct and gamepad_is_connected(0)
 	var pente_ext = 0
 	var silenciador = 0
-	var las_tec = !cn ? keyboard_check_pressed(ord("Z")) : gamepad_button_check_pressed(0,gp_stickr)
+	var las_tec = usa_controle(controles.arma_l,1)//!cn ? keyboard_check_pressed(ord("Z")) : gamepad_button_check_pressed(0,gp_stickr)
 	var mira_co = [c_red,c_green]
 	
 	#endregion
@@ -281,7 +281,7 @@ desenha_modificacao = function(){
 			
 			if (sprreal){
 				
-				var um_laser = global.armas_mode[i][m][mods[m]][3] = 9
+				var um_laser = global.armas_mode[i][m][mods[m]][3] = 9 and laser
 				
 				var mod_px = 0 
 				var mod_py = 0
@@ -299,7 +299,7 @@ desenha_modificacao = function(){
 				
 				#region Laser
 				
-				if (laser and um_laser){
+				if (um_laser){
 					
 					var sprh = global.armas_modx[i][m][0] * image_xscale 
 	                var margy = global.armas_modx[i][m][1]>2 ? global.armas_modx[i][m][1] * image_xscale  : -global.armas_modx[i][m][1] * image_xscale
@@ -308,7 +308,9 @@ desenha_modificacao = function(){
 
 					var mod_xx = global.armas_mode[i][m][mods[m]][0]
 					var mod_xy = global.armas_mode[i][m][mods[m]][1]
-			
+				
+					var mod_col = adiciona_na_array(global.colisao_visao,[obj_miniporta,obj_inimigo,obj_zumbi_pai])
+					
 	                if image_xscale = -1{
 					
 	                    ang += 180
@@ -328,12 +330,15 @@ desenha_modificacao = function(){
 					var _x = x + mod_xm + mod_mx2 
 					var _y = y + mod_ym + mod_my2
 					
+					var _x2 = _x + lengthdir_x(32,ang) 
+					var _y2 = _y + lengthdir_y(32,ang)
+					
 					var cam = obj_camera
 					var tmd = cam.cmw / cam.escala
 					
 					draw_set_alpha(1)
 					
-	                visao(tmd,"",_x,_y,ang,undefined,adiciona_na_array(global.colisao_visao,[obj_miniporta,obj_inimigo,obj_zumbi_pai]),1,0,0,mira_co[qtd])
+	                visao(tmd,"",_x,_y,ang,mod_col,mod_col,1,0,0,mira_co[qtd])
 				
 					draw_set_alpha(image_alpha)
 					
@@ -419,7 +424,7 @@ atira = function(){
 	var ct = instance_exists(pai) ? pai.controle :0
 	var cn = ct
 	
-	var grd_tec = (keyboard_check_pressed(ord("G")) and !ct) or (cn and gamepad_button_check_pressed(0,gp_padl))
+	var grd_tec = usa_controle(controles.arma_g,1)//(keyboard_check_pressed(ord("G")) and !ct) or (cn and gamepad_button_check_pressed(0,gp_padl))
 	
 	var atr_tec = 0
 	var prs_tec = cn ? gamepad_button_check_pressed(0,gp_shoulderrb) : mouse_check_button_pressed(mb_left)
@@ -432,7 +437,7 @@ atira = function(){
 	var atn = (tec or tec2) and !tiro_timer and !recarregando and !rajadas and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	var raj = rajadas and !rajando_timer and !recarregando and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	
-	var inq = cn ? gamepad_button_check(0,gp_shoulderr) - gamepad_button_check(0,gp_shoulderl) : keyboard_check(ord("E")) - keyboard_check(ord("Q"))
+	var inq = usa_controle(controles.arma_c,0) - usa_controle(controles.arma_b,0)//cn ? gamepad_button_check(0,gp_shoulderr) - gamepad_button_check(0,gp_shoulderl) : keyboard_check(ord("E")) - keyboard_check(ord("Q"))
 	
 	#endregion
 	
@@ -726,7 +731,7 @@ atira = function(){
 			
 		}else{
 			
-			if (prs_tec) toca_som(snd_lanca_falha,1,48,128,,50)
+			if (prs_tec) toca_som(snd_lanca_falha,1,48,128,,,.1,,,50)
 			
 		}
 			
@@ -746,7 +751,7 @@ preparando = function(){
 	var ct = instance_exists(pai) and variable_instance_exists(pai,"controle") ? pai.controle : 0
 	var cn = ct
 	
-	var coc_tec = !cn ? keyboard_check_pressed(ord("H")) : gamepad_button_check_pressed(0,gp_padr)
+	var coc_tec = usa_controle(controles.arma_e,1)//!cn ? keyboard_check_pressed(ord("H")) : gamepad_button_check_pressed(0,gp_padr)
 	var coc = coc_tec and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	
 	if (coc) cock = 2
@@ -905,7 +910,9 @@ recarrega = function(){
 	var rec_tec = !cn ? keyboard_check(ord("R")) : gamepad_button_check(0,gp_face3)
 	var prs_tec = cn ? gamepad_button_check_pressed(0,gp_shoulderrb) : mouse_check_button_pressed(mb_left)
 	
-	var rec = (rec_tec and !cock and tiro<municao) or (rec_tec and modo = 1)
+	var auto_rec = global.reca_auto and !tiro_timer and !tiro and !recarregando
+	
+	var rec = (rec_tec and !cock and tiro<municao) or (rec_tec and modo = 1) or auto_rec
 	var atr = prs_tec and global.armas_rext[i] = 1
 	
 	var dirt = image_xscale=1 ? direction+180 : direction-180
@@ -923,7 +930,7 @@ recarrega = function(){
 		
 		#region se acabou de começar de recarregar
 		
-		if (rec_tec and !recarregando){ 
+		if ((rec_tec and !recarregando) or auto_rec){ 
 			
 			obj_controlador.vib_e += .5
 			obj_controlador.vib_d += .5
@@ -1302,7 +1309,7 @@ inclinando_arma = function(){
 	var ct = instance_exists(pai) ? pai.controle : 0
 	var cn = ct
 	
-	var tec = cn ? gamepad_button_check(0,gp_shoulderr) - gamepad_button_check(0,gp_shoulderl) : keyboard_check(ord("E")) - keyboard_check(ord("Q"))
+	var tec = usa_controle(controles.arma_c,0) - usa_controle(controles.arma_b,0)//cn ? gamepad_button_check(0,gp_shoulderr) - gamepad_button_check(0,gp_shoulderl) : keyboard_check(ord("E")) - keyboard_check(ord("Q"))
 	var val = 16
 	
 	if (abs(tec)){

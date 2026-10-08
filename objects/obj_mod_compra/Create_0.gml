@@ -1,7 +1,7 @@
 compra_arma = function(){
 	
-	var compra = gamepad_button_check_pressed(0,gp_face4) or keyboard_check_pressed(vk_space)
-	var mouse = mouse_check_button_pressed(mb_left)
+	var compra = usa_controle(controles.mod_cm,1)//gamepad_button_check_pressed(0,gp_face4) or keyboard_check_pressed(vk_space)
+	var mouse = usa_controle(controles.mod_m,1)
 	var setas = compra
 	
 	image_xscale = 2
@@ -19,7 +19,7 @@ compra_arma = function(){
 		
 		image_blend = c_gray
 		
-		if (mouse_check_button_pressed(mb_left) or setas){
+		if (mouse or setas){
 			
 			toca_som(snd_menu_enter,1,10000,10000,,,.1)
 					

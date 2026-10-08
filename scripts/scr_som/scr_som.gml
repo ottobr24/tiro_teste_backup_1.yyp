@@ -1,4 +1,4 @@
-function toca_som(_som,_volume,dismn,dismx,fall = audio_falloff_none,_loop=0,pt = .1,alet = 0,d3 = 1,prioridade = 10){
+function toca_som(_som,_volume,dismn,dismx,fall = audio_falloff_none,_loop=0,pt = .1,alet = 0,d3 = 1,prioridade = 10,musica = 0){
 	
 	if (asset_get_type(_som) == asset_sound or is_array(_som)){
 		
@@ -18,10 +18,10 @@ function toca_som(_som,_volume,dismn,dismx,fall = audio_falloff_none,_loop=0,pt 
 		
 		pit = random_range(1-pt,1+pt)
 		
-		var vol = _volume/1.75 * (global.configs[0][0] / 50)
+		var vol = musica = 0 ? _volume/1.75 * (global.configs[0][0] / 50) : _volume/1.75 * (global.configs[0][1] / 50)
 		
-		if ( d3) return audio_play_sound_at	(som[ind],x,y,0,dismn,dismx,fall,_loop,prioridade,vol,,pit	)//_on(em,som[ind],_loop,10,_volume/4,,pit)
-		if (!d3) return audio_play_sound	(som[ind],prioridade,_loop,vol,,pit							)//_on(em,som[ind],_loop,10,_volume/4,,pit)
+		if ( d3) return audio_play_sound_at	(som[ind],x,y,0,dismn,dismx,fall,_loop,prioridade,vol,,pit	)
+		if (!d3) return audio_play_sound	(som[ind],prioridade,_loop,vol,,pit							)
 		
 	}
 }

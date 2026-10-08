@@ -53,7 +53,7 @@ abrindo_e_fechando = function(){
 		
 		for (var o=0;o<array_length(objs);o++){
 			
-			var dis = instance_nearest(x,y,objs[o])
+			var dis = instance_exists(objs[o]) ? instance_nearest(x,y,objs[o]) : 1000000
 			
 			if (distance_to_object(dis)<aberto_dist){
 				

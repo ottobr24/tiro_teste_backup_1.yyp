@@ -32,7 +32,7 @@ sendo_chutado = function(){
 	
 	var ct = variable_instance_exists(prx,"controle") ? prx.controle : 0
 	var cn = ct
-	var tec_c = !cn ? keyboard_check_pressed(ord("F")) : gamepad_button_check_pressed(0,gp_face2)
+	var tec_c = usa_controle(controles.anda_f,1)//!cn ? keyboard_check_pressed(ord("F")) : gamepad_button_check_pressed(0,gp_face2)
 	var dis = sprite_width + 2
 	
 	if (distance_to_object(prx) < dis and tec_c){

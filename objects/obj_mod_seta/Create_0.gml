@@ -2,9 +2,9 @@ prox = 1
 
 muda_arma = function(){
 	
-	var e = keyboard_check_pressed(ord("Q")	) or gamepad_button_check_pressed(0,gp_shoulderl)
-	var d = keyboard_check_pressed(ord("E")	) or gamepad_button_check_pressed(0,gp_shoulderr)
-	var mouse = mouse_check_button_pressed(mb_left)
+	var e = usa_controle(controles.mod_at,1)//keyboard_check_pressed(ord("Q")	) or gamepad_button_check_pressed(0,gp_shoulderl)
+	var d = usa_controle(controles.mod_pt,1)//keyboard_check_pressed(ord("E")	) or gamepad_button_check_pressed(0,gp_shoulderr)
+	var mouse = usa_controle(controles.mod_m,1) and position_meeting(mouse_x,mouse_y,id)
 	var setas = e or d
 	
 	image_blend = c_white
@@ -20,9 +20,11 @@ muda_arma = function(){
 			var obj = obj_mod
 			var arm = obj_menu2.arma
 		
-			if ( prox and (mouse or d)){ obj.i++	toca_som(snd_menu_baixo,1,1000,1000,,0,.25) }
-			if (!prox and (mouse or e)){ obj.i--	toca_som(snd_menu_cima,6,1000,1000,,0,.25)	}		
-		
+			if ( prox and (mouse or d)){ obj.i++ toca_som(snd_menu_baixo,6 ,10000,10000,,0,.25)}
+			if (!prox and (mouse or e)){ obj.i-- toca_som(snd_menu_cima ,6 ,10000,10000,,0,.25)	}		
+			
+			//show_message([e,d])
+			
 			obj.i = clamp(obj.i,0,array_length(global.armas_bala)-1)
 		
 			arm.mods		= [] array_copy(arm.mods		,0,global.armas_mods[0][obj.i],0,array_length(global.armas_mods[0][obj.i]))

@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.5989116,
+  "duration":2.280295,
   "exportDir":"",
   "name":"snd_ak12_tiro",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_ak12_tiro.mp3",
-  "volume":1.0,
+  "soundFile":"snd_ak12_tiro.wav",
+  "volume":0.59,
 }

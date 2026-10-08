@@ -31,7 +31,7 @@ abrindo_e_sendo_empurrada = function(){
 	
 		var alvos = [obj_player,obj_inimigo,obj_zumbi_pai,obj_bola]
 		var dist = [1000,100]
-		var tec_a = keyboard_check_pressed(ord("F"))
+		var tec_a = usa_controle(controles.anda_f,1) // keyboard_check_pressed(ord("F"))
 		var chu_t = 30
 	
 		var prx = instance_nearest(x,y,obj_player)
@@ -166,7 +166,7 @@ abrindo_e_sendo_empurrada = function(){
 						var ct = variable_instance_exists(prx,"controle") ? prx.controle : 0
 						var cn = ct
 						var tec_ord = cn
-						tec_a = !cn ? keyboard_check_released(ord(tecla_abrir[0])) and tecla_pressionada[0] < chute_tempo/2 : gamepad_button_check_released(0,tecla_abrir[1]) and tecla_pressionada[1] < chute_tempo/2
+						tec_a = usa_controle(controles.anda_f,2) and tecla_pressionada[global.controle] < chute_tempo/2 //!cn ? keyboard_check_released(ord(tecla_abrir[0])) and tecla_pressionada[0] < chute_tempo/2 : gamepad_button_check_released(0,tecla_abrir[1]) and tecla_pressionada[1] < chute_tempo/2
 					
 						if (tec_a and !chutou){
 										    
@@ -309,7 +309,7 @@ pressionando_tecla = function(){
 	
 	var ct = instance_exists(obj_player) and variable_instance_exists(prx,"controle") ? prx.controle : 0
 	var cn = ct
-	var tec_a = !cn ? keyboard_check(ord(tecla_abrir[0])) : gamepad_button_check(0,tecla_abrir[1])
+	var tec_a = usa_controle(controles.anda_f,0) //!cn ? keyboard_check(ord(tecla_abrir[0])) : gamepad_button_check(0,tecla_abrir[1])
 	
 	if (!cn and tec_a and !chutou) tecla_pressionada[0] += tec_a
 	if ( cn and tec_a and !chutou) tecla_pressionada[1] += tec_a

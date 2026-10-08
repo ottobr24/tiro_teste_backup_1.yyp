@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.31285715,
+  "duration":0.32424036,
   "exportDir":"",
   "name":"snd_ak12_recc",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_ak12_recc.mp3",
+  "soundFile":"snd_ak12_recc.wav",
   "volume":1.0,
 }

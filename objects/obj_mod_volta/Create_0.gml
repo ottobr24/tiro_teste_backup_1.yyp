@@ -1,7 +1,7 @@
 sai_do_mod = function(){
 	
-	var sai = gamepad_button_check_pressed(0,gp_face2) or gamepad_button_check_pressed(0,gp_start) or keyboard_check_pressed(vk_escape)
-	var mouse = mouse_check_button_pressed(mb_left)
+	var sai = usa_controle(controles.mod_s,1) //gamepad_button_check_pressed(0,gp_face2) or gamepad_button_check_pressed(0,gp_start) or keyboard_check_pressed(vk_escape)
+	var mouse = usa_controle(controles.mod_m,1)//mouse_check_button_pressed(mb_left)
 	var setas = sai
 	
 	image_blend = make_colour_rgb(102,7,9)

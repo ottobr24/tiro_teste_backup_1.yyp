@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.54283446,
+  "duration":0.62820864,
   "exportDir":"",
   "name":"snd_ak12_cock",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_ak12_cock.mp3",
+  "soundFile":"snd_ak12_cock.wav",
   "volume":1.0,
 }

@@ -20,6 +20,7 @@ function salvando(i=global.savei){
 		armas_moda : global.armas_moda,
 		
 		dinheiro : global.dinheiro,
+		reca_auto : global.reca_auto,
 		
 	};
 	
@@ -78,7 +79,7 @@ function carregando(i=global.savei){
 	
 	var _struct = json_parse(_json)
 	
-	var texts = ["armas_aval","armas_mods","armas_modi","armas_moda","arma","dinheiro"]
+	var texts = ["armas_aval","armas_mods","armas_modi","armas_moda","arma","dinheiro","reca_auto"]
 	
 	for (i=0;i<array_length(texts);i++){
 		
@@ -103,7 +104,7 @@ function carregando_idioma(){
 	
 	var _struct = json_parse(_json)
 	
-	var texts = ["configs","textos"]
+	var texts = ["configs"]
 	
 	for (var i=0;i<array_length(texts);i++){
 		
@@ -120,5 +121,3 @@ function carregando_idioma(){
 	#endregion
 	
 }
-
-//file_delete(global.saves[0][0])

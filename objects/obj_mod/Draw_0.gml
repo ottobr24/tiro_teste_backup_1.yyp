@@ -25,7 +25,7 @@ var sprxo = sprite_get_xoffset(spr)
 var spryo = sprite_get_yoffset(spr)
 
 var mod_esc = sprxs / 4
-var mod_tec = !cn ? (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter)) : gamepad_button_check_pressed(0,gp_face1)
+var mod_tec = usa_controle(controles.mod_a,1) or usa_controle(controles.mod_m,1) //!cn ? (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter)) : gamepad_button_check_pressed(0,gp_face1)
 
 var moe_x = 48 * gw_esc
 var moe_y = 664 * gh_esc
@@ -282,7 +282,7 @@ if (i<array_length(global.armas_mods[0]) and alp){
 				
 			}
 			
-			mod_tec = (colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter) or gamepad_button_check_pressed(0,gp_face1))
+			mod_tec = usa_controle(controles.mod_a,1) or usa_controle(controles.mod_m,1)//(colidindo > -2 and (mouse_check_button_pressed(mb_left) and colidindo) or keyboard_check_pressed(vk_enter) or gamepad_button_check_pressed(0,gp_face1))
 			
 			#endregion
 			
@@ -298,7 +298,7 @@ if (i<array_length(global.armas_mods[0]) and alp){
 	
 					if (col_mou) window_set_cursor(cr_drag)
 				
-					if (mod_tec and colidindo!=-2){
+					if (mod_tec){
 						
 						if (lista != p+1 and !enter){
 				

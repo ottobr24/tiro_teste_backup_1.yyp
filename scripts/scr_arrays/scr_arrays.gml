@@ -65,6 +65,9 @@ function copiando_array(a1,ind,qtd){
 		var a5 = []
 		array_copy(a3,0,a1,0,array_length(a1))
 		
+		//show_message(0)
+		//show_message(a3)
+		
 		if (array_length(a3[ind])>0){
 			
 			a5 = [[]]
@@ -73,6 +76,9 @@ function copiando_array(a1,ind,qtd){
 			
 				array_copy(a3,0,a6,0,array_length(a6))
 				
+				//show_message(1)
+				//show_message(a3)
+		
 				var ind2 = 0
 					
 				repeat(qtds){
@@ -88,13 +94,24 @@ function copiando_array(a1,ind,qtd){
 				qtds--
 				
 				for (var i=0;i<array_length(a3[ind]);i++){
-				
+					
 					a5[i] = []
-					if (is_array(a3[ind][i])) array_copy(a5[i],0,a3[ind][i],0,array_length(a1))
+					if (is_array(a3[ind][i])){ 
+						
+						var a3_tmd = array_length(a3[ind][i])
+						
+						array_copy(a5[i],0,a3[ind][i],0,a3_tmd)
+					
+					}
+					
 					voltar = 1
 				
+					//show_message(2)
+					//show_message(i)
+					//show_message(a5[i])
+					//show_message(a3[ind][9])
+		
 				}
-				
 			}
 		
 		}else{

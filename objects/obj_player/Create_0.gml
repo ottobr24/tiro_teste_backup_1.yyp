@@ -148,14 +148,14 @@ movendo = function(andar=1,equip=1){
 	
 	var cn = controle
 	
-	var d = keyboard_check(ord("D"))
-	var a = keyboard_check(ord("A"))
-	var w = keyboard_check(ord("W"))
-	var s = keyboard_check(ord("S"))
+	var d = usa_controle(controles.anda_d,0,1,cn)//keyboard_check(ord("D"))
+	var a = usa_controle(controles.anda_e,0,0,cn)//keyboard_check(ord("A"))
+	var w = usa_controle(controles.anda_c,0,0,cn)//keyboard_check(ord("W"))
+	var s = usa_controle(controles.anda_b,0,1,cn)//keyboard_check(ord("S"))
 	
-	var e = cn ? gamepad_button_check_pressed(0,gp_face4) : keyboard_check_pressed(ord("T"))
+	var e = usa_controle(controles.arma_t,1) //cn ? gamepad_button_check_pressed(0,gp_face4) : keyboard_check_pressed(ord("T"))
 	
-	if (cn) gamepad_set_axis_deadzone(0,.1)
+	if (cn) gamepad_set_axis_deadzone(0,.2)
 	
 	var rh = cn ? gamepad_axis_value(0,gp_axisrh)  : 0
 	var rv = cn ? gamepad_axis_value(0,gp_axisrv)  : 0
@@ -180,8 +180,8 @@ movendo = function(andar=1,equip=1){
         
 		if (!controle){
 		
-	        hspd = lengthdir_x(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause 
-	        vspd = lengthdir_y(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause
+	      hspd = lengthdir_x(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause 
+	      vspd = lengthdir_y(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause
         
 		}else{
 		
@@ -367,10 +367,10 @@ controla_arma = function(){
 
 muda_estado = function(an = 1,pa = 1,mo = 1){
 	
-	var d = keyboard_check(ord("D"))
-	var a = keyboard_check(ord("A"))
-	var w = keyboard_check(ord("W"))
-	var s = keyboard_check(ord("S"))
+	var d = usa_controle(controles.anda_d,0,1,controle)//keyboard_check(ord("D"))
+	var a = usa_controle(controles.anda_e,0,0,controle)//keyboard_check(ord("A"))
+	var w = usa_controle(controles.anda_c,0,0,controle)//keyboard_check(ord("W"))
+	var s = usa_controle(controles.anda_b,0,1,controle)//keyboard_check(ord("S"))
 	
 	var cn = controle
 	var lh = cn ? gamepad_axis_value(0,gp_axislh)  : 0
@@ -396,7 +396,7 @@ abre_modificacao = function(){
 	var ct = controle
 	var cn = ct
 	
-	var esc_tec = !cn ? keyboard_check_pressed(vk_escape)	: gamepad_button_check_pressed(0,gp_start) or (gamepad_button_check_pressed(0,gp_face2) and global.pause == 1)
+	var esc_tec = usa_controle(controles.anda_s,1,,controle)//!cn ? keyboard_check_pressed(vk_escape)	: gamepad_button_check_pressed(0,gp_start) or (gamepad_button_check_pressed(0,gp_face2) and global.pause == 1)
 	
 	if (esc_tec and !instance_exists(obj_mod)){
 		
