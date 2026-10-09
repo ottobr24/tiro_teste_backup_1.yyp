@@ -525,8 +525,8 @@ resetando_o_texto = function(){
 	
 	textos = adicionando_coisas_em_arrays(
 	textos
-	,[2,2,3,4,5,5,5,11]
-	,[0,1,0,0,0,1,2,0 ]
+	,[2,2,3,4,5,5,5,11,11]
+	,[0,1,0,0,0,1,2,0 ,1 ]
 	,
 	[
 	 global.configs[0][0]
@@ -537,6 +537,7 @@ resetando_o_texto = function(){
 	,textos_resol[global.configs[2][0]][1][global.configs[3][1]]
 	,textos_resol[global.configs[2][0]][2][global.configs[3][1]][global.configs[3][2]]
 	,global.textos[texto.posit][global.configs[2][0]][global.reca_auto]
+	,global.textos[texto.corrd][global.configs[2][0]][global.corrida]
 	
 	]
 	)
@@ -729,7 +730,7 @@ usando_o_menu = function(){
 						if (!global.zumbi){
 						
 							obj_camera.roo = 1
-							textos_mostrar = [8]
+							textos_mostrar = [10]
 						
 							var i = pai.armai
 							var arm = pai.arma
@@ -1029,7 +1030,7 @@ usando_o_menu = function(){
 			
 				switch(index){
 			
-					case 1:
+					case opc_tmd2:
 				
 						mudando_texto = [0,1]
 				
@@ -1173,7 +1174,7 @@ usando_o_menu = function(){
 	
 }
 
-mexendo_em_coisas = function(vel,i,val,val_max,val_min=0,index_max=100){
+mexendo_em_coisas = function(vel,i,val,val_max,val_min=0,index_max=100,index_min = -100){
 	
 	var menu_tmd = array_length(textos_mostrar)-1
 	var menu_index = textos_mostrar[menu_tmd]
@@ -1188,7 +1189,7 @@ mexendo_em_coisas = function(vel,i,val,val_max,val_min=0,index_max=100){
 	
 	if (textos_cores[ti][index] == c_gray) muda_controle = -1
 	
-	if (menu_index == i and index<index_max and textos_cores[ti][index] != c_gray){
+	if (menu_index == i and index <= index_max and index >= index_min and textos_cores[ti][index] != c_gray){
 		
 		if (direita or esquerda){ 
 			
@@ -1295,6 +1296,26 @@ mexendo_na_resol = function(){
 		}
 	}
 }
+
+reseta_coisas = function(){
+	
+	var tmd = array_length(textos[global.configs[2][0]])
+	
+	for (var t=0;t<tmd;t++){
+	
+		var texto_tmd	= array_length(textos[global.configs[2][0]][t])
+		
+		textos_alp			[t]	= array_create(texto_tmd,0		)//[0,0,0,0,0,0,0,0,0]
+		textos_esc			[t]	= array_create(texto_tmd,0		)//[0,0,0,0,0,0,0,0,0]
+		textos_acerto_alp	[t]	= array_create(texto_tmd,0		)//[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+		texto_acerto_alp	[t]	= array_create(texto_tmd,0		)//[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+		textos_cores		[t]	= array_create(texto_tmd,c_white)
+		texto_diminuir		= -1
+		
+	}
+}
+
+reseta_coisas()
 
 #endregion
 

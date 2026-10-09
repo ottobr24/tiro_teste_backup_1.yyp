@@ -1,17 +1,18 @@
 if (keyboard_check_pressed(vk_enter)) teste = 0
 
 	audio_sound_gain(snd_musica_menu,global.configs[0][1] / 50)
-	
+
 mudando_controle()
 
 usando_o_menu()
 trocando_cores()
 mexendo_na_resol()
 
-global.configs[0] = mexendo_em_coisas(5,2,global.configs[0],100,0,2)
-global.configs[1] = mexendo_em_coisas(1,3,global.configs[1],array_length(efeitos_texto[global.configs[2][0]])-1,0,1)
-global.configs[2] = mexendo_em_coisas(1,4,global.configs[2],array_length(idiomas)-1,0,1)
-global.reca_auto  = mexendo_em_coisas(1,11,global.reca_auto,array_length(idiomas)-1,0,1)
+global.configs[0]	= mexendo_em_coisas(5,2,global.configs[0]	,100,0,2)
+global.configs[1]	= mexendo_em_coisas(1,3,global.configs[1]	,array_length(efeitos_texto[global.configs[2][0]])-1,0,1)
+global.configs[2]	= mexendo_em_coisas(1,4,global.configs[2]	,array_length(idiomas)-1,0,1)
+global.reca_auto	= mexendo_em_coisas(1,11,global.reca_auto	,array_length(idiomas)-1,0,0,0)
+global.corrida		= mexendo_em_coisas(1,11,global.corrida		,array_length(idiomas)-1,0,1,1)
 
 global.configs[3][2] = clamp(global.configs[3][2],0,array_length(textos_resol[global.configs[2][0]][2][global.configs[3][1]])-1)
 

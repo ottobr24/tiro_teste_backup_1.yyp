@@ -10,7 +10,7 @@ if (global.debug){
 	var ix = !adi ? -1 : 1
 	var ang = ix > 0 ? dir : dir+180
 	
-	//draw_text(x,y-40	,cx3	)
+	draw_text(x,y-40	,correndo	)
 	//draw_text(x,y-60	,cy3	)
 	//draw_text(x,y-80	,arma.x	)
 	//draw_text(x,y-100	,arma.y	)

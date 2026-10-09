@@ -13,6 +13,7 @@ rext=0
 pode_pente = 1
 pode_tirof = 1
 
+precin = 0
 prec = 0
 prec_menos = 0
 
@@ -81,6 +82,7 @@ qtd = 0
 
 mx = device_mouse_x_to_gui(0)
 my = device_mouse_y_to_gui(0)
+mtmd = 0
 
 part_reca = 0
 part_tiro = 0
@@ -150,6 +152,10 @@ mirando = function(){
 	var rv = cn ? gamepad_axis_value(0,gp_axisrv)  : 0
 	
 	var vel = 15
+	var pos = 100
+	var segue = 1
+	
+	var p = pai
 	
 	mira = !cn ? mouse_check_button(mb_right) : gamepad_button_check(0,gp_shoulderlb)
 	mira_vel = clamp(mira_vel,0.01,1)
@@ -158,10 +164,14 @@ mirando = function(){
 		
 		pai.vel -=.5
 		mira_alp = lerp(mira_alp,1,mira_vel)
+			
+		mtmd = lerp(mtmd,pos,mira_vel)
 		
 		if (instance_number(obj_player)<2) obj_camera.roo = 2
 		
-		if ( cn){
+		if (cn){
+			
+			var difm = abs(mtmd - pos) * mira_vel
 			
 			var cx = obj_camera.x
 			var cy = obj_camera.y
@@ -172,25 +182,42 @@ mirando = function(){
 			var _x = (x - cx) * (gw / cw)
 			var _y = (y - cy) * (gh / ch)
 			
-			mx += rh*vel
-			my += rv*vel
+			var px = p.x - lengthdir_x(mtmd,direction)
+			var py = p.y - lengthdir_y(mtmd,direction)
+			
+			var marg = 16
+			
+			var h = (rh * vel)
+			var v = (rv * vel)
+			
+			var col1 = point_in_rectangle(px,py,cx,cy,cx+cw,cy+ch)
+			var col2 = point_in_rectangle(px,py,cx-marg,cy-marg,cx+cw+marg,cy+ch+marg)
+			
+			mx += h * segue
+			my += v * segue
+			
+			//if (!col1 or !col2) mtmd -= difm
 			
 			direction = point_direction(_x,_y,mx,my)
 			pai.direction = direction
 			
+			show_debug_message(segue)
+			
 		}
 		
-		if (instance_number(obj_player)<2) obj_camera.pose[0] = lerp(obj_camera.pose[0],lengthdir_x(100,direction),.1)
-		if (instance_number(obj_player)<2) obj_camera.pose[1] = lerp(obj_camera.pose[1],lengthdir_y(100,direction),.1)
+		if (instance_number(obj_player)<2) obj_camera.pose[0] = lerp(obj_camera.pose[0],lengthdir_x(mtmd,direction),.1)
+		if (instance_number(obj_player)<2) obj_camera.pose[1] = lerp(obj_camera.pose[1],lengthdir_y(mtmd,direction),.1)
 		
 	}else{
 		
 		obj_camera.roo = 0
 		
 		mira_alp = lerp(mira_alp,0,.1)
-		obj_camera.pose[0] = lerp(obj_camera.pose[0],lengthdir_x(0,direction),.1)
-		obj_camera.pose[1] = lerp(obj_camera.pose[1],lengthdir_y(0,direction),.1)
+		obj_camera.pose[0] = lerp(obj_camera.pose[0],lengthdir_x(mtmd,direction),.1)
+		obj_camera.pose[1] = lerp(obj_camera.pose[1],lengthdir_y(mtmd,direction),.1)
 		
+		mtmd = lerp(mtmd,0,.1)
+			
 		if ( cn){
 			
 			var cx = obj_camera.x
@@ -202,10 +229,17 @@ mirando = function(){
 			var _x = (x - cx) * (gw / cw)
 			var _y = (y - cy) * (gh / ch)
 			
-			mx = _x + lengthdir_x(200,direction)
-			my = _y + lengthdir_y(200,direction)
+			with(obj_camera){
+				
+				if (place_meeting(_x,_y,obj_player)) segue = 1
+				
+			}
+			
+			mx = (_x + lengthdir_x(pos,direction)) * segue
+			my = (_y + lengthdir_y(pos,direction)) * segue
 			
 		}
+		
 	}
 	
 	if (!cn){
@@ -439,6 +473,8 @@ atira = function(){
 	
 	var inq = usa_controle(controles.arma_c,0) - usa_controle(controles.arma_b,0)//cn ? gamepad_button_check(0,gp_shoulderr) - gamepad_button_check(0,gp_shoulderl) : keyboard_check(ord("E")) - keyboard_check(ord("Q"))
 	
+	var cor = pai.correndo
+	
 	#endregion
 	
 	#region Mudando de modo de tiro, vendo se tem um lança granadas equipado e limitando a quantidade maxima de tiro
@@ -473,10 +509,11 @@ atira = function(){
 				
 				var vol = 0
 				
-				var mirc = mira			? 2		: 1
-				var mirp = mira			? 1.25	: 1
-				var mirs = mira			? 1.5	: 1
-				var mire = abs(inq)		? 1.15	: 1
+				var mirc	= mira			? 2		: 1
+				var mirp	= mira			? 1.25	: 1
+				var mirs	= mira			? 1.5	: 1
+				var mire	= abs(inq)		? 1.15	: 1
+				var mirco	= cor			? 1.45	: 1
 				
 				var sil = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
 				var fre = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=3
@@ -509,7 +546,7 @@ atira = function(){
 				repeat(bala){
 					
 					var dir = direction - random_range(prec,-prec)
-					var dir_dif = random_range(-(coix+coiy)/1.5,(coix+coiy)/1.5) / mirc
+					var dir_dif = random_range(-(coix+coiy)/1.5,(coix+coiy)/1.5) / mirc * mirco
 					
 					var t = instance_create_layer(_x,_y,"Particulas",obj_tiro)
 					t.i = i            
@@ -524,16 +561,16 @@ atira = function(){
 					
 					pai.coid += dir_dif
 					
-					prec+=prec_menos * mire  / mirp      
+					prec+=prec_menos * mire / mirp * mirco    
 				
-					pai.cx -= coix *1.5          
-					pai.cy -= coiy *1.5          
+					pai.cx -= coix * 1.5 * mirco          
+					pai.cy -= coiy * 1.5 * mirco          
 			
 					fogo_dir	= dir
 				
-					global.shake	+=	shak*global.shakes[global.configs[1][0]] * mire / 2 / mirs  
+					global.shake	+=	shak*global.shakes[global.configs[1][0]] * mire / 2 / mirs * mirco   
 					
-					obj_controlador.vib_d += shak * mire / mirs  
+					obj_controlador.vib_d += shak * mire / mirs * mirco 
 					
 					cano_quente += tiro_vel / 1.5
 					
@@ -549,9 +586,9 @@ atira = function(){
 				
 				var fog_chan = fre or !sil ? 100 : random_range(cano_quente,cano_quente_max)
 				
-				global.shakex += lengthdir_x(coix,direction)								* bal * mire * global.shakes[global.configs[1][0]] / mirs  
-				global.shakey += lengthdir_y(coiy,direction)								* bal * mire * global.shakes[global.configs[1][0]] / mirs  
-				global.shakeg += random_range(-shak_giro,shak_giro)	* bal * mire / instance_number(obj_player) * global.shakes[global.configs[1][0]] / mirs 
+				global.shakex += lengthdir_x(coix,direction)								* bal * mire * global.shakes[global.configs[1][0]] / mirs * mirco   
+				global.shakey += lengthdir_y(coiy,direction)								* bal * mire * global.shakes[global.configs[1][0]] / mirs * mirco   
+				global.shakeg += random_range(-shak_giro,shak_giro)	* bal * mire / instance_number(obj_player) * global.shakes[global.configs[1][0]] / mirs * mirco  
 				
 				if (fog_chan > 50){
 				
@@ -570,7 +607,7 @@ atira = function(){
 				
 				}
 				
-				vol = sil ? 0.25 : 1
+				vol = sil ? 0.35 : 1
 				
 				#endregion
 				
@@ -1145,6 +1182,11 @@ recarrega = function(){
 
 reseta_coisas = function(){
 	
+	if (!instance_exists(pai)) exit
+	
+	var prec_c = pai.correndo ? max(global.armas_precin[i] * 2,5) : global.armas_precin[i]
+	var reca_c = pai.correndo ? global.armas_reca[i] * 1.5 : global.armas_reca[i]
+	
 	if (!global.pause) cano_quente = lerp(cano_quente,0,.035)
 	canox = 0
 	
@@ -1159,23 +1201,33 @@ reseta_coisas = function(){
 		
 	if (!rajadas and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and (array_length(sons)<=1 or !audio_is_playing(sons[1]))) tiro_timer--
 	rajando_timer -= !global.pause
-	prec = lerp(prec,global.armas_precin[i],.1)
+	prec = lerp(prec,precin,.1)
 	
 	municao = global.armas_munc[i]
+	
 	tiro_tempo = global.armas_cade[i]
 	prec_menos = global.armas_prec[i]
+	
 	coix = global.armas_coix[i]
 	coiy = global.armas_coiy[i]
+	
 	dano = global.armas_dano[i]
-	recarregando_tempo = global.armas_reca[i]
+	
+	recarregando_tempo = reca_c
+	if (!recarregando) recarregando_timer = recarregando_tempo
+	
 	cliq = global.armas_cliq[i]
+	
 	rajadas_tempo = global.armas_raca[i]
 	rajadas_total = global.armas_raja[i]
+	
 	shak = global.armas_shak[i]
+	
 	bala = global.armas_bala[i]
 	rext = global.armas_rext[i]
 	peso = global.armas_peso[i]
 	baru = global.armas_baru[i]
+	precin = prec_c
 	pext = []
 	mira_vel = .1
 	volu = 1
@@ -1312,6 +1364,10 @@ inclinando_arma = function(){
 	var tec = usa_controle(controles.arma_c,0) - usa_controle(controles.arma_b,0)//cn ? gamepad_button_check(0,gp_shoulderr) - gamepad_button_check(0,gp_shoulderl) : keyboard_check(ord("E")) - keyboard_check(ord("Q"))
 	var val = 16
 	
+	var pes_min = .1 
+	var pes_max = .025 
+	var pes = pes_min - peso / 20
+	
 	if (abs(tec)){
 		
 		with(pai){
@@ -1321,8 +1377,8 @@ inclinando_arma = function(){
 			var valx = lengthdir_x(val,dir)
 			var valy = lengthdir_y(val,dir)
 			
-			cx4 = lerp(cx4,valx,.1)
-			cy4 = lerp(cy4,valy,.1)
+			cx4 = lerp(cx4,valx,pes)
+			cy4 = lerp(cy4,valy,pes)
 			
 		}
 			
@@ -1335,8 +1391,8 @@ inclinando_arma = function(){
 			var valx = val*0
 			var valy = val*0
 			
-			cx4 = lerp(cx4,valx,.1)
-			cy4 = lerp(cy4,valy,.1)
+			cx4 = lerp(cx4,valx,pes)
+			cy4 = lerp(cy4,valy,pes)
 			
 		}
 	}

@@ -8,6 +8,7 @@ enum texto {
 	resol	,
 	idiom	,
 	pause	,
+	corrd	,
 	
 	#endregion
 	
@@ -79,6 +80,7 @@ enum controles{
 	anda_e	,
 	anda_c	,
 	anda_b	,
+	anda_co	,
 	anda_f	,
 	anda_ch	,
 	anda_s	,

@@ -15,7 +15,7 @@ global.portas			= [obj_porta,obj_porta_grade]
 
 #region Debugs
 
-global.cria_inimigos = 1
+global.cria_inimigos = 0
 global.mostra_visao = 1
 
 #endregion
@@ -23,6 +23,7 @@ global.mostra_visao = 1
 #region Extras
 
 global.reca_auto = 1
+global.corrida = 0
 global.portas_abrir = -4
 global.musica_inicia = 0
 global.destino = rm_jogo
@@ -31,12 +32,11 @@ global.controles =
 
 [
 
-//[["a",vk_add],["a",gp_face1]], //exemplo
-
 [[["D"		,ord("D")			,0]]										,[["Joystick"		,gp_axislh		,1]]],							//anda_d
 [[["A"		,ord("A")			,0]]										,[["Joystick"		,gp_axislh		,1]]],							//anda_e
 [[["W"		,ord("W")			,0]]										,[["Joystick"		,gp_axislv		,1]]],							//anda_c
 [[["S"		,ord("S")			,0]]										,[["Joystick"		,gp_axislv		,1]]],							//anda_b
+[[["Shift"	,vk_shift			,0]]										,[["LS"				,gp_stickl		,0]]],							//anda_co
 [[["F"		,ord("F")			,0]]										,[["B"				,gp_face2		,0]]],							//anda_f
 [[["Espaço"	,vk_space			,0]]										,[["B"				,gp_face2		,0]]],							//anda_ch
 [[["ESC"	,vk_escape			,0]]										,[["Start"			,gp_start		,0]]],							//anda_s
@@ -47,7 +47,7 @@ global.controles =
 [[["Z"				,ord("Z")	,0]]										,[["R3"				,gp_stickr		,0]]],							//arma_l
 [[["E"				,ord("E")	,0]]										,[["RB"				,gp_shoulderr	,0]]],							//arma_c
 [[["Q"				,ord("Q")	,0]]										,[["LB"				,gp_shoulderl	,0]]],							//arma_b
-[[["H"				,ord("H")	,0]]										,[["D-Pad Direita"	,gp_padl		,0]]],							//arma_e
+[[["H"				,ord("H")	,0]]										,[["D-Pad Direita"	,gp_padr		,0]]],							//arma_e
 [[["R"				,ord("R")	,0]]										,[["X"				,gp_face3		,0]]],							//arma_r
 [[["T"				,ord("T")	,0]]										,[["Y"				,gp_face4		,0]]],							//arma_t
 [[["Seta Esquerda"	,vk_left	,0]]										,[["D-Pad Baixo"	,gp_padd		,0]]],							//arma_at

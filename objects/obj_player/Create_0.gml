@@ -2,53 +2,59 @@
 
 randomise()
 
-cor		= global.parts_cores[objetos.player]
-velp	= global.parts_vel	[objetos.player]
-distc	= global.parts_distc[objetos.player]
-danos	= global.parts_danos[objetos.player]
+cor				= global.parts_cores[objetos.player]
+velp			= global.parts_vel	[objetos.player]
+distc			= global.parts_distc[objetos.player]
+danos			= global.parts_danos[objetos.player]
 
-vermelho = 0
+vermelho		= 0
 
-hspd		=	0
-vspd		=	0
-			
-vel			=	2
+hspd			=	0
+vspd			=	0
 				
-estado		=	0
-estado_txt	=	""
+vel				=	2
+vel_m			=	2.1
+vel_c			=	2.6
 
-armai		=	global.arma //irandom_range(0,array_length(global.armas_nome)-1)
-arma		=	-4
-arma_prox	=	-4
+correndo		=	0
+correndo_tempo	=	15
+correndo_timer	=	correndo_tempo
 
-vida_max	=	100
-vida		=	vida_max
-
-cx			=	0
-cy			=	0
+estado			=	0
+estado_txt		=	""
 				
-cx3			=	x
-cy3			=	y
+armai			=	global.arma //irandom_range(0,array_length(global.armas_nome)-1)
+arma			=	-4
+arma_prox		=	-4
 				
-cx4			=	0
-cy4			=	0
+vida_max		=	100
+vida			=	vida_max
 				
-cd			=	0
-cdm			=	0
-
-adi			=	0
-
-coid		=	0
+cx				=	0
+cy				=	0
+					
+cx3				=	x
+cy3				=	y
+					
+cx4				=	0
+cy4				=	0
+					
+cd				=	0
+cdm				=	0
 				
-dano		=	0
-
-colisao		= [] array_copy(colisao,0,adiciona_na_array(global.colisao_normal,obj_colisao),0,array_length(global.colisao_normal))
-
-equipado	= 1
-			
-controle	= global.players = 1 ? global.controle : 1
-
-qtd			= global.player_ord
+adi				=	0
+				
+coid			=	0
+					
+dano			=	0
+				
+colisao			= [] array_copy(colisao,0,adiciona_na_array(global.colisao_normal,obj_colisao),0,array_length(global.colisao_normal))
+				
+equipado		= 1
+				
+controle		= global.players = 1 ? global.controle : 1
+				
+qtd				= global.player_ord
 
 global.player_ord++
 
@@ -146,24 +152,39 @@ sofrendo_dano = function(){
 
 movendo = function(andar=1,equip=1){
 	
+	#region Vars
+	
 	var cn = controle
-	
-	var d = usa_controle(controles.anda_d,0,1,cn)//keyboard_check(ord("D"))
-	var a = usa_controle(controles.anda_e,0,0,cn)//keyboard_check(ord("A"))
-	var w = usa_controle(controles.anda_c,0,0,cn)//keyboard_check(ord("W"))
-	var s = usa_controle(controles.anda_b,0,1,cn)//keyboard_check(ord("S"))
-	
-	var e = usa_controle(controles.arma_t,1) //cn ? gamepad_button_check_pressed(0,gp_face4) : keyboard_check_pressed(ord("T"))
 	
 	if (cn) gamepad_set_axis_deadzone(0,.2)
 	
-	var rh = cn ? gamepad_axis_value(0,gp_axisrh)  : 0
-	var rv = cn ? gamepad_axis_value(0,gp_axisrv)  : 0
-	var lh = cn ? gamepad_axis_value(0,gp_axislh)  : 0
-	var lv = cn ? gamepad_axis_value(0,gp_axislv)  : 0
-	var cv = cn ? point_distance(0,0,lh,lv)*vel : 0
-	var cd = cn ? point_direction(0,0,rh		,rv			) : 0
+	var d	= usa_controle(controles.anda_d,0,1,cn)//keyboard_check(ord("D"))
+	var a	= usa_controle(controles.anda_e,0,0,cn)//keyboard_check(ord("A"))
+	var w	= usa_controle(controles.anda_c,0,0,cn)//keyboard_check(ord("W"))
+	var s	= usa_controle(controles.anda_b,0,1,cn)//keyboard_check(ord("S"))
+	
+	var co	=  usa_controle(controles.anda_co,1			,,cn)					//keyboard_check(ord("S"))
+	var co2	= !usa_controle(controles.anda_co,0			,,cn) and global.corrida//keyboard_check(ord("S"))
+	
+	var e	= usa_controle(controles.arma_t,1,,cn) //cn ? gamepad_button_check_pressed(0,gp_face4) : keyboard_check_pressed(ord("T"))
+	
+	var rh	= cn ? gamepad_axis_value(0,gp_axisrh)  : 0
+	var rv	= cn ? gamepad_axis_value(0,gp_axisrv)  : 0
+	var lh	= cn ? gamepad_axis_value(0,gp_axislh)  : 0
+	var lv	= cn ? gamepad_axis_value(0,gp_axislv)  : 0
+	
+	var cv	= cn ? point_distance(0,0,lh,lv)*vel : 0
+	var cd	= cn ? point_direction(0,0,rh		,rv			) : 0
+	
 	var dir = !cn ? point_direction(x,y,mouse_x,mouse_y) : cd
+	
+	#endregion
+	
+	if (co){
+		
+		correndo =! correndo
+		
+	}
 	
     if (!controle) direction = point_direction(0,0,(d-a)*vel,(s-w)*vel	)
     
@@ -173,24 +194,38 @@ movendo = function(andar=1,equip=1){
 		
 	}
 	
-	hspd=0
-	vspd=0
-
     if (((d or a or w or s) or cn) and andar){
         
 		if (!controle){
 		
-	      hspd = lengthdir_x(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause 
-	      vspd = lengthdir_y(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause
+	      hspd = lerp(hspd,lengthdir_x(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause,.15) 
+	      vspd = lerp(vspd,lengthdir_y(vel,point_direction(0,0,(d-a)*vel,(s-w)*vel))*!global.pause,.15)
         
 		}else{
 		
-	        hspd = lengthdir_x(cv,point_direction(0,0,lh		,lv			))*!global.pause 
-	        vspd = lengthdir_y(cv,point_direction(0,0,lh		,lv			))*!global.pause
+	        hspd = lerp(hspd,lengthdir_x(cv,point_direction(0,0,lh		,lv			))*!global.pause,.15) 
+	        vspd = lerp(vspd,lengthdir_y(cv,point_direction(0,0,lh		,lv			))*!global.pause,.15)
         
 		}
-    }
+    }else{
+		
+		hspd = lerp(hspd,0,.1)
+		vspd = lerp(vspd,0,.1)
+
+	}
     
+	if (abs(hspd) + abs(vspd) < .25 or co2){
+		
+		correndo_timer--
+		
+		if (!correndo_timer or co2){
+			
+			correndo_timer = correndo_tempo
+			correndo = 0
+			
+		}
+	}
+	
     if (!controle) direction = dir
     
 	if (equip){
@@ -236,6 +271,7 @@ controla_arma = function(){
 				prep = global.armas_prep[i]		
 				
 				prec_menos = global.armas_prec[i]
+				precin	 = global.armas_precin[i]
 				
 				coix = global.armas_coix[i]
 				coiy = global.armas_coiy[i]
@@ -574,7 +610,7 @@ estado_parado = function(){
 	
 	estado = estado_parado
 	estado_txt = "estado_parado"
-	vel = 2
+	vel = correndo ? vel_c : vel_m
 	
 	muda_estado(,0)
 	
@@ -588,7 +624,7 @@ estado_andando = function(){
 	
 	estado = estado_andando
 	estado_txt = "estado_andando"
-	vel = 2
+	vel = correndo ? vel_c : vel_m
 	
 	muda_estado(0)
 	

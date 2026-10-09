@@ -13,5 +13,3 @@ draw_rectangle(0,0,2000,2000,0)
 
 draw_set_colour(-1)
 draw_set_alpha(1)
-
-draw_text_ext(20,20,[texto_mostrado,muda_controle],20,1000)
