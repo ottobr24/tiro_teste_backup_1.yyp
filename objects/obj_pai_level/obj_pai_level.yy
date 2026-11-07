@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_level_pai",
+  "%Name":"obj_pai_level",
   "eventList":[],
   "managed":true,
-  "name":"obj_level_pai",
+  "name":"obj_pai_level",
   "overriddenProperties":[],
   "parent":{
     "name":"Pais",

@@ -1,5 +1,12 @@
 if (!alp) exit;
 
+if (!foi2){
+	
+	foi2 = 1
+	exit;
+	
+}
+
 #region Variaveis
 
 var gw = 1280 //max(1280,room_width) 
@@ -93,12 +100,12 @@ if (i<array_length(global.armas_mods[0]) and alp){
 			
 			sprite_set_offset(mod_spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
 
-			draw_sprite_ext(mod_spr,mod_i,mod_x,mod_y,sprxs,sprys,0,c_white,alp)
+			draw_sprite_ext(mod_spr,max(mod_i,0),mod_x,mod_y,sprxs,sprys,0,c_white,alp)
 			
 			if (index = m and global.armas_aval[i]){
 				
-				draw_sprite_ext(mod_spr,mod_i,mod_x,mod_y,sprxs,sprys,0,c_yellow,alp)
-			
+				draw_sprite_ext(mod_spr,max(mod_i,0),mod_x,mod_y,sprxs,sprys,0,c_yellow,alp)
+				
 			}
 			
 			sprite_set_offset(mod_spr,mod_xo,mod_yo)
@@ -303,7 +310,8 @@ if (i<array_length(global.armas_mods[0]) and alp){
 						if (lista != p+1 and !enter){
 				
 							if (global.zumbi) toca_som(snd_menu_enter,1,10000,10000,,,.1)
-						
+							
+							show_debug_message("foi1")
 							lista = p+1
 							listai = mods_atual[lista-1]
 						
@@ -440,12 +448,21 @@ if (lista){
 	
 	#region Mostrando variações da modificaçãp
 	
-	var stmd = sprite_get_number(global.armas_modp[i][lista-1][listai])
+	var bala = is_array(global.armas_mode[i][lista-1][listai]) and global.armas_mode[i][lista-1][listai][3] = 16
+	var stmd2 = is_array(global.armas_mode[i][lista-1][listai]) ? array_length(global.armas_mode[i][lista-1][listai][2]) : 1
+	
+	if (bala) global.armas_mode[i][lista-1][listai][2] = ["JHP","AP"]// : global.armas_mode[i][lista-1][listai][2]
+	
+	var stmd = stmd2  //sprite_get_number(global.armas_modp[i][lista-1][listai])
 	var bloqs = is_array(global.armas_mode[i][lista-1][listai]) ? achando_na_array([11,12],global.armas_mode[i][lista-1][listai][3]) + 1 : 0
+	
+	draw_text(20,20,arm.modi[lista-1])
 	
 	for (var c=0;c<stmd;c++){
 		
-		if (bloqs or global.armas_modp[i][lista-1][listai] = 0) stmd=0  //se a modificação é um lança granadas, vc trava
+		//show_message([global.armas_mode[i][lista-1][listai],global.armas_mode[i][lista-1][listai][3]])
+		
+		if (bloqs or (global.armas_modp[i][lista-1][listai] = 0 and !bala)) stmd=0  //se a modificação é um lança granadas, vc trava
 		
 		var tex = array_length(global.armas_mode[i][lista-1][listai])=0 or !is_array(global.armas_mode[i][lista-1][listai][2]) ? ["Padrão"] : global.armas_mode[i][lista-1][listai][2] //verificando se tem mais de uma variação da modificação, se tiver mostra o texto dela, se não so mostra o Padrão
 		

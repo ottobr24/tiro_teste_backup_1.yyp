@@ -29,7 +29,7 @@ abrindo_e_sendo_empurrada = function(){
 		perto = 0
 		cade_alp = clamp(cade_alp,0,1)
 	
-		var alvos = [obj_player,obj_inimigo,obj_zumbi_pai]
+		var alvos = [obj_player,obj_pai_pessoas,obj_pai_zumbi]
 		var dist = [1000,100]
 		var tec_a = usa_controle(controles.anda_f,1)//keyboard_check_pressed(ord("F"))
 		var chu_t = 30
@@ -182,7 +182,6 @@ abrindo_e_sendo_empurrada = function(){
 							chutou = 1
 							tecla_pressionada[tec_ord] = 0
 						
-							fazendo_barulho(x,y,150,id)
 							som[2] = toca_som(snd_porta_chuta,1,15,125,,,.05)
 						
 						}
@@ -202,7 +201,6 @@ abrindo_e_sendo_empurrada = function(){
 				if (image_angle = clamp(image_angle,ima_org-20,ima_org+20)){
 			
 					som[0] = toca_som(snd_porta_abre,1,15,50,,,.05)
-					fazendo_barulho(x,y,15,id)
 					mudando = 1
 					if (ima_org = 90) abre_dir = x>prx.x ? -1 : 1
 					if (ima_org =  0) abre_dir = y>prx.y ? -1 : 1
@@ -214,10 +212,6 @@ abrindo_e_sendo_empurrada = function(){
 					//show_message("2")
 		
 				}
-			}else{
-			
-				fazendo_barulho(x,y,15,id)
-			
 			}
 		}	
 	
@@ -228,7 +222,6 @@ abrindo_e_sendo_empurrada = function(){
 			if (image_angle = clamp(image_angle,ima_org-1.5,ima_org+1.5) and !audio_is_playing(som[1])){
 			
 				som[1] = toca_som(snd_porta_fecha,1,15,50,,,.05)
-				fazendo_barulho(x,y,15,id)
 			
 			}
 		

@@ -70,7 +70,7 @@ if (place_meeting(x,y,global.parts_tiro)){
 				}
 			}
 	
-			if (object_get_parent(obj.object_index) = obj_level_pai){
+			if (object_get_parent(obj.object_index) = obj_pai_level){
 	
 				with(obj){
 			

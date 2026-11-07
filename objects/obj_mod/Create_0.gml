@@ -33,7 +33,9 @@ controles_mod = 0
 
 mxp = mouse_x
 myp = mouse_y
-	
+
+foi2 = 0
+
 cria_botoes = function(){
 	
 	if (!criou){

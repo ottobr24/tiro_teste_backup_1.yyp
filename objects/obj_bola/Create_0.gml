@@ -12,7 +12,7 @@ danos	= global.parts_danos[objetos.bola]
 
 sendo_empurrado = function(){
 	
-	var objs = [obj_player,obj_inimigo,obj_zumbi_pai]
+	var objs = [obj_player,obj_pai_pessoas,obj_pai_zumbi]
 	
 	if (place_meeting(x,y,objs)){
 		

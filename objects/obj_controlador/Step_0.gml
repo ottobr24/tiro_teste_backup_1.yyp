@@ -17,9 +17,9 @@ if (att){
 
 for (var b=0;b<array_length(barulhos);b++){
 	
-	barulhos[b][2] = lerp(barulhos[b][2],-5,.1)
+	barulhos[b][2] = lerp(barulhos[b][2],-25,.25)
 	
-	if (barulhos[b][2]<0 or !instance_exists(barulhos[b][3])) array_delete(barulhos,b,1)
+	if (barulhos[b][2]<32 or !instance_exists(barulhos[b][3])) array_delete(barulhos,b,1)
 	
 }
 

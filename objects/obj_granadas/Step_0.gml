@@ -12,7 +12,7 @@ if (!point_in_rectangle(x,y,0,0,room_width,room_height)){
 vel = 13 //global.tiros_velo[i]
 var _x =lengthdir_x(vel,image_angle)
 var _y =lengthdir_y(vel,image_angle)
-var colisao = [[obj_miniparede,obj_mesa_mod],[obj_miniporta],[obj_player,obj_inimigo],[obj_vidro],[obj_zumbi_pai],[obj_miniporta_elevador],[obj_minigrade,obj_miniporta_grade]]
+var colisao = [[obj_miniparede,obj_mesa_mod],[obj_miniporta],[obj_player,obj_inimigo],[obj_vidro],[obj_pai_zumbi],[obj_miniporta_elevador],[obj_minigrade,obj_miniporta_grade]]
 	  
 sprite_index = spr_granadas
 

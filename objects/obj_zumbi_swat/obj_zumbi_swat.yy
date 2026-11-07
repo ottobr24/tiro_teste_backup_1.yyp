@@ -10,12 +10,12 @@
   "name":"obj_zumbi_swat",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inimigos",
-    "path":"folders/Objetos/Inimigos.yy",
+    "name":"Zumbis",
+    "path":"folders/Objetos/Zumbis.yy",
   },
   "parentObjectId":{
-    "name":"obj_zumbi_pai",
-    "path":"objects/obj_zumbi_pai/obj_zumbi_pai.yy",
+    "name":"obj_pai_zumbi",
+    "path":"objects/obj_pai_zumbi/obj_pai_zumbi.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

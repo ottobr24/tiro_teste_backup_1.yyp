@@ -144,7 +144,7 @@ passando_as_rodadas = function(){
 		
 	}
 	
-	if (qtd1 >= qtd2 and !instance_exists(obj_zumbi_pai)){
+	if (qtd1 >= qtd2 and !instance_exists(obj_pai_zumbi)){
 		
 		rod_dir = clamp(sign(rod_muda_timer),0,1)
 		

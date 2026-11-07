@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.14356,
+  "duration":0.20027211,
   "exportDir":"",
   "name":"snd_vector_recc",
   "parent":{

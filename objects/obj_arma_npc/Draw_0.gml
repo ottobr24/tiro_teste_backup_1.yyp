@@ -8,6 +8,7 @@ if (!instance_exists(pai)){
 if (!place_meeting(x,y,obj_camera)) exit;
 
 draw_set_colour(c_black)
+//draw_text(x,y,[prec_menos,global.armas_prec[i]])
 //draw_text(x,y-20,image_angle)
 //draw_text(x,y-40,direction)
 draw_set_colour(-1)

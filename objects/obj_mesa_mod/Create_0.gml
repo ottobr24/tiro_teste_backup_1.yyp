@@ -57,6 +57,7 @@ abrindo_a_modificacao = function(){
 				}
 			}
 			
+			global.mods_atualiza = 2
 			global.pause = 2
 			obj_camera.roo = 1
 			cade_alp = 1

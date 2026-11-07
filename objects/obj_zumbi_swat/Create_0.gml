@@ -98,7 +98,7 @@ puxa_arma = function(){
 			
 				i = pai.armai
 				municao				= global.armas_munc[i]
-				recarregando_timer	= global.armas_recn[i]
+				recarregando_timer	= global.armas_recz[i]
 				tiro				= municao-1
 				tiro_tempo			= global.armas_cadn[i] * 2
 				rajando_timer		= global.armas_raca[i] * 1.4
@@ -108,7 +108,7 @@ puxa_arma = function(){
 				coix				= global.armas_coix[i]
 				coiy				= global.armas_coiy[i]
 				dano				= global.armas_dano[i]
-				recarregando_tempo	= global.armas_recn[i]
+				recarregando_tempo	= global.armas_recz[i]
 				cliq				= global.armas_cliq[i]
 				rajadas_tempo		= global.armas_raca[i] * 1
 				rajadas_total		= global.armas_raja[i]

@@ -330,7 +330,14 @@ if (!lista and alp){
 
 if(lista){
 
-	if (mas_tec and sprite_get_number(global.armas_modp[i][lista-1][listai])){ 
+	var arm = pai.arma
+	
+	var bala = is_array(global.armas_mode[i][lista-1][listai]) and global.armas_mode[i][lista-1][listai][3] = 16
+	var stmd2 = is_array(global.armas_mode[i][lista-1][listai]) ? array_length(global.armas_mode[i][lista-1][listai][2]) : 1
+	
+	var stmd = stmd2//max(array_length(global.armas_mode[i][lista-1][listai][2]),1) 
+	
+	if (mas_tec and (global.armas_modp[i][lista-1][listai] != 0 or bala)){ 
 	
 		if (listan = 2) listan = 0
 		if (listan = 1) listan = 0
@@ -351,15 +358,6 @@ if(lista){
 		listan = clamp(listan,0,2)
 	
 	}
-}
-
-#endregion
-
-#region Mudando de modificaçãp
-
-if (lista){
-	
-	var arm = pai.arma
 	
 	mods_atual[lista-1]	= listai
 	
@@ -435,12 +433,13 @@ if (lista){
 		var arm = pai.arma
 			
 		if (array_length(pext)>lista-1) pext[lista-1] = 0
+		
 		if (listan=0) listai--
 		if (listan=1) arm.modi[lista-1]--
 		
 		listai = clamp(listai	,0,array_length(global.armas_modp[i][lista-1])-1)
 		
-		arm.modi[lista-1] = clamp(arm.modi[lista-1]	,0,sprite_get_number(global.armas_modp[i][lista-1][listai])-1)
+		arm.modi[lista-1] = clamp(arm.modi[lista-1]	,0,stmd-1)
 		global.armas_modi[ind][i][lista-1]		= arm.modi[lista-1]
 		
 		var mod_i = lista-1
@@ -463,12 +462,13 @@ if (lista){
 		var arm = pai.arma
 			
 		if (array_length(pext)>lista-1) pext[lista-1] = 0
-		if (listan=0)listai++
-		if (listan=1)arm.modi[lista-1]++
+		
+		if (listan=0) listai++
+		if (listan=1) arm.modi[lista-1]++
 		
 		listai = clamp(listai	,0,array_length(global.armas_modp[i][lista-1])-1)
 		
-		arm.modi[lista-1] = clamp(arm.modi[lista-1]	,0,sprite_get_number(global.armas_modp[i][lista-1][listai])-1)
+		arm.modi[lista-1] = clamp(arm.modi[lista-1]	,0,stmd-1)
 		global.armas_modi[ind][i][lista-1]		= arm.modi[lista-1]
 		
 		var mod_i = lista-1
@@ -485,6 +485,14 @@ if (lista){
 		pext[ptmd]			 =[ptm1,ptm2,ptm3,ptm4,ptm5]
 		
 	}
+}
+
+#endregion
+
+#region Mudando de modificaçãp
+
+if (lista){
+	
 }
 
 #endregion

@@ -12,8 +12,8 @@
     "path":"folders/Objetos/Level/Minis.yy",
   },
   "parentObjectId":{
-    "name":"obj_level_pai",
-    "path":"objects/obj_level_pai/obj_level_pai.yy",
+    "name":"obj_pai_level",
+    "path":"objects/obj_pai_level/obj_pai_level.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

@@ -45,7 +45,7 @@ repeat(qtd){
 
 abrindo_e_fechando = function(){
 	
-	var objs = [obj_player,obj_zumbi_pai,obj_inimigo]
+	var objs = [obj_player,obj_pai_zumbi,obj_pai_pessoas]
 	
 	checa_timer--
 	

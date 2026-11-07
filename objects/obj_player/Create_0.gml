@@ -293,10 +293,11 @@ controla_arma = function(){
 				part_tiro = global.armas_part[i][0]
 				part_cock = global.armas_part[i][2]
 				
-				som_tiro = array_length(global.armas_sons[i])>0 ? global.armas_sons[i][0] : 0
-				som_cock = array_length(global.armas_sons[i])>1 ? global.armas_sons[i][1] : 0
-				som_recc = array_length(global.armas_sons[i])>2 ? global.armas_sons[i][2] : 0
-				som_recf = array_length(global.armas_sons[i])>3 ? global.armas_sons[i][3] : 0
+				som_tiro	= array_length(global.armas_sons[i])>0 ? global.armas_sons[i][0] : 0
+				som_cock	= array_length(global.armas_sons[i])>1 ? global.armas_sons[i][1] : 0
+				som_recc	= array_length(global.armas_sons[i])>2 ? global.armas_sons[i][2] : 0
+				som_recf	= array_length(global.armas_sons[i])>3 ? global.armas_sons[i][3] : 0
+				som_jam		= array_length(global.armas_sons[i])>7 ? global.armas_sons[i][7] : global.armas_sons[i][1]
 	
 				sons = array_length(global.armas_sons)>i ? array_create(array_length(global.armas_sons[i]),0) : []
 				
@@ -436,6 +437,8 @@ abre_modificacao = function(){
 	
 	if (esc_tec and !instance_exists(obj_mod)){
 		
+		global.mods_atualiza = 2
+	
 		var cursores = [cr_none,cr_arrow]
 		
 		obj_camera.roo = 0

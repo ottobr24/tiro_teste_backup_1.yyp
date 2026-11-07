@@ -44,6 +44,7 @@ function debugando_acessorios(){
 					show_debug_message([[i1,i2,i3],ace[26]])
 					show_debug_message([[i1,i2,i3],ace[27]])
 					show_debug_message([[i1,i2,i3],ace[28]])
+					show_debug_message([[i1,i2,i3],ace[29]])
 					
 				}
 			}

@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.54142857,
+  "duration":0.5682993,
   "exportDir":"",
   "name":"snd_usp_cock",
   "parent":{

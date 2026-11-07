@@ -708,6 +708,7 @@ usando_o_menu = function(){
 					
 					case 0:
 						
+						global.mods_atualiza = 2
 						global.pause = 0
 						window_set_cursor(cr_none)
 				
@@ -715,6 +716,7 @@ usando_o_menu = function(){
 					
 					case 1:
 						
+						global.mods_atualiza = 2
 						obj_camera.roo = 1
 						global.pause = 0
 						global.rodada = 1
@@ -729,6 +731,7 @@ usando_o_menu = function(){
 						
 						if (!global.zumbi){
 						
+							global.mods_atualiza = 2
 							obj_camera.roo = 1
 							textos_mostrar = [10]
 						

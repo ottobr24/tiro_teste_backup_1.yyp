@@ -1,18 +1,23 @@
 {
   "$GMObject":"",
-  "%Name":"obj_zumbi_pai",
+  "%Name":"obj_npcs",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_zumbi_pai",
+  "name":"obj_npcs",
   "overriddenProperties":[],
   "parent":{
-    "name":"Pais",
-    "path":"folders/Objetos/Pais.yy",
+    "name":"Npcs",
+    "path":"folders/Objetos/Npcs.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_pai_pessoas",
+    "path":"objects/obj_pai_pessoas/obj_pai_pessoas.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,7 +35,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_npcs",
+    "path":"sprites/spr_npcs/spr_npcs.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

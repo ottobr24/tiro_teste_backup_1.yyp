@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.5578685,
+  "duration":0.41564626,
   "exportDir":"",
   "name":"snd_glock_cock",
   "parent":{

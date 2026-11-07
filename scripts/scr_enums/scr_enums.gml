@@ -20,6 +20,7 @@ enum objetos{
 	porta		,
 	player		,
 	inimigo		,
+	npc			,
 	vidro		,
 	zumbi		,
 	mesa_mod	,

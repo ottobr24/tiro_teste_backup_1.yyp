@@ -150,6 +150,8 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 	}
 }	
 
+global.dinheiro = 100000
+
 salvando()
 
 #endregion
@@ -294,6 +296,7 @@ global.pause = 0
 global.player_ord = 0
 global.zumbi = 0
 global.rodada = 1
+global.mods_atualiza = 3
 
 level_sel = -1
 
@@ -1074,7 +1077,7 @@ usando_o_menu = function(){
 			
 				switch(index){
 			
-					case 1:
+					case opc_tmd2:
 						
 						mudando_texto = [0,6]
 						
@@ -1117,6 +1120,7 @@ usando_o_menu = function(){
 							global.players = index + 1
 						
 							global.destino = global.levels[level_sel]
+							global.level = level_sel
 							seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
 							salvando()
 		
@@ -1135,7 +1139,7 @@ usando_o_menu = function(){
 							
 							seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
 							
-							global.zumbi = 1
+							global.zumbi = r + 1
 							global.spawn_aleatorio = 0
 							global.arma = 0
 							global.dinheiro = 0

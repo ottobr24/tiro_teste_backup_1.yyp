@@ -197,8 +197,8 @@
   ],
   "name":"rm_zumbi1",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"Zumbi",
+    "path":"folders/Rooms/Zumbi.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

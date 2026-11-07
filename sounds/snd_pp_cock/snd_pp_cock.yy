@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.5031746,
+  "duration":1.254059,
   "exportDir":"",
   "name":"snd_pp_cock",
   "parent":{

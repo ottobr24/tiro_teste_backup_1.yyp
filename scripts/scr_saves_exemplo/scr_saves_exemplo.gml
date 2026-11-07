@@ -2,9 +2,7 @@ global.saves = [["testetiro.save"]]
 global.saves_level = ["leveltiro1.save"]
 global.save_ling = "testetiro.ling"
 global.savei = 0
-global.configs = [[50,50],[0],[0],[0,0,2]]
 global.porc_zerar = 0
-global.shakes = [1,.5,0]
 
 function salvando(i=global.savei){
 	

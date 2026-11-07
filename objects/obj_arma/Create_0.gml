@@ -80,6 +80,15 @@ modi = []
 
 qtd = 0
 
+trava_qtd = 0
+trava_vida = 0
+trava_vida_max = 100
+travou_arma = 0
+
+travou_timer = 0
+travou_tempo = 5
+travou_cor = 0
+
 mx = device_mouse_x_to_gui(0)
 my = device_mouse_y_to_gui(0)
 mtmd = 0
@@ -92,6 +101,7 @@ som_tiro = 0
 som_cock = 0
 som_recc = 0
 som_recf = 0
+som_jam = 0
 
 tiro_vel = 0
 tiro_spr = 0
@@ -343,7 +353,7 @@ desenha_modificacao = function(){
 					var mod_xx = global.armas_mode[i][m][mods[m]][0]
 					var mod_xy = global.armas_mode[i][m][mods[m]][1]
 				
-					var mod_col = adiciona_na_array(global.colisao_visao,[obj_miniporta,obj_inimigo,obj_zumbi_pai])
+					var mod_col = adiciona_na_array(global.colisao_visao,[obj_miniporta,obj_inimigo,obj_pai_zumbi])
 					
 	                if image_xscale = -1{
 					
@@ -401,7 +411,7 @@ desenha_modificacao = function(){
 				var mod_xo = lengthdir_x(mod_xx*image_xscale,image_angle) + mod_xm
 				var mod_yo = lengthdir_y(mod_xx*image_xscale,image_angle) + mod_ym
 			
-				var mod_ii = modi[m]
+				var mod_ii = max(modi[m],0)
 				
 				if (grd-1		= m) mod_ii	= !tirg
 				if (pente_ext-1 = m) mod_ii	= !(cabep and ((!recarregando and !cock) or modo = 1))
@@ -468,7 +478,7 @@ atira = function(){
 	
 	var tec = atr_tec
 	var tec2 = 0
-	var atn = (tec or tec2) and !tiro_timer and !recarregando and !rajadas and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
+	var atn = (tec or tec2) and !tiro_timer and !recarregando and !rajadas and !travou_arma and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	var raj = rajadas and !rajando_timer and !recarregando and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	
 	var inq = usa_controle(controles.arma_c,0) - usa_controle(controles.arma_b,0)//cn ? gamepad_button_check(0,gp_shoulderr) - gamepad_button_check(0,gp_shoulderl) : keyboard_check(ord("E")) - keyboard_check(ord("Q"))
@@ -514,7 +524,8 @@ atira = function(){
 				var mirs	= mira			? 1.5	: 1
 				var mire	= abs(inq)		? 1.15	: 1
 				var mirco	= cor			? 1.45	: 1
-				
+				var mirtr	= mira			? trava_qtd * .75 : trava_qtd
+		
 				var sil = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=4
 				var fre = i<array_length(global.armas_mods[0]) and array_length(mods)>2 and array_length(global.armas_modn[i][2])>0 and is_array(global.armas_mode[i][2][mods[2]]) and global.armas_mode[i][2][mods[2]][3]=3
 				
@@ -556,7 +567,8 @@ atira = function(){
 					t.sprite_index = global.tiros_sprt[i]
 
 					t.vel = tiro_vel
-					t.dano = dano                
+					t.tipo = max(0,modi[7])
+					t.dano = t.tipo ? dano * .85 : dano                
 					t.pai = pai           
 					
 					pai.coid += dir_dif
@@ -578,17 +590,22 @@ atira = function(){
 				
 				#endregion
 				
-				#region Fogo e calor
+				#region Fogo, calor e travando
 				
 				var bal = bala > 1 ? bala / 1.25 : 1
 				var fog_qut_ix  = cano_quente / 250
 				var fog_qut_tem = cano_quente / 100
 				
 				var fog_chan = fre or !sil ? 100 : random_range(cano_quente,cano_quente_max)
+				var trv_chan = random_range(0,trava_vida_max) > (100 - trava_vida) and tiro > 0
 				
 				global.shakex += lengthdir_x(coix,direction)								* bal * mire * global.shakes[global.configs[1][0]] / mirs * mirco   
 				global.shakey += lengthdir_y(coiy,direction)								* bal * mire * global.shakes[global.configs[1][0]] / mirs * mirco   
 				global.shakeg += random_range(-shak_giro,shak_giro)	* bal * mire / instance_number(obj_player) * global.shakes[global.configs[1][0]] / mirs * mirco  
+				
+				trava_vida += global.zumbi ? mirtr : mirtr / 2
+					
+				if (trv_chan) travou_arma = 1
 				
 				if (fog_chan > 50){
 				
@@ -793,8 +810,6 @@ preparando = function(){
 	
 	if (coc) cock = 2
 	
-	//if (cock_timer < cock_tempo) exit;
-	
 	if (cock and reff and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>4 and asset_get_type(global.armas_sons[i][4]) == asset_sound){ 
 		
 		sons[4] = toca_som(global.armas_sons[i][4],1,75,300,,0,.1,0,,30)
@@ -923,6 +938,10 @@ preparando = function(){
 						}
 					}
 				
+					travou_arma = 0
+					trava_vida = 0
+					travou_timer = 0
+			
 				}
 			}
 		}
@@ -1182,84 +1201,94 @@ recarrega = function(){
 
 reseta_coisas = function(){
 	
-	if (!instance_exists(pai)) exit
-	
-	var prec_c = pai.correndo ? max(global.armas_precin[i] * 2,5) : global.armas_precin[i]
-	var reca_c = pai.correndo ? global.armas_reca[i] * 1.5 : global.armas_reca[i]
-	
-	if (!global.pause) cano_quente = lerp(cano_quente,0,.035)
-	canox = 0
-	
-	for (var p=0;p<array_length(pext);p++){
+	if (!global.pause){ 
 		
-		if (array_length(pext[p]) > 2){
+		cano_quente = lerp(cano_quente,0,.035)
+		prec = lerp(prec,precin,.1)
+		
+		if (!rajadas and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and (array_length(sons)<=1 or !audio_is_playing(sons[1]))) tiro_timer--
+		rajando_timer -= !global.pause
+	
+	}
+	
+	if (!instance_exists(pai) or global.mods_atualiza - 1 > 0){
+	
+		var prec_c = pai.correndo ? max(global.armas_precin[i] * 2,5) : global.armas_precin[i]
+		var reca_c = pai.correndo ? global.armas_reca[i] * 1.5 : global.armas_reca[i]
+	
+		canox = 0
+	
+		for (var p=0;p<array_length(pext);p++){
+		
+			if (array_length(pext[p]) > 2){
 			
-			canox += pext[p][0]
+				canox += pext[p][0]
 			
+			}
+		}
+		
+		municao = global.armas_munc[i]
+	
+		tiro_tempo = global.armas_cade[i]
+		prec_menos = global.armas_prec[i]
+	
+		coix = global.armas_coix[i]
+		coiy = global.armas_coiy[i]
+	
+		dano = global.armas_dano[i]
+	
+		recarregando_tempo = reca_c
+		if (!recarregando) recarregando_timer = recarregando_tempo
+	
+		cliq = global.armas_cliq[i]
+	
+		rajadas_tempo = global.armas_raca[i]
+		rajadas_total = global.armas_raja[i]
+	
+		shak = global.armas_shak[i]
+	
+		bala = global.armas_bala[i]
+		rext = global.armas_rext[i]
+		peso = global.armas_peso[i]
+		baru = global.armas_baru[i]
+		precin = prec_c
+		//pext = []
+		mira_vel = .1
+		volu = 1
+	
+		part_reca = global.armas_part[i][1]
+		part_tiro = global.armas_part[i][0]
+		part_cock = global.armas_part[i][2]
+
+		som_tiro	= array_length(global.armas_sons[i])>0 ? global.armas_sons[i][0] : 0
+		som_cock	= array_length(global.armas_sons[i])>1 ? global.armas_sons[i][1] : 0
+		som_recc	= array_length(global.armas_sons[i])>2 ? global.armas_sons[i][2] : 0
+		som_recf	= array_length(global.armas_sons[i])>3 ? global.armas_sons[i][3] : 0
+		som_jam		= array_length(global.armas_sons[i])>7 ? global.armas_sons[i][7] : global.armas_sons[i][1]
+	
+		tiro_vel = global.tiros_velo[i]
+		tiro_spr = global.tiros_part[i]
+	
+		shak_giro = global.armas_gira[i]
+		trava_qtd = global.armas_trav[i]
+		
+		trava_vida = lerp(trava_vida,0,.075)
+		
+		if (!global.pause){
+	
+			fogo_x = 0
+			fogo_y = 0
+	
 		}
 	}
 		
-	if (!rajadas and (array_length(sons)<=3 or !audio_is_playing(sons[3])) and (array_length(sons)<=1 or !audio_is_playing(sons[1]))) tiro_timer--
-	rajando_timer -= !global.pause
-	prec = lerp(prec,precin,.1)
-	
-	municao = global.armas_munc[i]
-	
-	tiro_tempo = global.armas_cade[i]
-	prec_menos = global.armas_prec[i]
-	
-	coix = global.armas_coix[i]
-	coiy = global.armas_coiy[i]
-	
-	dano = global.armas_dano[i]
-	
-	recarregando_tempo = reca_c
-	if (!recarregando) recarregando_timer = recarregando_tempo
-	
-	cliq = global.armas_cliq[i]
-	
-	rajadas_tempo = global.armas_raca[i]
-	rajadas_total = global.armas_raja[i]
-	
-	shak = global.armas_shak[i]
-	
-	bala = global.armas_bala[i]
-	rext = global.armas_rext[i]
-	peso = global.armas_peso[i]
-	baru = global.armas_baru[i]
-	precin = prec_c
-	pext = []
-	mira_vel = .1
-	volu = 1
-	
-	part_reca = global.armas_part[i][1]
-	part_tiro = global.armas_part[i][0]
-	part_cock = global.armas_part[i][2]
-
-	som_tiro = array_length(global.armas_sons[i])>0 ? global.armas_sons[i][0] : 0
-	som_cock = array_length(global.armas_sons[i])>1 ? global.armas_sons[i][1] : 0
-	som_recc = array_length(global.armas_sons[i])>2 ? global.armas_sons[i][2] : 0
-	som_recf = array_length(global.armas_sons[i])>3 ? global.armas_sons[i][3] : 0
-	
-	tiro_vel = global.tiros_velo[i]
-	tiro_spr = global.tiros_part[i]
-	
-	shak_giro = global.armas_gira[i]
-	
-	if (!global.pause){
-	
-		fogo_x = 0
-		fogo_y = 0
-	
-	}
 }
 
 colocando_os_acessorios = function(){
 	
 	equip = pai.equipado
-	if (!equip) exit;
 	
-	if (i<array_length(global.armas_mods[0])){
+	if (i<array_length(global.armas_mods[0]) and global.mods_atualiza and equip){
 	
 		for (var m=0;m<array_length(mods);m++){
 		
@@ -1347,7 +1376,8 @@ colocando_os_acessorios = function(){
 				#endregion
 				
 				shak_giro			+=global.armas_mode[i][m][mod_i][28]
-				
+				trava_qtd			+=global.armas_mode[i][m][mod_i][29]
+		
 				pext[m]				= [ptm1,ptm2,ptm3,ptm4,ptm5]
 				
 			}	
@@ -1369,6 +1399,8 @@ inclinando_arma = function(){
 	var pes = pes_min - peso / 20
 	
 	if (abs(tec)){
+		
+		trava_qtd *= 1.25
 		
 		with(pai){
 			
@@ -1395,6 +1427,47 @@ inclinando_arma = function(){
 			cy4 = lerp(cy4,valy,pes)
 			
 		}
+	}
+}
+
+desenha_trava_arma = function(){
+	
+	if (travou_arma){
+		
+		travou_timer += !global.pause
+		
+		var hs = [fa_left,fa_right]
+		var gw = display_get_gui_width()-40
+		
+		var texto_xesc	= 1
+		var texto_yesc	= 1
+		
+		var texto_margy = 20*texto_yesc
+		
+		var cor = [image_blend,c_red]
+		var tex = ["A arma travou, re engatilhe a arma","The gun jammed, cock her again"]
+		
+		draw_set_halign	(hs[qtd])
+		draw_set_colour	(cor[travou_cor])
+		draw_set_font	(fnt_menu)
+
+		draw_text_transformed(20+(gw*qtd),texto_margy*3	,tex[global.configs[2][0]],texto_xesc,texto_yesc,0)
+		
+		draw_set_halign	(-1)
+		draw_set_colour	(-1)
+		draw_set_font	(-1)
+	
+		if (travou_timer > travou_tempo){
+			
+			travou_timer = 0
+			travou_cor =! travou_cor
+			
+		}
+		
+	}else{
+		
+		travou_timer = 0
+		
 	}
 }
 

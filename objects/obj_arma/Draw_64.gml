@@ -7,6 +7,8 @@ if (!instance_exists(pai)){
 	
 }
 
+desenha_trava_arma()
+
 var hs = [fa_left,fa_right]
 var co = pai.image_blend
 var gw = display_get_gui_width()-40
@@ -31,12 +33,11 @@ if (!modo)	draw_text_transformed(20+(gw*qtd),texto_margy*2,string(tiro) + "/" + 
 if ( modo)	draw_text_transformed(20+(gw*qtd),texto_margy*2,string(tirg) + "/" + string(mung	),texto_xesc,texto_yesc,0)
 
 draw_text_transformed(20+(gw*qtd),texto_margy*1	,global.armas_nome[i]	,texto_xesc,texto_yesc,0)
-draw_text_transformed(20+(gw*qtd),texto_margy*3	,recarregando_tempo		,texto_xesc,texto_yesc,0)
-draw_text_transformed(20+(gw*qtd),texto_margy*4	,recarregando_timer		,texto_xesc,texto_yesc,0)
-//draw_text_transformed(20+(gw*qtd),texto_margy*4	,fogo_ix				,texto_xesc,texto_yesc,0)
-//draw_text_transformed(20+(gw*qtd),texto_margy*5	,som_recf				,texto_xesc,texto_yesc,0)
-//draw_text_transformed(20+(gw*qtd),texto_margy*6	,som_tiro				,texto_xesc,texto_yesc,0)
-//draw_text_transformed(20+(gw*qtd),texto_margy*7	,pai.direction			,texto_xesc,texto_yesc,0)
+draw_text_transformed(20+(gw*qtd),texto_margy*4	,[trava_vida,trava_qtd,travou_arma]					,texto_xesc,texto_yesc,0)
+//draw_text_transformed(20+(gw*qtd),texto_margy*5	,mods					,texto_xesc,texto_yesc,0)
+//draw_text_transformed(20+(gw*qtd),texto_margy*6	,canox					,texto_xesc,texto_yesc,0)
+//draw_text_transformed(20+(gw*qtd),texto_margy*7	,tiro_timer				,texto_xesc,texto_yesc,0)
+//draw_text_transformed(20+(gw*qtd),texto_margy*8	,pai.direction			,texto_xesc,texto_yesc,0)
 
 draw_set_halign(-1)
 
