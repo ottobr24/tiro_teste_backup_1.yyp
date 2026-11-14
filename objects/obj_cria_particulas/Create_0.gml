@@ -1,3 +1,5 @@
+visao_inicio()
+
 xx = x
 yy = y
 cor = 0
@@ -22,6 +24,8 @@ sprites = 0
 
 limpa_tempo = 60
 limpa_timer = limpa_tempo
+
+lasers = []
 
 cria_as_coisas = function(){
     
@@ -129,4 +133,8 @@ desenha_as_coisas = function(){
         
 		}
 	}	
+}
+	
+desenha_laser = function(){
+	
 }

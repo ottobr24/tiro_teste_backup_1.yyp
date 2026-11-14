@@ -26,6 +26,7 @@ vida = vida_max
 
 dano = 0
 dano_pai = 0
+dano_ang = 0
 
 estado = 0
 estado_txt = ""
@@ -443,88 +444,6 @@ colidindo = function(){
 
 ouvindo = function(){
 	
-	var obj = instance_exists(alvo) ? instance_nearest(x,y,alvo) : -4
-	
-	var dis = obj ? distance_to_object(alvo) : 1000000
-	
-	if (0){//instance_exists(obj_controlador) and player_x = x and dis < 600){
-	
-		var bar = obj_controlador.barulhos
-	
-		for (var b=0;b<array_length(bar);b++){
-			
-			#region To ouvindo o tiro
-			
-			if (point_in_circle(x,y,bar[b][0],bar[b][1],bar[b][2]) and instance_exists(bar[b][3])){
-				
-				var col = point_in_circle(x,y,alvox,alvoy,3)
-	
-				if (col) cria_caminho = 1
-				
-				if (bar[b][3].object_index != object_index){
-					
-					#region Alguem atirou
-					
-					var dist = 16
-			
-					randomise()
-			
-					player_x = random_range(bar[b][0]-dist,bar[b][0]+dist)
-					player_y = random_range(bar[b][1]-dist,bar[b][1]+dist)
-				
-					while(mp_grid_get_cell(obj_controlador.mapa,player_x,player_y) = 0){
-				
-						randomise()
-				
-						player_x = random_range(bar[b][0]-dist,bar[b][0]+dist)
-						player_y = random_range(bar[b][1]-dist,bar[b][1]+dist)
-				
-					}
-				
-					player_perigo = 1
-					vigia_volta = 0
-					
-					direction = point_direction(x,y,player_x,player_y)
-					alvo = bar[b][3]
-					
-					#endregion
-					
-				}else{
-					
-					#region Algum amigo atirou
-					
-					var px = bar[b][3].player_x
-					var py = bar[b][3].player_y
-					var dist = 16
-			
-					randomise()
-			
-					player_x = random_range(px-dist,px+dist)
-					player_y = random_range(py-dist,py+dist)
-				
-					while(mp_grid_get_cell(obj_controlador.mapa,player_x,player_y) = 0){
-				
-						randomise()
-				
-						player_x = random_range(px-dist,px+dist)
-						player_y = random_range(py-dist,py+dist)
-				
-					}
-				
-					player_perigo = 1
-					vigia_volta = 0
-			
-					direction = point_direction(x,y,player_x,player_y)
-					
-					#endregion
-					
-				}
-			}
-			
-			#endregion
-			
-		}
-	}
 }
 
 vendo_o_perigo = function(){

@@ -294,7 +294,7 @@ desenha_modificacao = function(){
 	var pente_ext = 0
 	var silenciador = 0
 	var las_tec = usa_controle(controles.arma_l,1)//!cn ? keyboard_check_pressed(ord("Z")) : gamepad_button_check_pressed(0,gp_stickr)
-	var mira_co = [c_red,c_green]
+	var mira_co = [c_red,make_colour_rgb(0,200,0)]
 	
 	#endregion
 	
@@ -382,7 +382,7 @@ desenha_modificacao = function(){
 					
 					draw_set_alpha(1)
 					
-	                visao(tmd,"",_x,_y,ang,mod_col,mod_col,1,0,0,mira_co[qtd])
+					visao(tmd,"",_x,_y,ang,mod_col,mod_col,1,0,0,mira_co[other.qtd])
 				
 					draw_set_alpha(image_alpha)
 					
@@ -478,7 +478,7 @@ atira = function(){
 	
 	var tec = atr_tec
 	var tec2 = 0
-	var atn = (tec or tec2) and !tiro_timer and !recarregando and !rajadas and !travou_arma and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
+	var atn = (tec or tec2) and !tiro_timer and !recarregando and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	var raj = rajadas and !rajando_timer and !recarregando and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
 	
 	var inq = usa_controle(controles.arma_c,0) - usa_controle(controles.arma_b,0)//cn ? gamepad_button_check(0,gp_shoulderr) - gamepad_button_check(0,gp_shoulderl) : keyboard_check(ord("E")) - keyboard_check(ord("Q"))
@@ -590,6 +590,25 @@ atira = function(){
 				
 				#endregion
 				
+				#region Resetando vars
+				
+				prep--
+				tiro--	
+				rajadas--
+	    
+				rajando_timer = rajadas_total
+			
+				if ((rajadas<=0 and global.armas_prep[i]<0) or (prep<=0 and global.armas_prep[i]>0)){ 
+					
+					randomise()
+					var alet = random_range(.8,1.2)
+					
+					tiro_timer = tiro_tempo//    *alet
+				
+				}
+		
+				#endregion
+				
 				#region Fogo, calor e travando
 				
 				var bal = bala > 1 ? bala / 1.25 : 1
@@ -603,7 +622,7 @@ atira = function(){
 				global.shakey += lengthdir_y(coiy,direction)								* bal * mire * global.shakes[global.configs[1][0]] / mirs * mirco   
 				global.shakeg += random_range(-shak_giro,shak_giro)	* bal * mire / instance_number(obj_player) * global.shakes[global.configs[1][0]] / mirs * mirco  
 				
-				trava_vida += global.zumbi ? mirtr : mirtr / 2
+				trava_vida += global.zumbi ? mirtr * 1.5 : mirtr / 2
 					
 				if (trv_chan) travou_arma = 1
 				
@@ -646,25 +665,6 @@ atira = function(){
 					}
 				}
 				
-				#endregion
-				
-				#region Resetando vars
-				
-				prep--
-				tiro--	
-				rajadas--
-	    
-				rajando_timer = rajadas_total
-			
-				if ((rajadas<=0 and global.armas_prep[i]<0) or (prep<=0 and global.armas_prep[i]>0)){ 
-					
-					randomise()
-					var alet = random_range(.8,1.2)
-					
-					tiro_timer = tiro_tempo//    *alet
-				
-				}
-		
 				#endregion
 				
 				#region Sem municao e fazendo barulho
@@ -859,7 +859,8 @@ preparando = function(){
 		
 		if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>1 and asset_get_type(som_cock) == asset_sound){
 			
-			sons[1] = toca_som(som_cock,1,75,250,,0,.05,0,,30)
+			if (cock != 2) sons[1] = toca_som(som_cock,1,75,250,,0,.05,0,,30)
+			if (cock  = 2) sons[1] = toca_som(som_jam,1,75,250,,0,.05,0,,30)
 			if (sem) refff = 1
 			
 			if (global.armas_rext[i]-global.armas_munc[i] = -1 and cock = 1){ 
@@ -1272,7 +1273,7 @@ reseta_coisas = function(){
 		shak_giro = global.armas_gira[i]
 		trava_qtd = global.armas_trav[i]
 		
-		trava_vida = lerp(trava_vida,0,.075)
+		trava_vida = lerp(trava_vida,0,.065)
 		
 		if (!global.pause){
 	

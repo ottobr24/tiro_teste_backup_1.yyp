@@ -46,7 +46,7 @@ if (array_length(global.armas_mods) = 0){
 
 if (file_exists(global.save_ling				)) carregando_idioma()
 if (file_exists(global.saves[global.savei][0]	)) carregando()
-
+		
 if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)){
 	
 	if (array_length(global.armas_aval) < array_length(global.armas_modn)){
@@ -832,6 +832,7 @@ usando_o_menu = function(){
 					case 0:
 						
 						textos_mostrar = [0,6]
+						salvando_idioma()
 				
 					break
 					

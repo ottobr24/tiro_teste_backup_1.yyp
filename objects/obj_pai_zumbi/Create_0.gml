@@ -1,10 +1,15 @@
 visao_inicio()
 
+hitbox = instance_create_layer(x,y,layer,obj_hitbox)
+hitbox.pai = id
+hitbox.image_xscale = 3
+hitbox.image_yscale = 3
+
 caminho = path_add()
 cria_caminho = 1
 cria_caminho_tempo = random_range(15,30)
 cria_caminho_timer = cria_caminho_tempo
-caminho_dist = random_range(24,48)
+caminho_dist = random_range(8,16)
 criou_caminho = 0
 
 ataque_tempo = random_range(60,100)
@@ -34,6 +39,11 @@ arma_atira = 1
 arma_usar = 1
 
 criando_caminho = 0
+
+dano	 = 0
+dano_pai = 0
+dano_ang = 0
+dano_pos = []
 
 morrendo = function(){
 	
@@ -67,10 +77,8 @@ movendo = function(_x = -1,_y = -1){
 	
 	criando_caminho[0] = 0
 	var ply = instance_nearest(x,y,obj_player)
-	var dis = abs(distance_to_object(ply) - distance_to_point(alvox,alvoy)) > caminho_dist
+	var dis = distance_to_object(ply) > caminho_dist
 		
-	caminho_dist = clamp(caminho_dist,ataque_dist+1,100)
-	
 	if (dis or cria_caminho or path_get_closed(caminho)){
 		
 		player = ply

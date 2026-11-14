@@ -173,6 +173,8 @@ movendo = function(andar=1,equip=1){
 	var lh	= cn ? gamepad_axis_value(0,gp_axislh)  : 0
 	var lv	= cn ? gamepad_axis_value(0,gp_axislv)  : 0
 	
+	var mira = usa_controle(controles.arma_m,0,,global.controle)
+	
 	var cv	= cn ? point_distance(0,0,lh,lv)*vel : 0
 	var cd	= cn ? point_direction(0,0,rh		,rv			) : 0
 	
@@ -188,9 +190,14 @@ movendo = function(andar=1,equip=1){
 	
     if (!controle) direction = point_direction(0,0,(d-a)*vel,(s-w)*vel	)
     
-	if ( controle and abs(rh)>.6 or abs(rv)>.6 and !gamepad_button_check(0,gp_shoulderlb)){ 
+	if ( controle and (abs(rh) + abs(rv)>.7) and !gamepad_button_check(0,gp_shoulderlb)){ 
 		
-		direction = point_direction(0,0,rh		,rv			)
+		var inix = mira and instance_exists(arma) ? x : 0
+		var iniy = mira and instance_exists(arma) ? y : 0
+		var mirx = mira and instance_exists(arma) ? arma.mx : rh
+		var miry = mira and instance_exists(arma) ? arma.my : rv
+		
+		direction = point_direction(inix,iniy,mirx,miry)
 		
 	}
 	
@@ -444,6 +451,8 @@ abre_modificacao = function(){
 		obj_camera.roo = 0
 		global.pause=!global.pause
 		obj_pause.pai = id
+		
+		salvando_idioma()
 		
 		window_set_cursor(cursores[global.pause])
 		

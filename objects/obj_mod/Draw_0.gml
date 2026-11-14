@@ -285,6 +285,7 @@ if (i<array_length(global.armas_mods[0]) and alp){
 				index = p
 				if (col_mou) colidindo = 1
 				if (controles_mod !=2 or col_mou) cor = c_yellow
+				show_debug_message(controles_mod, col_mou)
 				deb2 = 2
 				
 			}
@@ -538,3 +539,5 @@ draw_set_alpha(1)
 draw_set_font(-1)
 draw_set_halign(-1)
 draw_set_valign(-1)
+
+draw_text(20,20,controles_mod)

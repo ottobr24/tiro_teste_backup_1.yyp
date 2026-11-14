@@ -696,22 +696,22 @@ reseta_coisas = function(){
 		}
 	}
 		
-	municao = global.armas_munc[i]
-	tiro_tempo = global.armas_cadn[i]
-	prec_menos = global.armas_prec[i] * 1.5
-	precin = global.armas_precin[i] * 2.5
-	coix = global.armas_coix[i]
-	coiy = global.armas_coiy[i]
-	dano = global.zumbi ? global.armas_dano[i] * .75 : global.armas_dano[i] 
-	recarregando_tempo = global.zumbi ? global.armas_recz[i] : global.armas_recn[i]
-	cliq = global.armas_cliq[i]
-	rajadas_tempo = global.armas_raca[i] * 1.5
-	rajadas_total = global.armas_raja[i]
-	shak = global.zumbi ? global.armas_shak[i] / 8 : global.armas_shak[i] / 4
-	bala = global.armas_bala[i]
-	rext = global.armas_rext[i]
-	peso = global.armas_peso[i]
-	baru = global.armas_baru[i]
+	municao					= global.armas_munc[i]
+	tiro_tempo				= global.armas_cadn[i]
+	prec_menos				= global.zumbi ? global.armas_prec[i]	* 3 : global.armas_prec[i]		* 1.5
+	precin					= global.zumbi ? global.armas_precin[i]	* 5 : global.armas_precin[i]	* 2.5
+	coix					= global.armas_coix[i]
+	coiy					= global.armas_coiy[i]
+	dano					= global.zumbi ? global.armas_dano[i] * .65 : global.armas_dano[i] 
+	recarregando_tempo		= global.zumbi ? global.armas_recz[i] : global.armas_recn[i]
+	cliq					= global.armas_cliq[i]
+	rajadas_tempo			= global.armas_raca[i] * 1.5
+	rajadas_total			= global.armas_raja[i]
+	shak					= global.zumbi ? global.armas_shak[i] / 8 : global.armas_shak[i] / 4
+	bala					= global.armas_bala[i]
+	rext					= global.armas_rext[i]
+	peso					= global.armas_peso[i]
+	baru					= global.armas_baru[i]
 	
 	//pext = []
 	mira_vel = .1

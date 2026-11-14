@@ -82,6 +82,7 @@ if (col){
 					if (ds_list_size(atacados)>1) dano = -1
 					
 					dano /= 2
+					vel *= .75
 				
 				}
 			}
@@ -92,6 +93,8 @@ if (col){
 		
 				obj.dano+=dan 
 				if (variable_instance_exists(obj,"dano_pai")) obj.dano_pai = pai
+				if (variable_instance_exists(obj,"dano_ang")) obj.dano_ang = image_angle
+				if (variable_instance_exists(obj,"dano_pos")) obj.dano_pos = [x,y]
 			
 			}
 		}

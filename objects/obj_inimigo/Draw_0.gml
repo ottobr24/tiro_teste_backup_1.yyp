@@ -10,6 +10,17 @@ var ve_e_pe = player_perigo and vendo_player and instance_exists(alvo) and point
 //if (alvo) draw_text(x,y-20	,[player_perigo,vendo_player,instance_exists(alvo) , point_distance(x,y,alvo.x,alvo.y)<atirar_player_dist])//alvo.object_index,player_perigo,vendo_player,[point_distance(x,y,alvo.x,alvo.y),atirar_player_dist,point_distance(x,y,alvo.x,alvo.y)<atirar_player_dist],vendo_player_timer])
 //if (alvo) draw_text(x,y+20	,[estado_txt])
 
+for(var a=0;a<array_length(ataque);a++){
+	
+	var x1 = ataque[0]
+	var y1 = ataque[1]
+	var x2 = x1 + lengthdir_x(sprite_width ,dano_ang)
+	var y2 = y1 + lengthdir_y(sprite_height,dano_ang)
+		
+	//draw_line(x1,y1,x2,y2)
+	
+}
+
 if (global.debug){ 
 
 	draw_set_colour(c_yellow)

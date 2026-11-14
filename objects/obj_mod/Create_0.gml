@@ -29,7 +29,7 @@ ind = 0
 criou = 0
 
 mods_atual = []
-controles_mod = 0
+controles_mod = global.controle
 
 mxp = mouse_x
 myp = mouse_y

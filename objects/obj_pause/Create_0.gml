@@ -711,6 +711,7 @@ usando_o_menu = function(){
 						global.mods_atualiza = 2
 						global.pause = 0
 						window_set_cursor(cr_none)
+						salvando_idioma()
 				
 					break
 					

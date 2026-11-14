@@ -92,6 +92,15 @@ sofrendo_dano = function(){
 	
 	if (dano){
 		
+		var x1 = dano_pos[0]
+		var y1 = dano_pos[1]
+		var x2 = x1 + lengthdir_x(sprite_width ,dano_ang)
+		var y2 = y1 + lengthdir_y(sprite_height,dano_ang)
+		
+		var col = collision_line(x1,y1,x2,y2,hitbox,0,0)
+	
+		if (col) vida = -10
+	
 		vermelho += 3
 		vida-=dano
 		dano = 0
@@ -104,41 +113,6 @@ sofrendo_dano = function(){
 #region Movimentação
 
 #region Movimentacao2
-
-//movendo = function(_x = -1,_y = -1){
-    
-//	if !instance_exists(obj_player) exit;
-	
-//	var ply = instance_nearest(x,y,obj_player)
-		
-//	cria_caminho_timer--
-//	caminho_dist = clamp(caminho_dist,ataque_dist+1,100)
-	
-//	if (distance_to_object(ply) > caminho_dist or cria_caminho or !cria_caminho_timer){
-	
-//		var diag = 1
-//		var map = obj_controlador.mapa
-	
-//		var dest_x = ply.x
-//		var dest_y = ply.y
-		
-//		var sel_x = dest_x
-//		var sel_y = dest_y
-		
-//		if ((mp_grid_path(map,caminho,x,y,sel_x,sel_y,diag) == true and mp_grid_get_cell(map,sel_x,sel_y)=-1)){
-		
-//			path_start(caminho,vela,path_action_stop,!diag)
-		
-//			alvox = sel_x
-//			alvoy = sel_y
-		
-//			cria_caminho = 0
-//			cria_caminho_timer = cria_caminho_tempo
-//			criou_caminho =  1
-			
-//		}
-//	}
-//}
 
 #endregion
 

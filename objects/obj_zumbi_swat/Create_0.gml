@@ -20,7 +20,7 @@ moedas = moe
 hspd =0 
 vspd =0
 
-vela = random_range(.6,1.4)
+vela = random_range(.5,1.2)
 vel = 0
 
 vida_max = vid
@@ -49,8 +49,8 @@ braco_spr = spr_zumbi_braco_swat
 ii = 0
 
 image_alpha = 0
-ataque_dist = clamp(ataque_dist,caminho_dist+1,infinity)
 
+ataque_dist = 200
 vermelho = 0
 player = -4
 
@@ -212,6 +212,15 @@ sofrendo_dano = function(){
 	
 	if (dano){
 		
+		var x1 = dano_pos[0]
+		var y1 = dano_pos[1]
+		var x2 = x1 + lengthdir_x(sprite_width ,dano_ang)
+		var y2 = y1 + lengthdir_y(sprite_height,dano_ang)
+		
+		var col = collision_line(x1,y1,x2,y2,hitbox,0,0)
+	
+		if (col) vida = -10
+	
 		vermelho += 3
 		vida-=dano
 		dano = 0
@@ -274,7 +283,7 @@ bracos = function(){
 estado_seguindo = function(){
 	
 	var ply = instance_exists(obj_player) ? instance_nearest(x,y,obj_player) : -4
-	var dis = ply ? point_distance (x,y,ply.x,ply.y) : 10
+	var dis = ataque_dist//ply ? point_distance (x,y,ply.x,ply.y) : 10
 	var dir = ply ? point_direction(x,y,ply.x,ply.y) : 0
 	
 	var col1 = retira_da_array(global.zumbis,[obj_zumbi_swat])
