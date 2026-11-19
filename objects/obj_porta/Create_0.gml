@@ -26,14 +26,14 @@ abrindo_e_sendo_empurrada = function(){
 		perto = 0
 		cade_alp = clamp(cade_alp,0,1)
 	
-		var alvos = [obj_player,obj_pai_pessoas,obj_pai_zumbi,obj_bola]
-		var dist = [1000,100]
-		var tec_a = usa_controle(controles.anda_f,1) // keyboard_check_pressed(ord("F"))
-		var chu_t = 30
-	
 		var prx = instance_nearest(x,y,obj_player)
 		var dis = distance_to_object(prx)
 		
+		var alvos = [obj_player,obj_pai_pessoas,obj_pai_zumbi,obj_bola]
+		var dist = [1000,100]
+		var tec_a = usa_controle(controles.anda_f,1,,prx.controle) // keyboard_check_pressed(ord("F"))
+		var chu_t = 30
+	
 		#region Empurrando a porta
 		
 		if (!trancado and instance_exists(obj_player)){
@@ -151,7 +151,7 @@ abrindo_e_sendo_empurrada = function(){
 					var _x = filhos[f].x
 					var _y = filhos[f].y
 					
-					if (global.portas_abrir = id and dis<75){
+					if (prx.interacao_obj = id and dis<75){
 						
 						cade_alp += .05
 						perto = 1
@@ -159,7 +159,7 @@ abrindo_e_sendo_empurrada = function(){
 						var ct = variable_instance_exists(prx,"controle") ? prx.controle : 0
 						var cn = ct
 						var tec_ord = cn
-						tec_a = usa_controle(controles.anda_f,2) and tecla_pressionada[global.controle] < chute_tempo/2 //!cn ? keyboard_check_released(ord(tecla_abrir[0])) and tecla_pressionada[0] < chute_tempo/2 : gamepad_button_check_released(0,tecla_abrir[1]) and tecla_pressionada[1] < chute_tempo/2
+						tec_a = usa_controle(controles.anda_f,2,,prx.controle) and tecla_pressionada[global.controle] < chute_tempo/2 //!cn ? keyboard_check_released(ord(tecla_abrir[0])) and tecla_pressionada[0] < chute_tempo/2 : gamepad_button_check_released(0,tecla_abrir[1]) and tecla_pressionada[1] < chute_tempo/2
 					
 						if (tec_a and !chutou){
 										    
@@ -170,7 +170,6 @@ abrindo_e_sendo_empurrada = function(){
 					
 						if (tecla_pressionada[tec_ord] >= chu_t and !chutou and image_angle = clamp(image_angle,ima_org-20,ima_org+20)){
 							
-							show_message([dis,dist[0]])
 							var dir = ima_org = 90 ? sign(prx.x-x) : sign(prx.y-y)
 						
 							frc += 20 * dir
@@ -190,7 +189,7 @@ abrindo_e_sendo_empurrada = function(){
 		
 		#region Efetivamente abrindo ela
 	
-		if (perto and tec_a and global.portas_abrir = id){
+		if (perto and tec_a and prx.interacao_obj = id){
 			
 			if (!trancado){
 	
@@ -290,13 +289,13 @@ cria_filhos = function(){
 
 pressionando_tecla = function(){
 	
-	if (!global.portas_abrir = id) exit;
-	
 	var prx = instance_nearest(x,y,obj_player)
+	
+	if (prx.interacao_obj != id) exit;
 	
 	var ct = instance_exists(obj_player) and variable_instance_exists(prx,"controle") ? prx.controle : 0
 	var cn = ct
-	var tec_a = usa_controle(controles.anda_f,0) //!cn ? keyboard_check(ord(tecla_abrir[0])) : gamepad_button_check(0,tecla_abrir[1])
+	var tec_a = usa_controle(controles.anda_f,0,,prx.controle) //!cn ? keyboard_check(ord(tecla_abrir[0])) : gamepad_button_check(0,tecla_abrir[1])
 	
 	if (!cn and tec_a and !chutou) tecla_pressionada[0] += tec_a
 	if ( cn and tec_a and !chutou) tecla_pressionada[1] += tec_a

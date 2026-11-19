@@ -46,20 +46,43 @@ if (keyboard_check_pressed(vk_backspace) or gamepad_button_check_pressed(0,gp_st
 }
 
 var dist = 0
+var dists = []
 
+var deb = keyboard_check_pressed(vk_f1)
+
+dist = [100000,-4]
+	
 for (var p = 0; p<array_length(global.portas);p++){
 	
-	dist[p] = 100000
+	dists[p][0] = 100000
+	dists[p][1] = -4
+	dists[p][2] = global.portas[p]
 	
-	if (!instance_exists(global.portas[p])) break;
+	if (instance_exists(global.portas[p])){
 	
-	var obj = instance_nearest(x,y,global.portas[p])
-	var dis = distance_to_object(obj)
+		var obj = instance_nearest(x,y,global.portas[p])
 	
-	if (p = 0 or dist[p-1]>dis){
+		if (instance_exists(obj)){
+	
+			var dis = distance_to_object(obj)
+			var tmd = 0//array_length(dist) - 1
+			
+			dists[p][0] = dis
+			dists[p][1] = obj.object_index
+			dists[p][2] = global.portas[p]
+	
+			if (p = 0 or dist[0]>dis){
 		
-		global.portas_abrir  = obj
-		dist[p] = dis
+				interacao_obj = obj
+				dist[0] = dis
+				dist[1] = obj
 		
+				if (deb and p = 0) show_message([			dis,tmd])
+				if (deb and p > 0) show_message([dist[tmd],	dis,tmd])
+
+			}
+		}
 	}
 }
+
+if (deb) show_message(dists)

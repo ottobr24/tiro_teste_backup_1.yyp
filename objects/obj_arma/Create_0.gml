@@ -494,8 +494,9 @@ atira = function(){
 	
 	var tec = atr_tec
 	var tec2 = 0
-	var atn = (tec or tec2) and !tiro_timer and !recarregando and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
-	var raj = rajadas and !rajando_timer and !recarregando and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
+	var atn = (tec or tec2) and !tiro_timer and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
+	var raj = rajadas and !rajando_timer and (array_length(sons)<=1 or !audio_is_playing(sons[1]))
+	var atn_real = tiro>0 and !travou_arma and !recarregando
 	
 	var inq = usa_controle(controles.arma_c,0,,cn) - usa_controle(controles.arma_b,0,,cn)//cn ? gamepad_button_check(0,gp_shoulderr) - gamepad_button_check(0,gp_shoulderl) : keyboard_check(ord("E")) - keyboard_check(ord("Q"))
 	
@@ -526,8 +527,8 @@ atira = function(){
 		#region Tiros normais
 		
 		if (atn or raj){
-		
-			if (tiro>0 and !travou_arma){
+			
+			if (atn_real){
 				
 				#region Vars e rajada
 				
@@ -1506,8 +1507,9 @@ desenha_trava_arma = function(){
 dropa_arma = function(){
 	
 	var drp_tec = usa_controle(controles.arma_drop,0,,cn)
+	var extr = cn ? 0 : dropa_arma_tempo
 	
-	dropa_arma_timer = drp_tec ? dropa_arma_timer + 1 : dropa_arma_timer - 1
+	dropa_arma_timer = drp_tec ? dropa_arma_timer + 1 + extr : dropa_arma_timer - 1
 	
 	if (dropa_arma_timer >= dropa_arma_tempo){
 		
@@ -1515,6 +1517,9 @@ dropa_arma = function(){
 			
 			cria_arma(1)
 			tem_arma = 0
+			
+			if (controle = 0) window_set_cursor(cr_arrow)
+			equipado = 1
 			
 		}
 		
@@ -1596,6 +1601,7 @@ estado_recarregando = function(){
 	mirando()
 	recarrega()
 	preparando()
+	atira()
 	inclinando_arma()
 	
 	estado = estado_recarregando

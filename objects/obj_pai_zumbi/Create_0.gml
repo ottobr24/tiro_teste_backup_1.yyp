@@ -18,6 +18,8 @@ atirar_player_dist = 250
 
 arma = noone
 armai = irandom_range(0,array_length(global.armas_nome)-1)
+mods = []
+modi = []
 
 cx = 0
 cy = 0
@@ -55,7 +57,7 @@ morrendo = function(){
 		var armi = irandom_range(0,array_length(drops)-1)
 		armi = clamp(armi,0,array_length(drops)-1)
 		
-		var armai = 0//drops[armi]
+		var armai = drops[armi]
 		
 		var obj = instance_create_layer(x,y,"Particulas",obj_arma_item)
 		obj.i = armai

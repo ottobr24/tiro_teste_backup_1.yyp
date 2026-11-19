@@ -57,6 +57,8 @@ controle		= global.players = 1 ? global.controle : 1
 				
 qtd				= global.player_ord
 
+interacao_obj	= -4
+
 global.player_ord++
 
 visao_inicio()
@@ -120,6 +122,8 @@ if (!qtd){
 	instance_create_layer(x,y,"UI"			,obj_pause)
 	
 	if (global.zumbi) instance_create_layer(x,y,layer,obj_criador)
+
+	display_set_gui_size(1280,720)
 
 }
 

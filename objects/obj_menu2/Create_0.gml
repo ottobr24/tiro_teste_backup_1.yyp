@@ -1138,7 +1138,7 @@ usando_o_menu = function(){
 							randomise()
 							var r = irandom(array_length(global.levels_zumbi)-1)
 							
-							global.destino = rm_teste//global.levels_zumbi[r]//rm_teste
+							global.destino = global.levels_zumbi[r]//rm_teste
 							
 							seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
 							

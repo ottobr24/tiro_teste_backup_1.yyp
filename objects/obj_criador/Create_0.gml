@@ -159,6 +159,7 @@ passando_as_rodadas = function(){
 				global.rodada++
 				rod_muda_timer = rod_muda_tempo
 				obj_player.vida = obj_player.vida_max
+				instance_activate_object(obj_arma_item)
 				instance_destroy(obj_arma_item)
 				
 				if (instance_number(obj_player)<global.players){

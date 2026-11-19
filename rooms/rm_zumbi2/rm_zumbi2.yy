@@ -103,6 +103,8 @@
     {"name":"inst_53D6C3AE","path":"rooms/rm_zumbi2/rm_zumbi2.yy",},
     {"name":"inst_384DB9C3","path":"rooms/rm_zumbi2/rm_zumbi2.yy",},
     {"name":"inst_5F92F55E","path":"rooms/rm_zumbi2/rm_zumbi2.yy",},
+    {"name":"inst_6D7CC9DD","path":"rooms/rm_zumbi2/rm_zumbi2.yy",},
+    {"name":"inst_3FFD6AA3","path":"rooms/rm_zumbi2/rm_zumbi2.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -251,6 +253,8 @@
     {"$GMRInstanceLayer":"","%Name":"Pessoas","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_47B35928_1_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_47B35928_1_1","objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":830.0,"y":297.0,},
         {"$GMRInstance":"v4","%Name":"inst_1AA24429_1_1","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1AA24429_1_1","objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":832.0,"y":256.0,},
+        {"$GMRInstance":"v4","%Name":"inst_6D7CC9DD","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6D7CC9DD","objectId":{"name":"obj_arma_item","path":"objects/obj_arma_item/obj_arma_item.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":568.0,"y":179.0,},
+        {"$GMRInstance":"v4","%Name":"inst_3FFD6AA3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3FFD6AA3","objectId":{"name":"obj_arma_item","path":"objects/obj_arma_item/obj_arma_item.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":642.0,"y":138.0,},
       ],"layers":[],"name":"Pessoas","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":true,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Particulas","depth":10000,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[],"layers":[],"name":"Particulas","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":true,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Assets_1","assets":[

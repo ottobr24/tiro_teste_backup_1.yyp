@@ -5,6 +5,9 @@ timer = tempo
 vida = irandom_range(200,400)
 dano_dmg = 1
 
+image_index = random_range(0,image_number)
+image_speed = random_range(.5,1.5)
+
 dando_dano = function(){
 	
 	timer--

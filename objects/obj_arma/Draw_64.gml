@@ -33,7 +33,7 @@ if (!modo)	draw_text_transformed(20+(gw*qtd),texto_margy*2,string(tiro) + "/" + 
 if ( modo)	draw_text_transformed(20+(gw*qtd),texto_margy*2,string(tirg) + "/" + string(mung	),texto_xesc,texto_yesc,0)
 
 draw_text_transformed(20+(gw*qtd),texto_margy*1	,global.armas_nome[i]	,texto_xesc,texto_yesc,0)
-//draw_text_transformed(20+(gw*qtd),texto_margy*4	,[rajando_timer]					,texto_xesc,texto_yesc,0)
+//draw_text_transformed(20+(gw*qtd),texto_margy*4	,[interacao_obj.object_index]					,texto_xesc,texto_yesc,0)
 //draw_text_transformed(20+(gw*qtd),texto_margy*5	,mods					,texto_xesc,texto_yesc,0)
 //draw_text_transformed(20+(gw*qtd),texto_margy*6	,canox					,texto_xesc,texto_yesc,0)
 //draw_text_transformed(20+(gw*qtd),texto_margy*7	,tiro_timer				,texto_xesc,texto_yesc,0)

@@ -1,7 +1,7 @@
 if (global.pause or !instance_exists(obj_player)) exit;
 
-image_angle+=2
-direction+=2
+image_angle	-= 2
+direction	-= 2
 //image_xscale = direction = clamp(direction,90,270) ? -1 : 1
 direction	%= 360
 image_angle %= 360
@@ -13,7 +13,7 @@ image_alpha -= .05
 var obj = instance_nearest(x,y,obj_player)
 var dis = 48
 	
-if (point_distance(obj.x,obj.y,x,y)<dis){
+if (distance_to_object(obj)<dis and obj.interacao_obj == id){
 	
 	var cn = obj.controle
 
@@ -24,7 +24,7 @@ if (point_distance(obj.x,obj.y,x,y)<dis){
 		
 		instance_destroy(obj.arma)
 	
-		for (var a=0;a<array_length(global.armas_mods[obj.qtd][i]);a++){
+		for (var a=0;a<array_length(mods);a++){
 		
 			global.armas_mods[obj.qtd][i][a] = mods[a]
 			global.armas_modi[obj.qtd][i][a] = modi[a]
@@ -34,6 +34,8 @@ if (point_distance(obj.x,obj.y,x,y)<dis){
 		obj.arma = -4
 		obj.armai = i
 		obj.tem_arma = 1
+		
+		window_set_cursor(cr_none)
 		
 		instance_destroy()
 	

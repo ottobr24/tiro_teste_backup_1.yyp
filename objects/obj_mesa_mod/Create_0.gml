@@ -21,6 +21,8 @@ image_index = irandom_range(0,image_number - 1)
 
 abrindo_a_modificacao = function(){
 	
+	if (global.pause) exit;
+	
 	if (instance_exists(obj_player)){
 		
 		cade_alp = clamp(cade_alp,0,1)
@@ -31,7 +33,7 @@ abrindo_a_modificacao = function(){
 		var dist_total = 64
 		var tec_a = usa_controle(controles.anda_f,1,,alvo.controle) //!cn ? keyboard_check_pressed(ord(tecla_abrir[cn])) : gamepad_button_check_pressed(0,tecla_abrir[cn])
 		var vis = 1//visao(dist_total,"",x,y,point_direction(x,y,alvo.x,alvo.y),alvo,[obj_miniparede],1,1)
-		var por = !instance_exists(global.portas_abrir) or point_distance(alvo.x,alvo.y,global.portas_abrir.x,global.portas_abrir.y) > dist
+		var por = alvo.interacao_obj == id
 		
 		#region Efetivamente abrindo ela
 		
