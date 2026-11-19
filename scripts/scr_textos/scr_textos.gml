@@ -29,6 +29,7 @@ var controles_texto = [
 "Equipa / Desequipa: "		,//+ c[controles.arma_t	][global.controle][0][0],		//arma_t	,
 "Arma Anterior: "			,//+ c[controles.arma_at	][global.controle][0][0],		//arma_at	,
 "Próxima Arma: "			,//+ c[controles.arma_pt	][global.controle][0][0],		//arma_pt	,
+"Dropar Arma: "				,//+ c[controles.arma_pt	][global.controle][0][0],		//arma_drop	,
 "",							//													
 "Menu",						//													
 "",							//													
@@ -79,6 +80,7 @@ var controles_texto = [
 "Equip / Unequip: "			,//+ c[controles.arma_t	][global.controle][0][0],		//arma_t	,
 "Weapon Previous: "			,//+ c[controles.arma_at	][global.controle][0][0],		//arma_at	,
 "Next Weapon: "				,//+ c[controles.arma_pt	][global.controle][0][0],		//arma_pt	,
+"Drop Weapon: "				,//+ c[controles.arma_pt	][global.controle][0][0],		//arma_drop	,
 "",							//													
 "Main Menu",						//													
 "",							//													

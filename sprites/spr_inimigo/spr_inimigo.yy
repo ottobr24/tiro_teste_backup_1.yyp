@@ -44,8 +44,8 @@
   },
   "origin":4,
   "parent":{
-    "name":"Inimigos",
-    "path":"folders/Sprites/Inimigos.yy",
+    "name":"Inimigo",
+    "path":"folders/Sprites/Inimigos/Inimigo.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

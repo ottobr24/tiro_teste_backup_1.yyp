@@ -23,6 +23,9 @@ enum objetos{
 	npc			,
 	vidro		,
 	zumbi		,
+	zumbi_swat	,
+	zumbi_corre	,
+	zumbi_exp	,
 	mesa_mod	,
 	elevador	,
 	grade		,
@@ -77,52 +80,53 @@ enum armas{
 	
 enum controles{
 	
-	anda_d	,
-	anda_e	,
-	anda_c	,
-	anda_b	,
-	anda_co	,
-	anda_f	,
-	anda_ch	,
-	anda_s	,
+	anda_d		,
+	anda_e		,
+	anda_c		,
+	anda_b		,
+	anda_co		,
+	anda_f		,
+	anda_ch		,
+	anda_s		,
 		  
 		  
 		  
-	arma_a	,
-	arma_m	,
-	arma_g	,
-	arma_l	,
-	arma_c	,
-	arma_b	,
-	arma_e	,
-	arma_r	,
-	arma_t	,
-	arma_at	,
-	arma_pt	,
+	arma_a		,
+	arma_m		,
+	arma_g		,
+	arma_l		,
+	arma_c		,
+	arma_b		,
+	arma_e		,
+	arma_r		,
+	arma_t		,
+	arma_at		,
+	arma_pt		,
+	arma_drop	,
 	
 	
 	
-	menu_c	,
-	menu_b	,
-	menu_e	,
-	menu_d	,
-	menu_a	,
-	menu_m	,
-			
-			
-			
-	mod_a	,
-	mod_m	,
-	mod_d	,
-	mod_e	,
-	mod_at	,
-	mod_pt	,
-	mod_c	,
-	mod_b	,
-	mod_s	,
-	mod_cm	,
-	
-	deb_a	,
+	menu_c		,
+	menu_b		,
+	menu_e		,
+	menu_d		,
+	menu_a		,
+	menu_m		,
+				
+				
+				
+	mod_a		,
+	mod_m		,
+	mod_d		,
+	mod_e		,
+	mod_at		,
+	mod_pt		,
+	mod_c		,
+	mod_b		,
+	mod_s		,
+	mod_cm		,
+				
+	deb_a		,
 	
 }
 	

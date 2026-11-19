@@ -8,12 +8,13 @@ var ply_mar = 1+(instance_number(obj_player)-1)/2
 var ply_num = instance_number(obj_player)
 
 var vid = random_range(1.5*vid_mar,3*vid_mar) * ply_mar
+var dan_mar = 1+global.rodada/20
 var moe = random_range(5,40) * ply_num
 			
-cor		= global.parts_cores[objetos.zumbi]
-velp	= global.parts_vel	[objetos.zumbi]
-distc	= global.parts_distc[objetos.zumbi]
-danos	= global.parts_danos[objetos.zumbi]
+cor		= global.parts_cores[objetos.zumbi_swat]
+velp	= global.parts_vel	[objetos.zumbi_swat]
+distc	= global.parts_distc[objetos.zumbi_swat]
+danos	= global.parts_danos[objetos.zumbi_swat]
 
 moedas = moe
 
@@ -21,7 +22,7 @@ hspd =0
 vspd =0
 
 vela = random_range(.5,1.2)
-vel = 0
+vel = vela
 
 vida_max = vid
 vida = vida_max
@@ -38,7 +39,7 @@ alvoy = 0
 xult = x
 yult = y
 
-dano_dmg = 0
+dano_dmg = random_range(1*dan_mar,3*dan_mar)	* ply_mar
 
 drops = []
 
@@ -50,7 +51,9 @@ ii = 0
 
 image_alpha = 0
 
-ataque_dist = 200
+ataque_dist = 300
+ataque_tempo = random_range(60,100)
+ataque_timer = ataque_tempo
 vermelho = 0
 player = -4
 
@@ -241,6 +244,8 @@ colidindo = function(){
 	xult = x
 	yult = y
 	
+	vel = vela
+	
 }
 
 #endregion 
@@ -283,13 +288,13 @@ bracos = function(){
 estado_seguindo = function(){
 	
 	var ply = instance_exists(obj_player) ? instance_nearest(x,y,obj_player) : -4
-	var dis = ataque_dist//ply ? point_distance (x,y,ply.x,ply.y) : 10
+	var dis = ply ? point_distance (x,y,ply.x,ply.y) : 1000000
 	var dir = ply ? point_direction(x,y,ply.x,ply.y) : 0
 	
 	var col1 = retira_da_array(global.zumbis,[obj_zumbi_swat])
 	var col2 = adiciona_na_array(global.colisao_normal,col1)
 	
-	arma_atira = visao(dis,,x,y,dir,ply,col2,5,1,,1)
+	arma_atira = dis < ataque_dist ? visao(ataque_dist,,x,y,dir,ply,col2,5,1,,1) : 0
 
 	puxa_arma()
 	sofrendo_dano()
@@ -307,13 +312,12 @@ estado_morrendo = function(){
 	randomise()
 	var chan_a = irandom_range(0,100)
 	
-	var chac_e = 33 - 11 * (instance_number(obj_player)-1)
+	var chac_e = 0 - 11 * (instance_number(obj_player)-1)
 	
 	if (chan_a>=chac_e){
 		
-		var obj = instance_create_layer(x,y,"Particulas",obj_arma_item)
-		obj.i = armai
-		
+		cria_arma(1)
+	
 	}
 	
 	global.dinheiro += moedas

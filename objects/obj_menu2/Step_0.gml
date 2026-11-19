@@ -1,3 +1,8 @@
+var cursor = window_get_cursor()
+
+if (global.controle = 1) window_set_cursor(cr_none)
+if (global.controle != 1 and cursor != cr_arrow) window_set_cursor(cr_arrow)
+
 if (keyboard_check_pressed(vk_enter)) teste = 0
 
 	audio_sound_gain(snd_musica_menu,global.configs[0][1] / 50)

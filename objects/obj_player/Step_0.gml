@@ -2,6 +2,8 @@ image_blend = !controle ? c_white : c_purple
 depth = -y
 timer++
 
+show_debug_message(obj_camera.roo)
+
 if (timer%10 = 0) fps_real2 = fps_real
 
 abre_modificacao()

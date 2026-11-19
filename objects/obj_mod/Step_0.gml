@@ -7,9 +7,13 @@ var key = kcp(vk_anykey)
 var mou = mxp != mouse_x or myp != mouse_y
 var con = gbp(0,gp_face1) or gbp(0,gp_padd) or gbp(0,gp_padu) or gbp(0,gp_padl) or gbp(0,gp_padr)
 
-if (key) controles_mod = 0
-if (con) controles_mod = 1
-if (mou) controles_mod = 2
+//if (global.player_ord = 1){
+
+	if (key) controles_mod = 0
+	if (con) controles_mod = 1
+	if (mou) controles_mod = 2
+
+//}
 
 mxp = mouse_x
 myp = mouse_y
@@ -393,8 +397,6 @@ if(lista){
 		var cod2 = array_length(global.armas_mode[i][lista-1][listai]) > 7
 		var cod3 = array_length(global.armas_mode[i][lista-1][listai]) > 25
 		var dinheiro = cod1 and cod2 and cod3 ? global.armas_mode[i][lista-1][listai][25] : 0
-		
-		show_debug_message(!global.armas_moda[ind][i][lista-1][listai] and global.dinheiro >= dinheiro)
 		
 		if (!global.armas_moda[ind][i][lista-1][listai] and global.dinheiro >= dinheiro){
 			

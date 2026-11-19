@@ -18,10 +18,7 @@ chutou = 0
 som = [0,0,0,0,0]
 sou_eu = 0 
 perto = 0
-
-som[4] = toca_som(snd_porta_chiado,1,15,50,,0,.05)
-audio_pause_sound(som[4])
-			
+	
 abrindo_e_sendo_empurrada = function(){
 	
 	if (instance_exists(obj_player)){
@@ -159,10 +156,6 @@ abrindo_e_sendo_empurrada = function(){
 						cade_alp += .05
 						perto = 1
 						
-					}
-			
-					if (dis<dist[0]){
-					
 						var ct = variable_instance_exists(prx,"controle") ? prx.controle : 0
 						var cn = ct
 						var tec_ord = cn
@@ -176,7 +169,8 @@ abrindo_e_sendo_empurrada = function(){
 						}
 					
 						if (tecla_pressionada[tec_ord] >= chu_t and !chutou and image_angle = clamp(image_angle,ima_org-20,ima_org+20)){
-						
+							
+							show_message([dis,dist[0]])
 							var dir = ima_org = 90 ? sign(prx.x-x) : sign(prx.y-y)
 						
 							frc += 20 * dir

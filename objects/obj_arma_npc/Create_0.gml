@@ -30,7 +30,7 @@ tiro_tempo = 0
 rajando_timer = 0
 rajadas = 0
 rajadas_tempo = 0
-rajadas_total = 0
+rajadas_tempo = 0
 
 sons = []
 
@@ -304,7 +304,7 @@ atira = function(){
 				
 				var vol = 0
 				
-				if (!rajadas and tec) rajadas = rajadas_total
+				if (!rajadas and tec) rajadas = rajadas_tempo
 		
 				repeat(bala){
 			
@@ -380,7 +380,7 @@ atira = function(){
 				tiro--	
 				rajadas--
 	    
-				rajando_timer = rajadas_total
+				rajando_timer = rajadas_tempo
 			
 				if ((rajadas<=0 and global.armas_prep[i]<0) or (prep<=0 and global.armas_prep[i]>0)){ 
 					

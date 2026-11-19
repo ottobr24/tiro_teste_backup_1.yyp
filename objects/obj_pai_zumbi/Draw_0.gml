@@ -8,8 +8,10 @@ var ply = obj
 desenhando()
 bracos()
 
-if (point_distance(x,y,obj.x,obj.y)<ataque_dist){
+if (distance_to_object(obj)<ataque_dist){
 	
 	draw_sprite(spr_zumbi_atacando,ii,x,y)
 	
 }
+
+if (global.debug) draw_path(caminho,x,y,1)

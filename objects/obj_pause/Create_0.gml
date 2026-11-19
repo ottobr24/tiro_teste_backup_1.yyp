@@ -708,6 +708,7 @@ usando_o_menu = function(){
 					
 					case 0:
 						
+						audio_resume_all()
 						global.mods_atualiza = 2
 						global.pause = 0
 						window_set_cursor(cr_none)

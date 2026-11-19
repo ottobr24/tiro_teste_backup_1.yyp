@@ -9,8 +9,8 @@
   "name":"obj_hitbox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inimigos",
-    "path":"folders/Objetos/Inimigos.yy",
+    "name":"Dano",
+    "path":"folders/Objetos/Dano.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -35,5 +35,5 @@
     "path":"sprites/spr_headshot/spr_headshot.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

@@ -15,6 +15,7 @@ draw_set_colour(-1)
 desenha_sprite()
 desenha_modificacao()
 desenha_fogo()
+desenha_drop()
 
 if (global.debug){
 	

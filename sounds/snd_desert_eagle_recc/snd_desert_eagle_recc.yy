@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.41993198,
+  "duration":0.44090703,
   "exportDir":"",
   "name":"snd_desert_eagle_recc",
   "parent":{

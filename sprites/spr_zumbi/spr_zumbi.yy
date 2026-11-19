@@ -45,8 +45,8 @@
   },
   "origin":4,
   "parent":{
-    "name":"Inimigos",
-    "path":"folders/Sprites/Inimigos.yy",
+    "name":"Zumbi",
+    "path":"folders/Sprites/Inimigos/Zumbi/Zumbi.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

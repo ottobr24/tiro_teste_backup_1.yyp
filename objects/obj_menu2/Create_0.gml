@@ -1,5 +1,6 @@
 #region Extras
 
+window_set_cursor(cr_none)
 toca_som(snd_musica_menu,3,10000,10000,,1,,,,,1)
 
 if (array_length(global.armas_mods) = 0){
@@ -115,6 +116,9 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 					global.armas_modi[i1][i2][i3] = 0
 	
 				}
+				
+				global.armas_mods[i1][i2][i3] = clamp(global.armas_mods[i1][i2][i3],0,10000)
+			
 			}
 		}
 	}
@@ -122,7 +126,7 @@ if (file_exists(global.save_ling) or file_exists(global.saves[global.savei][0]	)
 	for (var i1=0;i1<2;i1++){
 	
 		for (var i2=0;i2<array_length(global.armas_modn);i2++){
-	
+		
 			if (array_length(global.armas_moda[i1])<=i2){
 			
 				global.armas_moda[i1][i2] = 0
@@ -380,8 +384,6 @@ desenha_texto = function(){
 		var x3 = x1// + (gui_w*.2)
 		
 		if ((array_length(textos_alp)<=ti or textos_alp[ti] == 0) or (texto_diminuir = ti)){
-			
-			show_debug_message(texto_tmd)
 			
 			textos_alp[ti]			= array_create(texto_tmd,0		)//[0,0,0,0,0,0,0,0,0]
 			textos_esc[ti]			= array_create(texto_tmd,0		)//[0,0,0,0,0,0,0,0,0]
@@ -1136,7 +1138,7 @@ usando_o_menu = function(){
 							randomise()
 							var r = irandom(array_length(global.levels_zumbi)-1)
 							
-							global.destino = global.levels_zumbi[r]
+							global.destino = rm_teste//global.levels_zumbi[r]//rm_teste
 							
 							seq = layer_sequence_create("Transicao",0,0,seq_transicao_fechando)
 							

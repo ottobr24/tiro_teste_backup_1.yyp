@@ -26,7 +26,8 @@ estado_txt		=	""
 armai			=	global.arma //irandom_range(0,array_length(global.armas_nome)-1)
 arma			=	-4
 arma_prox		=	-4
-				
+tem_arma		=	1
+			
 vida_max		=	100
 vida			=	vida_max
 				
@@ -241,8 +242,8 @@ movendo = function(andar=1,equip=1){
 			
 			equipado=!equipado
 			
-			if (equipado) window_set_cursor(cr_none)
-			if (!equipado) window_set_cursor(cr_arrow)
+			if ( equipado and controle = 0) window_set_cursor(cr_none)
+			if (!equipado and controle = 0) window_set_cursor(cr_arrow)
 			
 		}
 	}
@@ -250,7 +251,7 @@ movendo = function(andar=1,equip=1){
 
 controla_arma = function(){
 	
-	if (equipado){
+	if (equipado and tem_arma){
 		
 		if (!instance_exists(arma)){
 		
@@ -341,10 +342,12 @@ controla_arma = function(){
 				
 				x1 += lengthdir_x(canox,direction)
 				y1 += lengthdir_y(canox,direction)
-		
-	            if (place_meeting(x,y1,global.colisao_normal)){
 				
-	                while(place_meeting(x,y1,global.colisao_normal) and cy2>-32){
+				var col = adiciona_na_array(global.colisao_normal,[obj_pai_level,obj_pai_pessoas,obj_pai_zumbi])
+				
+	            if (place_meeting(x,y1,col)){
+				
+	                while(place_meeting(x,y1,col) and cy2 > -16){
                     
 	                    y1 = y + lengthdir_y(cy2,dir)
 	                    cy2--
@@ -352,9 +355,9 @@ controla_arma = function(){
 	                }
 	            }
             
-	            if (place_meeting(x1,y,global.colisao_normal)){
+	            if (place_meeting(x1,y,col)){
                 
-	                while(place_meeting(x1,y,global.colisao_normal) and cx2>-32){
+	                while(place_meeting(x1,y,col) and cx2 > -16){
                     
 	                    x1 = x + lengthdir_x(cx2,dir)
 	                    cx2--
@@ -445,7 +448,7 @@ abre_modificacao = function(){
 	if (esc_tec and !instance_exists(obj_mod)){
 		
 		global.mods_atualiza = 2
-	
+		
 		var cursores = [cr_none,cr_arrow]
 		
 		obj_camera.roo = 0
@@ -455,6 +458,9 @@ abre_modificacao = function(){
 		salvando_idioma()
 		
 		window_set_cursor(cursores[global.pause])
+		
+		if ( global.pause) audio_pause_all()
+		if (!global.pause) audio_resume_all()
 		
 		if (!global.zumbi) salvando()
 		

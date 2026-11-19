@@ -7,6 +7,7 @@ var ply_mar = 1+(instance_number(obj_player)-1)/2
 var ply_num = instance_number(obj_player)
 
 var vid = random_range(1*vid_mar,3*vid_mar)	* ply_mar
+var dan_mar = 1+global.rodada/20
 var moe = random_range(2,20) * ply_num
 			
 event_inherited()
@@ -22,7 +23,7 @@ hspd =0
 vspd =0
 
 vela = random_range(.8,1.8)
-vel = 0
+vel = vela
 
 vida_max = vid
 vida = vida_max
@@ -39,7 +40,7 @@ alvoy = 0
 xult = x
 yult = y
 
-dano_dmg = 0
+dano_dmg = random_range(1*dan_mar,3*dan_mar)	* ply_mar
 
 drops = []
 
@@ -50,7 +51,9 @@ braco_spr = spr_zumbi_braco
 ii = 0
 
 image_alpha = 0
-ataque_dist = clamp(ataque_dist,caminho_dist+1,infinity)
+ataque_dist = irandom_range(24,48)//clamp(ataque_dist,caminho_dist+1,infinity)
+ataque_tempo = random_range(60,100)
+ataque_timer = ataque_tempo
 
 vermelho = 0
 
@@ -136,7 +139,7 @@ bracos = function(){
 	if !instance_exists(obj_player) exit;
 	
 	var ply = instance_nearest(x,y,obj_player)
-	var dir = direction
+	var dir = point_direction(x,y,ply.x,ply.y)
 	
 	if (abs(braco_dir-dir) > 240) braco_dir = dir - sign(dir-braco_dir) * 5
 	
@@ -166,28 +169,7 @@ estado_seguindo = function(){
 	
 	sofrendo_dano()
 	movendo()
-	
-	if (instance_exists(obj_player)){
-		
-		var obj = instance_nearest(x,y,obj_player)
-		
-		if (point_distance(x,y,obj.x,obj.y)<ataque_dist){
-			
-			ataque_timer--
-			
-			if (!ataque_timer){
-				
-				obj.dano+=dano_dmg
-				ataque_timer = ataque_tempo
-				global.shake+=dano_dmg
-				
-			}
-		}else{
-			
-			ataque_timer = ataque_tempo
-			
-		}
-	}
+	atacando()
 	
     estado = estado_seguindo
     estado_txt = "estado_seguindo"       

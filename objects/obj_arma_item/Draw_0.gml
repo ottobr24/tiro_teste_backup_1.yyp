@@ -10,7 +10,7 @@ var tec = ["F","B"]
 
 sprite_set_offset(sprite_index,sprw/2,sprh/2)
 
-draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,1)
+//draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,1)
 
 sprite_set_offset(sprite_index,sprx,spry)
 if (!place_meeting(x,y,obj_camera)) exit;
@@ -24,3 +24,7 @@ draw_text(x,y-24,tec[cn])
 draw_set_alpha(1)
 draw_set_halign(-1)
 draw_set_valign(-1)
+
+desenha_modificacao()
+
+draw_text(x,y,[image_angle,image_xscale])
