@@ -60,6 +60,7 @@ enum armas{
 	saiga			,
 	ak_47			,
 	fal				,
+	g3				,
 	aek				,
 	ar				,
 	m4a1			,

@@ -2372,7 +2372,7 @@ global.acessorios = {
 	fal_auto : function(pos,val2 = []){
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca,sons[tiro,cock,recc,recf],preço,fogo_pos[x,y],tiro_stats[spr,bala,vel],shake_gira
-		var variaveis = [0,0,0,0,0,0,0,0,0,-3,-5,-8,0.0,0.0,0,0,0,-1,0,0,-91*0,[],500,[],[],0,0.0]
+		var variaveis = [0,-1,0,0,0,0,0,0,0,-3,-5,-8,0.0,0.0,0,0,0,-1,0,0,-91*0,[],500,[],[],0,0.0]
 		
 		for (var i=0;i<array_length(val2);i++){
 			
@@ -2506,6 +2506,86 @@ global.acessorios = {
 	
 		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca,sons[tiro,cock,recc,recf],preço,fogo_pos[x,y],tiro_stats[spr,bala,vel],shake_gira
 		var variaveis = [2,0,0,.45,-.25,0,-.25,-.25,-.5,0,0,0,0.05,0.05,0,4,0,-1,0,-25,-91*0,[],1250,[],[],-.025,-0.03]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	#endregion
+	
+	#region HK G3
+	
+	g3_grip : function(pos,val2 = []){
+	
+		//				id cliq	,munc	,dano	,prec	,reca	,coix	,coiy	,shak	,raja	,raca	,cade	,mira	,peso	,volu	,xestra,yestra	,idbloq,xbloq,baru,part_reca,sons[tiro,cock,recc,recf],preço,fogo_pos[x,y],tiro_stats[spr,bala,vel],shake_gira
+		var variaveis = [1,0	,0		,0		,0		,0		,0		,0		,0		,0		,0		,0		,0		,0		,0		,0		,0		,-1,0,0,0,[],0,[0,-2],[],0,0.0]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	g3_coronha : function(pos,val2 = []){
+	
+		//				id	cliq,	munc,	dano,	prec,	reca,	coix,	coiy,	shak,	raja,	raca,	cade,	mira,peso	,volu	,xestra	,yestra	,idbloq	,xbloq	,baru	,part_reca	,sons[tiro,cock,recc,recf]	,preço	,fogo_pos[x,y]	,tiro_stats[spr,bala,vel]	,shake_gira
+		var variaveis = [14,0,		0,		0,		1.25,	0,		1.75,	1.75,	1.25,	0,		0,		0,		0.00,-0.07	,0		,0		,0		,-1		,0		,25		,-91*0		,[]							,750	,[]				,[]							,.1,0.05]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	g3_mira : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca,sons[tiro,cock,recc,recf],preço,fogo_pos[x,y],tiro_stats[spr,bala,vel],shake_gira
+		var variaveis = [20,0,0,0,-2,0,0,0,0,0,0,0,0.185,0.15,0,0,0,23,0,0,-91*0,[],2500,[],[],0.04,0.0]
+		
+		for (var i=0;i<array_length(val2);i++){
+			
+			if (val2[i]!=0) variaveis[i] = val2[i]
+			
+		}
+		
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,0,pos[0/**/]) }else{ show_message("erro no x") array_insert(variaveis,0,0)}
+		if (is_array(pos) and array_length(pos)>1){ array_insert(variaveis,1,pos[1/**/]) }else{ show_message("erro no y") array_insert(variaveis,1,0)}
+		if (is_array(pos) and array_length(pos)>2){ array_insert(variaveis,2,pos[2/**/]) }else{ array_insert(variaveis,2,0)}
+		
+		return variaveis 
+		
+	},
+	
+	g3_cano : function(pos,val2 = []){
+	
+		//id cliq,munc,dano,prec,reca,coix,coiy,shak,raja,raca,cade,mira,peso,volu,xestra,yestra,idbloq,xbloq,baru,part_reca,sons[tiro,cock,recc,recf],preço,fogo_pos[x,y],tiro_stats[spr,bala,vel],shake_gira
+		var variaveis = [2,0,0,-.2,.4,0,.4,.4,.5,0,0,0,-0.065,-0.03,0,-3,0,-1,0,-25,-91*0,[],1250,[],[],.03,0.045]
 		
 		for (var i=0;i<array_length(val2);i++){
 			

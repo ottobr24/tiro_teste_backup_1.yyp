@@ -887,10 +887,10 @@ preparando = function(){
 			
 		}
 		
-		if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>1 and asset_get_type(som_cock) == asset_sound){
+		if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>1 and (asset_get_type(global.armas_sons[i][1]) == asset_sound or is_array(global.armas_sons[i][1]))){
 			
-			if (cock != 2) sons[1] = toca_som(som_cock,1,75,250,,0,.05,0,,30)
-			if (cock  = 2) sons[1] = toca_som(som_jam,1,75,250,,0,.05,0,,30)
+			if (cock != 2) sons[1] = toca_som(som_cock,1,75,250,,0,.05,1,,30)
+			if (cock  = 2) sons[1] = toca_som(som_jam ,1,75,250,,0,.05,1,,30)
 			if (sem) refff = 1
 			
 			if (global.armas_rext[i]-global.armas_munc[i] = -1 and cock = 1){ 
@@ -1038,10 +1038,10 @@ recarrega = function(){
 			
 			#region Cria som
 			
-			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and asset_get_type(som_recc) == asset_sound){
+			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>2 and (asset_get_type(global.armas_sons[i][2]) == asset_sound or is_array(global.armas_sons[i][2]))){
 			
-				if (!modo)sons[2] = toca_som(som_recc,1,75,250,,0,.1,0,,30)
-				if ( modo)sons[2] = toca_som(snd_lanca_recc,1,75,250,,0,.1,0,,30)
+				if (!modo)sons[2] = toca_som(som_recc		,1,75,250,,0,.1,1,,30)
+				if ( modo)sons[2] = toca_som(snd_lanca_recc	,1,75,250,,0,.1,1,,30)
 			
 			}
 			
@@ -1198,16 +1198,16 @@ recarrega = function(){
 				}
 			}
 			
-			if (i<array_length(global.armas_sons) and array_length(sons)>3 and asset_get_type(som_recf) == asset_sound){ 
+			if (i<array_length(global.armas_sons) and array_length(global.armas_sons[i])>3 and (asset_get_type(global.armas_sons[i][3]) == asset_sound or is_array(global.armas_sons[i][3]))){ 
 				
 				var mod_i = mods[4]
 				var spd_lod = mod_i>=0 and is_array(global.armas_mode[i][4]) and array_length(global.armas_mode[i][4])>0 and array_length(global.armas_mode[i][4][mod_i]) > 8 and global.armas_mode[i][4][mod_i][3] = 26 
 				
 				if (!modo){
 					
-					if (!retx and !spd_lod	) sons[3] = toca_som(som_recf,1,75,250,,0,.1,0,,30)
-					if ( retx and !spd_lod	) sons[3] = toca_som(snd_win_recf			,1,75,250,,0,.1,0,,30)
-					if ( spd_lod			) sons[3] = toca_som(snd_revolvers_speed	,1,75,250,,0,.1,0,,30)
+					if (!retx and !spd_lod	) sons[3] = toca_som(som_recf				,1,75,250,,0,.1,1,,30)
+					if ( retx and !spd_lod	) sons[3] = toca_som(snd_win_recf			,1,75,250,,0,.1,1,,30)
+					if ( spd_lod			) sons[3] = toca_som(snd_revolvers_speed	,1,75,250,,0,.1,1,,30)
 				
 				}else{
 					

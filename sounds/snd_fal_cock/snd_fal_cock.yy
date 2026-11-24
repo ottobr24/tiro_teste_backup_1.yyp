@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_fal_cock",
   "parent":{
-    "name":"FnFal",
-    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/FnFal.yy",
+    "name":"FN Fal",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/FN Fal.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

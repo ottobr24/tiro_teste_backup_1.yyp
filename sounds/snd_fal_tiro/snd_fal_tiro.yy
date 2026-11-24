@@ -14,13 +14,13 @@
   "exportDir":"",
   "name":"snd_fal_tiro",
   "parent":{
-    "name":"FnFal",
-    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/FnFal.yy",
+    "name":"FN Fal",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/FN Fal.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"snd_fal_tiro.wav",
-  "volume":1.0,
+  "volume":0.5,
 }

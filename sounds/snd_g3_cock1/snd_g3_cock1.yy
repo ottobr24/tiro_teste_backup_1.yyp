@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_g3_cock1",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.5839456,
+  "exportDir":"",
+  "name":"snd_g3_cock1",
+  "parent":{
+    "name":"HK G3",
+    "path":"folders/Sons/Armas/Armas de fogo/Fuzils de assalto/HK G3.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_g3_cock1.wav",
+  "volume":1.0,
+}
